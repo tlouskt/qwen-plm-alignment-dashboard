@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Follow the same proteins across Qwen sizes: local neighbor overlap, differences between protein language models, and contributions to global alignment change.">
+  <title>Proteins across Qwen sizes · Alignment report</title>
+  <link rel="stylesheet" href="assets/dashboard_ui.css">
+  <link rel="stylesheet" href="assets/hosted-loader.css">
+</head>
+<body class="descriptive-mode">
+  <header class="page-header">
+    <div><p class="eyebrow">PROTEIN ALIGNMENT / QWEN SIZE</p><h1>Qwen and protein-model alignment</h1><p class="lede">Qwen vectors come from generated text prompted by protein names; PLM vectors come from amino-acid sequences.</p></div>
+    <div class="offline-badge"><span aria-hidden="true">●</span> Browser analysis · fixed protein panel</div>
+  </header>
+  <section id="hosted-loading" role="status" aria-live="polite" aria-atomic="true">
+    <h2>Loading the alignment report</h2>
+    <p id="hosted-loading-message">Downloading the fixed-panel data…</p>
+    <progress id="hosted-loading-progress" max="22591578" value="0" aria-label="Data download progress"></progress>
+    <p class="small-note">The first visit downloads about 21.5 MB of compressed data. All analysis runs in your browser.</p>
+    <button id="hosted-retry" type="button" hidden>Try again</button>
+  </section>
+  <noscript><p class="notice error">JavaScript is needed to load this interactive report.</p></noscript>
+  <main id="dashboard-shell" aria-busy="true" hidden>
+    <nav class="report-mode-switch" aria-label="Report detail">
+      <button id="show-descriptive" type="button" aria-pressed="true" aria-controls="descriptive-report">kNN report</button>
+      <button id="show-cka" type="button" aria-pressed="false" aria-controls="cka-report">CKA report</button>
+      <button id="show-supporting" type="button" aria-pressed="false" aria-controls="supporting-report">All analyses</button>
+    </nav>
+    <section id="descriptive-report" aria-labelledby="descriptive-heading">
+      <nav class="guided-nav" aria-label="Analysis questions">
+        <button data-guided-section="proteins">Top proteins &amp; families</button>
+        <button data-guided-section="global">Global</button>
+        <button data-guided-section="distribution">Distribution</button>
+        <button data-guided-section="differential">Model differences</button>
+        <button data-guided-section="biology">Biology</button>
+        <button data-guided-section="redundancy">Redundancy</button>
+        <button data-guided-section="scaling">Scaling</button>
+      </nav>
+      <h2 id="descriptive-heading" class="guided-report-label">Explore the same protein panel across all models</h2>
+      <section class="simple-controls" aria-label="Main report controls">
+        <div class="simple-comparison-controls">
+          <label>Qwen checkpoint<select id="simple-qwen"></select></label>
+          <label>Protein model A<select id="simple-a"></select></label>
+          <label>Protein model B<select id="simple-b"></select></label>
+          <label>Neighbors per protein · k<select id="simple-k"></select></label>
+        </div>
+        <div class="simple-filter-controls">
+          <label>Find a protein<input id="simple-search" type="search" placeholder="Search gene, protein ID, or annotation…"></label>
+          <label>Scaling pattern with A<select id="simple-pattern"><option value="all">All proteins</option><option value="gain">Gain</option><option value="retained">Same endpoints</option><option value="loss">Loss</option></select></label>
+          <label>Order proteins<select id="simple-sort"><option value="change">Largest gain</option><option value="loss">Largest loss</option><option value="contrast">Largest A–B difference in endpoint change</option><option value="gene">Gene / protein name</option></select></label>
+          <button id="simple-clear" type="button">Clear selection</button>
+        </div>
+      </section>
+      <div id="simple-summary" class="simple-summary" aria-live="polite"></div>
+      <div id="simple-view"></div>
+      <footer class="simple-supporting-footer">
+        <p>These are descriptive changes across observed checkpoints. Greater overlap does not establish biological accuracy or isolate a causal effect of model size.</p>
+        <button type="button" class="supporting-link" data-report-mode="supporting" aria-controls="supporting-report">Controls, uncertainty, and methods in All analyses →</button>
+      </footer>
+    </section>
+    <section id="cka-report" aria-label="CKA report" hidden><div id="cka-view"></div></section>
+    <section id="supporting-report" aria-label="All analyses" hidden>
+    <section class="control-panel" aria-label="Persistent analysis controls">
+      <div class="control-grid">
+        <label>Reference panel<select id="panel-select"></select></label>
+        <label>Reference checkpoint<select id="qwen-select"></select></label>
+        <label>Comparison A<select id="a-select"></select></label>
+        <label>Comparison B<select id="b-select"></select></label>
+        <label>Alignment metric<select id="metric-select"><option value="knn">kNN · mean neighbor overlap</option><option value="cka">CKA · centered similarity geometry</option></select></label>
+        <div id="quantity-control" class="quantity-control"><div class="quantity-label-row"><label for="value-select">Protein quantity</label><button type="button" id="value-help-trigger" class="quantity-help-trigger" aria-label="Protein quantity definitions" aria-describedby="value-help-text">ⓘ</button></div><select id="value-select" aria-describedby="value-help-text"></select><div id="value-help-text" class="quantity-help" role="tooltip"></div></div>
+        <label id="k-control">Neighbor count k<select id="k-select"></select></label>
+        <label id="cka-control" hidden>CKA estimator<select id="cka-select"></select></label>
+        <label>Scaling series<select id="series-select"></select></label>
+      </div>
+      <details class="advanced-settings"><summary>Fixed settings and checkpoint preset</summary><div class="settings-line"><strong>Fixed layers / pooling:</strong> <span id="layer-settings"></span></div>
+      <div class="checkpoint-preset"><button id="preset-esmc-size">ESMC 600M − ESMC 300M</button><span id="preset-esmc-note">Controlled checkpoint-size contrast within ESMC; checkpoint differences do not establish a pure causal size effect.</span></div>
+      </details>
+      <div id="comparison-summary" class="summary-grid" aria-live="polite"></div>
+      <p id="influence-value-note" class="notice" hidden>Deletion influence is the full-panel score minus the score recomputed after removing that protein. It is not additive attribution and must not be summed into a percentage explained. Ranking and group-accounting panels continue to use additive contributions.</p>
+      <details class="advanced-settings"><summary>Advanced protein selection</summary><div class="selection-controls">
+        <label>Rank proteins using<select id="rank-source"><option value="a">A · additive contribution</option><option value="b">B · additive contribution</option><option value="gap">A minus B · additive gap</option></select></label>
+        <label>Direction<select id="rank-direction"><option value="positive">Largest positive</option><option value="negative">Strongest negative</option><option value="absolute">Largest absolute</option></select></label>
+        <label>Selection size<select id="top-size"><option value="n:10">Top 10 proteins</option><option value="n:50" selected>Top 50 proteins</option><option value="n:100">Top 100 proteins</option><option value="p:1">Top 1%</option><option value="p:5">Top 5%</option><option value="p:10">Top 10%</option><option value="p:20">Top 20%</option><option value="p:50">Top 50%</option></select></label>
+        <label class="check"><input type="checkbox" id="include-ties" checked> Include all boundary ties</label>
+        <button id="select-top" class="primary">Select ranked proteins</button><button id="reset-selection">Clear selection</button>
+      </div>
+      </details>
+      <div class="selection-banner"><strong id="selection-count">0 proteins selected</strong><span id="selection-definition">Click or lasso points, check table rows, or select a ranked group.</span></div>
+      <details class="advanced-settings"><summary>Display filters</summary><div class="filter-controls">
+        <label>Protein / annotation search<input id="protein-search" type="search" placeholder="Search gene, ID, protein name, taxon, or group…"></label>
+        <label>Annotation group<select id="group-filter"><option value="">All groups</option></select></label>
+        <label class="check"><input type="checkbox" id="representatives"> One representative per annotated group <span class="subtle">(display only)</span></label>
+        <button id="reset-filters">Reset view filters</button>
+      </div>
+      <p class="filter-note" id="filter-note">View filters retain the original panel, neighbors, centering, and denominators. Selected IDs persist across model and metric changes.</p></details>
+    </section>
+    <div class="tab-bar" role="tablist" aria-label="Analysis sections">
+      <button role="tab" id="tab-overview" data-tab="overview" aria-selected="true">Overview</button>
+      <button role="tab" id="tab-contributors" data-tab="contributors" aria-selected="false">Contributors</button>
+      <button role="tab" id="tab-differences" data-tab="differences" aria-selected="false">Model differences</button>
+      <button role="tab" id="tab-scaling" data-tab="scaling" aria-selected="false">Scaling</button>
+      <button role="tab" id="tab-explorer" data-tab="explorer" aria-selected="false">Protein explorer</button>
+      <button role="tab" id="tab-controls" data-tab="controls" aria-selected="false">Controls and uncertainty</button>
+      <button role="tab" id="tab-methods" data-tab="methods" aria-selected="false">Methods and validation</button>
+    </div>
+    <section id="view" role="tabpanel" aria-labelledby="tab-overview"></section>
+    <footer class="export-footer">
+      <div><strong>Take the evidence with you</strong><p>Exports retain full numeric precision and the original panel definition.</p></div>
+      <div class="export-actions"><button id="export-all">All protein rows · CSV</button><button id="export-selected">Selected rows · CSV</button><button id="export-state">Save dashboard state</button><label class="button" for="import-state">Load state</label><input id="import-state" type="file" accept="application/json,.json" hidden></div>
+    </footer>
+    <p class="footer-note">Descriptive alignment is not biological correctness or causal attribution. This static site downloads its bundled data and scripts. Analysis runs in your browser; it does not upload protein data.</p>
+    </section>
+  </main>
+  <div id="status-message" role="status" aria-live="polite"></div>
+  <script src="assets/hosted-loader.js" defer></script>
+</body>
+</html>
