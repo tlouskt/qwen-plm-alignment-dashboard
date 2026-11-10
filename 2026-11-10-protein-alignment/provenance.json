@@ -1,0 +1,32 @@
+{
+  "verified_score_snapshot": "2026-11-10T17:34:47.969958+00:00",
+  "scope": "58 cohorts of 2,048 proteins; individual alignment plots cover the five highlighted cohorts; raw PPPL download covers all 58.",
+  "coverage": {
+    "prott5": {
+      "available_memberships": 118784,
+      "complete_families": 58,
+      "family_count_with_scores": 58
+    },
+    "esm3_prefix": {
+      "available_memberships": 57572,
+      "complete_families": 1,
+      "family_count_with_scores": 58
+    },
+    "esm3_full": {
+      "available_memberships": 57635,
+      "complete_families": 1,
+      "family_count_with_scores": 58
+    }
+  },
+  "family_PPPL_definition": "exp(-mean of available per-protein mean log probabilities); each available protein has equal weight.",
+  "estimate_note": "Incomplete ESM3 family values are estimates from a nonrandom subset, not final or unbiased family scores. Individual protein scores are measured, not imputed.",
+  "alignment_source": "Archived original-order Qwen3-14B cosine k=10 neighbor overlap; no alignment rerun. Family alignment uses all 2048 members even when PPPL is partial.",
+  "plan_sha256": "6b01a0edd75fd48263b7b8780c01fcb8e8f58d19674dbae0e3883bead4267c20",
+  "sqlite_sha256": "41f9937a8f8dc04a4a52b30cece26e308fa5c25f5803c20ae5357a60fd9ec21d",
+  "pack_validator_sha256": "be387f5473e6f44f5e02fcf01a05aa5f05af38bd1b8f3e76112f3ce55ce34c95",
+  "snapshot_sha256": "6c235ac64cdeb2e0d50b027629c51b20d45a5c513709a95d56bf9c9f21c33b39",
+  "validated_packs": 3025,
+  "unique_inputs": 193498,
+  "scored_positions": 77640554,
+  "comparability_note": "PPPL probability scales differ by model; compare associations within models."
+}
