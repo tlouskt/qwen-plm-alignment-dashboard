@@ -1,0 +1,7 @@
+{
+  "scope": "preliminary 58 completed families; remaining 38 not included",
+  "source": "verified terminal 20261114 family_summary.csv and saved checkpoint alignment tables",
+  "dashboard_sha256": "daa96cd4b8443f8c834beacbb55fe239e9e98d0ea5b58a4df7c1eb7023e3d355",
+  "historical_snapshot": "historical-20261110.html",
+  "note": "Website copy adds navigation; provenance.json describes historical November 10 snapshot, not current dashboard."
+}
