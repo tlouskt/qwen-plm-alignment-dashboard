@@ -3894,7 +3894,7 @@ window.Plotly = Plotly;
 return Plotly;
 }));</script></head><body>
 <header><h1>Protein alignment & sequence predictability</h1><p class="muted">Qwen3-14B · ProtT5-XL-UniRef50 (≈3B total parameters) · ESM3 small open · single-Pfam cohorts</p><p class="muted" id="prott5CheckpointNote"><b>ProtT5-XL</b> denotes <a href="https://huggingface.co/Rostlab/prot_t5_xl_uniref50">Rostlab/prot_t5_xl_uniref50</a>. The approximately 3B parameters refer to the full encoder–decoder checkpoint: alignment uses its encoder; sequence pseudoperplexity uses its encoder and decoder.</p><div class="legend" id="familyLegend"></div><p class="status" id="loadStatus">Loading local data…</p></header>
-<nav><a href="../">← All reports</a><a href="#preliminary-delta">H1 · Sequence pseudoperplexity and mKNN</a><a href="#name-perplexity">H2 · Name perplexity</a><a href="#name-alignment-change">H3 · Name perplexity and mKNN</a><a href="#model-size">mKNN across Qwen3 sizes</a><a href="#alignment">Family alignment</a><a href="#checkpoint-table">Checkpoint table</a><a href="#pppl">Family pseudoperplexity</a><a href="#calculation">How calculated</a><a href="../esm2-perplexity/">ESM-2 family plots</a></nav>
+<nav><a href="../">← All reports</a><a href="#preliminary-delta">H1 · Sequence pseudoperplexity and mKNN</a><a href="#esm2-family-plots">ESM-2 family plots</a><a href="#name-perplexity">H2 · Name perplexity</a><a href="#name-alignment-change">H3 · Name perplexity and mKNN</a><a href="#model-size">mKNN across Qwen3 sizes</a><a href="#alignment">Family alignment</a><a href="#checkpoint-table">Checkpoint table</a><a href="#pppl">Family pseudoperplexity</a><a href="#calculation">How calculated</a></nav>
 <main>
 <section id="preliminary-delta"><h2>H1 · Does lower sequence pseudoperplexity accompany higher mKNN?</h2>
 <h3>ProtT5-XL − ESM3 differences</h3>
@@ -3923,6 +3923,12 @@ return Plotly;
 <div class="tablewrap" id="individualSlopes"></div>
 <div id="individualSlopeSizePlot" class="plot hypothesis-trend"></div>
 </div>
+</section>
+
+<section id="esm2-family-plots" style="scroll-margin-top:5rem"><h2>ESM-2 sequence pseudoperplexity by family</h2>
+<p class="muted">Choose a Pfam family and an ESM-2 size to compare ESM-2 vs ESM3 and ProtT5-XL vs ESM3 on the same proteins. Counts show how many of the 2,048 proteins in each family have verified scores.</p>
+<iframe id="esm2-family-frame" title="Matched ESM-2 and ProtT5-XL pseudoperplexity plots and 58-family coverage table" loading="lazy" style="display:block;width:100%;height:1400px;border:0"></iframe>
+<script>(()=>{const frame=document.getElementById('esm2-family-frame');const src=new URL(location.protocol==='file:'?'https://tlouskt.github.io/qwen-plm-alignment-dashboard/esm2-perplexity/?embed=1':'../esm2-perplexity/?embed=1',location.href);window.addEventListener('message',event=>{const msg=event.data;if(event.source===frame.contentWindow&&event.origin===src.origin&&msg?.type==='esm2-height'&&Number.isFinite(msg.height)&&msg.height>200&&msg.height<20000)frame.style.height=Math.ceil(msg.height)+'px'});frame.src=src.href})();</script>
 </section>
 
 <section id="name-perplexity"><h2>H2 · Does protein-name perplexity fall with Qwen3 size?</h2>

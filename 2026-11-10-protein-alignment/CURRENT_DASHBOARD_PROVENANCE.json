@@ -1,7 +1,7 @@
 {
   "scope": "preliminary 58 completed families; remaining 38 not included",
   "source": "verified terminal 20261114 family_summary.csv and saved checkpoint alignment tables",
-  "dashboard_sha256": "20e03e99590f94af28b24c6b096b4a1874ce5d7de0e3810f4f0f6e1125494fb9",
+  "dashboard_sha256": "da4fa0b1a353d12bcb43c571aa3a3160e5fb23b75f3c315c22bc856dbd2e259c",
   "historical_snapshot": "historical-20261110.html",
   "note": "Website copy adds navigation; provenance.json describes historical November 10 snapshot, not current dashboard.",
   "name_likelihood_scope": "Verified 58-family Qwen3 recovery report, matched to the PPPL plan by family, protein ID and sequence hash",
