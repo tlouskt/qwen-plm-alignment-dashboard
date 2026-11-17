@@ -32,6 +32,13 @@
         "pfam": "PF00001"
       },
       {
+        "esm2": 10.388022229119752,
+        "esm3": 4.517727316188637,
+        "n": 2048,
+        "name": "ATPase family associated with various cellular activities (AAA)",
+        "pfam": "PF00004"
+      },
+      {
         "esm2": 7.908293713204835,
         "esm3": 3.644270129961139,
         "n": 2048,
@@ -130,7 +137,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -147,7 +154,7 @@
         29
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
-      "sha256": "7f8e402e08c0dbf376e4507469dc2d674fc654eef626db9d78fe4e1a6c2dc7f0",
+      "sha256": "65f4fe817bc7815d6267a5a6a2a73e45fa6864c9f0048e3fe8207e8c75bcaf1d",
       "total": 2048
     },
     "PF00005": {
@@ -275,7 +282,7 @@
           8
         ],
         [
-          512,
+          1024,
           0,
           0,
           0
@@ -292,7 +299,7 @@
         1
       ],
       "name": "Neuraminidase",
-      "sha256": "63c92ed407f1c01648453445bc1643d10ba2889b32e7329a6f93d91ef161e8b1",
+      "sha256": "d87e15bfcb79c118b26cd44573133ead4e89af578eaa2ef2be02a5e157994e4b",
       "total": 2048
     },
     "PF00069": {
@@ -1784,17 +1791,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      22527,
+      23551,
       6144,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "9a9b79805b80ce86f2b7f4f9900d08b219673469001becab97d7ff576437dd2f",
+    "sha256": "c609aa4c9e125367a1f13dcc2b32424f6bdb6e7834c81bdd56dfa4e58ed952f9",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T22:42:26+00:00"
+  "updated": "2026-11-17T22:47:55+00:00"
 }
