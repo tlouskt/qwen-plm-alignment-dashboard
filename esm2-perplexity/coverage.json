@@ -53,6 +53,13 @@
         "pfam": "PF00177"
       },
       {
+        "esm2": 14.670702488347013,
+        "esm3": 2.949173518261832,
+        "n": 2048,
+        "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
+        "pfam": "PF00181"
+      },
+      {
         "esm2": 13.442006004648674,
         "esm3": 2.7315663014582725,
         "n": 2048,
@@ -164,7 +171,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -184,7 +191,7 @@
         10
       ],
       "name": "Elongation factor Tu GTP binding domain",
-      "sha256": "301ef28b275f4a9f8d0748e255eec1a8c30c79cdd8853599cf7d4a504be4e82a",
+      "sha256": "1c5835c7dc6866321c83f7e61e25a8f6f2afe334643259ef611bbd1eae3b6294",
       "total": 2048
     },
     "PF00012": {
@@ -193,7 +200,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -213,7 +220,7 @@
         10
       ],
       "name": "Hsp70 protein",
-      "sha256": "ec99a9673d1ac11c6bfcbc431c6721c7ed84423b12b3ac3db324580c2ed04248",
+      "sha256": "052f70090bc2c4ff09797c998a857ccd835cf1537eaf8fbc10e3cfb5ca480d7f",
       "total": 2048
     },
     "PF00046": {
@@ -283,7 +290,7 @@
           8
         ],
         [
-          0,
+          1018,
           0,
           0,
           0
@@ -300,7 +307,7 @@
         62
       ],
       "name": "Protein kinase domain",
-      "sha256": "31317ef92261dbe2056e3a75d98e4039a52854336cf31471820e16b2b9a78365",
+      "sha256": "67906affbec25293add58cdc6da178d23bd6cbabebb3f3b789656f94f0b580dd",
       "total": 2048
     },
     "PF00071": {
@@ -370,7 +377,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -387,7 +394,7 @@
         3
       ],
       "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
-      "sha256": "1a97dd2c16cbfbb5b50cffd42ec32e02dabbe598ae63e3d164ece1dc6f037082",
+      "sha256": "8e7e6219abdeb8ed743a4b9d8ae47497c1964daa700eafe92db3efc3065818d5",
       "total": 2048
     },
     "PF00347": {
@@ -457,7 +464,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -474,7 +481,7 @@
         4
       ],
       "name": "Adenylate kinase",
-      "sha256": "1155df5172da0e58688bd4b56770587308ec68ffa5c242a1f8145e17097f7b59",
+      "sha256": "2fb6fbfd6408261427a42806cffb36fcbe55490f47eed9585030ff3a9e844038",
       "total": 2048
     },
     "PF00412": {
@@ -512,7 +519,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -532,7 +539,7 @@
         2
       ],
       "name": "Haemagglutinin",
-      "sha256": "c93e71f885825a85f9d3e450d575d1acc118ecb910f10d647cd7437f65d2d6e2",
+      "sha256": "6796138082b8a926f1f7a298265689defd2ad61bfc406b26114e9e7a1ef7e569",
       "total": 2048
     },
     "PF00512": {
@@ -628,7 +635,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -648,7 +655,7 @@
         3
       ],
       "name": "Arterivirus GL envelope glycoprotein",
-      "sha256": "30c87e91555117492899d945dda22437864559c1e5d341630d46451452cd7cd0",
+      "sha256": "251f052a825156e185fd6fb13b0095fe215c600cf0d195c2dbf94b5edbb9e8e5",
       "total": 2048
     },
     "PF01058": {
@@ -686,7 +693,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -706,7 +713,7 @@
         6
       ],
       "name": "Pre-mRNA-splicing factor BUD31",
-      "sha256": "9a9556385b6b270323e1a51fdb8ec55bcad8abae22eaac059360775b97ed20aa",
+      "sha256": "27b36c576011de1d389e01a67a210149b8914e27ecad41505ce6c0bd635f9cda",
       "total": 2048
     },
     "PF01239": {
@@ -1439,7 +1446,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1460,7 +1467,7 @@
         3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
-      "sha256": "420de8c28008a70cb1938194e3657aabb94c080bd907a80a97cd1b4310151300",
+      "sha256": "bdee86868348b9915e5f8cc53416bd8c0fc4608b642de63b8d2e675bc72dbd89",
       "total": 2048
     },
     "PF12911": {
@@ -1497,7 +1504,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1518,7 +1525,7 @@
         2
       ],
       "name": "Leucyl-tRNA synthetase, editing domain",
-      "sha256": "340e7d30d90e43591137cd6d6221e415bc741a7f89e5dd9cac34cd7222b655dc",
+      "sha256": "f42fc5b74897e79b86928c7ef88dbea1228dbd3506102ee4d787acdba3daf4b7",
       "total": 2048
     },
     "PF13649": {
@@ -1584,7 +1591,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1605,7 +1612,7 @@
         7
       ],
       "name": "C-terminal topoisomerase domain",
-      "sha256": "6d01aef7a5a47b5d3ac388045cc136832732fe8714c995c4ce979ead4c45d93e",
+      "sha256": "5da9a0a887220ba0e2797223a79eb6e0e1bfb66f60533ac34eb1a672ec6baf26",
       "total": 2048
     },
     "PF14432": {
@@ -1671,7 +1678,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1692,7 +1699,7 @@
         2
       ],
       "name": "Homocitrate synthase post-HMGL domain-like",
-      "sha256": "c6341070d1f88d429c8f5c5efac56141625420b8509f155f0373e6040a96b0d2",
+      "sha256": "bfb993361650104889beb5a265ba77b434f0bd6bef71d0f75a7de67210f4303c",
       "total": 2048
     },
     "PF24681": {
@@ -1729,7 +1736,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1750,7 +1757,7 @@
         1
       ],
       "name": "Ephrin cysteine rich domain",
-      "sha256": "384eaf9054d44fcafa42866597437335f56eafe1bc0aee7272b223ed1df06115",
+      "sha256": "7f92f97794798f65f78c4f9ab30480c24e115d48083924b289d583434a80df7b",
       "total": 2048
     }
   },
@@ -1763,17 +1770,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      15872,
+      17914,
       4096,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "b0b60f382c837fb916db5f3d99407f8fc0a0e959f9c3cf3fda07785a97ea8a1a",
+    "sha256": "6636495818b372cf9ef043c041c4b59395f04f5ba48856d0bd4884983681d29e",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T22:15:56+00:00"
+  "updated": "2026-11-17T22:19:42+00:00"
 }
