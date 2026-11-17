@@ -1,7 +1,17 @@
 {
   "scope": "preliminary 58 completed families; remaining 38 not included",
   "source": "verified terminal 20261114 family_summary.csv and saved checkpoint alignment tables",
-  "dashboard_sha256": "8f80febd355411deb0ff9817b6877252f8f0e9a63411e67401e6d8bea6a9990b",
+  "dashboard_sha256": "ffeadfed1cd0703ee0563a802fe05397b81c9fab8cdefdd5947582b0ce4edf98",
   "historical_snapshot": "historical-20261110.html",
-  "note": "Website copy adds navigation; provenance.json describes historical November 10 snapshot, not current dashboard."
+  "note": "Website copy adds navigation; provenance.json describes historical November 10 snapshot, not current dashboard.",
+  "name_likelihood_scope": "Verified 58-family Qwen3 recovery report, matched to the PPPL plan by family, protein ID and sequence hash",
+  "analysis": "Qwen3-14B Spearman tests on both sequence scales and both ESM3 contexts, paired family bootstraps across sizes, and saved protein-name likelihoods",
+  "source_hashes": {
+    "permutations": 49999,
+    "bootstrapDraws": 10000,
+    "seed": 20261117,
+    "sequenceTableSha256": "74b91c14d23a1151bfc75d757c19dd2c320f569b3b2e7bf676b6c9bc36021eee",
+    "nameTableSha256": "9bb5ebe0c2f098afccbcbb7e3ee17f20d975e32bce0bf53d58258f76cd239c3b",
+    "matchedMemberships": 118784
+  }
 }
