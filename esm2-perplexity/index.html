@@ -76,7 +76,7 @@ async function loadPooled(meta){
 function showCount(id,count,total){
  const label=el(id);
  label.hidden=false;
- label.textContent=total ? fmt(count)+' / '+fmt(total)+' matched ('+(100*count/total).toFixed(2)+'%)' : 'Awaiting paired scores';
+ label.textContent=total ? fmt(count)+' / '+fmt(total)+' documented UniRef50 matches ('+(100*count/total).toFixed(2)+'%)' : 'Awaiting paired scores';
 }
 function plot(canvas,rows,xCol,yCol,labels,limit,detailId){
  const box=canvas.getBoundingClientRect(),w=Math.max(270,box.width),h=w/1.6,ratio=window.devicePixelRatio||1;
