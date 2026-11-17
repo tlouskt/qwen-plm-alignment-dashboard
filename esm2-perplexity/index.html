@@ -19,10 +19,15 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .plot-zoom form{display:flex;align-items:end;flex-wrap:wrap;gap:.45rem .65rem;margin-top:.5rem}
 .plot-zoom input{width:7rem}.plot-zoom button{font:inherit;padding:.4rem .65rem;border:1px solid var(--rule);border-radius:5px;background:#23303c;color:var(--text);cursor:pointer}
 .plot-zoom output{flex-basis:100%;min-height:0}
+.plot-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.4rem}
+.plot-zoom .expand-plot{font-weight:600;border-color:#506377}
+.expand-status:empty{display:none}
+.plot-group:is(:fullscreen, :-webkit-full-screen){background:var(--bg);color:var(--text);padding:24px clamp(14px,3vw,48px);margin:0;overflow:auto}
+.plot-group:is(:fullscreen, :-webkit-full-screen) .ridge-panel canvas{height:clamp(350px,65vh,760px)}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
 <header><span class="kicker">Single-family Pfam</span><h1>Protein sequence pseudoperplexity</h1>
 <p>Lower pseudoperplexity means a model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
-<section id="pooled-sequences" aria-labelledby="pooled-title">
+<section class="plot-group" id="pooled-sequences" aria-labelledby="pooled-title">
 <h2 id="pooled-title">Matched sequences across three models</h2>
 <p>All three plots use the same distinct protein sequences with verified scores from ProtT5, ESM3, and the selected ESM-2 checkpoint. Scores use matched residues within the first 511 amino acids.</p>
 <div class="pool-controls"><label>ESM-2 checkpoint<select id="poolModel"></select></label></div>
@@ -35,7 +40,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <div class="panel direct"><h3 id="poolDirectTitle"></h3><p class="marker-count" id="poolDirectCount"></p><canvas id="poolDirect" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM-2"></canvas></div>
 </div><output id="poolDetail"></output>
 <small>Counts use the full scored set for the selected checkpoint. Highlights require an exact sequence match to a dated UniRef50 representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. Sequence-level training exposure remains unknown. <a href="https://zenodo.org/records/4644188">ProtT5-XL-UniRef50 checkpoint release</a>. This page checks for newly published scores every two minutes.</small></section>
-<section id="checkpoint-distributions" aria-labelledby="ridge-heading">
+<section class="plot-group" id="checkpoint-distributions" aria-labelledby="ridge-heading">
 <h2 id="ridge-heading">Pseudoperplexity by ESM-2 checkpoint</h2>
 <figure class="panel ridge-panel">
 <figcaption><small id="ridge-coverage">Loading shared sequence coverage…</small><span class="ridge-key">Median score</span></figcaption>
@@ -44,6 +49,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <small id="ridge-medians"></small>
 </figure>
 </section>
+<section class="plot-group" aria-labelledby="family-inspect">
 <h2 id="family-inspect">Inspect a family</h2>
 <div class="controls">
 <label>ESM-2 checkpoint<select id="model"></select></label><label>Protein family<select id="family"></select></label>
@@ -57,6 +63,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <div class="panel direct"><h3 id="directTitle">ProtT5-XL-UniRef50 vs ESM-2</h3><canvas id="direct" aria-label="ESM-2 pseudoperplexity on the horizontal axis and ProtT5-XL-UniRef50 pseudoperplexity on the vertical axis"></canvas>
 <div class="marker-count" id="directLegend" aria-label="Documented UniRef50 matches out of the selected family" hidden></div></div></div><output id="detail"></output>
 <small>One point per protein. All three panels use the same linear scale. The dashed line marks equal scores. Hover or tap a point to see its protein ID and values.</small>
+</section>
 <section><h2>Protein counts by family and checkpoint</h2><p class="muted">Coverage includes cohorts with verified reference scores.</p><p id="caption" class="muted"></p><p id="complete"></p>
 <label class="search">Find a family<input type="search" id="search" placeholder="Name or Pfam ID"></label>
 <div class="tablebox"><table><thead><tr id="columns"><th scope="col">Family</th></tr></thead><tbody id="body"></tbody></table></div></section>
@@ -64,13 +71,20 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <p>The family preview uses eight selected sequence inputs per family. Repeated inputs can map to additional proteins. A full-family result requires verified scores for every protein in the frozen cohort.</p>
 <p><a href="prott5-esm3.png">All 58 families: ProtT5-XL-UniRef50 vs ESM3</a> · <a href="short-control.pdf">16 short sequences: all four ESM-2 sizes and matched ProtT5-XL-UniRef50 (PDF)</a> · <a href="coverage.json">Coverage data (JSON)</a></p></section></main>
 <template id="plot-zoom-template">
-<details class="plot-zoom"><summary>Zoom</summary>
+<div class="plot-zoom">
+<div class="plot-actions">
+<button class="expand-plot" type="button">Expand</button>
+<button class="reset-plot" type="button">Reset zoom</button>
+<small>Pinch over a plot to zoom. In full screen, scroll to zoom.</small>
+<output class="expand-status" aria-live="polite"></output>
+</div>
+<details><summary>Set zoom range</summary>
 <form>
 <label>Minimum PPPL<input name="min" type="number" min="0" step="any" required></label>
 <label>Maximum PPPL<input name="max" type="number" min="0" step="any" required></label>
-<button type="submit">Apply zoom</button><button type="reset">Reset zoom</button>
+<button type="submit">Apply zoom</button>
 <output aria-live="polite"></output>
-</form></details>
+</form></details></div>
 </template>
 <script>
 const el=id=>document.getElementById(id), models=['t6 · 8M','t12 · 35M','t30 · 150M','t33 · 650M'], fmt=n=>n.toLocaleString('en-US');let snap,order=[],activeRows=[],seq=0,first=true,ready=false;const cache=new Map();
@@ -114,6 +128,7 @@ function plotRange(group,fullLow,fullHigh){
  const [requestedLow,requestedHigh]=zoom.requested??zoom.domain;
  const low=Math.max(fullLow,requestedLow),high=Math.min(fullHigh,requestedHigh);
  const visible=high>low?[low,high]:zoom.domain;
+ zoom.visible=visible;
  const lo=+visible[0].toPrecision(6),hi=+visible[1].toPrecision(6);
  zoom.form.elements.min.placeholder=lo;
  zoom.form.elements.max.placeholder=hi;
@@ -127,10 +142,35 @@ function bindPlotZoom(){
   const form=panel.querySelector('form'),low=form.elements.min,high=form.elements.max;
   const redraw={pooled:renderPooled,family:render,ridge:renderCheckpointRidges}[group];
   const name={pooled:'Pooled scatter plots',family:'Family scatter plots',ridge:'Checkpoint ridgeline'}[group];
+  const section=panel.closest('.plot-group'),expand=panel.querySelector('.expand-plot');
+  const fullscreen=()=>document.fullscreenElement??document.webkitFullscreenElement;
   form.setAttribute('aria-label',name+' zoom');
   panel.querySelector('summary').setAttribute('aria-label','Zoom '+name.toLowerCase());
+  expand.setAttribute('aria-label','Expand '+name.toLowerCase());
+  expand.onclick=async()=>{
+   const status=panel.querySelector('.expand-status');
+   status.textContent='';
+   try{
+    if(fullscreen()===section){
+     await (document.exitFullscreen??document.webkitExitFullscreen).call(document);
+    }else{
+     await (section.requestFullscreen??section.webkitRequestFullscreen).call(section);
+    }
+   }catch{
+    status.textContent='Full screen is unavailable in this browser view.';
+   }
+  };
+  const updateExpand=()=>{
+   const expanded=fullscreen()===section;
+   expand.textContent=expanded?'Exit full screen':'Expand';
+   expand.setAttribute('aria-label',(expanded?'Exit full screen for ':'Expand ')+name.toLowerCase());
+   requestAnimationFrame(()=>{if(zoomGroups[group].domain)redraw()});
+  };
+  document.addEventListener('fullscreenchange',updateExpand);
+  document.addEventListener('webkitfullscreenchange',updateExpand);
   if(group==='ridge')low.min=high.min='1';
-  const zoom=zoomGroups[group]={form,domain:null,requested:null};
+  const zoom=zoomGroups[group]={form,domain:null,visible:null,requested:null,frame:0};
+  panel.querySelector('.reset-plot').onclick=()=>form.reset();
   form.addEventListener('input',()=>high.setCustomValidity(''));
   form.onsubmit=event=>{
    event.preventDefault();
@@ -149,6 +189,37 @@ function bindPlotZoom(){
    zoom.requested=null;
    if(zoom.domain)redraw();
   };
+  for(const canvas of section.querySelectorAll('canvas')){
+   const changeZoom=(factor,event)=>{
+    if(!zoom.domain||!Number.isFinite(factor)||factor<=0)return;
+    const [domainLow,domainHigh]=zoom.domain,[min,max]=zoom.visible;
+    const domainSpan=domainHigh-domainLow;
+    const width=Math.min(domainSpan,Math.max(domainSpan/1000,(max-min)*factor));
+    const rect=canvas.getBoundingClientRect(),left=group==='ridge'?82:55,right=group==='ridge'?18:14;
+    const fraction=Number.isFinite(event.clientX)?
+     Math.max(0,Math.min(1,(event.clientX-rect.left-left)/Math.max(1,rect.width-left-right))):.5;
+    const start=Math.max(domainLow,Math.min(domainHigh-width,min+fraction*(max-min-width)));
+    zoom.requested=zoom.visible=[start,start+width];
+    low.value=+start.toPrecision(7);high.value=+(start+width).toPrecision(7);
+    high.setCustomValidity('');
+    if(!zoom.frame)zoom.frame=requestAnimationFrame(()=>{zoom.frame=0;redraw()});
+   };
+   let gestureScale=null;
+   canvas.addEventListener('wheel',event=>{
+    if(!(event.ctrlKey||event.metaKey||fullscreen()===section))return;
+    event.preventDefault();
+    if(gestureScale!==null)return;
+    const units=event.deltaMode===1?16:event.deltaMode===2?canvas.clientHeight:1;
+    changeZoom(Math.exp(Math.max(-.65,Math.min(.65,event.deltaY*units*.006))),event);
+   },{passive:false});
+   canvas.addEventListener('gesturestart',event=>{event.preventDefault();gestureScale=event.scale||1},{passive:false});
+   canvas.addEventListener('gesturechange',event=>{
+    if(gestureScale===null)return;
+    event.preventDefault();
+    if(event.scale>0){changeZoom(gestureScale/event.scale,event);gestureScale=event.scale}
+   },{passive:false});
+   canvas.addEventListener('gestureend',event=>{event.preventDefault();gestureScale=null},{passive:false});
+  }
  }
 }
 function plot(canvas,rows,xCol,yCol,labels,range,detailId){

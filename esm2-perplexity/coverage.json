@@ -2,6 +2,13 @@
   "complete_pairs": {
     "t12_35M": [
       {
+        "esm2": 7.021553013483829,
+        "esm3": 4.778426085579044,
+        "n": 2048,
+        "name": "Ras family",
+        "pfam": "PF00071"
+      },
+      {
         "esm2": 15.527114878269245,
         "esm3": 3.1075073359820666,
         "n": 2048,
@@ -67,6 +74,13 @@
         "pfam": "PF00347"
       },
       {
+        "esm2": 7.268913448763228,
+        "esm3": 3.326601168564641,
+        "n": 2048,
+        "name": "Adenylate kinase",
+        "pfam": "PF00406"
+      },
+      {
         "esm2": 10.72610500097753,
         "esm3": 6.8699959258865,
         "n": 2048,
@@ -116,7 +130,7 @@
           8
         ],
         [
-          0,
+          510,
           0,
           0,
           0
@@ -133,7 +147,7 @@
         29
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
-      "sha256": "f0b7789f03747b83749f5c3fd94dac8fb7f320a1a2f5acb79f88abc2360b5d61",
+      "sha256": "d0b789cb562abeaa76a348dac8551dec96d9f40df0bbc780649d321a734db4ce",
       "total": 2048
     },
     "PF00005": {
@@ -290,7 +304,7 @@
           8
         ],
         [
-          1018,
+          1531,
           0,
           0,
           0
@@ -307,7 +321,7 @@
         62
       ],
       "name": "Protein kinase domain",
-      "sha256": "67906affbec25293add58cdc6da178d23bd6cbabebb3f3b789656f94f0b580dd",
+      "sha256": "ba3e96fa3b142c9f67bcf67a5ebb43eef69d758a745186090d3fc397b95887f8",
       "total": 2048
     },
     "PF00071": {
@@ -320,7 +334,7 @@
         ],
         [
           2048,
-          0,
+          2048,
           0,
           0
         ],
@@ -336,7 +350,7 @@
         57
       ],
       "name": "Ras family",
-      "sha256": "8ab87470797c7f6cbc4b6b782585e00f557690de4442b01f6afe16b0b52595ca",
+      "sha256": "aae1182f8109968993afb994ffb2e34f9f76af630c10c094f52cc233cbd55b62",
       "total": 2048
     },
     "PF00177": {
@@ -464,7 +478,7 @@
           8
         ],
         [
-          512,
+          2048,
           0,
           0,
           0
@@ -481,7 +495,7 @@
         4
       ],
       "name": "Adenylate kinase",
-      "sha256": "2fb6fbfd6408261427a42806cffb36fcbe55490f47eed9585030ff3a9e844038",
+      "sha256": "12e82bb972cf6f41046c1d04717d58d29049e514b952b9fc9bc622ff09f97e28",
       "total": 2048
     },
     "PF00412": {
@@ -664,7 +678,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -684,7 +698,7 @@
         6
       ],
       "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
-      "sha256": "b9f58985df25b2041686278e251b4891fffb645fd7a90da27b38d0a1d91ef8e6",
+      "sha256": "15e23cc075b776802d0a7e6cf2b07b04b5eedc8490e4ab4a0ee4b94c1143970b",
       "total": 2048
     },
     "PF01125": {
@@ -809,7 +823,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -829,7 +843,7 @@
         6
       ],
       "name": "Large ribosomal RNA subunit accumulation protein YceD",
-      "sha256": "2e2663f258537ace07c2c5904265f18ba21300eae7eb0518783f22c87395415d",
+      "sha256": "048b1d9072e3cd3beb2dc893b969c245b185716bd9950a3e346abcd009e0bd93",
       "total": 2048
     },
     "PF02751": {
@@ -838,7 +852,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -858,7 +872,7 @@
         14
       ],
       "name": "Transcription initiation factor IIA, gamma subunit",
-      "sha256": "7798c3635406f13e6b897c6c8cbd675a3a3aa6e00260dfb8ab34098538e6c042",
+      "sha256": "1dbdbbcd87091568c54c931b3ff14c7beaa83ac950291d7e24249c22f7511765",
       "total": 2048
     },
     "PF02771": {
@@ -1770,17 +1784,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      17914,
-      4096,
+      20473,
+      6144,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "6636495818b372cf9ef043c041c4b59395f04f5ba48856d0bd4884983681d29e",
+    "sha256": "d9b68bef5568af371b29a56ed3d39479f1105579a0c59a662bafbede7f35b793",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T22:19:42+00:00"
+  "updated": "2026-11-17T22:34:57+00:00"
 }
