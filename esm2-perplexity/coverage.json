@@ -92,6 +92,10 @@
           0
         ]
       ],
+      "date_counts": [
+        29,
+        29
+      ],
       "name": "GPCR",
       "sha256": "20094a96d7c7f3945a39088eb398f10f420e324d92ba474716e3e8690a67846c",
       "total": 2048
@@ -116,6 +120,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        18,
+        18
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
       "sha256": "f0b7789f03747b83749f5c3fd94dac8fb7f320a1a2f5acb79f88abc2360b5d61",
@@ -142,6 +150,10 @@
           0
         ]
       ],
+      "date_counts": [
+        11,
+        11
+      ],
       "name": "ABC transporter",
       "sha256": "e8c8f5ca50d08e23e458eb5587c30c0794f299eb59004b3bd12e91c1990d3d13",
       "total": 2048
@@ -166,6 +178,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        9,
+        9
       ],
       "name": "Elongation factor Tu GTP binding domain",
       "sha256": "301ef28b275f4a9f8d0748e255eec1a8c30c79cdd8853599cf7d4a504be4e82a",
@@ -192,6 +208,10 @@
           0
         ]
       ],
+      "date_counts": [
+        8,
+        8
+      ],
       "name": "Hsp70 protein",
       "sha256": "ec99a9673d1ac11c6bfcbc431c6721c7ed84423b12b3ac3db324580c2ed04248",
       "total": 2048
@@ -216,6 +236,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        19,
+        19
       ],
       "name": "Homeodomain",
       "sha256": "a17a9a01329e38ad251413cc08e136fff4efc67f898693515c7c95fb01bb3ed1",
@@ -242,6 +266,10 @@
           0
         ]
       ],
+      "date_counts": [
+        1,
+        1
+      ],
       "name": "Neuraminidase",
       "sha256": "456d1559504a369ec5a0aed5d95725d2a684a94d5465c601e574b17bba5cab0c",
       "total": 2048
@@ -266,6 +294,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        54,
+        54
       ],
       "name": "Protein kinase domain",
       "sha256": "31317ef92261dbe2056e3a75d98e4039a52854336cf31471820e16b2b9a78365",
@@ -292,6 +324,10 @@
           1
         ]
       ],
+      "date_counts": [
+        66,
+        57
+      ],
       "name": "Ras family",
       "sha256": "8ab87470797c7f6cbc4b6b782585e00f557690de4442b01f6afe16b0b52595ca",
       "total": 2048
@@ -316,6 +352,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        4,
+        4
       ],
       "name": "Ribosomal protein S7p/S5e",
       "sha256": "352805d7b76573844366dbcbd4ef8cfaa4d775fa0b001ebe1fdba306cab2dbf8",
@@ -342,6 +382,10 @@
           0
         ]
       ],
+      "date_counts": [
+        3,
+        3
+      ],
       "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
       "sha256": "1a97dd2c16cbfbb5b50cffd42ec32e02dabbe598ae63e3d164ece1dc6f037082",
       "total": 2048
@@ -366,6 +410,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        8,
+        8
       ],
       "name": "Ribosomal protein L6",
       "sha256": "10c2fb25119f987fb9f911d790ef7e3b8461f928eeed43ff9c8e14b503364051",
@@ -392,6 +440,10 @@
           0
         ]
       ],
+      "date_counts": [
+        11,
+        11
+      ],
       "name": "Transferrin",
       "sha256": "c862917edd905d0d34559002cbcf8d9c2bdaa5af64c7100278b1e47530b16e6c",
       "total": 2048
@@ -416,6 +468,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        4,
+        4
       ],
       "name": "Adenylate kinase",
       "sha256": "1155df5172da0e58688bd4b56770587308ec68ffa5c242a1f8145e17097f7b59",
@@ -442,6 +498,10 @@
           0
         ]
       ],
+      "date_counts": [
+        10,
+        10
+      ],
       "name": "LIM domain",
       "sha256": "a3a7bb7e14109d3aa2a94a626e341f6708a1c21ab5319687b37395084047704f",
       "total": 2048
@@ -466,6 +526,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        2,
+        2
       ],
       "name": "Haemagglutinin",
       "sha256": "c93e71f885825a85f9d3e450d575d1acc118ecb910f10d647cd7437f65d2d6e2",
@@ -492,6 +556,10 @@
           0
         ]
       ],
+      "date_counts": [
+        22,
+        22
+      ],
       "name": "His Kinase A (phospho-acceptor) domain",
       "sha256": "27518c522db83cafa0e64135205ce9f2706698f113f792fa15dc53782527b629",
       "total": 2048
@@ -516,6 +584,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        1,
+        1
       ],
       "name": "Major surface antigen from hepadnavirus",
       "sha256": "49be752ce195e243f68660538b83fe6c77542a08be17023fe937b3c9f0bb083e",
@@ -542,6 +614,10 @@
           0
         ]
       ],
+      "date_counts": [
+        2,
+        2
+      ],
       "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
       "sha256": "5dabf49edc2fccd5bcdeafd8139cd27bebb33934931d05d0b632f63b289bb0e7",
       "total": 2048
@@ -566,6 +642,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        1,
+        1
       ],
       "name": "Arterivirus GL envelope glycoprotein",
       "sha256": "30c87e91555117492899d945dda22437864559c1e5d341630d46451452cd7cd0",
@@ -592,6 +672,10 @@
           1
         ]
       ],
+      "date_counts": [
+        6,
+        6
+      ],
       "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
       "sha256": "b9f58985df25b2041686278e251b4891fffb645fd7a90da27b38d0a1d91ef8e6",
       "total": 2048
@@ -616,6 +700,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        6,
+        6
       ],
       "name": "Pre-mRNA-splicing factor BUD31",
       "sha256": "9a9556385b6b270323e1a51fdb8ec55bcad8abae22eaac059360775b97ed20aa",
@@ -642,6 +730,10 @@
           0
         ]
       ],
+      "date_counts": [
+        9,
+        9
+      ],
       "name": "Protein prenyltransferase alpha subunit repeat",
       "sha256": "2a63ddae3d38005859c3cf4b7354849cb4ca9fa218b3dabf24c15954eb69973e",
       "total": 2048
@@ -666,6 +758,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        7,
+        7
       ],
       "name": "PAZ domain",
       "sha256": "0c2f012271d8b1e0c23cbf97df36237a476d0a0fae071e174a1e3ab381c8d313",
@@ -692,6 +788,10 @@
           0
         ]
       ],
+      "date_counts": [
+        14,
+        14
+      ],
       "name": "YceG-like family",
       "sha256": "f650831da102b382e19b59981fd6941cd1ab97b2e771387763c76a8c859a274c",
       "total": 2048
@@ -716,6 +816,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        6,
+        6
       ],
       "name": "Large ribosomal RNA subunit accumulation protein YceD",
       "sha256": "2e2663f258537ace07c2c5904265f18ba21300eae7eb0518783f22c87395415d",
@@ -742,6 +846,10 @@
           1
         ]
       ],
+      "date_counts": [
+        7,
+        7
+      ],
       "name": "Transcription initiation factor IIA, gamma subunit",
       "sha256": "7798c3635406f13e6b897c6c8cbd675a3a3aa6e00260dfb8ab34098538e6c042",
       "total": 2048
@@ -766,6 +874,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        6,
+        6
       ],
       "name": "Acyl-CoA dehydrogenase, N-terminal domain",
       "sha256": "d3300d6a6e461d12735e4305ccaf58bfb9017e87495dd14ce7788baa26b462d2",
@@ -792,6 +904,10 @@
           0
         ]
       ],
+      "date_counts": [
+        7,
+        7
+      ],
       "name": "GH3 family N-terminal domain",
       "sha256": "f63a5220a3c900167b73b2b09c9363113e68fcb8bd4bb054dff02ac101fc30c0",
       "total": 2048
@@ -816,6 +932,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        6,
+        6
       ],
       "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
       "sha256": "b6eec9a797b1edd92bbebbeab9cd00abd4e384b0d515462afdb6a1a1fc8ca868",
@@ -842,6 +962,10 @@
           1
         ]
       ],
+      "date_counts": [
+        9,
+        9
+      ],
       "name": "Snf7",
       "sha256": "7d6cd736e46deae074a36a7e3307dcc78bdad0e911afc5a34242caa4f4bb400e",
       "total": 2048
@@ -866,6 +990,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        10,
+        10
       ],
       "name": "Peptidase family M49",
       "sha256": "364cd82cffdee3e183dba260448f562198f94f0ff6fa84a3419fc7747dad22d7",
@@ -892,6 +1020,10 @@
           0
         ]
       ],
+      "date_counts": [
+        7,
+        7
+      ],
       "name": "Nitrogen Permease regulator of amino acid transport activity 3",
       "sha256": "94358f8de986616f8a56c2688031b113de4c620c5b3d1b086f1a1e2587b84c90",
       "total": 2048
@@ -916,6 +1048,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        36,
+        36
       ],
       "name": "Autotransporter beta-domain",
       "sha256": "b087cbfc39a724b0feff8e1fde057d2904e753ea99dc778f45b7e16f1fac2c3c",
@@ -942,6 +1078,10 @@
           0
         ]
       ],
+      "date_counts": [
+        9,
+        9
+      ],
       "name": "D-arabinono-1,4-lactone oxidase",
       "sha256": "fd075b42e9f4ca961d67481dc2b8bf3ec70c5260027e24574d6398c4eddc8b15",
       "total": 2048
@@ -966,6 +1106,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        3,
+        3
       ],
       "name": "ApaG domain",
       "sha256": "3c5150e157e29b9407adc4500fac26d3867f8c60d0e922c3771923ab0f8d1276",
@@ -992,6 +1136,10 @@
           0
         ]
       ],
+      "date_counts": [
+        7,
+        7
+      ],
       "name": "Peptidase family M28",
       "sha256": "8c0387a4213b0dc624c5c8a02204d7e0181db069243ea0910005b9e7c84622ef",
       "total": 2048
@@ -1016,6 +1164,10 @@
           1,
           1
         ]
+      ],
+      "date_counts": [
+        15,
+        15
       ],
       "name": "Glycosyltransferase 61",
       "sha256": "90161a9cf1ef245441d32820fb568736c22812f046016c76cab54b06fae553dc",
@@ -1042,6 +1194,10 @@
           0
         ]
       ],
+      "date_counts": [
+        12,
+        12
+      ],
       "name": "RNA 3'-terminal phosphate cyclase (RTC), insert domain",
       "sha256": "0aa467589ddf0ff5faf2fdc4bbbcf24d970be5e89d063dde0d2e8f2c9c9da051",
       "total": 2048
@@ -1066,6 +1222,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        17,
+        17
       ],
       "name": "La domain",
       "sha256": "c2ac03b2285e986e58210621215cc0d7ba6e63a488a203e3b9621e466f9ace68",
@@ -1092,6 +1252,10 @@
           0
         ]
       ],
+      "date_counts": [
+        2,
+        2
+      ],
       "name": "Protein of unknown function (DUF808)",
       "sha256": "f1ae8ebdfe466636ff94ba6a0bbc52eb9ed6a4dda5f00330fc94471675e0af12",
       "total": 2048
@@ -1116,6 +1280,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        11,
+        11
       ],
       "name": "CDK-activating kinase assembly factor MAT1",
       "sha256": "17e91073ac33933383dc12608b5e2af43927ef4537f5cb6578ea68b80d523911",
@@ -1142,6 +1310,10 @@
           0
         ]
       ],
+      "date_counts": [
+        6,
+        6
+      ],
       "name": "Queuosine biosynthesis protein QueC",
       "sha256": "a8e84698b02c10a8bab5c5b082bac0078b65eff0a7b7ecb94f3e5afff1fd950f",
       "total": 2048
@@ -1166,6 +1338,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        12,
+        12
       ],
       "name": "Bacterial Peptidase A24 N-terminal domain",
       "sha256": "6c06ab7d276ecf3c5789169894f46172be6872e917f01215a57849bc6a6c3933",
@@ -1192,6 +1368,10 @@
           0
         ]
       ],
+      "date_counts": [
+        25,
+        25
+      ],
       "name": "Immunoglobulin V-set domain",
       "sha256": "8fe3e239f12aedb249ff9dacd14c3e7bd5323a86763ebc662c3d662260809e6c",
       "total": 2048
@@ -1216,6 +1396,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        11,
+        11
       ],
       "name": "Peptidase C26",
       "sha256": "112c87ac3191ef8b098fa04aba03fdab44cd8a8a489e3041929a9e1353c414e9",
@@ -1242,6 +1426,10 @@
           0
         ]
       ],
+      "date_counts": [
+        3,
+        3
+      ],
       "name": "Fumarase C C-terminus",
       "sha256": "a866735d5d35cd225ff9264419cdc63b63f117dd3743157958fec1302e083ed6",
       "total": 2048
@@ -1266,6 +1454,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        3,
+        3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
       "sha256": "420de8c28008a70cb1938194e3657aabb94c080bd907a80a97cd1b4310151300",
@@ -1292,6 +1484,10 @@
           0
         ]
       ],
+      "date_counts": [
+        7,
+        7
+      ],
       "name": "N-terminal TM domain of oligopeptide transport permease C",
       "sha256": "05df60c1aa70db53ba5ac4eeb82be9fadc076d831903c70e3c002ce5c3953ff1",
       "total": 2048
@@ -1316,6 +1512,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        2,
+        2
       ],
       "name": "Leucyl-tRNA synthetase, editing domain",
       "sha256": "340e7d30d90e43591137cd6d6221e415bc741a7f89e5dd9cac34cd7222b655dc",
@@ -1342,6 +1542,10 @@
           1
         ]
       ],
+      "date_counts": [
+        12,
+        12
+      ],
       "name": "Methyltransferase domain",
       "sha256": "f17370595d501633efcee7d554cd62553c2fc2dd8b177f7fd0a3a804d1c2a141",
       "total": 2048
@@ -1366,6 +1570,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        30,
+        30
       ],
       "name": "Olfactory receptor",
       "sha256": "f7720bc49fc2d7edffa4022ffc43a516746709fb6907c68faa60490e4d21b96c",
@@ -1392,6 +1600,10 @@
           1
         ]
       ],
+      "date_counts": [
+        7,
+        7
+      ],
       "name": "C-terminal topoisomerase domain",
       "sha256": "6d01aef7a5a47b5d3ac388045cc136832732fe8714c995c4ce979ead4c45d93e",
       "total": 2048
@@ -1416,6 +1628,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        9,
+        9
       ],
       "name": "DYW family of nucleic acid deaminases",
       "sha256": "604a9ead54fbc45f80fea796fe6d962dea4da106d203fa89de8564419496a040",
@@ -1442,6 +1658,10 @@
           1
         ]
       ],
+      "date_counts": [
+        1,
+        1
+      ],
       "name": "Sigma2 domain of PhyR",
       "sha256": "43f1e083b60c5bc13ee06024ac5814ca9a4643df18f0128cf478b89ba1a3ea65",
       "total": 2048
@@ -1466,6 +1686,10 @@
           0,
           0
         ]
+      ],
+      "date_counts": [
+        2,
+        2
       ],
       "name": "Homocitrate synthase post-HMGL domain-like",
       "sha256": "c6341070d1f88d429c8f5c5efac56141625420b8509f155f0373e6040a96b0d2",
@@ -1492,6 +1716,10 @@
           0
         ]
       ],
+      "date_counts": [
+        14,
+        14
+      ],
       "name": "Kelch repeats",
       "sha256": "616fbba4f9e0fb86a6bea2fb59a2605f22618a7f80136e103e08f145ec633fc2",
       "total": 2048
@@ -1517,6 +1745,10 @@
           0
         ]
       ],
+      "date_counts": [
+        1,
+        1
+      ],
       "name": "Ephrin cysteine rich domain",
       "sha256": "384eaf9054d44fcafa42866597437335f56eafe1bc0aee7272b223ed1df06115",
       "total": 2048
@@ -1528,7 +1760,20 @@
     "t30_150M",
     "t33_650M"
   ],
+  "pooled": {
+    "dates_sha256": "32ffdcb8df3fd60a44fc7f406d127e28e27544e4e69c508050234a5edbb329f2",
+    "esm2_counts": [
+      15872,
+      4096,
+      0,
+      0
+    ],
+    "reference_families": 58,
+    "reference_sequences": 118751,
+    "sha256": "b0b60f382c837fb916db5f3d99407f8fc0a0e959f9c3cf3fda07785a97ea8a1a",
+    "study_sequences": 152899
+  },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T21:53:31+00:00"
+  "updated": "2026-11-17T22:01:36+00:00"
 }
