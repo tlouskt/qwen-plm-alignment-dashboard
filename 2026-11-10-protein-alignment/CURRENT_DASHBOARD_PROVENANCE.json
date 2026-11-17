@@ -1,17 +1,17 @@
 {
   "scope": "preliminary 58 completed families; remaining 38 not included",
   "source": "verified terminal 20261114 family_summary.csv and saved checkpoint alignment tables",
-  "dashboard_sha256": "da4fa0b1a353d12bcb43c571aa3a3160e5fb23b75f3c315c22bc856dbd2e259c",
+  "dashboard_sha256": "c0809b49b43b7604173a541398a906fd0f79e3c3affe664e33c78a251d3a2d6b",
   "historical_snapshot": "historical-20261110.html",
   "note": "Website copy adds navigation; provenance.json describes historical November 10 snapshot, not current dashboard.",
   "name_likelihood_scope": "Verified 58-family Qwen3 recovery report, matched to the PPPL plan by family, protein ID and sequence hash",
-  "analysis": "H1 sequence pseudoperplexity versus mKNN with OLS slopes and Spearman correlations; H2 saved name likelihood across sizes; H3 name perplexity versus mKNN with OLS fits on raw or ln(name perplexity)",
+  "analysis": "Sequence pseudoperplexity versus mKNN; mKNN across Qwen3 sizes; matched ESM-2 per-sequence comparisons. The archived name scores are preserved.",
   "source_hashes": {
     "sequenceTableSha256": "74b91c14d23a1151bfc75d757c19dd2c320f569b3b2e7bf676b6c9bc36021eee",
     "nameTableSha256": "9bb5ebe0c2f098afccbcbb7e3ee17f20d975e32bce0bf53d58258f76cd239c3b",
     "matchedMemberships": 118784
   },
-  "display": "Raw linear axes by default. H1 offers a log ratio; H3 offers a log x-axis with complete raw-value tick labels. Fitted slope units follow the selected H3 scale.",
+  "display": "Raw linear axes by default. Sequence pseudoperplexity comparisons retain the optional log ratio. Protein-name perplexity panels are omitted from the current dashboard.",
   "prott5_display": {
     "checkpoint": "Rostlab/prot_t5_xl_uniref50",
     "short_label": "ProtT5-XL",
