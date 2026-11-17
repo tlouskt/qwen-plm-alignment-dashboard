@@ -14,8 +14,8 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <header><span class="kicker">Single-family Pfam</span><h1>Protein sequence pseudoperplexity</h1>
 <p>Lower pseudoperplexity means a model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
 <section id="pooled-sequences" aria-labelledby="pooled-title">
-<h2 id="pooled-title">All available sequences</h2>
-<p>Each dot is one distinct protein sequence across the Pfam cohorts. Each comparison includes every sequence with verified full-run scores for both models. Scores use matched residues within the first 511 amino acids.</p>
+<h2 id="pooled-title">Matched sequences across three models</h2>
+<p>All three plots use the same distinct protein sequences with verified scores from ProtT5, ESM3, and the selected ESM-2 checkpoint. Scores use matched residues within the first 511 amino acids.</p>
 <div class="pool-controls"><label>ESM-2 checkpoint<select id="poolModel"></select></label></div>
 <p class="muted"><span class="match-key">●</span> Exact UniRef50 representative documented before checkpoint release (March 29, 2021). Other sequences use the panel color. <a href="uniref50-dates.tsv">Date evidence</a></p>
 <p id="pool-status" aria-live="polite">Loading verified sequence scores…</p>
@@ -132,13 +132,14 @@ function renderPooled(){
  const labels=['','ESM3','ProtT5-XL-UniRef50',...models.map(m=>'ESM-2 '+m.split(' · ')[1])];
  const pairs=pooledRows.filter(r=>r[column]!==null),meta=snap.pooled;
  if(pairs.length!==meta.esm2_counts[index])throw Error('Pooled score count');
- const max=Math.max(2,Math.ceil(pooledRows.reduce((n,r)=>Math.max(n,r[1],r[2],r[column]??0),0)*1.035));
+ const max=Math.max(2,Math.ceil(pairs.reduce((n,r)=>Math.max(n,r[1],r[2],r[column]),0)*1.035));
  el('poolLeftTitle').textContent='ESM-2 '+size+' vs ESM3';
  el('poolDirectTitle').textContent='ProtT5-XL-UniRef50 vs ESM-2 '+size;
- el('pool-status').textContent=fmt(pooledRows.length)+' sequences with paired ProtT5-XL-UniRef50 and ESM3 scores · '+fmt(pairs.length)+' also scored by ESM-2 '+size+' · '+meta.reference_families+' of '+snap.study_total+' cohorts with verified reference scores';
- for(const [id,rows,xc,yc] of [['poolLeft',pairs,1,column],['poolRight',pooledRows,1,2],['poolDirect',pairs,column,2]]){
-  showCount(id+'Count',rows.reduce((n,r)=>n+Number(isMatch(r[0])),0),rows.length);
-  plot(el(id),rows,xc,yc,labels,max,'poolDetail');
+ el('pool-status').textContent=fmt(pairs.length)+' of '+fmt(pooledRows.length)+' reference-scored sequences also have ESM-2 '+size+' scores · '+meta.reference_families+' of '+snap.study_total+' cohorts with verified reference scores';
+ const documented=pairs.reduce((n,r)=>n+Number(isMatch(r[0])),0);
+ for(const [id,xc,yc] of [['poolLeft',1,column],['poolRight',1,2],['poolDirect',column,2]]){
+  showCount(id+'Count',documented,pairs.length);
+  plot(el(id),pairs,xc,yc,labels,max,'poolDetail');
  }
 }
 function bestFullRun(){
