@@ -18,10 +18,10 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .ridge-key{display:inline-flex;align-items:center;gap:.4rem;margin-left:.8rem;color:var(--muted);font-size:13px}
 .ridge-key::before{content:"";width:24px;border-top:2px dotted #edf3fa}
 .plot-zoom{margin:.55rem 0;color:var(--muted);font-size:13px}
-.plot-zoom summary{cursor:pointer;width:max-content;color:var(--blue)}
-.plot-zoom form{display:flex;align-items:end;flex-wrap:wrap;gap:.45rem .65rem;margin-top:.5rem}
-.plot-zoom input{width:7rem}.plot-zoom button{font:inherit;padding:.4rem .65rem;border:1px solid var(--rule);border-radius:5px;background:#23303c;color:var(--text);cursor:pointer}
-.plot-zoom output{flex-basis:100%;min-height:0}
+.plot-zoom button{font:inherit;padding:.4rem .65rem;border:1px solid var(--rule);border-radius:5px;background:#23303c;color:var(--text);cursor:pointer}
+.plot-zoom button:disabled{opacity:.55;cursor:default}
+.can-pan canvas{cursor:grab}
+.can-pan canvas.is-dragging{cursor:grabbing;user-select:none}
 .plot-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.4rem}
 .plot-zoom .expand-plot{font-weight:600;border-color:#506377}
 html.has-expanded-plot{overflow:hidden}
@@ -80,15 +80,9 @@ html.has-expanded-plot{overflow:hidden}
 <div class="plot-actions">
 <button class="expand-plot" type="button">Expand</button>
 <button class="reset-plot" type="button">Reset zoom</button>
-<small>Pinch over a plot to zoom. In expanded view, scroll to zoom.</small>
+<small>Pinch to zoom · Drag to pan · Scroll to zoom in expanded view</small>
 </div>
-<details><summary>Set zoom range</summary>
-<form>
-<label>Minimum PPPL<input name="min" type="number" min="0" step="any" required></label>
-<label>Maximum PPPL<input name="max" type="number" min="0" step="any" required></label>
-<button type="submit">Apply zoom</button>
-<output aria-live="polite"></output>
-</form></details></div>
+</div>
 </template>
 <script>
 const el=id=>document.getElementById(id), models=['t6 · 8M','t12 · 35M','t30 · 150M','t33 · 650M'], fmt=n=>n.toLocaleString('en-US');let snap,order=[],activeRows=[],seq=0,first=true,ready=false;const cache=new Map();
@@ -125,32 +119,42 @@ function showCount(id,count,total){
  label.hidden=false;
  label.textContent=total ? fmt(count)+' / '+fmt(total)+' documented UniRef50 matches ('+(100*count/total).toFixed(2)+'%)' : 'Awaiting paired scores';
 }
-const zoomGroups={};
-function plotRange(group,fullLow,fullHigh){
+const zoomGroups={},chartBounds=new WeakMap();
+const rangeSpan=([min,max])=>max-min;
+
+function confineRange(domain,start,width){
+ const [min,max]=domain;
+ const size=Math.min(max-min,width),low=Math.max(min,Math.min(max-size,start));
+ return [low,low+size];
+}
+
+function plotRanges(group,fullLow,fullHigh){
  const zoom=zoomGroups[group];
- zoom.domain=[fullLow,fullHigh];
- const [requestedLow,requestedHigh]=zoom.requested??zoom.domain;
- const low=Math.max(fullLow,requestedLow),high=Math.min(fullHigh,requestedHigh);
- const visible=high>low?[low,high]:zoom.domain;
- zoom.visible=visible;
- const lo=+visible[0].toPrecision(6),hi=+visible[1].toPrecision(6);
- zoom.form.elements.min.placeholder=lo;
- zoom.form.elements.max.placeholder=hi;
- zoom.form.querySelector('output').textContent='Visible PPPL range '+lo+'–'+hi;
+ const domain=zoom.domain=[fullLow,fullHigh];
+ const {x=domain,y=domain}=zoom.requested??{};
+ const visible=zoom.visible={
+  x:confineRange(domain,x[0],rangeSpan(x)),
+  y:zoom.horizontalOnly?null:confineRange(domain,y[0],rangeSpan(y))
+ };
+ const canPan=[visible.x,visible.y].some(range=>range&&rangeSpan(range)<rangeSpan(domain)-1e-7);
+ zoom.section.classList.toggle('can-pan',canPan);
+ zoom.reset.disabled=!canPan;
  return visible;
 }
+
 function bindPlotZoom(){
  for(const panel of document.querySelectorAll('[data-zoom-group]')){
   const group=panel.dataset.zoomGroup;
   panel.append(el('plot-zoom-template').content.cloneNode(true));
-  const form=panel.querySelector('form'),low=form.elements.min,high=form.elements.max;
   const redraw={pooled:renderPooled,family:render,ridge:renderCheckpointRidges}[group];
   const name={pooled:'Pooled scatter plots',family:'Family scatter plots',ridge:'Checkpoint ridgeline'}[group];
-  const section=panel.closest('.plot-group'),expand=panel.querySelector('.expand-plot');
+  const section=panel.closest('.plot-group'),expand=panel.querySelector('.expand-plot'),reset=panel.querySelector('.reset-plot');
   const expanded=()=>section.classList.contains('plot-expanded');
-  form.setAttribute('aria-label',name+' zoom');
-  panel.querySelector('summary').setAttribute('aria-label','Zoom '+name.toLowerCase());
-  expand.setAttribute('aria-label','Expand '+name.toLowerCase());
+  const zoom=zoomGroups[group]={section,reset,horizontalOnly:group==='ridge',domain:null,visible:null,requested:null,frame:0};
+  const schedule=()=>{
+   if(!zoom.frame)zoom.frame=requestAnimationFrame(()=>{zoom.frame=0;redraw()});
+  };
+  const apply=ranges=>{zoom.visible=zoom.requested=ranges;schedule()};
   const setExpanded=value=>{
    section.classList.toggle('plot-expanded',value);
    document.documentElement.classList.toggle('has-expanded-plot',value);
@@ -159,54 +163,37 @@ function bindPlotZoom(){
    expand.textContent=value?'Exit expanded view':'Expand';
    expand.setAttribute('aria-label',(value?'Exit expanded view for ':'Expand ')+name.toLowerCase());
    expand.setAttribute('aria-pressed',String(value));
-   requestAnimationFrame(()=>{if(zoomGroups[group].domain)redraw()});
+   if(zoom.domain)schedule();
   };
+  expand.setAttribute('aria-label','Expand '+name.toLowerCase());
   expand.setAttribute('aria-pressed','false');
   expand.onclick=()=>setExpanded(!expanded());
+  reset.disabled=true;
+  reset.onclick=()=>{zoom.requested=null;if(zoom.domain)redraw()};
   document.addEventListener('keydown',event=>{
    if(event.key==='Escape'&&expanded()){
     event.preventDefault();setExpanded(false);expand.focus({preventScroll:true});
    }
   });
-  if(group==='ridge')low.min=high.min='1';
-  const zoom=zoomGroups[group]={form,domain:null,visible:null,requested:null,frame:0};
-  panel.querySelector('.reset-plot').onclick=()=>form.reset();
-  form.addEventListener('input',()=>high.setCustomValidity(''));
-  form.onsubmit=event=>{
-   event.preventDefault();
-   if(!zoom.domain)return;
-   const min=low.valueAsNumber,max=high.valueAsNumber,[fullLow,fullHigh]=zoom.domain;
-   if(!(min<max&&min<fullHigh&&max>fullLow)){
-    high.setCustomValidity('Choose an increasing range that overlaps the plot.');
-    high.reportValidity();
-    return;
-   }
-   zoom.requested=[min,max];
-   redraw();
-  };
-  form.onreset=()=>{
-   high.setCustomValidity('');
-   zoom.requested=null;
-   if(zoom.domain)redraw();
-  };
   for(const canvas of section.querySelectorAll('canvas')){
    const changeZoom=(factor,event)=>{
-    if(!zoom.domain||!Number.isFinite(factor)||factor<=0)return;
-    const [domainLow,domainHigh]=zoom.domain,[min,max]=zoom.visible;
-    const domainSpan=domainHigh-domainLow;
-    const width=Math.min(domainSpan,Math.max(domainSpan/1000,(max-min)*factor));
-    const rect=canvas.getBoundingClientRect(),left=group==='ridge'?82:55,right=group==='ridge'?18:14;
-    const fraction=Number.isFinite(event.clientX)?
-     Math.max(0,Math.min(1,(event.clientX-rect.left-left)/Math.max(1,rect.width-left-right))):.5;
-    const start=Math.max(domainLow,Math.min(domainHigh-width,min+fraction*(max-min-width)));
-    zoom.requested=zoom.visible=[start,start+width];
-    low.value=+start.toPrecision(7);high.value=+(start+width).toPrecision(7);
-    high.setCustomValidity('');
-    if(!zoom.frame)zoom.frame=requestAnimationFrame(()=>{zoom.frame=0;redraw()});
+    const bounds=chartBounds.get(canvas);
+    if(!bounds||!Number.isFinite(factor)||factor<=0)return;
+    const rect=canvas.getBoundingClientRect(),{left,right,top,bottom}=bounds;
+    const fraction=(offset,pixels)=>Number.isFinite(offset)?Math.max(0,Math.min(1,offset/pixels)):.5;
+    const scale=(range,anchor)=>{
+     const current=rangeSpan(range),full=rangeSpan(zoom.domain);
+     const next=Math.min(full,Math.max(full/1000,current*factor));
+     return confineRange(zoom.domain,range[0]+anchor*(current-next),next);
+    };
+    const {x,y}=zoom.visible;
+    apply({x:scale(x,fraction(event.clientX-rect.left-left,right-left)),
+           y:y?scale(y,fraction(rect.top+bottom-event.clientY,bottom-top)):null});
    };
-   let gestureScale=null;
+   let gestureScale=null,drag=null;
    canvas.addEventListener('wheel',event=>{
     if(!(event.ctrlKey||event.metaKey||expanded()))return;
+    if(drag||!chartBounds.has(canvas))return;
     event.preventDefault();
     if(gestureScale!==null)return;
     const units=event.deltaMode===1?16:event.deltaMode===2?canvas.clientHeight:1;
@@ -219,6 +206,33 @@ function bindPlotZoom(){
     if(event.scale>0){changeZoom(gestureScale/event.scale,event);gestureScale=event.scale}
    },{passive:false});
    canvas.addEventListener('gestureend',event=>{event.preventDefault();gestureScale=null},{passive:false});
+   canvas.addEventListener('pointerdown',event=>{
+    if(event.button!==0||event.pointerType==='touch'||reset.disabled||drag)return;
+    const bounds=chartBounds.get(canvas);
+    if(!bounds)return;
+    const rect=canvas.getBoundingClientRect(),x=event.clientX-rect.left,y=event.clientY-rect.top;
+    if(x<bounds.left||x>bounds.right||y<bounds.top||y>bounds.bottom)return;
+    drag={id:event.pointerId,x:event.clientX,y:event.clientY,ranges:zoom.visible,bounds};
+    canvas.setPointerCapture(event.pointerId);
+   });
+   canvas.addEventListener('pointermove',event=>{
+    if(!drag||event.pointerId!==drag.id)return;
+    const dx=event.clientX-drag.x,dy=event.clientY-drag.y;
+    if(!canvas.classList.contains('is-dragging')&&Math.hypot(dx,dy)<3)return;
+    canvas.classList.add('is-dragging');
+    event.preventDefault();
+    const {x,y}=drag.ranges,{left,right,top,bottom}=drag.bounds;
+    const shift=(range,fraction)=>{
+     const width=rangeSpan(range);
+     return confineRange(zoom.domain,range[0]+fraction*width,width);
+    };
+    apply({x:shift(x,-dx/(right-left)),y:y?shift(y,dy/(bottom-top)):null});
+   });
+   const endDrag=event=>{
+    if(!drag||event.pointerId!==drag.id)return;
+    drag=null;canvas.classList.remove('is-dragging');
+   };
+   for(const eventType of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(eventType,endDrag);
   }
  }
 }
@@ -226,19 +240,24 @@ function plot(canvas,rows,xCol,yCol,labels,range,detailId){
  const box=canvas.getBoundingClientRect(),w=Math.max(270,box.width),h=w/1.6,ratio=window.devicePixelRatio||1;
  canvas.width=w*ratio;canvas.height=h*ratio;
  const g=canvas.getContext('2d');g.scale(ratio,ratio);
- const [low,high]=range;
+ const [xLow,xHigh]=range.x,[yLow,yHigh]=range.y;
  const left=55,right=w-14,top=14,bottom=h-52;
- const x=n=>left+(right-left)*(n-low)/(high-low),y=n=>bottom-(bottom-top)*(n-low)/(high-low);
+ chartBounds.set(canvas,{left,right,top,bottom});
+ const x=n=>left+(right-left)*(n-xLow)/(xHigh-xLow),y=n=>bottom-(bottom-top)*(n-yLow)/(yHigh-yLow);
  g.font='12px system-ui';
  for(let tick=0;tick<=4;tick++){
-  const v=low+(high-low)*tick/4;
-  g.strokeStyle='#394551';g.beginPath();g.moveTo(x(v),top);g.lineTo(x(v),bottom);g.moveTo(left,y(v));g.lineTo(right,y(v));g.stroke();
-  g.fillStyle='#d7e2eb';g.textAlign='center';g.fillText(+v.toPrecision(5),x(v),bottom+17);g.textAlign='right';g.fillText(+v.toPrecision(5),left-6,y(v)+4);
+  const tx=xLow+(xHigh-xLow)*tick/4,ty=yLow+(yHigh-yLow)*tick/4;
+  g.strokeStyle='#394551';g.beginPath();g.moveTo(x(tx),top);g.lineTo(x(tx),bottom);g.moveTo(left,y(ty));g.lineTo(right,y(ty));g.stroke();
+  g.fillStyle='#d7e2eb';g.textAlign='center';g.fillText(+tx.toPrecision(5),x(tx),bottom+17);g.textAlign='right';g.fillText(+ty.toPrecision(5),left-6,y(ty)+4);
  }
- g.setLineDash([4,5]);g.strokeStyle='#94a1ae';g.beginPath();g.moveTo(left,bottom);g.lineTo(right,top);g.stroke();g.setLineDash([]);
+ const equalLow=Math.max(xLow,yLow),equalHigh=Math.min(xHigh,yHigh);
+ if(equalHigh>equalLow){
+  g.setLineDash([4,5]);g.strokeStyle='#94a1ae';g.beginPath();
+  g.moveTo(x(equalLow),y(equalLow));g.lineTo(x(equalHigh),y(equalHigh));g.stroke();g.setLineDash([]);
+ }
  const baseColor=canvas.closest('.panel').classList.contains('left')?'#83bffd':canvas.closest('.panel').classList.contains('right')?'#efaf74':'#79d9b1';
  const groups=[[],[]],radius=rows.length>5000?1.6:2.7;
- const visible=rows.filter(row=>row[xCol]>=low&&row[xCol]<=high&&row[yCol]>=low&&row[yCol]<=high);
+ const visible=rows.filter(row=>row[xCol]>=xLow&&row[xCol]<=xHigh&&row[yCol]>=yLow&&row[yCol]<=yHigh);
  for(const row of visible)groups[Number(isMatch(row[0]))].push(row);
  g.save();g.beginPath();g.rect(left,top,right-left,bottom-top);g.clip();
  groups.forEach((group,index)=>{
@@ -253,6 +272,7 @@ function plot(canvas,rows,xCol,yCol,labels,range,detailId){
  g.save();g.translate(14,(bottom+top)/2);g.rotate(-Math.PI/2);g.fillText(labels[yCol]+' pseudoperplexity',0,0);g.restore();
  if(!visible.length){g.fillStyle='#d8e3ed';g.fillText(rows.length?'No points in this range':'No verified scores yet',(left+right)/2,(top+bottom)/2);}
  canvas.onpointermove=canvas.onpointerdown=e=>{
+  if(canvas.classList.contains('is-dragging')){el(detailId).textContent='';return}
   const rect=canvas.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;
   let best=null,dist=130;
   for(const row of visible){
@@ -264,7 +284,7 @@ function plot(canvas,rows,xCol,yCol,labels,range,detailId){
 }
 function render(){
  const max=Math.max(2,Math.ceil(activeRows.reduce((n,r)=>Math.max(n,r[1],r[2],r[3]),0)*1.035));
- const range=plotRange('family',0,max);
+ const range=plotRanges('family',0,max);
  const labels=['','ESM3','ProtT5-XL-UniRef50','ESM-2 '+models[+el('model').value].split(' · ')[1]];
  const entry=snap?.families[el('family').value];
  if(entry){
@@ -283,7 +303,7 @@ function renderPooled(){
  const pairs=pooledRows.filter(r=>r[column]!==null),meta=snap.pooled;
  if(pairs.length!==meta.esm2_counts[index])throw Error('Pooled score count');
  const max=Math.max(2,Math.ceil(pairs.reduce((n,r)=>Math.max(n,r[1],r[2],r[column]),0)*1.035));
- const range=plotRange('pooled',0,max);
+ const range=plotRanges('pooled',0,max);
  el('poolLeftTitle').textContent='ESM-2 '+size+' vs ESM3';
  el('poolDirectTitle').textContent='ProtT5-XL-UniRef50 vs ESM-2 '+size;
  el('pool-status').textContent=fmt(pairs.length)+' of '+fmt(pooledRows.length)+' reference-scored sequences also have ESM-2 '+size+' scores · '+meta.reference_families+' of '+snap.study_total+' cohorts with verified reference scores';
@@ -357,8 +377,9 @@ function renderCheckpointRidges(){
  const styles=getComputedStyle(canvas);
  const rule=styles.getPropertyValue('--rule'), ink=styles.getPropertyValue('--text'), muted=styles.getPropertyValue('--muted');
  const left=82,right=w-18,top=12,bottom=h-46;
+ chartBounds.set(canvas,{left,right,top,bottom});
  const rowHeight=(bottom-top)/series.length,ridgeHeight=rowHeight*.81;
- const [min,max]=plotRange('ridge',low,high);
+ const [min,max]=plotRanges('ridge',low,high).x;
  const x=value=>left+(right-left)*(value-min)/(max-min);
  const baselines=series.map((_,i)=>top+(i+1)*rowHeight);
  const medians=[];
@@ -405,6 +426,7 @@ function renderCheckpointRidges(){
  tooltip.hidden=true;
  canvas.onpointerleave=()=>{tooltip.hidden=true};
  canvas.onpointermove=canvas.onpointerdown=event=>{
+  if(canvas.classList.contains('is-dragging')){tooltip.hidden=true;return}
   const rect=canvas.getBoundingClientRect(),px=event.clientX-rect.left,py=event.clientY-rect.top;
   const index=medians.findIndex(point=>point&&point[0]>=left&&point[0]<=right&&
    Math.hypot(point[0]-px,point[1]-py)<=12);
