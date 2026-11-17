@@ -4092,20 +4092,25 @@ function renderDeltaTrend(){
   ];
   layout.yaxis = {title:{text:'Δm vs Qwen3-0.6B'},tickformat:'.5f',dtick:0.00001,rangemode:'tozero',gridcolor:'#39424b',zeroline:true,zerolinecolor:'#aab6c2',automargin:true};
  } else {
-  const meanPseudoperplexity = rows.reduce((sum, row) => sum + (row.t - row[contextKey]), 0) / rows.length;
+  const meanByContext = ['e','full'].map(key => rows.reduce((sum, row) => sum + (row.t - row[key]), 0) / rows.length);
+  const meanPseudoperplexity = meanByContext[contextKey === 'e' ? 0 : 1];
+  // Keep both contexts on the same axis and leave room around the flat lines.
+  const perplexityTick = 0.25;
+  const perplexityMin = Math.floor((Math.min(...meanByContext)-0.20)/perplexityTick)*perplexityTick;
+  const perplexityMax = Math.ceil((Math.max(...meanByContext)+0.20)/perplexityTick)*perplexityTick;
   const meanAlignment = checkpoints.map(checkpoint =>
    rows.reduce((sum, row) => sum + comparisons[row.pfam].scores[checkpoint.id].gap_pp/100, 0) / rows.length
   );
   const alignmentMin = Math.min(...meanAlignment);
   const alignmentMax = Math.max(...meanAlignment);
   const alignmentPad = Math.max((alignmentMax-alignmentMin)*.25, 0.00001);
-  note.textContent = 'Each difference gives the '+rows.length+' verified families equal weight. ProtT5 pseudoperplexity uses the first 511 residues and ESM3 uses '+contextLabel+'. Pseudoperplexity is constant across checkpoints. The right axis is zoomed to show the change in alignment.';
+  note.textContent = 'Each difference gives the '+rows.length+' verified families equal weight. ProtT5 pseudoperplexity uses the first 511 residues and ESM3 uses '+contextLabel+'. Pseudoperplexity is constant across checkpoints and shares one left-axis scale across both ESM3 contexts. The right axis is zoomed to show the change in alignment.';
   traces = [
    line('Δ pseudoperplexity (left)', labels.map(() => meanPseudoperplexity), '#73b5f4', 'circle', 'y', 3, 'dash'),
    line('Δ alignment (right)', meanAlignment, '#e4be77', 'diamond', 'y2', 6, 'solid')
   ];
   layout.margin.r = 110;
-  layout.yaxis = {title:{text:'Mean Δ pseudoperplexity'},color:'#73b5f4',rangemode:'tozero',gridcolor:'#39424b',automargin:true};
+  layout.yaxis = {title:{text:'Mean Δ pseudoperplexity'},color:'#73b5f4',range:[perplexityMin,perplexityMax],tick0:0,dtick:perplexityTick,tickformat:'.2f',gridcolor:'#39424b',automargin:true};
   layout.yaxis2 = {title:{text:'Mean Δ alignment (raw fraction)'},color:'#e4be77',overlaying:'y',side:'right',range:[alignmentMin-alignmentPad,alignmentMax+alignmentPad],tickformat:'.5f',showgrid:false,zeroline:false,automargin:true};
  }
  Plotly.react('deltaTrendPlot',traces,layout,{responsive:true,displaylogo:false});
