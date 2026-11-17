@@ -10,6 +10,10 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 @media(min-width:1080px){.pair{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .pool-controls{display:flex;align-items:end;gap:1rem;flex-wrap:wrap;margin:.7rem 0}.marker-count{color:#ce99ff;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;margin:.15rem 0 .25rem}.match-key{color:#ce99ff}
 .pair .panel{display:grid;grid-template-columns:minmax(0,1fr);align-content:start}.pair h3{grid-row:1}.pair .marker-count{grid-row:2;text-align:right}.pair canvas{grid-row:3;min-width:0}
+.ridge-panel{margin:1.15rem 0 0}.ridge-panel figcaption{margin-bottom:.55rem}
+.ridge-panel canvas{height:350px;aspect-ratio:auto}
+.ridge-key{display:inline-flex;align-items:center;gap:.4rem;margin-left:.8rem;color:var(--muted);font-size:13px}
+.ridge-key::before{content:"";width:24px;border-top:2px dotted #edf3fa}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
 <header><span class="kicker">Single-family Pfam</span><h1>Protein sequence pseudoperplexity</h1>
 <p>Lower pseudoperplexity means a model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
@@ -25,6 +29,13 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <div class="panel direct"><h3 id="poolDirectTitle"></h3><p class="marker-count" id="poolDirectCount"></p><canvas id="poolDirect" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM-2"></canvas></div>
 </div><output id="poolDetail"></output>
 <small>Counts beside each plot show matches / sequences plotted. Highlights require an exact sequence match to a dated UniRef50 representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. Sequence-level training exposure remains unknown. <a href="https://zenodo.org/records/4644188">ProtT5-XL-UniRef50 checkpoint release</a>. This page checks for newly published scores every two minutes.</small></section>
+<section id="checkpoint-distributions" aria-labelledby="ridge-heading">
+<h2 id="ridge-heading">Pseudoperplexity by ESM-2 checkpoint</h2>
+<figure class="panel ridge-panel">
+<figcaption><small>Density of verified sequence scores. Coverage can differ by checkpoint.</small><span class="ridge-key">Median score</span></figcaption>
+<canvas id="checkpoint-ridges" role="img" aria-label="Loading ESM-2 score distributions"></canvas>
+</figure>
+</section>
 <h2 id="family-inspect">Inspect a family</h2>
 <div class="controls">
 <label>ESM-2 checkpoint<select id="model"></select></label><label>Protein family<select id="family"></select></label>
@@ -142,6 +153,97 @@ function renderPooled(){
   plot(el(id),pairs,xc,yc,labels,max,'poolDetail');
  }
 }
+const ridgeColors=['#80d5bb','#b1d481','#68b9ac','#d0d993'];
+let checkpointRidges;
+
+function prepareCheckpointRidges(){
+ const series=models.map((label,index)=>{
+  const scores=pooledRows.map(row=>row[index+3]).filter(value=>value!==null).sort((a,b)=>a-b);
+  if(scores.length!==snap.pooled.esm2_counts[index]||scores.some(value=>!Number.isFinite(value)||value<1)){
+   throw Error('Invalid checkpoint score distribution');
+  }
+  return {label:label.split(' · ')[1],scores,color:ridgeColors[index]};
+ }).reverse();
+ const populated=series.filter(row=>row.scores.length);
+ // Smooth a normalized histogram on the log scale with the same bandwidth for every checkpoint.
+ const low=Math.max(0,Math.log(Math.min(1.5,...populated.map(row=>row.scores[0])))-.16);
+ const high=Math.log(Math.max(20,...populated.map(row=>row.scores[row.scores.length-1])))+.16;
+ const samples=145,step=(high-low)/(samples-1),bandwidth=.10;
+ const kernel=Array.from({length:Math.ceil(3*bandwidth/step)+1},(_,i)=>Math.exp(-.5*(i*step/bandwidth)**2));
+ for(const row of series){
+  row.n=row.scores.length;
+  if(!row.n)continue;
+  const middle=Math.floor(row.n/2);
+  row.median=row.n%2?row.scores[middle]:(row.scores[middle-1]+row.scores[middle])/2;
+  const bins=Array(samples).fill(0);
+  for(const score of row.scores){
+   const bin=Math.round((Math.log(score)-low)/step);
+   bins[bin]+=1/row.n;
+  }
+  row.density=bins.map((_,i)=>{
+   let mass=0;
+   for(let offset=1-kernel.length;offset<kernel.length;offset++)mass+=(bins[i+offset]??0)*kernel[Math.abs(offset)];
+   return mass;
+  });
+ }
+ const peak=Math.max(1e-12,...populated.map(row=>Math.max(...row.density)));
+ checkpointRidges={series,low,high,step,peak};
+}
+
+function renderCheckpointRidges(){
+ if(!checkpointRidges)return;
+ const {series,low,high,step,peak}=checkpointRidges;
+ const canvas=el('checkpoint-ridges'),box=canvas.getBoundingClientRect();
+ if(box.width<=0)return;
+ const w=box.width,h=box.height,ratio=window.devicePixelRatio||1;
+ canvas.width=Math.round(w*ratio);canvas.height=Math.round(h*ratio);
+ const g=canvas.getContext('2d');g.scale(ratio,ratio);
+ const styles=getComputedStyle(canvas);
+ const rule=styles.getPropertyValue('--rule'), ink=styles.getPropertyValue('--text'), muted=styles.getPropertyValue('--muted');
+ const left=82,right=w-18,top=12,bottom=h-46;
+ const rowHeight=(bottom-top)/series.length,ridgeHeight=rowHeight*.81;
+ const x=value=>left+(right-left)*(value-low)/(high-low);
+ const baselines=series.map((_,i)=>top+(i+1)*rowHeight);
+ const medians=[];
+ g.font='12px system-ui';g.textAlign='center';
+ let previous=-Infinity;
+ for(const tick of [1,1.5,2,3,5,8,12,20,30,50,80,120,200,300,500,800,1200,2000]){
+  const log=Math.log(tick),px=x(log);
+  if(log<low||log>high||px-previous<35)continue;
+  previous=px;g.strokeStyle=rule;g.beginPath();g.moveTo(px,top);g.lineTo(px,bottom);g.stroke();
+  g.fillStyle=muted;g.fillText(tick,px,bottom+17);
+ }
+ for(const [i,row] of series.entries()){
+  const y=baselines[i];
+  g.strokeStyle=rule;g.beginPath();g.moveTo(left,y);g.lineTo(right,y);g.stroke();
+  g.textAlign='right';g.font='600 13px system-ui';g.fillStyle=ink;g.fillText(row.label,left-12,y-5);
+  g.font='11px system-ui';g.fillStyle=muted;g.fillText('n = '+fmt(row.n),left-12,y+10);
+  if(!row.n){
+   g.textAlign='left';g.fillText('Awaiting verified scores',left+12,y-11);
+   medians.push(null);continue;
+  }
+  g.beginPath();g.moveTo(left,y);
+  row.density.forEach((value,j)=>g.lineTo(x(low+j*step),y-ridgeHeight*value/peak));
+  g.lineTo(right,y);g.closePath();g.fillStyle=row.color;g.globalAlpha=.40;g.fill();
+  g.globalAlpha=1;g.strokeStyle=row.color;g.stroke();
+  medians.push([x(Math.log(row.median)),y]);
+ }
+ g.beginPath();g.setLineDash([3,4]);g.strokeStyle=ink;
+ for(const [i,point] of medians.entries()){
+  if(!point)continue;
+  if(medians[i-1])g.lineTo(...point);else g.moveTo(...point);
+ }
+ g.stroke();g.setLineDash([]);
+ for(const point of medians){
+  if(!point)continue;
+  g.beginPath();g.arc(...point,4,0,2*Math.PI);g.fillStyle=ink;g.fill();
+ }
+ g.fillStyle=ink;g.font='13px system-ui';g.textAlign='center';
+ g.fillText('Sequence pseudoperplexity (log scale)',(left+right)/2,h-5);
+ canvas.setAttribute('aria-label',series.map(row=>row.label+': '+fmt(row.n)+' sequences'+
+    (row.n?', median '+row.median.toFixed(3):'')).join('. '));
+}
+
 function bestFullRun(){
  const family=el('family').value,model=+el('model').value;let best=null;
  for(const key of order){const entry=snap.families[key];entry.counts[1].forEach((n,i)=>{
@@ -168,15 +270,15 @@ const state=new URLSearchParams({family:key,model:snap.models[m],stage:['preview
 history.replaceState(null,'','#'+state);}
 catch(e){if(id===seq){activeRows=[];render();el('status').textContent='Could not verify this family’s data. Refresh to retry.'}}}
 async function refresh(){try{const response=await fetch('coverage.json?t='+Math.floor(Date.now()/120000),{cache:'no-store'});if(!response.ok)throw Error('fetch');const next=await response.json();if(snap&&snap.updated===next.updated)return;
-const version=next.pooled.sha256+next.pooled.dates_sha256;
-if(version!==poolVersion){const loaded=await loadPooled(next.pooled);pooledRows=loaded.rows;dateEvidence=loaded.dates;poolVersion=version;}
-snap=next;order=Object.keys(snap.families).sort((a,b)=>snap.families[a].name.localeCompare(snap.families[b].name));
+const version=next.pooled.sha256+next.pooled.dates_sha256,changed=version!==poolVersion;
+if(changed){const loaded=await loadPooled(next.pooled);pooledRows=loaded.rows;dateEvidence=loaded.dates;poolVersion=version;}
+snap=next;if(changed)prepareCheckpointRidges();order=Object.keys(snap.families).sort((a,b)=>snap.families[a].name.localeCompare(snap.families[b].name));
 const selected=el('family').value;
 el('family').replaceChildren(...order.map(key=>new Option(snap.families[key].name+' · '+key,key)));
 if(order.includes(selected))el('family').value=selected;
 if(first){first=false;const p=new URLSearchParams(location.hash.slice(1));el('family').value=order.includes(p.get('family'))?p.get('family'):'PF00001';el('model').value=Math.max(0,snap.models.indexOf(p.get('model')));el('stage').value=p.has('stage')?Math.max(0,['preview','production','short'].indexOf(p.get('stage'))):Number(p.has('family')||p.has('model')?snap.families[el('family').value].counts[1][+el('model').value]>0:!!bestFullRun());if(el('stage').value==='1'&&!p.has('family')&&!p.has('model'))selectVerified()}
-el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});renderPooled();await update()}catch(e){if(!ready)el('pool-status').textContent='Could not verify pooled scores. Retrying in two minutes.';el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
+el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});renderPooled();renderCheckpointRidges();await update()}catch(e){if(!ready)el('pool-status').textContent='Could not verify pooled scores. Retrying in two minutes.';el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
 el('poolModel').onchange=()=>{el('poolDetail').textContent='';renderPooled()};
-for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready){render();renderPooled()}},120)});refresh();setInterval(refresh,120000);
+for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready){render();renderPooled();renderCheckpointRidges()}},120)});refresh();setInterval(refresh,120000);
 if(window.parent!==window&&new URLSearchParams(location.search).get('embed')==='1'){document.documentElement.classList.add('embedded');const main=document.querySelector('main');const resize=()=>parent.postMessage({type:'esm2-height',height:main.getBoundingClientRect().height+16},'*');new ResizeObserver(resize).observe(main);resize()}
 </script></body></html>
