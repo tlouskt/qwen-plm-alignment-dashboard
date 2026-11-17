@@ -227,7 +227,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -243,7 +243,7 @@
         ]
       ],
       "name": "Neuraminidase",
-      "sha256": "c5ff77c6097ae142eaaac29e20cc80c0d40ac534723c91d2e693b59c183c0c14",
+      "sha256": "456d1559504a369ec5a0aed5d95725d2a684a94d5465c601e574b17bba5cab0c",
       "total": 2048
     },
     "PF00069": {
@@ -1401,7 +1401,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1418,7 +1418,7 @@
         ]
       ],
       "name": "DYW family of nucleic acid deaminases",
-      "sha256": "0952f35696ef86ff306810e727b2057428420066bf6982e899a51f4caea4a4a7",
+      "sha256": "604a9ead54fbc45f80fea796fe6d962dea4da106d203fa89de8564419496a040",
       "total": 2048
     },
     "PF22029": {
@@ -1529,6 +1529,6 @@
     "t33_650M"
   ],
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
-  "study_total": 3,
-  "updated": "2026-11-17T21:51:36+00:00"
+  "study_total": 96,
+  "updated": "2026-11-17T21:53:31+00:00"
 }
