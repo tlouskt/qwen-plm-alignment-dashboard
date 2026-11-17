@@ -14,7 +14,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .family-values{margin-top:.8rem}.family-values summary{cursor:pointer}.family-values th,.family-values td{text-align:left;padding:.3rem .65rem}
 .family-values td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
-<header><span class="kicker">Single-family Pfam · 58 cohorts</span><h1>ESM-2 pseudoperplexity by family</h1>
+<header><span class="kicker">Single-family Pfam</span><h1>ESM-2 pseudoperplexity by family</h1>
 <p>Each panel compares the same proteins across two models. Lower pseudoperplexity means the model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
 <section id="complete-family-comparison" aria-labelledby="comparison-heading">
 <h2 id="comparison-heading">Complete-family pseudoperplexity</h2>
@@ -34,11 +34,11 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <div class="panel direct"><h3 id="directTitle">ProtT5 vs ESM-2</h3><canvas id="direct" aria-label="ESM-2 pseudoperplexity on the horizontal axis and ProtT5 pseudoperplexity on the vertical axis"></canvas>
 <div class="plot-legend" id="directLegend" aria-label="UniRef50 dates among plotted proteins, out of all 2,048 Ras proteins" hidden></div></div></div><output id="detail"></output>
 <small>One point per protein. All three panels use the same linear scale. The dashed line marks equal scores. Hover or tap a point to see its protein ID and values.</small>
-<section><h2>Protein counts by family and checkpoint</h2><p id="caption" class="muted"></p><p id="complete"></p>
+<section><h2>Protein counts by family and checkpoint</h2><p class="muted">Protein explorer coverage for the original 58 cohorts.</p><p id="caption" class="muted"></p><p id="complete"></p>
 <label class="search">Find a family<input type="search" id="search" placeholder="Name or Pfam ID"></label>
 <div class="tablebox"><table><thead><tr id="columns"><th scope="col">Family</th></tr></thead><tbody id="body"></tbody></table></div></section>
-<section><h2>How to read these results</h2><p>Each model scores the same canonical residues in the first 511 amino acids, or the entire sequence if shorter. Lower pseudoperplexity means that the model assigned higher probability to the observed residues. Each family here has 2,048 proteins.</p>
-<p>The family preview uses eight selected sequence inputs per family; repeated inputs can map to additional proteins. Preview and production counts are separate. A full-family result is complete only when all 2,048 memberships have verified scores for that checkpoint.</p>
+<section><h2>How to read these results</h2><p>Each model scores the same canonical residues in the first 511 amino acids, or the entire sequence if shorter. Lower pseudoperplexity means that the model assigned higher probability to the observed residues.</p>
+<p>The family preview uses eight selected sequence inputs per family. Repeated inputs can map to additional proteins. A full-family result requires verified scores for every protein in the frozen cohort.</p>
 <p><a href="prott5-esm3.png">All 58 families: ProtT5 vs ESM3</a> · <a href="short-control.pdf">16 short sequences: all four ESM-2 sizes and matched ProtT5 (PDF)</a> · <a href="coverage.json">Coverage data (JSON)</a></p></section></main>
 <script>
 const el=id=>document.getElementById(id), models=['t6 · 8M','t12 · 35M','t30 · 150M','t33 · 650M'], fmt=n=>n.toLocaleString('en-US');let snap,order=[],activeRows=[],seq=0,first=true,ready=false;const cache=new Map();
