@@ -16,6 +16,13 @@
         "pfam": "PF00177"
       },
       {
+        "esm2": 13.98343984463622,
+        "esm3": 2.949173518261832,
+        "n": 2048,
+        "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
+        "pfam": "PF00181"
+      },
+      {
         "esm2": 12.661209353486434,
         "esm3": 2.7315663014582725,
         "n": 2048,
@@ -46,11 +53,32 @@
         "pfam": "PF00005"
       },
       {
+        "esm2": 12.319066058448998,
+        "esm3": 3.2245305753348865,
+        "n": 2048,
+        "name": "Elongation factor Tu GTP binding domain",
+        "pfam": "PF00009"
+      },
+      {
+        "esm2": 9.823205838063016,
+        "esm3": 3.1133438251339367,
+        "n": 2048,
+        "name": "Hsp70 protein",
+        "pfam": "PF00012"
+      },
+      {
         "esm2": 12.328918670303164,
         "esm3": 7.705866026210705,
         "n": 2048,
         "name": "Homeodomain",
         "pfam": "PF00046"
+      },
+      {
+        "esm2": 17.002834096774635,
+        "esm3": 16.816444218506035,
+        "n": 2048,
+        "name": "Neuraminidase",
+        "pfam": "PF00064"
       },
       {
         "esm2": 8.65391245293218,
@@ -86,6 +114,13 @@
         "n": 2048,
         "name": "Adenylate kinase",
         "pfam": "PF00406"
+      },
+      {
+        "esm2": 16.472631030247378,
+        "esm3": 16.151507697920337,
+        "n": 2048,
+        "name": "Arterivirus GL envelope glycoprotein",
+        "pfam": "PF00951"
       },
       {
         "esm2": 10.72610500097753,
@@ -195,7 +230,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -212,7 +247,7 @@
         10
       ],
       "name": "Elongation factor Tu GTP binding domain",
-      "sha256": "1c5835c7dc6866321c83f7e61e25a8f6f2afe334643259ef611bbd1eae3b6294",
+      "sha256": "15dc3760a9faa6abe2c9a399414ba6a2b387c624db4bcfb11cea006ac1d4b5db",
       "total": 2048
     },
     "PF00012": {
@@ -224,7 +259,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -241,7 +276,7 @@
         10
       ],
       "name": "Hsp70 protein",
-      "sha256": "052f70090bc2c4ff09797c998a857ccd835cf1537eaf8fbc10e3cfb5ca480d7f",
+      "sha256": "a5e32e8478a8b1cfbc8ae4b7d6f5a7ff94b8227d4ef7478a2d5b9fe5b12231b4",
       "total": 2048
     },
     "PF00046": {
@@ -282,7 +317,7 @@
           8
         ],
         [
-          1024,
+          2048,
           0,
           0,
           0
@@ -299,7 +334,7 @@
         1
       ],
       "name": "Neuraminidase",
-      "sha256": "d87e15bfcb79c118b26cd44573133ead4e89af578eaa2ef2be02a5e157994e4b",
+      "sha256": "479b2f3e1005439c3239175800228f0dc9dbf87f32c0bd7095186f877fbfb62f",
       "total": 2048
     },
     "PF00069": {
@@ -399,7 +434,7 @@
         ],
         [
           2048,
-          0,
+          2048,
           0,
           0
         ],
@@ -415,7 +450,7 @@
         3
       ],
       "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
-      "sha256": "8e7e6219abdeb8ed743a4b9d8ae47497c1964daa700eafe92db3efc3065818d5",
+      "sha256": "652f2c67a3e397831d2ea660a22ab051aaa4c01efaa27790d332f1b11edf707a",
       "total": 2048
     },
     "PF00347": {
@@ -598,10 +633,10 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -618,7 +653,7 @@
         1
       ],
       "name": "Major surface antigen from hepadnavirus",
-      "sha256": "49be752ce195e243f68660538b83fe6c77542a08be17023fe937b3c9f0bb083e",
+      "sha256": "617a23e8353ce13cf30b60ab739875acc144a0562da0cf28ac0eadc801cf3b80",
       "total": 2048
     },
     "PF00920": {
@@ -659,7 +694,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -676,7 +711,7 @@
         3
       ],
       "name": "Arterivirus GL envelope glycoprotein",
-      "sha256": "251f052a825156e185fd6fb13b0095fe215c600cf0d195c2dbf94b5edbb9e8e5",
+      "sha256": "db87b4a884a727383063b82b48e4a49ec06af70a74ab31fc1dcba5510cc6808f",
       "total": 2048
     },
     "PF01058": {
@@ -717,7 +752,7 @@
           8
         ],
         [
-          0,
+          1536,
           0,
           0,
           0
@@ -734,7 +769,7 @@
         6
       ],
       "name": "Pre-mRNA-splicing factor BUD31",
-      "sha256": "27b36c576011de1d389e01a67a210149b8914e27ecad41505ce6c0bd635f9cda",
+      "sha256": "7caeb15c7090928bee7e1cc93e7facde608f1d2666d81e9d66aaae5b9f97bcce",
       "total": 2048
     },
     "PF01239": {
@@ -1732,7 +1767,7 @@
           8
         ],
         [
-          0,
+          1025,
           0,
           0,
           0
@@ -1749,7 +1784,7 @@
         19
       ],
       "name": "Kelch repeats",
-      "sha256": "616fbba4f9e0fb86a6bea2fb59a2605f22618a7f80136e103e08f145ec633fc2",
+      "sha256": "448ce6550361cfad2929da3f13fc8993a28c613426546e9b41d5394609eceb5d",
       "total": 2048
     },
     "PF25599": {
@@ -1791,17 +1826,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      23551,
-      6144,
+      33792,
+      8192,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "c609aa4c9e125367a1f13dcc2b32424f6bdb6e7834c81bdd56dfa4e58ed952f9",
+    "sha256": "d9a169483ec6fe795485f0d5347588c5a426ab2a587877d2b849351cadce5a55",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T22:47:55+00:00"
+  "updated": "2026-11-17T23:17:50+00:00"
 }
