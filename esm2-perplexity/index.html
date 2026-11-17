@@ -12,6 +12,9 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .pair .panel{display:grid;grid-template-columns:minmax(0,1fr);align-content:start}.pair h3{grid-row:1}.pair .marker-count{grid-row:2;text-align:right}.pair canvas{grid-row:3;min-width:0}
 .ridge-panel{margin:1.15rem 0 0}.ridge-panel figcaption{margin-bottom:.55rem}
 .ridge-panel canvas{height:350px;aspect-ratio:auto}
+.ridge-chart{position:relative}
+.ridge-tooltip{position:absolute;pointer-events:none;z-index:1;padding:.3rem .55rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--text);font:13px system-ui,sans-serif;white-space:nowrap}
+.ridge-tooltip[hidden]{display:none}
 .ridge-key{display:inline-flex;align-items:center;gap:.4rem;margin-left:.8rem;color:var(--muted);font-size:13px}
 .ridge-key::before{content:"";width:24px;border-top:2px dotted #edf3fa}
 .plot-zoom{margin:.55rem 0;color:var(--muted);font-size:13px}
@@ -21,9 +24,10 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .plot-zoom output{flex-basis:100%;min-height:0}
 .plot-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.4rem}
 .plot-zoom .expand-plot{font-weight:600;border-color:#506377}
-.expand-status:empty{display:none}
-.plot-group:is(:fullscreen, :-webkit-full-screen){background:var(--bg);color:var(--text);padding:24px clamp(14px,3vw,48px);margin:0;overflow:auto}
-.plot-group:is(:fullscreen, :-webkit-full-screen) .ridge-panel canvas{height:clamp(350px,65vh,760px)}
+html.has-expanded-plot{overflow:hidden}
+.has-expanded-plot main>:not(.plot-expanded){visibility:hidden}
+.plot-group.plot-expanded{position:fixed;inset:0;z-index:10000;background:var(--bg);color:var(--text);padding:24px clamp(14px,3vw,48px);margin:0;overflow:auto}
+.plot-expanded .ridge-panel canvas{height:clamp(350px,65vh,760px)}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
 <header><span class="kicker">Single-family Pfam</span><h1>Protein sequence pseudoperplexity</h1>
 <p>Lower pseudoperplexity means a model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
@@ -45,7 +49,8 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <figure class="panel ridge-panel">
 <figcaption><small id="ridge-coverage">Loading shared sequence coverage…</small><span class="ridge-key">Median score</span></figcaption>
 <div data-zoom-group="ridge"></div>
-<canvas id="checkpoint-ridges" role="img" aria-label="Loading ESM-2 score distributions"></canvas>
+<div class="ridge-chart"><canvas id="checkpoint-ridges" role="img" aria-label="Loading ESM-2 score distributions"></canvas>
+<output id="ridge-tooltip" class="ridge-tooltip" aria-hidden="true" hidden></output></div>
 <small id="ridge-medians"></small>
 </figure>
 </section>
@@ -75,8 +80,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <div class="plot-actions">
 <button class="expand-plot" type="button">Expand</button>
 <button class="reset-plot" type="button">Reset zoom</button>
-<small>Pinch over a plot to zoom. In full screen, scroll to zoom.</small>
-<output class="expand-status" aria-live="polite"></output>
+<small>Pinch over a plot to zoom. In expanded view, scroll to zoom.</small>
 </div>
 <details><summary>Set zoom range</summary>
 <form>
@@ -143,31 +147,27 @@ function bindPlotZoom(){
   const redraw={pooled:renderPooled,family:render,ridge:renderCheckpointRidges}[group];
   const name={pooled:'Pooled scatter plots',family:'Family scatter plots',ridge:'Checkpoint ridgeline'}[group];
   const section=panel.closest('.plot-group'),expand=panel.querySelector('.expand-plot');
-  const fullscreen=()=>document.fullscreenElement??document.webkitFullscreenElement;
+  const expanded=()=>section.classList.contains('plot-expanded');
   form.setAttribute('aria-label',name+' zoom');
   panel.querySelector('summary').setAttribute('aria-label','Zoom '+name.toLowerCase());
   expand.setAttribute('aria-label','Expand '+name.toLowerCase());
-  expand.onclick=async()=>{
-   const status=panel.querySelector('.expand-status');
-   status.textContent='';
-   try{
-    if(fullscreen()===section){
-     await (document.exitFullscreen??document.webkitExitFullscreen).call(document);
-    }else{
-     await (section.requestFullscreen??section.webkitRequestFullscreen).call(section);
-    }
-   }catch{
-    status.textContent='Full screen is unavailable in this browser view.';
-   }
-  };
-  const updateExpand=()=>{
-   const expanded=fullscreen()===section;
-   expand.textContent=expanded?'Exit full screen':'Expand';
-   expand.setAttribute('aria-label',(expanded?'Exit full screen for ':'Expand ')+name.toLowerCase());
+  const setExpanded=value=>{
+   section.classList.toggle('plot-expanded',value);
+   document.documentElement.classList.toggle('has-expanded-plot',value);
+   const frame=window.frameElement;
+   if(frame?.id==='esm2-family-frame')frame.classList.toggle('esm2-expanded-frame',value);
+   expand.textContent=value?'Exit expanded view':'Expand';
+   expand.setAttribute('aria-label',(value?'Exit expanded view for ':'Expand ')+name.toLowerCase());
+   expand.setAttribute('aria-pressed',String(value));
    requestAnimationFrame(()=>{if(zoomGroups[group].domain)redraw()});
   };
-  document.addEventListener('fullscreenchange',updateExpand);
-  document.addEventListener('webkitfullscreenchange',updateExpand);
+  expand.setAttribute('aria-pressed','false');
+  expand.onclick=()=>setExpanded(!expanded());
+  document.addEventListener('keydown',event=>{
+   if(event.key==='Escape'&&expanded()){
+    event.preventDefault();setExpanded(false);expand.focus({preventScroll:true});
+   }
+  });
   if(group==='ridge')low.min=high.min='1';
   const zoom=zoomGroups[group]={form,domain:null,visible:null,requested:null,frame:0};
   panel.querySelector('.reset-plot').onclick=()=>form.reset();
@@ -206,7 +206,7 @@ function bindPlotZoom(){
    };
    let gestureScale=null;
    canvas.addEventListener('wheel',event=>{
-    if(!(event.ctrlKey||event.metaKey||fullscreen()===section))return;
+    if(!(event.ctrlKey||event.metaKey||expanded()))return;
     event.preventDefault();
     if(gestureScale!==null)return;
     const units=event.deltaMode===1?16:event.deltaMode===2?canvas.clientHeight:1;
@@ -401,6 +401,20 @@ function renderCheckpointRidges(){
  g.fillText('Sequence pseudoperplexity',(left+right)/2,h-5);
  canvas.setAttribute('aria-label',series.map(row=>row.label+': '+fmt(row.n)+' shared sequences'+
     (row.n?', median '+row.median.toFixed(3):'')).join('. '));
+ const tooltip=el('ridge-tooltip');
+ tooltip.hidden=true;
+ canvas.onpointerleave=()=>{tooltip.hidden=true};
+ canvas.onpointermove=canvas.onpointerdown=event=>{
+  const rect=canvas.getBoundingClientRect(),px=event.clientX-rect.left,py=event.clientY-rect.top;
+  const index=medians.findIndex(point=>point&&point[0]>=left&&point[0]<=right&&
+   Math.hypot(point[0]-px,point[1]-py)<=12);
+  tooltip.hidden=index<0;
+  if(index<0)return;
+  const [mx,my]=medians[index],row=series[index];
+  tooltip.textContent=row.label+' median PPPL '+row.median.toFixed(3);
+  tooltip.style.left=Math.max(0,Math.min(w-tooltip.offsetWidth,mx-tooltip.offsetWidth/2))+'px';
+  tooltip.style.top=Math.max(0,my-tooltip.offsetHeight-10)+'px';
+ };
 }
 
 function bestFullRun(){

@@ -11,6 +11,8 @@ header,main,footer{max-width:1640px}section{border-radius:10px;padding:28px}nav{
 :is(#deltaSlopes,#individualSlopes) :is(th,td):first-child{position:sticky;left:0;background:#202a35;z-index:2}
 :is(#deltaSlopes,#individualSlopes) th:first-child{z-index:3}
 .axis-notation{display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--muted);margin-bottom:8px}
+body:has(#esm2-family-frame.esm2-expanded-frame){overflow:hidden}
+#esm2-family-frame.esm2-expanded-frame{position:fixed!important;inset:0;width:100vw!important;height:100vh!important;height:100dvh!important;background:#141a20;z-index:10000}
 </style><script>/**
 * plotly.js v3.1.0
 * Copyright 2012-2025, Plotly, Inc.
@@ -3928,7 +3930,7 @@ return Plotly;
 <section id="esm2-family-plots" style="scroll-margin-top:5rem"><h2>Sequence pseudoperplexity across Pfam families</h2>
 <p class="muted">The pooled scatter plots compare the same sequences with verified pseudoperplexity scores from ProtT5-XL-UniRef50, ESM3, and the selected ESM-2 checkpoint. The ridgeline uses sequences shared by all ESM-2 checkpoints with published scores.</p>
 <iframe id="esm2-family-frame" title="Pooled and per-family sequence scatterplots for ESM-2, ESM3 and ProtT5-XL-UniRef50" loading="lazy" style="display:block;width:100%;height:1400px;border:0"></iframe>
-<script>(()=>{const frame=document.getElementById('esm2-family-frame');const src=new URL(location.protocol==='file:'?'https://tlouskt.github.io/qwen-plm-alignment-dashboard/esm2-perplexity/?embed=1&view=sequences':'../esm2-perplexity/?embed=1&view=sequences',location.href);window.addEventListener('message',event=>{const msg=event.data;if(event.source===frame.contentWindow&&event.origin===src.origin&&msg?.type==='esm2-height'&&Number.isFinite(msg.height)&&msg.height>200&&msg.height<20000)frame.style.height=Math.ceil(msg.height)+'px'});frame.src=src.href})();</script>
+<script>(()=>{const frame=document.getElementById('esm2-family-frame');const src=new URL(location.protocol==='file:'?'https://tlouskt.github.io/qwen-plm-alignment-dashboard/esm2-perplexity/?embed=1&view=sequences':'../esm2-perplexity/?embed=1&view=sequences',location.href);src.searchParams.set('ui','trackpad-zoom-20261117');window.addEventListener('message',event=>{const msg=event.data;if(event.source===frame.contentWindow&&event.origin===src.origin&&msg?.type==='esm2-height'&&Number.isFinite(msg.height)&&msg.height>200&&msg.height<20000)frame.style.height=Math.ceil(msg.height)+'px'});frame.src=src.href})();</script>
 </section>
 
 <section id="model-size"><h2>Mean mKNN alignment across Qwen3 checkpoints (k = 10)</h2>
