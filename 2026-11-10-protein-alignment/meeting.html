@@ -8,6 +8,8 @@
 header,main,footer{max-width:1640px}section{border-radius:10px;padding:28px}nav{background:#141a20f5}.plot{height:570px}.chartscroll{max-height:720px;overflow:auto}.chartscroll .plot{min-width:900px}.figure-intro{font-size:18px}.direction-key{display:flex;justify-content:space-between;color:var(--muted);font-size:15px;margin:0 35px 16px}.matrixwrap{max-height:740px;overflow:auto;border:1px solid var(--edge);border-radius:8px}.scorematrix{font-variant-numeric:tabular-nums;font-size:13px;min-width:1280px;table-layout:fixed}.scorematrix col.family-col{width:290px}.scorematrix col.score-col{width:90px}.scorematrix th{text-align:center;z-index:4;background:#202a35}.scorematrix thead tr:nth-child(2) th{top:41px}.scorematrix thead tr:first-child th:first-child,.scorematrix tbody td:first-child{position:sticky;left:0;background:#202a35;min-width:290px;max-width:350px;white-space:normal;text-align:left;z-index:3;line-height:1.35}.scorematrix thead tr:first-child th:first-child{z-index:6}.scorematrix td{text-align:center;padding:7px;border:3px solid #1c232b}.scorematrix td:first-child{padding:9px 12px}.scorematrix td[title]{cursor:help}.scorematrix .modelsep{border-left:8px solid #1c232b}.smallplot{height:350px}.comparison .plot{height:570px}.comparison h3{margin-bottom:0}.muted.caption{font-size:14px}#h1{font-size:15px}#ppplPlot{height:580px}@media(max-width:1000px){.comparison{grid-template-columns:1fr}section{padding:18px}main,header{padding-inline:16px}.scorematrix{font-size:12px}}
 .hypothesis-pair{grid-template-columns:repeat(2,minmax(0,1fr))}.hypothesis-pair .plot{height:430px}.hypothesis-trend{height:420px}@media(max-width:800px){.hypothesis-pair{grid-template-columns:minmax(0,1fr)}}
 #relationship,#model-size{margin-top:28px;scroll-margin-top:105px}.slope-up{color:#73d7a1}.slope-down{color:#ff8585}
+:is(#deltaSlopes,#individualSlopes) :is(th,td):first-child{position:sticky;left:0;background:#202a35;z-index:2}
+:is(#deltaSlopes,#individualSlopes) th:first-child{z-index:3}
 .axis-notation{display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--muted);margin-bottom:8px}
 </style><script>/**
 * plotly.js v3.1.0
@@ -3916,6 +3918,10 @@ return Plotly;
 <div><h4>ProtT5</h4><div id="relationshipPlot" class="plot"></div><p class="status" id="protT5RankStatistic"></p></div>
 <div><h4>ESM3</h4><div id="esmRelationshipPlot" class="plot"></div><p class="status" id="esm3RankStatistic"></p></div>
 </div>
+<h3>Individual-model slopes across Qwen3 sizes</h3>
+<p class="muted" id="individualSlopeNote"></p>
+<div class="tablewrap" id="individualSlopes"></div>
+<div id="individualSlopeSizePlot" class="plot hypothesis-trend"></div>
 </div>
 </section>
 
@@ -4044,6 +4050,10 @@ const paddedRange=values=>{
  return [min-pad,max+pad];
 };
 const rankLabel=rho=>'Spearman ρ = '+num(rho,3);
+const slopeChangeLabel=change=>(change>0?'+':'')+num(change,8);
+function colorSlopeChange(cell,change){
+ if(change!==0)cell.classList.add(change>0?'slope-up':'slope-down');
+}
 const checkpointSizes=DATA.checkpoints.checkpoints.map(row=>row.parameters_billions);
 const checkpointAxis=()=>chartAxis('Qwen3 size (billions of parameters, log scale)',{
  type:'log',tickmode:'array',tickvals:checkpointSizes,ticktext:checkpointSizes.map(x=>x+'B')
@@ -4098,10 +4108,8 @@ async function renderHypothesisScatters(){
  $('deltaSlopeNote').textContent='OLS slopes use '+(useRatio?'the log pseudoperplexity ratio':'the raw pseudoperplexity difference')+
   ' and ESM3 '+contextLabel+'. Δm is the slope minus the Qwen3-0.6B slope.';
  table('deltaSlopes',['Qwen3 checkpoint','OLS slope m','Δm vs Qwen3-0.6B'],
-  checkpoints.map(({id,label},i)=>[label,num(statistics[id][xType].slope,8),(changes[i]>0?'+':'')+num(changes[i],8)]));
- $('deltaSlopes').querySelectorAll('tbody td:last-child').forEach((cell,i)=>{
-  if(changes[i]!==0)cell.classList.add(changes[i]>0?'slope-up':'slope-down');
- });
+  checkpoints.map(({id,label},i)=>[label,num(statistics[id][xType].slope,8),slopeChangeLabel(changes[i])]));
+ $('deltaSlopes').querySelectorAll('tbody td:last-child').forEach((cell,i)=>colorSlopeChange(cell,changes[i]));
  const sizeSlopes=checkpoints.map(({id})=>statistics[id][xType].slope);
  tasks.push(plot('sequenceSlopeSizePlot',[sizeSlopeTrace('ProtT5 − ESM3',sizeSlopes,'#73b5f4')],{
   margin:hypothesisMargin,xaxis:checkpointAxis(),showlegend:false,
@@ -4121,6 +4129,23 @@ async function renderHypothesisScatters(){
    yaxis:chartAxis('mKNN₁₀ with '+label,{type:'linear',range:paddedRange(ownY.flat())}),showlegend:true
   }));
  });
+ const ownSlopes=checkpoints.map(({id})=>statistics[id].own.map(result=>result.slope));
+ const ownChanges=ownSlopes.map(slopes=>slopes.map((m,i)=>m-ownSlopes[0][i]));
+ $('individualSlopeNote').textContent='Each slope uses that model’s raw sequence pseudoperplexity and its own mKNN with Qwen3. '+
+  'ESM3 input: '+contextLabel+'. Δm is the change from the matching Qwen3-0.6B slope.';
+ table('individualSlopes',['Qwen3 checkpoint','ProtT5 slope m','ProtT5 Δm vs Qwen3-0.6B','ESM3 slope m','ESM3 Δm vs Qwen3-0.6B'],
+  checkpoints.map(({label},i)=>[label,num(ownSlopes[i][0],8),slopeChangeLabel(ownChanges[i][0]),
+   num(ownSlopes[i][1],8),slopeChangeLabel(ownChanges[i][1])]));
+ $('individualSlopes').querySelectorAll('tbody tr').forEach((row,i)=>{
+  colorSlopeChange(row.cells[2],ownChanges[i][0]);
+  colorSlopeChange(row.cells[4],ownChanges[i][1]);
+ });
+ tasks.push(plot('individualSlopeSizePlot',proteinModels.map((model,i)=>sizeSlopeTrace(
+  model,ownSlopes.map(slopes=>slopes[i]),proteinColors[i]
+ )),{
+  margin:{...hypothesisMargin,t:55},xaxis:checkpointAxis(),
+  yaxis:chartAxis('OLS slope m · mKNN₁₀ vs sequence pseudoperplexity',{tickformat:'.6f'})
+ }));
  await Promise.all(tasks);
 }
 
