@@ -81,6 +81,13 @@
         "pfam": "PF00064"
       },
       {
+        "esm2": 9.356443505083563,
+        "esm3": 6.261419864691708,
+        "n": 2048,
+        "name": "Protein kinase domain",
+        "pfam": "PF00069"
+      },
+      {
         "esm2": 8.65391245293218,
         "esm3": 4.778426085579044,
         "n": 2048,
@@ -116,11 +123,46 @@
         "pfam": "PF00406"
       },
       {
+        "esm2": 16.446795528604362,
+        "esm3": 16.161337048686274,
+        "n": 2048,
+        "name": "Haemagglutinin",
+        "pfam": "PF00509"
+      },
+      {
         "esm2": 16.472631030247378,
         "esm3": 16.151507697920337,
         "n": 2048,
         "name": "Arterivirus GL envelope glycoprotein",
         "pfam": "PF00951"
+      },
+      {
+        "esm2": 15.05735633996533,
+        "esm3": 4.375165375780479,
+        "n": 2048,
+        "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
+        "pfam": "PF01058"
+      },
+      {
+        "esm2": 16.256419105135432,
+        "esm3": 13.633120794238573,
+        "n": 2048,
+        "name": "Pre-mRNA-splicing factor BUD31",
+        "pfam": "PF01125"
+      },
+      {
+        "esm2": 15.179957785463692,
+        "esm3": 5.297013701195448,
+        "n": 2048,
+        "name": "Large ribosomal RNA subunit accumulation protein YceD",
+        "pfam": "PF02620"
+      },
+      {
+        "esm2": 16.233621327933193,
+        "esm3": 15.41151375003258,
+        "n": 2048,
+        "name": "Transcription initiation factor IIA, gamma subunit",
+        "pfam": "PF02751"
       },
       {
         "esm2": 10.72610500097753,
@@ -346,7 +388,7 @@
           8
         ],
         [
-          2047,
+          2048,
           0,
           0,
           0
@@ -363,7 +405,7 @@
         62
       ],
       "name": "Protein kinase domain",
-      "sha256": "faaa6f07feb03e0cfe4c65450c8e705947ad0e9eeafea7d624705df7858d6e7b",
+      "sha256": "f9143dd230ee7dea6b894ba62b5e43e24dc58cb28532541a2f4ce883d616f89e",
       "total": 2048
     },
     "PF00071": {
@@ -488,7 +530,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -508,7 +550,7 @@
         14
       ],
       "name": "Transferrin",
-      "sha256": "c862917edd905d0d34559002cbcf8d9c2bdaa5af64c7100278b1e47530b16e6c",
+      "sha256": "33cd7670469bcf15443082ad9c79595a77b49189a52cb09a7e4fbcabae1e31cb",
       "total": 2048
     },
     "PF00406": {
@@ -546,7 +588,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           30,
@@ -566,7 +608,7 @@
         12
       ],
       "name": "LIM domain",
-      "sha256": "a3a7bb7e14109d3aa2a94a626e341f6708a1c21ab5319687b37395084047704f",
+      "sha256": "5767c9df7e8b57f4b6ca10df33c749aca728836056cd78f8d87816c7426f7544",
       "total": 2048
     },
     "PF00509": {
@@ -578,7 +620,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -595,7 +637,7 @@
         2
       ],
       "name": "Haemagglutinin",
-      "sha256": "6796138082b8a926f1f7a298265689defd2ad61bfc406b26114e9e7a1ef7e569",
+      "sha256": "fd52e52c469d9e4786c111634339919381989668c5066256cbbf3b46fa6395bd",
       "total": 2048
     },
     "PF00512": {
@@ -604,7 +646,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -624,7 +666,7 @@
         22
       ],
       "name": "His Kinase A (phospho-acceptor) domain",
-      "sha256": "27518c522db83cafa0e64135205ce9f2706698f113f792fa15dc53782527b629",
+      "sha256": "b920b86a2e01269a6f4d3d129e103526d5797107cb11e83ed83a6b8caf59f6d3",
       "total": 2048
     },
     "PF00695": {
@@ -636,7 +678,7 @@
           8
         ],
         [
-          512,
+          1536,
           0,
           0,
           0
@@ -653,7 +695,7 @@
         1
       ],
       "name": "Major surface antigen from hepadnavirus",
-      "sha256": "617a23e8353ce13cf30b60ab739875acc144a0562da0cf28ac0eadc801cf3b80",
+      "sha256": "10c03dea4dd974e62541562fa09fb549a3077f5d00f5e589e297f9e77a58a361",
       "total": 2048
     },
     "PF00920": {
@@ -723,7 +765,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -740,7 +782,7 @@
         6
       ],
       "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
-      "sha256": "15e23cc075b776802d0a7e6cf2b07b04b5eedc8490e4ab4a0ee4b94c1143970b",
+      "sha256": "3425a3308154e07a06cea8a8c518d81406b192d232b19d76d072805892747fa7",
       "total": 2048
     },
     "PF01125": {
@@ -752,7 +794,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -769,7 +811,7 @@
         6
       ],
       "name": "Pre-mRNA-splicing factor BUD31",
-      "sha256": "7caeb15c7090928bee7e1cc93e7facde608f1d2666d81e9d66aaae5b9f97bcce",
+      "sha256": "1b4d6600f36469c70bac2fc20bafe6f2ba9a440b7337f1b59bbac44ec8fafd06",
       "total": 2048
     },
     "PF01239": {
@@ -778,7 +820,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -798,7 +840,7 @@
         11
       ],
       "name": "Protein prenyltransferase alpha subunit repeat",
-      "sha256": "2a63ddae3d38005859c3cf4b7354849cb4ca9fa218b3dabf24c15954eb69973e",
+      "sha256": "1fcbe71a982b0d30fa04029f79172e82f72eb6cb7076651c1a5398204ca95c57",
       "total": 2048
     },
     "PF02170": {
@@ -868,7 +910,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -885,7 +927,7 @@
         6
       ],
       "name": "Large ribosomal RNA subunit accumulation protein YceD",
-      "sha256": "048b1d9072e3cd3beb2dc893b969c245b185716bd9950a3e346abcd009e0bd93",
+      "sha256": "afd7759f1ba511a7b707f8f40f0ad199b1098f30d5195a6333154bc847897f77",
       "total": 2048
     },
     "PF02751": {
@@ -897,7 +939,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -914,7 +956,7 @@
         14
       ],
       "name": "Transcription initiation factor IIA, gamma subunit",
-      "sha256": "1dbdbbcd87091568c54c931b3ff14c7beaa83ac950291d7e24249c22f7511765",
+      "sha256": "adcd5ce67e0fe31bccb2d3c38a6d7679508fd17d1a6ada3dd33c3c2a764a31b3",
       "total": 2048
     },
     "PF02771": {
@@ -1010,7 +1052,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1030,7 +1072,7 @@
         11
       ],
       "name": "Snf7",
-      "sha256": "7d6cd736e46deae074a36a7e3307dcc78bdad0e911afc5a34242caa4f4bb400e",
+      "sha256": "d80e4543c5f474de32da42983286755a898c2bb7890b44a2124bde665598cd98",
       "total": 2048
     },
     "PF03571": {
@@ -1767,7 +1809,7 @@
           8
         ],
         [
-          1025,
+          1539,
           0,
           0,
           0
@@ -1784,7 +1826,7 @@
         19
       ],
       "name": "Kelch repeats",
-      "sha256": "448ce6550361cfad2929da3f13fc8993a28c613426546e9b41d5394609eceb5d",
+      "sha256": "898bd2efde0512fbd6254674272a0acbf7f2d5b0dba105ffeb29cae483e28577",
       "total": 2048
     },
     "PF25599": {
@@ -1826,17 +1868,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      33792,
+      44034,
       8192,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "d9a169483ec6fe795485f0d5347588c5a426ab2a587877d2b849351cadce5a55",
+    "sha256": "b02a8775622168814efb5509b8496938e82a133b192bc3798e867611a6a026e0",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T23:17:50+00:00"
+  "updated": "2026-11-17T23:47:54+00:00"
 }
