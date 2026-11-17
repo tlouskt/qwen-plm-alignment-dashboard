@@ -1,15 +1,15 @@
 {
   "scope": "preliminary 58 completed families; remaining 38 not included",
   "source": "verified terminal 20261114 family_summary.csv and saved checkpoint alignment tables",
-  "dashboard_sha256": "8ecb69fb524487c2a9ecdda27fe7032bd2c910fffb55665463c8581a4ea57638",
+  "dashboard_sha256": "42826bf2cd788a13c931429785deabc3d4ab20d398d8450799aab11d63b8918e",
   "historical_snapshot": "historical-20261110.html",
   "note": "Website copy adds navigation; provenance.json describes historical November 10 snapshot, not current dashboard.",
   "name_likelihood_scope": "Verified 58-family Qwen3 recovery report, matched to the PPPL plan by family, protein ID and sequence hash",
-  "analysis": "H1 raw sequence pseudoperplexity versus mKNN with slopes and Spearman correlations; H2 saved name likelihood across sizes; H3 raw name perplexity versus raw mKNN at the selected checkpoint",
+  "analysis": "H1 sequence pseudoperplexity versus mKNN with OLS slopes and Spearman correlations; H2 saved name likelihood across sizes; H3 name perplexity versus mKNN with OLS fits on raw or ln(name perplexity)",
   "source_hashes": {
     "sequenceTableSha256": "74b91c14d23a1151bfc75d757c19dd2c320f569b3b2e7bf676b6c9bc36021eee",
     "nameTableSha256": "9bb5ebe0c2f098afccbcbb7e3ee17f20d975e32bce0bf53d58258f76cd239c3b",
     "matchedMemberships": 118784
   },
-  "display": "Raw linear axes by default; optional log ratio for H1. H3 uses one point per family and a checkpoint selector."
+  "display": "Raw linear axes by default. H1 offers a log ratio; H3 offers a log x-axis with complete raw-value tick labels. Fitted slope units follow the selected H3 scale."
 }
