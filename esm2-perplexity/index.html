@@ -35,15 +35,15 @@ html.has-expanded-plot{overflow:hidden}
 <h2 id="pooled-title">Matched sequences across three models</h2>
 <p>All three plots use the same distinct protein sequences with verified scores from ProtT5, ESM3, and the selected ESM-2 checkpoint. Scores use matched residues within the first 511 amino acids.</p>
 <div class="pool-controls"><label>ESM-2 checkpoint<select id="poolModel"></select></label></div>
-<p class="muted"><span class="match-key">●</span> Exact UniRef50 representative documented before checkpoint release (March 29, 2021). Other sequences use the panel color. <a href="uniref50-dates.tsv">Date evidence</a></p>
+<p class="muted"><span class="match-key">●</span> ProtT5 panels only · Exact full-sequence UniRef50 match documented before January 1, 2019. Training-set membership is unknown. <a href="uniref50-dates.tsv">Date evidence</a></p>
 <p id="pool-status" aria-live="polite">Loading verified sequence scores…</p>
 <div data-zoom-group="pooled"></div>
 <div class="pair">
-<div class="panel left"><h3 id="poolLeftTitle"></h3><p class="marker-count" id="poolLeftCount"></p><canvas id="poolLeft" aria-label="Pooled ESM-2 versus ESM3"></canvas></div>
+<div class="panel left"><h3 id="poolLeftTitle"></h3><canvas id="poolLeft" aria-label="Pooled ESM-2 versus ESM3"></canvas></div>
 <div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><p class="marker-count" id="poolRightCount"></p><canvas id="poolRight" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM3"></canvas></div>
 <div class="panel direct"><h3 id="poolDirectTitle"></h3><p class="marker-count" id="poolDirectCount"></p><canvas id="poolDirect" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM-2"></canvas></div>
 </div><output id="poolDetail"></output>
-<small>Counts use the full scored set for the selected checkpoint. Highlights require an exact sequence match to a dated UniRef50 representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. Sequence-level training exposure remains unknown. <a href="https://zenodo.org/records/4644188">ProtT5-XL-UniRef50 checkpoint release</a>. This page checks for newly published scores every two minutes.</small></section>
+<small>Counts use the full paired set for the selected checkpoint. Date evidence comes from an exact match to a dated representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. The 2019 date is a reference cutoff. The exact UniRef50 release used for training is unknown. This page checks for newly published scores every two minutes.</small></section>
 <section class="plot-group" id="checkpoint-distributions" aria-labelledby="ridge-heading">
 <h2 id="ridge-heading">Pseudoperplexity by ESM-2 checkpoint</h2>
 <figure class="panel ridge-panel">
@@ -59,14 +59,14 @@ html.has-expanded-plot{overflow:hidden}
 <div class="controls">
 <label>ESM-2 checkpoint<select id="model"></select></label><label>Protein family<select id="family"></select></label>
 <label>Scores to display<select id="stage"><option value="0">Preliminary family sample</option><option value="1">Full-family run</option><option value="2">Short control panel</option></select></label></div>
-<small>Family counts show confirmed matches out of the entire selected cohort.</small>
+<small>Purple marks pre-2019 UniRef50 matches in the ProtT5 panels. Counts use the entire selected cohort.</small>
 <p id="status" aria-live="polite">Loading verified coverage…</p>
 <button type="button" id="showVerified" hidden></button>
 <div data-zoom-group="family"></div>
-<div class="pair"><div class="panel left"><h3 id="leftTitle">ESM-2 vs ESM3</h3><canvas id="left" aria-label="ESM-2 versus ESM3 scatterplot"></canvas><div class="marker-count" id="leftLegend" aria-label="Documented UniRef50 matches out of the selected family" hidden></div></div>
-<div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><canvas id="right" aria-label="Matched ProtT5-XL-UniRef50 versus ESM3 scatterplot"></canvas><div class="marker-count" id="rasLegend" aria-label="Documented UniRef50 matches out of the selected family" hidden></div></div>
+<div class="pair"><div class="panel left"><h3 id="leftTitle">ESM-2 vs ESM3</h3><canvas id="left" aria-label="ESM-2 versus ESM3 scatterplot"></canvas></div>
+<div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><canvas id="right" aria-label="Matched ProtT5-XL-UniRef50 versus ESM3 scatterplot"></canvas><div class="marker-count" id="rasLegend" aria-label="Documented pre-2019 UniRef50 matches out of the selected family" hidden></div></div>
 <div class="panel direct"><h3 id="directTitle">ProtT5-XL-UniRef50 vs ESM-2</h3><canvas id="direct" aria-label="ESM-2 pseudoperplexity on the horizontal axis and ProtT5-XL-UniRef50 pseudoperplexity on the vertical axis"></canvas>
-<div class="marker-count" id="directLegend" aria-label="Documented UniRef50 matches out of the selected family" hidden></div></div></div><output id="detail"></output>
+<div class="marker-count" id="directLegend" aria-label="Documented pre-2019 UniRef50 matches out of the selected family" hidden></div></div></div><output id="detail"></output>
 <small>One point per protein. All three panels use the same linear scale. The dashed line marks equal scores. Hover or tap a point to see its protein ID and values.</small>
 </section>
 <section><h2>Protein counts by family and checkpoint</h2><p class="muted">Coverage includes cohorts with verified reference scores.</p><p id="caption" class="muted"></p><p id="complete"></p>
@@ -91,7 +91,7 @@ function table(){let f=el('search').value.toLowerCase().trim(),stage=+el('stage'
 for(const key of order){const a=snap.families[key];finished+=a.counts[1].filter(n=>n===a.total).length;if(!(key+' '+a.name).toLowerCase().includes(f))continue;hits++;let tr=body.insertRow(),th=document.createElement('th');th.scope='row';th.textContent=a.name+' · '+key;th.title=th.textContent;tr.append(th);a.counts[stage].forEach((n,i)=>{const b=document.createElement('button');b.textContent=fmt(n)+' / '+fmt(a.total);b.title=a.name+', '+models[i]+': '+b.textContent;b.onclick=()=>{el('model').value=i;el('family').value=key;update();el('status').scrollIntoView({block:'center'})};tr.insertCell().append(b)})}
 if(!hits){let cell=body.insertRow().insertCell();cell.colSpan=5;cell.textContent='No matching families.'}
 el('caption').textContent=(['Preliminary sample','Full-family run','Short control panel'][stage])+' · verified proteins / family total. Select a cell to see the matched plots.';el('complete').textContent='Full-family coverage: '+finished+' of '+(4*order.length)+' family–checkpoint comparisons complete.'}
-const matchColor='#ce99ff';
+const matchColor='#ce99ff',matchCutoff='2019-01-01';
 let dateEvidence=new Map(), pooledRows=[], poolVersion='';
 async function verifiedText(path,expected){
  const response=await fetch(path+'?v='+expected);
@@ -101,7 +101,7 @@ async function verifiedText(path,expected){
  if(hash!==expected)throw Error('Checksum mismatch: '+path);
  return new TextDecoder().decode(bytes);
 }
-function isMatch(protein){const date=dateEvidence.get(protein);return !!date&&date<'2021-03-29';}
+function isMatch(protein){const date=dateEvidence.get(protein);return !!date&&date<matchCutoff;}
 async function loadPooled(meta){
  const [scores,tsv]=await Promise.all([verifiedText('pooled-scores.json',meta.sha256),verifiedText('uniref50-dates.tsv',meta.dates_sha256)]);
  const [header,...records]=tsv.trimEnd().split(/\r?\n/), keys=header.split('\t'),dates=new Map();
@@ -117,7 +117,7 @@ async function loadPooled(meta){
 function showCount(id,count,total){
  const label=el(id);
  label.hidden=false;
- label.textContent=total ? fmt(count)+' / '+fmt(total)+' documented UniRef50 matches ('+(100*count/total).toFixed(2)+'%)' : 'Awaiting paired scores';
+ label.textContent=total ? fmt(count)+' / '+fmt(total)+' documented pre-2019 UniRef50 matches ('+(100*count/total).toFixed(2)+'%)' : 'Awaiting paired scores';
 }
 const zoomGroups={},chartBounds=new WeakMap();
 const rangeSpan=([min,max])=>max-min;
@@ -256,9 +256,10 @@ function plot(canvas,rows,xCol,yCol,labels,range,detailId){
   g.moveTo(x(equalLow),y(equalLow));g.lineTo(x(equalHigh),y(equalHigh));g.stroke();g.setLineDash([]);
  }
  const baseColor=canvas.closest('.panel').classList.contains('left')?'#83bffd':canvas.closest('.panel').classList.contains('right')?'#efaf74':'#79d9b1';
+ const includesProtT5=xCol===2||yCol===2;
  const groups=[[],[]],radius=rows.length>5000?1.6:2.7;
  const visible=rows.filter(row=>row[xCol]>=xLow&&row[xCol]<=xHigh&&row[yCol]>=yLow&&row[yCol]<=yHigh);
- for(const row of visible)groups[Number(isMatch(row[0]))].push(row);
+ for(const row of visible)groups[Number(includesProtT5&&isMatch(row[0]))].push(row);
  g.save();g.beginPath();g.rect(left,top,right-left,bottom-top);g.clip();
  groups.forEach((group,index)=>{
   g.fillStyle=index?matchColor:baseColor;
@@ -277,9 +278,9 @@ function plot(canvas,rows,xCol,yCol,labels,range,detailId){
   let best=null,dist=130;
   for(const row of visible){
    const d=(x(row[xCol])-px)**2+(y(row[yCol])-py)**2;
-   if(d<dist||(best&&d===dist&&isMatch(row[0])&&!isMatch(best[0]))){best=row;dist=d;}
+   if(d<dist||(best&&d===dist&&includesProtT5&&isMatch(row[0])&&!isMatch(best[0]))){best=row;dist=d;}
   }
-  el(detailId).textContent=best?best[0]+' · '+labels[xCol]+' '+best[xCol].toFixed(3)+' · '+labels[yCol]+' '+best[yCol].toFixed(3)+' · '+(isMatch(best[0])?'Pre-release UniRef50 match':'Pre-release match unconfirmed'):'';
+  el(detailId).textContent=best?best[0]+' · '+labels[xCol]+' '+best[xCol].toFixed(3)+' · '+labels[yCol]+' '+best[yCol].toFixed(3)+(includesProtT5&&isMatch(best[0])?' · Documented pre-2019 UniRef50 match':''):'';
  };
 }
 function render(){
@@ -288,8 +289,8 @@ function render(){
  const labels=['','ESM3','ProtT5-XL-UniRef50','ESM-2 '+models[+el('model').value].split(' · ')[1]];
  const entry=snap?.families[el('family').value];
  if(entry){
-  const count=entry.date_counts[0];
-  for(const id of ['leftLegend','rasLegend','directLegend'])showCount(id,count,entry.total);
+  const pre2019Count=entry.date_counts[1];
+  for(const id of ['rasLegend','directLegend'])showCount(id,pre2019Count,entry.total);
  }
  plot(el('left'),activeRows,1,3,labels,range,'detail');
  plot(el('right'),activeRows,1,2,labels,range,'detail');
@@ -309,7 +310,7 @@ function renderPooled(){
  el('pool-status').textContent=fmt(pairs.length)+' of '+fmt(pooledRows.length)+' reference-scored sequences also have ESM-2 '+size+' scores · '+meta.reference_families+' of '+snap.study_total+' cohorts with verified reference scores';
  const documented=pairs.reduce((n,r)=>n+Number(isMatch(r[0])),0);
  for(const [id,xc,yc] of [['poolLeft',1,column],['poolRight',1,2],['poolDirect',column,2]]){
-  showCount(id+'Count',documented,pairs.length);
+  if(yc===2)showCount(id+'Count',documented,pairs.length);
   plot(el(id),pairs,xc,yc,labels,range,'poolDetail');
  }
 }
