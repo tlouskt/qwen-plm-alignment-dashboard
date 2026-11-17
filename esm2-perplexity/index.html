@@ -8,16 +8,28 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .embedded main{padding:0 2px;max-width:none}.embedded nav,.embedded header>:not(#updated){display:none}.embedded header{margin:.25rem 0}.embedded section:last-of-type{margin-bottom:8px}
 .direct h3{color:#79d9b1}.plot-legend{display:flex;flex-wrap:wrap;gap:.2em 1em;color:var(--muted);font-size:13px}.plot-legend[hidden]{display:none}.plot-legend span::before{content:"";display:inline-block;width:.65em;height:.65em;margin-right:.35em;border-radius:50%;background:var(--point)}.plot-legend .matched::before{outline:1px solid #fff;outline-offset:1px}
 @media(min-width:1080px){.pair{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.family-scatter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,335px),1fr));gap:12px}
+.family-scatter-grid svg{display:block;width:100%;height:auto;font:13px system-ui,sans-serif;color:var(--text)}
+.family-scatter-grid circle:focus{outline:none;stroke:var(--text);stroke-width:2.5}
+.family-values{margin-top:.8rem}.family-values summary{cursor:pointer}.family-values th,.family-values td{text-align:left;padding:.3rem .65rem}
+.family-values td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
 <header><span class="kicker">Single-family Pfam · 58 cohorts</span><h1>ESM-2 pseudoperplexity by family</h1>
 <p>Each panel compares the same proteins across two models. Lower pseudoperplexity means the model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
+<section id="complete-family-comparison" aria-labelledby="comparison-heading">
+<h2 id="comparison-heading">Complete-family pseudoperplexity</h2>
+<p class="muted">One point per fully scored Pfam family. Scores are geometric means over the same proteins, using their first 511 residues. Below the diagonal, ESM-2 has lower pseudoperplexity.</p>
+<div id="family-comparison-charts" class="family-scatter-grid" aria-live="polite">Loading matched families…</div>
+<details class="family-values"><summary>Family values and protein counts</summary>
+<div class="tablebox"><table><thead><tr><th>Pfam family</th><th>Model</th><th>Proteins</th><th>ESM3</th><th>ESM-2</th></tr></thead><tbody id="family-comparison-table"></tbody></table></div>
+</details></section>
 <div class="controls">
 <label>ESM-2 checkpoint<select id="model"></select></label><label>Protein family<select id="family"></select></label>
 <label>Scores to display<select id="stage"><option value="0">Preliminary family sample</option><option value="1">Full-family run</option><option value="2">Short control panel</option></select></label></div>
 <small id="historyStatus" hidden></small>
 <p id="status" aria-live="polite">Loading verified coverage…</p>
 <button type="button" id="showVerified" hidden></button>
-<div class="pair"><div class="panel left"><h3 id="leftTitle">ESM-2 vs ESM3</h3><canvas id="left" aria-label="ESM-2 versus ESM3 scatterplot"></canvas></div>
+<div class="pair"><div class="panel left"><h3 id="leftTitle">ESM-2 vs ESM3</h3><canvas id="left" aria-label="ESM-2 versus ESM3 scatterplot"></canvas><div class="plot-legend" id="leftLegend" aria-label="UniRef50 dates among plotted proteins, out of all 2,048 Ras proteins" hidden></div></div>
 <div class="panel right"><h3>ProtT5 vs ESM3</h3><canvas id="right" aria-label="Matched ProtT5 versus ESM3 scatterplot"></canvas><div class="plot-legend" id="rasLegend" aria-label="UniRef50 dates among plotted proteins, out of all 2,048 Ras proteins" hidden></div></div>
 <div class="panel direct"><h3 id="directTitle">ProtT5 vs ESM-2</h3><canvas id="direct" aria-label="ESM-2 pseudoperplexity on the horizontal axis and ProtT5 pseudoperplexity on the vertical axis"></canvas>
 <div class="plot-legend" id="directLegend" aria-label="UniRef50 dates among plotted proteins, out of all 2,048 Ras proteins" hidden></div></div></div><output id="detail"></output>
@@ -30,6 +42,52 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <p><a href="prott5-esm3.png">All 58 families: ProtT5 vs ESM3</a> · <a href="short-control.pdf">16 short sequences: all four ESM-2 sizes and matched ProtT5 (PDF)</a> · <a href="coverage.json">Coverage data (JSON)</a></p></section></main>
 <script>
 const el=id=>document.getElementById(id), models=['t6 · 8M','t12 · 35M','t30 · 150M','t33 · 650M'], fmt=n=>n.toLocaleString('en-US');let snap,order=[],activeRows=[],seq=0,first=true,ready=false;const cache=new Map();
+function renderFamilyComparison(){
+ const charts=el('family-comparison-charts'), table=el('family-comparison-table');
+ const groups=snap.complete_pairs;
+ if(!groups){charts.textContent='Complete-family scores are being prepared.';return;}
+ charts.replaceChildren();table.replaceChildren();
+ const series=[['t6_8M','ESM-2 8M','var(--blue)'],['t12_35M','ESM-2 35M','var(--orange)']];
+ const all=Object.values(groups).flat().flatMap(row=>[row.esm3,row.esm2]);
+ const step=Math.max(.25,Math.ceil((Math.max(2,...all)-Math.min(2,...all))/2)/2);
+ const low=Math.max(1,Math.floor(Math.min(2,...all)/step)*step);
+ const high=Math.max(low+step,Math.ceil(Math.max(2,...all)/step)*step);
+ const left=64,right=375,top=15,bottom=326;
+ const x=v=>left+(v-low)*(right-left)/(high-low);
+ const y=v=>bottom-(v-low)*(bottom-top)/(high-low);
+ function add(parent,tag,attrs,label){
+  const node=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(const [key,value] of Object.entries(attrs))node.setAttribute(key,value);
+  if(label!==undefined)node.textContent=label;
+  parent.append(node);return node;
+ }
+ for(const [model,label,color] of series){
+  const rows=groups[model], panel=document.createElement('article');
+  panel.className='panel';charts.append(panel);
+  const heading=document.createElement('h3');heading.textContent=label+' vs ESM3';panel.append(heading);
+  const status=document.createElement('small');status.textContent=rows.length+' / '+snap.study_total+' complete pairs';panel.append(status);
+  const svg=add(panel,'svg',{viewBox:'0 0 400 381',role:'img','aria-label':label+' versus ESM3 family pseudoperplexity'});
+  for(let i=0;i<=4;i++){
+   const v=low+(high-low)*i/4;
+   add(svg,'path',{d:`M${x(v)} ${top}V${bottom} M${left} ${y(v)}H${right}`,stroke:'var(--rule)'});
+   const text=Number(v.toPrecision(3)).toString();
+   add(svg,'text',{x:x(v),y:bottom+18,'text-anchor':'middle',fill:'var(--muted)'},text);
+   add(svg,'text',{x:left-7,y:y(v)+4,'text-anchor':'end',fill:'var(--muted)'},text);
+  }
+  add(svg,'path',{d:`M${left} ${bottom}L${right} ${top}`,stroke:'var(--muted)','stroke-dasharray':'4 5'});
+  add(svg,'text',{x:(left+right)/2,y:370,'text-anchor':'middle',fill:'currentColor'},'ESM3 pseudoperplexity');
+  add(svg,'text',{transform:'translate(15 170) rotate(-90)','text-anchor':'middle',fill:'currentColor'},label+' pseudoperplexity');
+  if(!rows.length)add(svg,'text',{x:220,y:170,'text-anchor':'middle',fill:'currentColor'},'No complete families yet');
+  for(const row of rows){
+   const title=row.name+' · '+row.pfam+' · '+fmt(row.n)+' proteins · ESM3 '+row.esm3.toFixed(3)+' · '+label+' '+row.esm2.toFixed(3);
+   const point=add(svg,'circle',{cx:x(row.esm3),cy:y(row.esm2),r:5.5,fill:color,tabindex:'0','aria-label':title});
+   add(point,'title',{},title);
+   const record=table.insertRow();
+   for(const value of [row.name+' · '+row.pfam,label,fmt(row.n),row.esm3.toFixed(3),row.esm2.toFixed(3)])
+    record.insertCell().textContent=value;
+  }
+ }
+}
 for(const [i,label] of models.entries()){el('model').add(new Option(label,i));const th=document.createElement('th');th.scope='col';th.textContent=label;el('columns').append(th)}
 function table(){let f=el('search').value.toLowerCase().trim(),stage=+el('stage').value;const body=el('body');body.replaceChildren();let hits=0,finished=0;
 for(const key of order){const a=snap.families[key];finished+=a.counts[1].filter(n=>n===a.total).length;if(!(key+' '+a.name).toLowerCase().includes(f))continue;hits++;let tr=body.insertRow(),th=document.createElement('th');th.scope='row';th.textContent=a.name+' · '+key;th.title=th.textContent;tr.append(th);a.counts[stage].forEach((n,i)=>{const b=document.createElement('button');b.textContent=fmt(n)+' / '+fmt(a.total);b.title=a.name+', '+models[i]+': '+b.textContent;b.onclick=()=>{el('model').value=i;el('family').value=key;update();el('status').scrollIntoView({block:'center'})};tr.insertCell().append(b)})}
@@ -97,7 +155,7 @@ function render(){
  const labels=['','ESM3','ProtT5','ESM-2 '+models[+el('model').value].split(' · ')[1]];
  const history=el('family').value==='PF00071'?rasHistory:null;
  const rows=activeRows;
- el('rasLegend').hidden=el('directLegend').hidden=!(history&&rows.length);
+ el('leftLegend').hidden=el('rasLegend').hidden=el('directLegend').hidden=!(history&&rows.length);
  if(history&&rows.length){
   const counts=[0,0,0],total=history.size;
   for(const row of rows)counts[history.get(row[0])]++;
@@ -116,9 +174,11 @@ function render(){
    item.textContent=historyLabels[i]+' · '+fmt(counts[i])+' / '+fmt(total)+' ('+(100*counts[i]/total).toFixed(2)+'%)';
    legend.append(item);
   }
-  el('directLegend').replaceChildren(...Array.from(legend.children,item=>item.cloneNode(true)));
+  for(const id of ['leftLegend','directLegend']){
+   el(id).replaceChildren(...Array.from(legend.children,item=>item.cloneNode(true)));
+  }
  }
- plot(el('left'),rows,1,3,labels,'#83bffd',max);
+ plot(el('left'),rows,1,3,labels,'#83bffd',max,history);
  plot(el('right'),rows,1,2,labels,'#efaf74',max,history);
  plot(el('direct'),rows,3,2,labels,'#79d9b1',max,history);
  return rows.length;
@@ -161,7 +221,7 @@ history.replaceState(null,'','#'+state);}
 catch(e){if(id===seq){activeRows=[];render();el('status').textContent='Could not verify this family’s data. Refresh to retry.'}}}
 async function refresh(){try{const response=await fetch('coverage.json',{cache:'no-store'});if(!response.ok)throw Error('fetch');const next=await response.json();if(snap&&snap.updated===next.updated)return;snap=next;order=Object.keys(snap.families).sort((a,b)=>snap.families[a].name.localeCompare(snap.families[b].name));
 if(first){first=false;const p=new URLSearchParams(location.hash.slice(1));for(const key of order)el('family').add(new Option(snap.families[key].name+' · '+key,key));el('family').value=order.includes(p.get('family'))?p.get('family'):'PF00001';el('model').value=Math.max(0,snap.models.indexOf(p.get('model')));el('stage').value=p.has('stage')?Math.max(0,['preview','production','short'].indexOf(p.get('stage'))):Number(p.has('family')||p.has('model')?snap.families[el('family').value].counts[1][+el('model').value]>0:!!bestFullRun());if(el('stage').value==='1'&&!p.has('family')&&!p.has('model'))selectVerified()}
-el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});await update()}catch(e){el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
+el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});renderFamilyComparison();await update()}catch(e){el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
 for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready)render()},120)});refresh();setInterval(refresh,120000);
 if(window.parent!==window&&new URLSearchParams(location.search).get('embed')==='1'){document.documentElement.classList.add('embedded');const main=document.querySelector('main');const resize=()=>parent.postMessage({type:'esm2-height',height:main.getBoundingClientRect().height+16},'*');new ResizeObserver(resize).observe(main);resize()}
 </script></body></html>

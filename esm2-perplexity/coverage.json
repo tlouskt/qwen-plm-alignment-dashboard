@@ -1,4 +1,75 @@
 {
+  "complete_pairs": {
+    "t12_35M": [
+      {
+        "esm2": 15.527114878269245,
+        "esm3": 3.1075073359820666,
+        "n": 2048,
+        "name": "Ribosomal protein S7p/S5e",
+        "pfam": "PF00177"
+      },
+      {
+        "esm2": 12.661209353486434,
+        "esm3": 2.7315663014582725,
+        "n": 2048,
+        "name": "Ribosomal protein L6",
+        "pfam": "PF00347"
+      }
+    ],
+    "t6_8M": [
+      {
+        "esm2": 9.999034662175129,
+        "esm3": 7.67641324474936,
+        "n": 2048,
+        "name": "GPCR",
+        "pfam": "PF00001"
+      },
+      {
+        "esm2": 7.908293713204835,
+        "esm3": 3.644270129961139,
+        "n": 2048,
+        "name": "ABC transporter",
+        "pfam": "PF00005"
+      },
+      {
+        "esm2": 12.328918670303164,
+        "esm3": 7.705866026210705,
+        "n": 2048,
+        "name": "Homeodomain",
+        "pfam": "PF00046"
+      },
+      {
+        "esm2": 8.65391245293218,
+        "esm3": 4.778426085579044,
+        "n": 2048,
+        "name": "Ras family",
+        "pfam": "PF00071"
+      },
+      {
+        "esm2": 15.815193893858357,
+        "esm3": 3.1075073359820666,
+        "n": 2048,
+        "name": "Ribosomal protein S7p/S5e",
+        "pfam": "PF00177"
+      },
+      {
+        "esm2": 13.442006004648674,
+        "esm3": 2.7315663014582725,
+        "n": 2048,
+        "name": "Ribosomal protein L6",
+        "pfam": "PF00347"
+      },
+      {
+        "esm2": 10.72610500097753,
+        "esm3": 6.8699959258865,
+        "n": 2048,
+        "name": "Immunoglobulin V-set domain",
+        "pfam": "PF07686"
+      }
+    ]
+  },
+  "complete_pairs_reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
+  "esm3_reference_families": 58,
   "families": {
     "PF00001": {
       "counts": [
@@ -259,7 +330,7 @@
           8
         ],
         [
-          1024,
+          1536,
           0,
           0,
           0
@@ -272,7 +343,7 @@
         ]
       ],
       "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
-      "sha256": "621770daa5fbc7d49f43a3fd5e742fd8b95547676196eb7b63ff7a53b28dd27c",
+      "sha256": "1a97dd2c16cbfbb5b50cffd42ec32e02dabbe598ae63e3d164ece1dc6f037082",
       "total": 2048
     },
     "PF00347": {
@@ -1406,7 +1477,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1422,7 +1493,7 @@
         ]
       ],
       "name": "Kelch repeats",
-      "sha256": "06243f8ab9cf693a6335aa1f4720e6e1e8a93947e8aa8b9bc2a4a41b70773dab",
+      "sha256": "616fbba4f9e0fb86a6bea2fb59a2605f22618a7f80136e103e08f145ec633fc2",
       "total": 2048
     },
     "PF25599": {
@@ -1458,5 +1529,6 @@
     "t33_650M"
   ],
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
-  "updated": "2026-11-17T21:48:00+00:00"
+  "study_total": 3,
+  "updated": "2026-11-17T21:51:36+00:00"
 }
