@@ -6,17 +6,29 @@
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}main{max-width:1240px;margin:auto;padding:20px clamp(16px,3vw,40px) 64px}header,section{margin:1.6rem 0}a{color:var(--blue)}nav{display:flex;gap:1.5em;flex-wrap:wrap}h1{font-size:clamp(25px,3vw,39px);line-height:1.15;margin:.3em 0}h2{font-size:21px;margin:.5rem 0}h3{margin:.1rem 0 .5rem;font-size:17px}p{margin:.5rem 0}.muted,small{color:var(--muted)}.kicker{letter-spacing:.12em;font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase}
 .controls,.pair{display:grid;gap:12px}.controls{grid-template-columns:auto minmax(240px,2fr) auto;align-items:end;margin:18px 0}.pair{grid-template-columns:repeat(2,minmax(0,1fr))}label{font-weight:600;font-size:14px}select,input{display:block;margin-top:4px;width:100%;font:inherit;background:#212d3a;color:var(--text);border:1px solid #506377;border-radius:6px;padding:7px}.panel{background:var(--panel);border:1px solid var(--rule);border-radius:9px;padding:14px}.left h3{color:var(--blue)}.right h3{color:var(--orange)}canvas{width:100%;display:block;aspect-ratio:1.6}output{display:block;min-height:1.6em;color:var(--muted);font-variant-numeric:tabular-nums}#status{font-weight:600;margin:14px 0}.tablebox{max-height:435px;overflow:auto;border:1px solid var(--rule);border-radius:8px}table{width:100%;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}th,td{white-space:nowrap;text-align:right;padding:.45rem .8rem;border-bottom:1px solid var(--rule);background:var(--panel);font-size:14px}thead th{position:sticky;top:0;background:#23303c;z-index:1}th:first-child{text-align:left;position:sticky;left:0;max-width:340px;overflow:hidden;text-overflow:ellipsis}thead th:first-child{z-index:2}td button{color:var(--blue);font:inherit;background:transparent;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}button:focus-visible,a:focus-visible{outline:2px solid white}.search{max-width:340px;margin:12px 0}.updated{font-variant-numeric:tabular-nums}@media(max-width:780px){.controls,.pair{grid-template-columns:1fr}th:first-child{max-width:170px}}
 .embedded main{padding:0 2px;max-width:none}.embedded nav,.embedded header>:not(#updated){display:none}.embedded header{margin:.25rem 0}.embedded section:last-of-type{margin-bottom:8px}
+.direct h3{color:#79d9b1}.plot-legend{display:flex;flex-wrap:wrap;gap:.2em 1em;color:var(--muted);font-size:13px}.plot-legend[hidden]{display:none}.plot-legend span::before{content:"";display:inline-block;width:.65em;height:.65em;margin-right:.35em;border-radius:50%;background:var(--point)}.plot-legend .matched::before{outline:1px solid #fff;outline-offset:1px}
+@media(min-width:1080px){.pair{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
 <header><span class="kicker">Single-family Pfam · 58 cohorts</span><h1>ESM-2 pseudoperplexity by family</h1>
-<p>Does ESM-2 agree with ESM3 about which sequences are easier to predict? The ProtT5 panel uses the <strong>same proteins and ESM3 scores</strong> as the ESM-2 panel.</p><small id="updated" class="updated"></small></header>
+<p>Each panel compares the same proteins across two models. Lower pseudoperplexity means the model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
 <div class="controls">
 <label>ESM-2 checkpoint<select id="model"></select></label><label>Protein family<select id="family"></select></label>
 <label>Scores to display<select id="stage"><option value="0">Preliminary family sample</option><option value="1">Full-family run</option><option value="2">Short control panel</option></select></label></div>
 <p id="status" aria-live="polite">Loading verified coverage…</p>
 <button type="button" id="showVerified" hidden></button>
 <div class="pair"><div class="panel left"><h3 id="leftTitle">ESM-2 vs ESM3</h3><canvas id="left" aria-label="ESM-2 versus ESM3 scatterplot"></canvas></div>
-<div class="panel right"><h3>ProtT5 vs ESM3</h3><canvas id="right" aria-label="Matched ProtT5 versus ESM3 scatterplot"></canvas></div></div><output id="detail"></output>
-<small>One point per protein. Both axes show raw sequence pseudoperplexity, on the same linear scale in both panels. The dashed line marks equal scores. Hover or tap a point to see its protein ID and values.</small>
+<div class="panel right"><h3>ProtT5 vs ESM3</h3><canvas id="right" aria-label="Matched ProtT5 versus ESM3 scatterplot"></canvas></div>
+<div class="panel direct"><h3 id="directTitle">ProtT5 vs ESM-2</h3><canvas id="direct" aria-label="ESM-2 pseudoperplexity on the horizontal axis and ProtT5 pseudoperplexity on the vertical axis"></canvas>
+<div id="rasLegend" class="plot-legend" hidden><span class="matched" style="--point:#ffa75b">March 2018 UniRef50 match</span><span style="--point:#62bdcd">Other pre-2019 UniParc record</span><span style="--point:#9aa8b8">UniParc 2019 or later</span></div>
+<small id="historyStatus" hidden></small></div></div><output id="detail"></output>
+<small>One point per protein. All three panels use the same linear scale. The dashed line marks equal scores. Hover or tap a point to see its protein ID and values.</small>
+<section id="ras-history" hidden aria-labelledby="ras-history-title">
+<h2 id="ras-history-title">Ras sequence history before 2019</h2>
+<figure class="panel" style="margin:0"><a href="ras-pre2019.png"><img src="ras-pre2019.png" alt="ProtT5 versus ESM3 and ESM2-8M for all 2,048 Ras proteins. The 33 orange outlined points match March 2018 UniRef50 identifiers and sequence versions." loading="lazy" style="display:block;width:100%;height:auto"></a>
+<figcaption>Both panels show the full Ras cohort, independent of the sample and checkpoint controls above. UniParc records when an exact amino-acid sequence first appeared in its public source databases. The orange points also match identifiers in a published March 2018 UniRef50 subset and the corresponding sequence versions. The other points have unresolved historical UniRef50 membership.</figcaption></figure>
+<p>ProtT5-XL-UniRef50 continued training from a BFD checkpoint. Its weights were public by March 29, 2021. The exact training dates and membership of these proteins in its BFD and UniRef50 training files remain unverified.</p>
+<p><a href="ras-pre2019.tsv">Per-protein scores, dates and historical identifiers</a> · <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 identifier source</a> · <a href="https://www.uniprot.org/help/uniparc">UniParc records</a> · <a href="https://huggingface.co/Rostlab/prot_t5_xl_uniref50">Training data</a> · <a href="https://zenodo.org/records/4644188">Checkpoint release</a></p>
+</section>
 <section><h2>Protein counts by family and checkpoint</h2><p id="caption" class="muted"></p><p id="complete"></p>
 <label class="search">Find a family<input type="search" id="search" placeholder="Name or Pfam ID"></label>
 <div class="tablebox"><table><thead><tr id="columns"><th scope="col">Family</th></tr></thead><tbody id="body"></tbody></table></div></section>
@@ -29,14 +41,72 @@ for(const [i,label] of models.entries()){el('model').add(new Option(label,i));co
 function table(){let f=el('search').value.toLowerCase().trim(),stage=+el('stage').value;const body=el('body');body.replaceChildren();let hits=0,finished=0;
 for(const key of order){const a=snap.families[key];finished+=a.counts[1].filter(n=>n===a.total).length;if(!(key+' '+a.name).toLowerCase().includes(f))continue;hits++;let tr=body.insertRow(),th=document.createElement('th');th.scope='row';th.textContent=a.name+' · '+key;th.title=th.textContent;tr.append(th);a.counts[stage].forEach((n,i)=>{const b=document.createElement('button');b.textContent=fmt(n)+' / '+fmt(a.total);b.title=a.name+', '+models[i]+': '+b.textContent;b.onclick=()=>{el('model').value=i;el('family').value=key;update();el('status').scrollIntoView({block:'center'})};tr.insertCell().append(b)})}
 if(!hits){let cell=body.insertRow().insertCell();cell.colSpan=5;cell.textContent='No matching families.'}
-el('caption').textContent=(['Preliminary sample','Full-family run','Short control panel'][stage])+' · verified proteins / family total. Select a cell to see both matched plots.';el('complete').textContent='Full-family coverage: '+finished+' of '+(4*order.length)+' family–checkpoint comparisons complete.'}
-function plot(canvas,rows,col,title,color,limit){const box=canvas.getBoundingClientRect(),w=Math.max(270,box.width),h=w/1.6,ratio=window.devicePixelRatio||1;canvas.width=w*ratio;canvas.height=h*ratio;const g=canvas.getContext('2d');g.scale(ratio,ratio);
-const left=55,right=w-14,top=14,bottom=h-52,x=n=>left+(right-left)*n/limit,y=n=>bottom-(bottom-top)*n/limit;g.font='12px system-ui';for(let tick=0;tick<=4;tick++){const v=limit*tick/4;g.strokeStyle='#394551';g.beginPath();g.moveTo(x(v),top);g.lineTo(x(v),bottom);g.moveTo(left,y(v));g.lineTo(right,y(v));g.stroke();g.fillStyle='#d7e2eb';g.textAlign='center';g.fillText(+v.toPrecision(3),x(v),bottom+17);g.textAlign='right';g.fillText(+v.toPrecision(3),left-6,y(v)+4)}
-g.setLineDash([4,5]);g.strokeStyle='#94a1ae';g.beginPath();g.moveTo(left,bottom);g.lineTo(right,top);g.stroke();g.setLineDash([]);g.fillStyle=color;g.globalAlpha=rows.length>120?.53:1;for(const row of rows){g.beginPath();g.arc(x(row[1]),y(row[col]),rows.length>120?2.7:4,0,2*Math.PI);g.fill()}g.globalAlpha=1;
-g.fillStyle='#edf3fa';g.textAlign='center';g.fillText('ESM3 pseudoperplexity',(left+right)/2,h-6);g.save();g.translate(14,(bottom+top)/2);g.rotate(-Math.PI/2);g.fillText(title+' pseudoperplexity',0,0);g.restore();
-if(!rows.length){g.fillStyle='#d8e3ed';g.fillText('No verified scores yet',(left+right)/2,(top+bottom)/2)}
-canvas.onpointermove=canvas.onpointerdown=e=>{const rect=canvas.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;let best=null,dist=130;for(const row of rows){const d=(x(row[1])-px)**2+(y(row[col])-py)**2;if(d<dist){best=row;dist=d}}el('detail').textContent=best?best[0]+' · ESM3 '+best[1].toFixed(3)+' · ESM-2 '+models[+el('model').value]+' '+best[3].toFixed(3)+' · ProtT5 '+best[2].toFixed(3):''}}
-function render(){const max=Math.max(2,Math.ceil(activeRows.reduce((n,r)=>Math.max(n,r[1],r[2],r[3]),0)*1.035));plot(el('left'),activeRows,3,'ESM-2','#83bffd',max);plot(el('right'),activeRows,2,'ProtT5','#efaf74',max)}
+el('caption').textContent=(['Preliminary sample','Full-family run','Short control panel'][stage])+' · verified proteins / family total. Select a cell to see the matched plots.';el('complete').textContent='Full-family coverage: '+finished+' of '+(4*order.length)+' family–checkpoint comparisons complete.'}
+const historyColors=['#9aa8b8','#62bdcd','#ffa75b'];
+const historyLabels=['UniParc 2019 or later','Other pre-2019 UniParc record','March 2018 UniRef50 match'];
+let rasHistory, historyRequest;
+async function loadRasHistory(){
+ const response=await fetch('ras-pre2019.tsv');
+ if(!response.ok)throw Error('Ras history unavailable');
+ const bytes=await response.arrayBuffer();
+ const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
+ if(hash!=='b66b915187f041d45246357b235719d3af34ec7e3beb57d8da7f87b86e6b8f32')throw Error('Ras history checksum');
+ const [header,...records]=new TextDecoder().decode(bytes).trimEnd().split(/\r?\n/);
+ const fields=header.split('\t'),id=fields.indexOf('protein_id'),match=fields.indexOf('dated_header'),date=fields.indexOf('exact_uniparc_first_seen');
+ const history=new Map();
+ for(const record of records){
+  const cells=record.split('\t');
+  const group=cells[match]?2:Number(cells[date]<'2019-01-01');
+  history.set(cells[id],group);
+ }
+ if(history.size!==2048)throw Error('Incomplete Ras history');
+ return history;
+}
+function plot(canvas,rows,xCol,yCol,labels,color,limit,history){
+ const box=canvas.getBoundingClientRect(),w=Math.max(270,box.width),h=w/1.6,ratio=window.devicePixelRatio||1;
+ canvas.width=w*ratio;canvas.height=h*ratio;
+ const g=canvas.getContext('2d');g.scale(ratio,ratio);
+ const left=55,right=w-14,top=14,bottom=h-52,x=n=>left+(right-left)*n/limit,y=n=>bottom-(bottom-top)*n/limit;
+ g.font='12px system-ui';
+ for(let tick=0;tick<=4;tick++){
+  const v=limit*tick/4;
+  g.strokeStyle='#394551';g.beginPath();g.moveTo(x(v),top);g.lineTo(x(v),bottom);g.moveTo(left,y(v));g.lineTo(right,y(v));g.stroke();
+  g.fillStyle='#d7e2eb';g.textAlign='center';g.fillText(+v.toPrecision(3),x(v),bottom+17);g.textAlign='right';g.fillText(+v.toPrecision(3),left-6,y(v)+4);
+ }
+ g.setLineDash([4,5]);g.strokeStyle='#94a1ae';g.beginPath();g.moveTo(left,bottom);g.lineTo(right,top);g.stroke();g.setLineDash([]);
+ const groups=history?[[],[],[]]:[rows];
+ if(history)for(const row of rows)groups[history.get(row[0])].push(row);
+ groups.forEach((group,index)=>{
+  const highlight=history&&index===2;
+  g.fillStyle=history?historyColors[index]:color;
+  g.globalAlpha=highlight||rows.length<=120?1:.6;
+  for(const row of group){
+   g.beginPath();g.arc(x(row[xCol]),y(row[yCol]),highlight||rows.length<=120?4:2.7,0,2*Math.PI);g.fill();
+   if(highlight){g.strokeStyle='#fff4da';g.lineWidth=.9;g.stroke();}
+  }
+ });
+ g.globalAlpha=1;g.fillStyle='#edf3fa';g.textAlign='center';g.fillText(labels[xCol]+' pseudoperplexity',(left+right)/2,h-6);
+ g.save();g.translate(14,(bottom+top)/2);g.rotate(-Math.PI/2);g.fillText(labels[yCol]+' pseudoperplexity',0,0);g.restore();
+ if(!rows.length){g.fillStyle='#d8e3ed';g.fillText('No verified scores yet',(left+right)/2,(top+bottom)/2);}
+ canvas.onpointermove=canvas.onpointerdown=e=>{
+  const rect=canvas.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;
+  let best=null,dist=130;
+  for(const row of rows){
+   const d=(x(row[xCol])-px)**2+(y(row[yCol])-py)**2;
+   if(d<dist){best=row;dist=d;}
+  }
+  el('detail').textContent=best?best[0]+' · ESM3 '+best[1].toFixed(3)+' · '+labels[3]+' '+best[3].toFixed(3)+' · ProtT5 '+best[2].toFixed(3)+(history?' · '+historyLabels[history.get(best[0])]:''):'';
+ };
+}
+function render(){
+ const max=Math.max(2,Math.ceil(activeRows.reduce((n,r)=>Math.max(n,r[1],r[2],r[3]),0)*1.035));
+ const labels=['','ESM3','ProtT5','ESM-2 '+models[+el('model').value].split(' · ')[1]];
+ const history=el('family').value==='PF00071'?rasHistory:null;
+ el('rasLegend').hidden=!(history&&activeRows.length);
+ plot(el('left'),activeRows,1,3,labels,'#83bffd',max);
+ plot(el('right'),activeRows,1,2,labels,'#efaf74',max);
+ plot(el('direct'),activeRows,3,2,labels,'#79d9b1',max,history);
+}
 function bestFullRun(){
  const family=el('family').value,model=+el('model').value;let best=null;
  for(const key of order){const entry=snap.families[key];entry.counts[1].forEach((n,i)=>{
@@ -53,8 +123,23 @@ function fullRunOptions(){
  if(next)button.textContent='Show '+snap.families[next.key].name+' · ESM-2 '+models[next.i]+' ('+fmt(next.n)+' verified)';
 }
 async function update(){if(!snap)return;const id=++seq,key=el('family').value,m=+el('model').value,s=+el('stage').value,entry=snap.families[key];el('detail').textContent='';el('leftTitle').textContent='ESM-2 '+models[m]+' vs ESM3';fullRunOptions();table();
+el('directTitle').textContent='ProtT5 vs ESM-2 '+models[m].split(' · ')[1];
+el('ras-history').hidden=key!=='PF00071';
+el('historyStatus').hidden=true;
+el('rasLegend').hidden=true;
+activeRows=[];render();el('status').textContent='Loading verified scores…';
 try{let rows=cache.get(entry.sha256);if(!rows){const response=await fetch('data/'+key+'.json?v='+entry.sha256);if(!response.ok)throw Error('fetch');const bytes=await response.arrayBuffer();const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)), n=>n.toString(16).padStart(2,'0')).join('');if(hash!==entry.sha256)throw Error('hash');rows=JSON.parse(new TextDecoder().decode(bytes));cache.set(entry.sha256,rows)}
-if(id!==seq)return;activeRows=rows.filter(r=>r[s+3][m]!=null).map(r=>[r[0],r[1],r[2],r[s+3][m]]);if(activeRows.length!==entry.counts[s][m])throw Error('count');render();ready=true;el('status').textContent=entry.name+' · '+fmt(activeRows.length)+' of '+fmt(entry.total)+' proteins shown in each panel · '+(['preliminary sample','full-family run','short control panel'][s]);history.replaceState(null,'','#'+new URLSearchParams({family:key,model:snap.models[m],stage:['preview','production','short'][s]}))}
+if(id!==seq)return;activeRows=rows.filter(r=>r[s+3][m]!=null).map(r=>[r[0],r[1],r[2],r[s+3][m]]);if(activeRows.length!==entry.counts[s][m])throw Error('count');
+if(key==='PF00071'&&activeRows.length&&!rasHistory){
+ try{
+  historyRequest??=loadRasHistory();rasHistory=await historyRequest;
+ }catch(error){
+  historyRequest=null;
+  if(id===seq){el('historyStatus').textContent='Sequence-history colors unavailable. All points use green.';el('historyStatus').hidden=false;}
+ }
+ if(id!==seq)return;
+}
+render();ready=true;el('status').textContent=entry.name+' · '+fmt(activeRows.length)+' of '+fmt(entry.total)+' proteins shown in each panel · '+(['preliminary sample','full-family run','short control panel'][s]);history.replaceState(null,'','#'+new URLSearchParams({family:key,model:snap.models[m],stage:['preview','production','short'][s]}))}
 catch(e){if(id===seq){activeRows=[];render();el('status').textContent='Could not verify this family’s data. Refresh to retry.'}}}
 async function refresh(){try{const response=await fetch('coverage.json',{cache:'no-store'});if(!response.ok)throw Error('fetch');const next=await response.json();if(snap&&snap.updated===next.updated)return;snap=next;order=Object.keys(snap.families).sort((a,b)=>snap.families[a].name.localeCompare(snap.families[b].name));
 if(first){first=false;const p=new URLSearchParams(location.hash.slice(1));for(const key of order)el('family').add(new Option(snap.families[key].name+' · '+key,key));el('family').value=order.includes(p.get('family'))?p.get('family'):'PF00001';el('model').value=Math.max(0,snap.models.indexOf(p.get('model')));el('stage').value=p.has('stage')?Math.max(0,['preview','production','short'].indexOf(p.get('stage'))):Number(p.has('family')||p.has('model')?snap.families[el('family').value].counts[1][+el('model').value]>0:!!bestFullRun());if(el('stage').value==='1'&&!p.has('family')&&!p.has('model'))selectVerified()}
