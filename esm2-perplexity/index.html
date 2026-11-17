@@ -14,6 +14,11 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .ridge-panel canvas{height:350px;aspect-ratio:auto}
 .ridge-key{display:inline-flex;align-items:center;gap:.4rem;margin-left:.8rem;color:var(--muted);font-size:13px}
 .ridge-key::before{content:"";width:24px;border-top:2px dotted #edf3fa}
+.plot-zoom{margin:.55rem 0;color:var(--muted);font-size:13px}
+.plot-zoom summary{cursor:pointer;width:max-content;color:var(--blue)}
+.plot-zoom form{display:flex;align-items:end;flex-wrap:wrap;gap:.45rem .65rem;margin-top:.5rem}
+.plot-zoom input{width:7rem}.plot-zoom button{font:inherit;padding:.4rem .65rem;border:1px solid var(--rule);border-radius:5px;background:#23303c;color:var(--text);cursor:pointer}
+.plot-zoom output{flex-basis:100%;min-height:0}
 </style></head><body><main><nav><a href="../">← All reports</a><a href="../2026-11-10-protein-alignment/">Pseudoperplexity and alignment</a></nav>
 <header><span class="kicker">Single-family Pfam</span><h1>Protein sequence pseudoperplexity</h1>
 <p>Lower pseudoperplexity means a model assigned higher probability to the observed residues.</p><small id="updated" class="updated"></small></header>
@@ -23,17 +28,20 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <div class="pool-controls"><label>ESM-2 checkpoint<select id="poolModel"></select></label></div>
 <p class="muted"><span class="match-key">●</span> Exact UniRef50 representative documented before checkpoint release (March 29, 2021). Other sequences use the panel color. <a href="uniref50-dates.tsv">Date evidence</a></p>
 <p id="pool-status" aria-live="polite">Loading verified sequence scores…</p>
+<div data-zoom-group="pooled"></div>
 <div class="pair">
 <div class="panel left"><h3 id="poolLeftTitle"></h3><p class="marker-count" id="poolLeftCount"></p><canvas id="poolLeft" aria-label="Pooled ESM-2 versus ESM3"></canvas></div>
 <div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><p class="marker-count" id="poolRightCount"></p><canvas id="poolRight" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM3"></canvas></div>
 <div class="panel direct"><h3 id="poolDirectTitle"></h3><p class="marker-count" id="poolDirectCount"></p><canvas id="poolDirect" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM-2"></canvas></div>
 </div><output id="poolDetail"></output>
-<small>Counts beside each plot show matches / sequences plotted. Highlights require an exact sequence match to a dated UniRef50 representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. Sequence-level training exposure remains unknown. <a href="https://zenodo.org/records/4644188">ProtT5-XL-UniRef50 checkpoint release</a>. This page checks for newly published scores every two minutes.</small></section>
+<small>Counts use the full scored set for the selected checkpoint. Highlights require an exact sequence match to a dated UniRef50 representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. Sequence-level training exposure remains unknown. <a href="https://zenodo.org/records/4644188">ProtT5-XL-UniRef50 checkpoint release</a>. This page checks for newly published scores every two minutes.</small></section>
 <section id="checkpoint-distributions" aria-labelledby="ridge-heading">
 <h2 id="ridge-heading">Pseudoperplexity by ESM-2 checkpoint</h2>
 <figure class="panel ridge-panel">
-<figcaption><small>Density of verified sequence scores. Coverage can differ by checkpoint.</small><span class="ridge-key">Median score</span></figcaption>
+<figcaption><small id="ridge-coverage">Loading shared sequence coverage…</small><span class="ridge-key">Median score</span></figcaption>
+<div data-zoom-group="ridge"></div>
 <canvas id="checkpoint-ridges" role="img" aria-label="Loading ESM-2 score distributions"></canvas>
+<small id="ridge-medians"></small>
 </figure>
 </section>
 <h2 id="family-inspect">Inspect a family</h2>
@@ -43,6 +51,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <small>Family counts show confirmed matches out of the entire selected cohort.</small>
 <p id="status" aria-live="polite">Loading verified coverage…</p>
 <button type="button" id="showVerified" hidden></button>
+<div data-zoom-group="family"></div>
 <div class="pair"><div class="panel left"><h3 id="leftTitle">ESM-2 vs ESM3</h3><canvas id="left" aria-label="ESM-2 versus ESM3 scatterplot"></canvas><div class="marker-count" id="leftLegend" aria-label="Documented UniRef50 matches out of the selected family" hidden></div></div>
 <div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><canvas id="right" aria-label="Matched ProtT5-XL-UniRef50 versus ESM3 scatterplot"></canvas><div class="marker-count" id="rasLegend" aria-label="Documented UniRef50 matches out of the selected family" hidden></div></div>
 <div class="panel direct"><h3 id="directTitle">ProtT5-XL-UniRef50 vs ESM-2</h3><canvas id="direct" aria-label="ESM-2 pseudoperplexity on the horizontal axis and ProtT5-XL-UniRef50 pseudoperplexity on the vertical axis"></canvas>
@@ -54,6 +63,15 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 <section><h2>How to read these results</h2><p>Each model scores the same canonical residues in the first 511 amino acids, or the entire sequence if shorter. Lower pseudoperplexity means that the model assigned higher probability to the observed residues.</p>
 <p>The family preview uses eight selected sequence inputs per family. Repeated inputs can map to additional proteins. A full-family result requires verified scores for every protein in the frozen cohort.</p>
 <p><a href="prott5-esm3.png">All 58 families: ProtT5-XL-UniRef50 vs ESM3</a> · <a href="short-control.pdf">16 short sequences: all four ESM-2 sizes and matched ProtT5-XL-UniRef50 (PDF)</a> · <a href="coverage.json">Coverage data (JSON)</a></p></section></main>
+<template id="plot-zoom-template">
+<details class="plot-zoom"><summary>Zoom</summary>
+<form>
+<label>Minimum PPPL<input name="min" type="number" min="0" step="any" required></label>
+<label>Maximum PPPL<input name="max" type="number" min="0" step="any" required></label>
+<button type="submit">Apply zoom</button><button type="reset">Reset zoom</button>
+<output aria-live="polite"></output>
+</form></details>
+</template>
 <script>
 const el=id=>document.getElementById(id), models=['t6 · 8M','t12 · 35M','t30 · 150M','t33 · 650M'], fmt=n=>n.toLocaleString('en-US');let snap,order=[],activeRows=[],seq=0,first=true,ready=false;const cache=new Map();
 for(const [i,label] of models.entries()){el('model').add(new Option(label,i));el('poolModel').add(new Option(label,i));const th=document.createElement('th');th.scope='col';th.textContent=label;el('columns').append(th)}
@@ -89,21 +107,69 @@ function showCount(id,count,total){
  label.hidden=false;
  label.textContent=total ? fmt(count)+' / '+fmt(total)+' documented UniRef50 matches ('+(100*count/total).toFixed(2)+'%)' : 'Awaiting paired scores';
 }
-function plot(canvas,rows,xCol,yCol,labels,limit,detailId){
+const zoomGroups={};
+function plotRange(group,fullLow,fullHigh){
+ const zoom=zoomGroups[group];
+ zoom.domain=[fullLow,fullHigh];
+ const [requestedLow,requestedHigh]=zoom.requested??zoom.domain;
+ const low=Math.max(fullLow,requestedLow),high=Math.min(fullHigh,requestedHigh);
+ const visible=high>low?[low,high]:zoom.domain;
+ const lo=+visible[0].toPrecision(6),hi=+visible[1].toPrecision(6);
+ zoom.form.elements.min.placeholder=lo;
+ zoom.form.elements.max.placeholder=hi;
+ zoom.form.querySelector('output').textContent='Visible PPPL range '+lo+'–'+hi;
+ return visible;
+}
+function bindPlotZoom(){
+ for(const panel of document.querySelectorAll('[data-zoom-group]')){
+  const group=panel.dataset.zoomGroup;
+  panel.append(el('plot-zoom-template').content.cloneNode(true));
+  const form=panel.querySelector('form'),low=form.elements.min,high=form.elements.max;
+  const redraw={pooled:renderPooled,family:render,ridge:renderCheckpointRidges}[group];
+  const name={pooled:'Pooled scatter plots',family:'Family scatter plots',ridge:'Checkpoint ridgeline'}[group];
+  form.setAttribute('aria-label',name+' zoom');
+  panel.querySelector('summary').setAttribute('aria-label','Zoom '+name.toLowerCase());
+  if(group==='ridge')low.min=high.min='1';
+  const zoom=zoomGroups[group]={form,domain:null,requested:null};
+  form.addEventListener('input',()=>high.setCustomValidity(''));
+  form.onsubmit=event=>{
+   event.preventDefault();
+   if(!zoom.domain)return;
+   const min=low.valueAsNumber,max=high.valueAsNumber,[fullLow,fullHigh]=zoom.domain;
+   if(!(min<max&&min<fullHigh&&max>fullLow)){
+    high.setCustomValidity('Choose an increasing range that overlaps the plot.');
+    high.reportValidity();
+    return;
+   }
+   zoom.requested=[min,max];
+   redraw();
+  };
+  form.onreset=()=>{
+   high.setCustomValidity('');
+   zoom.requested=null;
+   if(zoom.domain)redraw();
+  };
+ }
+}
+function plot(canvas,rows,xCol,yCol,labels,range,detailId){
  const box=canvas.getBoundingClientRect(),w=Math.max(270,box.width),h=w/1.6,ratio=window.devicePixelRatio||1;
  canvas.width=w*ratio;canvas.height=h*ratio;
  const g=canvas.getContext('2d');g.scale(ratio,ratio);
- const left=55,right=w-14,top=14,bottom=h-52,x=n=>left+(right-left)*n/limit,y=n=>bottom-(bottom-top)*n/limit;
+ const [low,high]=range;
+ const left=55,right=w-14,top=14,bottom=h-52;
+ const x=n=>left+(right-left)*(n-low)/(high-low),y=n=>bottom-(bottom-top)*(n-low)/(high-low);
  g.font='12px system-ui';
  for(let tick=0;tick<=4;tick++){
-  const v=limit*tick/4;
+  const v=low+(high-low)*tick/4;
   g.strokeStyle='#394551';g.beginPath();g.moveTo(x(v),top);g.lineTo(x(v),bottom);g.moveTo(left,y(v));g.lineTo(right,y(v));g.stroke();
-  g.fillStyle='#d7e2eb';g.textAlign='center';g.fillText(+v.toPrecision(3),x(v),bottom+17);g.textAlign='right';g.fillText(+v.toPrecision(3),left-6,y(v)+4);
+  g.fillStyle='#d7e2eb';g.textAlign='center';g.fillText(+v.toPrecision(5),x(v),bottom+17);g.textAlign='right';g.fillText(+v.toPrecision(5),left-6,y(v)+4);
  }
  g.setLineDash([4,5]);g.strokeStyle='#94a1ae';g.beginPath();g.moveTo(left,bottom);g.lineTo(right,top);g.stroke();g.setLineDash([]);
  const baseColor=canvas.closest('.panel').classList.contains('left')?'#83bffd':canvas.closest('.panel').classList.contains('right')?'#efaf74':'#79d9b1';
  const groups=[[],[]],radius=rows.length>5000?1.6:2.7;
- for(const row of rows)groups[Number(isMatch(row[0]))].push(row);
+ const visible=rows.filter(row=>row[xCol]>=low&&row[xCol]<=high&&row[yCol]>=low&&row[yCol]<=high);
+ for(const row of visible)groups[Number(isMatch(row[0]))].push(row);
+ g.save();g.beginPath();g.rect(left,top,right-left,bottom-top);g.clip();
  groups.forEach((group,index)=>{
   g.fillStyle=index?matchColor:baseColor;
   g.globalAlpha=index ? 1 : (rows.length>5000 ? .24 : .55);
@@ -111,13 +177,14 @@ function plot(canvas,rows,xCol,yCol,labels,limit,detailId){
    g.beginPath();g.arc(x(row[xCol]),y(row[yCol]),radius,0,2*Math.PI);g.fill();
   }
  });
+ g.restore();
  g.globalAlpha=1;g.fillStyle='#edf3fa';g.textAlign='center';g.fillText(labels[xCol]+' pseudoperplexity',(left+right)/2,h-6);
  g.save();g.translate(14,(bottom+top)/2);g.rotate(-Math.PI/2);g.fillText(labels[yCol]+' pseudoperplexity',0,0);g.restore();
- if(!rows.length){g.fillStyle='#d8e3ed';g.fillText('No verified scores yet',(left+right)/2,(top+bottom)/2);}
+ if(!visible.length){g.fillStyle='#d8e3ed';g.fillText(rows.length?'No points in this range':'No verified scores yet',(left+right)/2,(top+bottom)/2);}
  canvas.onpointermove=canvas.onpointerdown=e=>{
   const rect=canvas.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;
   let best=null,dist=130;
-  for(const row of rows){
+  for(const row of visible){
    const d=(x(row[xCol])-px)**2+(y(row[yCol])-py)**2;
    if(d<dist||(best&&d===dist&&isMatch(row[0])&&!isMatch(best[0]))){best=row;dist=d;}
   }
@@ -126,15 +193,16 @@ function plot(canvas,rows,xCol,yCol,labels,limit,detailId){
 }
 function render(){
  const max=Math.max(2,Math.ceil(activeRows.reduce((n,r)=>Math.max(n,r[1],r[2],r[3]),0)*1.035));
+ const range=plotRange('family',0,max);
  const labels=['','ESM3','ProtT5-XL-UniRef50','ESM-2 '+models[+el('model').value].split(' · ')[1]];
  const entry=snap?.families[el('family').value];
  if(entry){
   const count=entry.date_counts[0];
   for(const id of ['leftLegend','rasLegend','directLegend'])showCount(id,count,entry.total);
  }
- plot(el('left'),activeRows,1,3,labels,max,'detail');
- plot(el('right'),activeRows,1,2,labels,max,'detail');
- plot(el('direct'),activeRows,3,2,labels,max,'detail');
+ plot(el('left'),activeRows,1,3,labels,range,'detail');
+ plot(el('right'),activeRows,1,2,labels,range,'detail');
+ plot(el('direct'),activeRows,3,2,labels,range,'detail');
  return activeRows.length;
 }
 function renderPooled(){
@@ -144,31 +212,46 @@ function renderPooled(){
  const pairs=pooledRows.filter(r=>r[column]!==null),meta=snap.pooled;
  if(pairs.length!==meta.esm2_counts[index])throw Error('Pooled score count');
  const max=Math.max(2,Math.ceil(pairs.reduce((n,r)=>Math.max(n,r[1],r[2],r[column]),0)*1.035));
+ const range=plotRange('pooled',0,max);
  el('poolLeftTitle').textContent='ESM-2 '+size+' vs ESM3';
  el('poolDirectTitle').textContent='ProtT5-XL-UniRef50 vs ESM-2 '+size;
  el('pool-status').textContent=fmt(pairs.length)+' of '+fmt(pooledRows.length)+' reference-scored sequences also have ESM-2 '+size+' scores · '+meta.reference_families+' of '+snap.study_total+' cohorts with verified reference scores';
  const documented=pairs.reduce((n,r)=>n+Number(isMatch(r[0])),0);
  for(const [id,xc,yc] of [['poolLeft',1,column],['poolRight',1,2],['poolDirect',column,2]]){
   showCount(id+'Count',documented,pairs.length);
-  plot(el(id),pairs,xc,yc,labels,max,'poolDetail');
+  plot(el(id),pairs,xc,yc,labels,range,'poolDetail');
  }
 }
 const ridgeColors=['#80d5bb','#b1d481','#68b9ac','#d0d993'];
 let checkpointRidges;
 
 function prepareCheckpointRidges(){
- const series=models.map((label,index)=>{
-  const scores=pooledRows.map(row=>row[index+3]).filter(value=>value!==null).sort((a,b)=>a-b);
-  if(scores.length!==snap.pooled.esm2_counts[index]||scores.some(value=>!Number.isFinite(value)||value<1)){
-   throw Error('Invalid checkpoint score distribution');
+ const counts=snap.pooled.esm2_counts;
+ const sizes=models.map(label=>label.split(' · ')[1]);
+ const scored=sizes.map((_,i)=>i).filter(i=>counts[i]>0);
+ const observed=Array(sizes.length).fill(0);
+ const shared=pooledRows.filter(row=>{
+  for(let i=0;i<sizes.length;i++){
+   const score=row[i+3];
+   if(score===null)continue;
+   if(!Number.isFinite(score)||score<1)throw Error('Invalid checkpoint score');
+   observed[i]++;
   }
-  return {label:label.split(' · ')[1],scores,color:ridgeColors[index]};
- }).reverse();
+  return scored.length>0&&scored.every(i=>row[i+3]!==null);
+ });
+ if(observed.some((count,i)=>count!==counts[i]))throw Error('Checkpoint score count');
+ const series=sizes.map((label,i)=>({
+  label,available:counts[i],color:ridgeColors[i],
+  scores:counts[i]?shared.map(row=>row[i+3]).sort((a,b)=>a-b):[]
+ })).reverse();
+ el('ridge-coverage').textContent=scored.length?
+  fmt(shared.length)+' shared sequences across '+new Intl.ListFormat('en-US').format(scored.map(i=>sizes[i])):
+  'Awaiting verified checkpoint scores';
  const populated=series.filter(row=>row.scores.length);
- // Smooth a normalized histogram on the log scale with the same bandwidth for every checkpoint.
- const low=Math.max(0,Math.log(Math.min(1.5,...populated.map(row=>row.scores[0])))-.16);
- const high=Math.log(Math.max(20,...populated.map(row=>row.scores[row.scores.length-1])))+.16;
- const samples=145,step=(high-low)/(samples-1),bandwidth=.10;
+ // Smooth a normalized histogram in raw PPPL units using a shared bandwidth.
+ const low=Math.max(1,Math.floor(Math.min(2,...populated.map(row=>row.scores[0]))-1.5));
+ const high=Math.ceil(Math.max(20,...populated.map(row=>row.scores[row.scores.length-1]))+1.5);
+ const samples=145,step=(high-low)/(samples-1),bandwidth=.5;
  const kernel=Array.from({length:Math.ceil(3*bandwidth/step)+1},(_,i)=>Math.exp(-.5*(i*step/bandwidth)**2));
  for(const row of series){
   row.n=row.scores.length;
@@ -177,7 +260,7 @@ function prepareCheckpointRidges(){
   row.median=row.n%2?row.scores[middle]:(row.scores[middle-1]+row.scores[middle])/2;
   const bins=Array(samples).fill(0);
   for(const score of row.scores){
-   const bin=Math.round((Math.log(score)-low)/step);
+   const bin=Math.round((score-low)/step);
    bins[bin]+=1/row.n;
   }
   row.density=bins.map((_,i)=>{
@@ -187,6 +270,8 @@ function prepareCheckpointRidges(){
   });
  }
  const peak=Math.max(1e-12,...populated.map(row=>Math.max(...row.density)));
+ el('ridge-medians').textContent=populated.length?
+  'Median PPPL · '+[...populated].reverse().map(row=>row.label+' '+row.median.toFixed(2)).join(' · '):'';
  checkpointRidges={series,low,high,step,peak};
 }
 
@@ -202,16 +287,15 @@ function renderCheckpointRidges(){
  const rule=styles.getPropertyValue('--rule'), ink=styles.getPropertyValue('--text'), muted=styles.getPropertyValue('--muted');
  const left=82,right=w-18,top=12,bottom=h-46;
  const rowHeight=(bottom-top)/series.length,ridgeHeight=rowHeight*.81;
- const x=value=>left+(right-left)*(value-low)/(high-low);
+ const [min,max]=plotRange('ridge',low,high);
+ const x=value=>left+(right-left)*(value-min)/(max-min);
  const baselines=series.map((_,i)=>top+(i+1)*rowHeight);
  const medians=[];
  g.font='12px system-ui';g.textAlign='center';
- let previous=-Infinity;
- for(const tick of [1,1.5,2,3,5,8,12,20,30,50,80,120,200,300,500,800,1200,2000]){
-  const log=Math.log(tick),px=x(log);
-  if(log<low||log>high||px-previous<35)continue;
-  previous=px;g.strokeStyle=rule;g.beginPath();g.moveTo(px,top);g.lineTo(px,bottom);g.stroke();
-  g.fillStyle=muted;g.fillText(tick,px,bottom+17);
+ for(let i=0;i<=4;i++){
+  const tick=min+(max-min)*i/4,px=x(tick);
+  g.strokeStyle=rule;g.beginPath();g.moveTo(px,top);g.lineTo(px,bottom);g.stroke();
+  g.fillStyle=muted;g.fillText(+tick.toPrecision(5),px,bottom+17);
  }
  for(const [i,row] of series.entries()){
   const y=baselines[i];
@@ -219,15 +303,18 @@ function renderCheckpointRidges(){
   g.textAlign='right';g.font='600 13px system-ui';g.fillStyle=ink;g.fillText(row.label,left-12,y-5);
   g.font='11px system-ui';g.fillStyle=muted;g.fillText('n = '+fmt(row.n),left-12,y+10);
   if(!row.n){
-   g.textAlign='left';g.fillText('Awaiting verified scores',left+12,y-11);
+   g.textAlign='left';g.fillText(row.available?'No shared sequences':'Awaiting verified scores',left+12,y-11);
    medians.push(null);continue;
   }
-  g.beginPath();g.moveTo(left,y);
+  g.save();g.beginPath();g.rect(left,top,right-left,bottom-top+5);g.clip();
+  g.beginPath();g.moveTo(x(low),y);
   row.density.forEach((value,j)=>g.lineTo(x(low+j*step),y-ridgeHeight*value/peak));
-  g.lineTo(right,y);g.closePath();g.fillStyle=row.color;g.globalAlpha=.40;g.fill();
+  g.lineTo(x(high),y);g.closePath();g.fillStyle=row.color;g.globalAlpha=.40;g.fill();
   g.globalAlpha=1;g.strokeStyle=row.color;g.stroke();
-  medians.push([x(Math.log(row.median)),y]);
+  g.restore();
+  medians.push([x(row.median),y]);
  }
+ g.save();g.beginPath();g.rect(left,top,right-left,bottom-top+5);g.clip();
  g.beginPath();g.setLineDash([3,4]);g.strokeStyle=ink;
  for(const [i,point] of medians.entries()){
   if(!point)continue;
@@ -238,9 +325,10 @@ function renderCheckpointRidges(){
   if(!point)continue;
   g.beginPath();g.arc(...point,4,0,2*Math.PI);g.fillStyle=ink;g.fill();
  }
+ g.restore();
  g.fillStyle=ink;g.font='13px system-ui';g.textAlign='center';
- g.fillText('Sequence pseudoperplexity (log scale)',(left+right)/2,h-5);
- canvas.setAttribute('aria-label',series.map(row=>row.label+': '+fmt(row.n)+' sequences'+
+ g.fillText('Sequence pseudoperplexity',(left+right)/2,h-5);
+ canvas.setAttribute('aria-label',series.map(row=>row.label+': '+fmt(row.n)+' shared sequences'+
     (row.n?', median '+row.median.toFixed(3):'')).join('. '));
 }
 
@@ -279,6 +367,6 @@ if(order.includes(selected))el('family').value=selected;
 if(first){first=false;const p=new URLSearchParams(location.hash.slice(1));el('family').value=order.includes(p.get('family'))?p.get('family'):'PF00001';el('model').value=Math.max(0,snap.models.indexOf(p.get('model')));el('stage').value=p.has('stage')?Math.max(0,['preview','production','short'].indexOf(p.get('stage'))):Number(p.has('family')||p.has('model')?snap.families[el('family').value].counts[1][+el('model').value]>0:!!bestFullRun());if(el('stage').value==='1'&&!p.has('family')&&!p.has('model'))selectVerified()}
 el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});renderPooled();renderCheckpointRidges();await update()}catch(e){if(!ready)el('pool-status').textContent='Could not verify pooled scores. Retrying in two minutes.';el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
 el('poolModel').onchange=()=>{el('poolDetail').textContent='';renderPooled()};
-for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready){render();renderPooled();renderCheckpointRidges()}},120)});refresh();setInterval(refresh,120000);
+for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready){render();renderPooled();renderCheckpointRidges()}},120)});bindPlotZoom();refresh();setInterval(refresh,120000);
 if(window.parent!==window&&new URLSearchParams(location.search).get('embed')==='1'){document.documentElement.classList.add('embedded');const main=document.querySelector('main');const resize=()=>parent.postMessage({type:'esm2-height',height:main.getBoundingClientRect().height+16},'*');new ResizeObserver(resize).observe(main);resize()}
 </script></body></html>

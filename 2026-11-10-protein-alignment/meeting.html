@@ -3894,9 +3894,9 @@ window.Plotly = Plotly;
 return Plotly;
 }));</script></head><body>
 <header><h1>Protein alignment & sequence predictability</h1><p class="muted">Qwen3-14B · ProtT5-XL-UniRef50 (≈3B total parameters) · ESM3 small open · single-Pfam cohorts</p><p class="muted" id="prott5CheckpointNote"><b>ProtT5-XL</b> denotes <a href="https://huggingface.co/Rostlab/prot_t5_xl_uniref50">Rostlab/prot_t5_xl_uniref50</a>. The approximately 3B parameters refer to the full encoder–decoder checkpoint: alignment uses its encoder; sequence pseudoperplexity uses its encoder and decoder.</p><div class="legend" id="familyLegend"></div><p class="status" id="loadStatus">Loading local data…</p></header>
-<nav><a href="../">← All reports</a><a href="#preliminary-delta">H1 · Sequence pseudoperplexity and mKNN</a><a href="#esm2-family-plots">Sequence scatterplots</a><a href="#model-size">mKNN across Qwen3 sizes</a><a href="#alignment">Family alignment</a><a href="#checkpoint-table">Checkpoint table</a><a href="#pppl">Family pseudoperplexity</a><a href="#calculation">How calculated</a></nav>
+<nav><a href="../">← All reports</a><a href="#preliminary-delta">H1 · Sequence pseudoperplexity and mKNN</a><a href="#esm2-family-plots">Sequence scatterplots</a><a href="#model-size">mKNN across Qwen3 sizes</a><a href="#alignment">Family mKNN (k = 10)</a><a href="#checkpoint-table">Checkpoint mKNN table</a><a href="#pppl">Family pseudoperplexity</a><a href="#calculation">How calculated</a></nav>
 <main>
-<section id="preliminary-delta"><h2>H1 · Does lower sequence pseudoperplexity accompany higher mKNN?</h2>
+<section id="preliminary-delta"><h2>H1 · Does lower sequence pseudoperplexity accompany higher mKNN alignment (k = 10)?</h2>
 <h3>ProtT5-XL − ESM3 differences</h3>
 <p class="notice">ProtT5-XL uses the first 511 residues. ESM3 uses the input selected below. Each point is one of 58 families with verified scores for both models.</p>
 <div class="axis-notation">
@@ -3913,7 +3913,7 @@ return Plotly;
 <div class="tablewrap" id="deltaSlopes"></div>
 <div id="sequenceSlopeSizePlot" class="plot hypothesis-trend"></div>
 <div id="relationship"><h3 id="preliminary-own-model">ProtT5-XL and ESM3 separately</h3>
-<p class="muted">Both panels show raw sequence pseudoperplexity and raw mKNN with the selected Qwen3 checkpoint. They share axis scales and use the same 58 families.</p>
+<p class="muted">Both panels show raw sequence pseudoperplexity and mKNN alignment (k = 10) with the selected Qwen3 checkpoint. They share axis scales and use the same 58 families.</p>
 <div class="row hypothesis-pair">
 <div><h4>ProtT5-XL</h4><div id="relationshipPlot" class="plot"></div><p class="status" id="protT5RankStatistic"></p></div>
 <div><h4>ESM3</h4><div id="esmRelationshipPlot" class="plot"></div><p class="status" id="esm3RankStatistic"></p></div>
@@ -3926,12 +3926,12 @@ return Plotly;
 </section>
 
 <section id="esm2-family-plots" style="scroll-margin-top:5rem"><h2>Sequence pseudoperplexity across Pfam families</h2>
-<p class="muted">Compare ESM-2, ESM3 and ProtT5-XL-UniRef50 one sequence at a time. The three pooled plots show all available pairs. Use the family selector below them to inspect a specific cohort.</p>
+<p class="muted">The pooled scatter plots compare the same sequences with verified pseudoperplexity scores from ProtT5-XL-UniRef50, ESM3, and the selected ESM-2 checkpoint. The ridgeline uses sequences shared by all ESM-2 checkpoints with published scores.</p>
 <iframe id="esm2-family-frame" title="Pooled and per-family sequence scatterplots for ESM-2, ESM3 and ProtT5-XL-UniRef50" loading="lazy" style="display:block;width:100%;height:1400px;border:0"></iframe>
 <script>(()=>{const frame=document.getElementById('esm2-family-frame');const src=new URL(location.protocol==='file:'?'https://tlouskt.github.io/qwen-plm-alignment-dashboard/esm2-perplexity/?embed=1&view=sequences':'../esm2-perplexity/?embed=1&view=sequences',location.href);window.addEventListener('message',event=>{const msg=event.data;if(event.source===frame.contentWindow&&event.origin===src.origin&&msg?.type==='esm2-height'&&Number.isFinite(msg.height)&&msg.height>200&&msg.height<20000)frame.style.height=Math.ceil(msg.height)+'px'});frame.src=src.href})();</script>
 </section>
 
-<section id="model-size"><h2>Raw mean mKNN across Qwen3 sizes</h2>
+<section id="model-size"><h2>Mean mKNN alignment across Qwen3 checkpoints (k = 10)</h2>
 <p class="muted">Each point is the mean <math aria-label="mKNN at k equal to 10"><semantics><msub><mi mathvariant="normal">mKNN</mi><mn>10</mn></msub><annotation encoding="application/x-tex">\operatorname{mKNN}_{10}</annotation></semantics></math> across the same 58 equally weighted families. Both panels share a y-axis scale.</p>
 <div class="row hypothesis-pair">
 <div><h4>ProtT5-XL</h4><div id="prott5SizePlot" class="plot"></div></div>
@@ -3942,11 +3942,11 @@ return Plotly;
 
 
 
-<section id="alignment"><h2>1. Which protein model agrees more with Qwen?</h2><p class="muted">mKNN = fraction of the ten Qwen neighbors also selected by the protein model, averaged across proteins. Positive gap = ProtT5-XL higher; negative = ESM3 higher.</p>
+<section id="alignment"><h2>1. Family mKNN alignment with Qwen3-14B (k = 10)</h2><p class="muted">For each protein, mKNN counts the shared top-10 cosine neighbors in the protein model and Qwen3-14B embeddings, then divides by 10. The chart averages that fraction across the family. Positive differences favor ProtT5-XL. Negative differences favor ESM3.</p>
 <div class="controls"><label>Cohorts <select id="cohortFilter"><option value="n2048">58 comparable cohorts · N=2,048</option><option value="smaller_cohort">37 smaller valid cohorts</option><option value="all" selected>All 95 valid cohorts · sizes differ</option></select></label><label>View <select id="alignmentView"><option value="gap">Δ mKNN₁₀ (ProtT5-XL − ESM3)</option><option value="raw">Both raw mKNN scores</option></select></label><label><input type="checkbox" id="focusOnly"> Five highlighted families only</label><button onclick="downloadFamily()">Download raw alignment CSV</button></div>
 <div id="alignmentScroll" class="chartscroll"><div id="alignmentPlot" class="plot"></div></div><div class="direction-key" id="alignmentDirection"><span>← ESM3 aligns more</span><span>ProtT5-XL aligns more →</span></div><p class="muted" id="alignmentNote"></p><div class="detailbox" id="clickedFamily">Hover a dot for the family name, exact scores and counts. Click to keep its values here.</div>
 <details><summary>Raw alignment table</summary><div id="alignmentTable" class="tablewrap"></div></details></section>
-<section id="checkpoint-table"><h2>Alignment across Qwen3 checkpoints</h2><p class="muted">One row per protein family. Raw mKNN fractions, k = 10. Ranked by ProtT5-XL alignment at 14B; hover a cell for exact scores and counts.</p><div class="controls"><label>Find family <input id="matrixSearch" placeholder="Protein family name" size="28"></label><label>Cohorts <select id="matrixCohort"><option value="all">All 95 valid families</option><option value="n2048">58 families · N=2,048</option><option value="smaller_cohort">37 smaller families</option></select></label><button onclick="downloadMatrix()">Download all checkpoint values</button></div><div id="checkpointTable" class="matrixwrap"></div><p id="matrixNote" class="muted caption"></p></section>
+<section id="checkpoint-table"><h2>mKNN alignment across Qwen3 checkpoints (k = 10)</h2><p class="muted">Each row is one Pfam cohort. Each score averages the fraction of shared top-10 cosine neighbors per protein between the listed protein model and Qwen3 checkpoint. Families are ranked by ProtT5-XL mKNN with Qwen3-14B.</p><div class="controls"><label>Find family <input id="matrixSearch" placeholder="Protein family name" size="28"></label><label>Cohorts <select id="matrixCohort"><option value="all">All 95 valid families</option><option value="n2048">58 families · N=2,048</option><option value="smaller_cohort">37 smaller families</option></select></label><button onclick="downloadMatrix()">Download all checkpoint values</button></div><div id="checkpointTable" class="matrixwrap"></div><p id="matrixNote" class="muted caption"></p></section>
 
 <section id="pppl"><h2>2. Pseudoperplexity for each family</h2><p class="muted">Lower pseudoperplexity = the model assigns higher probability to the actual hidden residues. Each family value gives every protein equal weight.</p>
 <div class="controls"><label>Model / context <select id="ppplModel"><option value="prott5">ProtT5-XL · first 511 residues</option><option value="esm3_full">ESM3 · full sequence</option><option value="esm3_prefix">ESM3 · first 511 residues</option></select></label><label>Find family <input id="ppplSearch" placeholder="Family name or Pfam ID" size="26"></label><label>Sort pseudoperplexity <select id="ppplOrder"><option value="ascending">Low to high</option><option value="descending">High to low</option></select></label><label><input type="checkbox" id="ppplFocus"> Five highlighted families only</label><button onclick="downloadPPPL()">Download family values CSV</button></div>
@@ -4075,7 +4075,7 @@ async function renderHypothesisScatters(){
  const hover=VERIFIED58.map((row,i)=>{
   const [prot,esm]=row.alignment[checkpoint];
   return familyLabel(row)+'<br>'+label+'<br>ProtT5-XL pseudoperplexity: '+num(row.t,4)+'<br>ESM3 pseudoperplexity: '+num(row[context],4)+
-   '<br>'+xTitle+': '+num(x[i],4)+'<br>ProtT5-XL mKNN: '+num(prot,5)+'<br>ESM3 mKNN: '+num(esm,5)+'<br>Δ mKNN: '+num(y[i],5);
+   '<br>'+xTitle+': '+num(x[i],4)+'<br>ProtT5-XL mKNN₁₀: '+num(prot,5)+'<br>ESM3 mKNN₁₀: '+num(esm,5)+'<br>Δ mKNN₁₀: '+num(y[i],5);
  });
  const annotations=[['PF00001','GPCR',26,28],['PF00509','Haemagglutinin',64,-39]].map(([pfam,text,ax,ay])=>{
   const index=VERIFIED58.findIndex(row=>row.pfam===pfam);
@@ -4110,7 +4110,7 @@ async function renderHypothesisScatters(){
   const {rho,slope}=ownStats[i];
   $([ 'protT5RankStatistic','esm3RankStatistic' ][i]).textContent=rankLabel(rho)+' · OLS slope m = '+num(slope,8);
   const ownHover=VERIFIED58.map((row,j)=>familyLabel(row)+'<br>'+model+' sequence pseudoperplexity: '+num(ownX[i][j],4)+
-   '<br>mKNN with '+label+': '+num(ownY[i][j],5));
+   '<br>mKNN₁₀ with '+label+': '+num(ownY[i][j],5));
   const points={...pointTrace(ownX[i],ownY[i],ownHover,proteinColors[i]),showlegend:false};
   tasks.push(plot(['relationshipPlot','esmRelationshipPlot'][i],[points,fittedLine(ownX[i],ownY[i],slope)],{
    margin:{...hypothesisMargin,t:55},xaxis:chartAxis(model+' sequence pseudoperplexity',{type:'linear',range:paddedRange(ownX.flat(),0)}),
@@ -4150,7 +4150,7 @@ async function renderModelSize(){
   const color=proteinColors[i];
   const trace={
    type:'scatter',mode:'lines+markers',x:checkpointSizes,y:means[i],name:'Mean mKNN₁₀',
-   line:{color,width:3},marker:{size:8},hovertemplate:'Qwen3-%{x}B<br>Mean mKNN: %{y:.5f}<extra></extra>'
+   line:{color,width:3},marker:{size:8},hovertemplate:'Qwen3-%{x}B<br>Mean mKNN₁₀: %{y:.5f}<extra></extra>'
   };
   return plot(['prott5SizePlot','esm3SizePlot'][i],[trace],{
    margin:hypothesisMargin,xaxis:checkpointAxis(),yaxis:chartAxis('Mean '+model+' mKNN₁₀',{range:yrange,tickformat:'.3f'}),showlegend:false
