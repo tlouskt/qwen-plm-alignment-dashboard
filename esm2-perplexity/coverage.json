@@ -6,7 +6,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -22,7 +22,7 @@
         ]
       ],
       "name": "GPCR",
-      "sha256": "4dc7f6b7e03268e0e02e0f8524b7642ca0430a71d3441a8e84efcbd7c19d9738",
+      "sha256": "0ab54a3979b485d5ce151557e4446abfeb3f3da7f24f2469ef648663a76bfca7",
       "total": 2048
     },
     "PF00004": {
@@ -234,7 +234,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -247,7 +247,7 @@
         ]
       ],
       "name": "Ribosomal protein S7p/S5e",
-      "sha256": "0068b63daf13e7d2fb9f97be40ec7e195f6d55378156d0e67f2e496c16b25cb3",
+      "sha256": "31bacd6ddc07c3994204b59145d230fa1966e320c07cc9bb00b71f26538b3f2e",
       "total": 2048
     },
     "PF00181": {
@@ -305,7 +305,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -322,7 +322,7 @@
         ]
       ],
       "name": "Transferrin",
-      "sha256": "9c0696488be4b13501aa45048879158c25701dc08c98e73dafc536f33e12219e",
+      "sha256": "c862917edd905d0d34559002cbcf8d9c2bdaa5af64c7100278b1e47530b16e6c",
       "total": 2048
     },
     "PF00406": {
@@ -405,7 +405,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -422,7 +422,7 @@
         ]
       ],
       "name": "His Kinase A (phospho-acceptor) domain",
-      "sha256": "7f415067d321f677d6ea62ce7d6ebf99ce921f50061a1693c0c96430ee989faf",
+      "sha256": "27518c522db83cafa0e64135205ce9f2706698f113f792fa15dc53782527b629",
       "total": 2048
     },
     "PF00695": {
@@ -455,7 +455,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -472,7 +472,7 @@
         ]
       ],
       "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
-      "sha256": "faea755a1b2b85364edb0b3a3801e9bb511d0e7b2bf0de28919ff8184d77cd46",
+      "sha256": "5dabf49edc2fccd5bcdeafd8139cd27bebb33934931d05d0b632f63b289bb0e7",
       "total": 2048
     },
     "PF00951": {
@@ -555,7 +555,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -572,7 +572,7 @@
         ]
       ],
       "name": "Protein prenyltransferase alpha subunit repeat",
-      "sha256": "4065e214307ae38c0ea857e2696e882a455e3374218667cb5f64ca8f09e80bb0",
+      "sha256": "2a63ddae3d38005859c3cf4b7354849cb4ca9fa218b3dabf24c15954eb69973e",
       "total": 2048
     },
     "PF02170": {
@@ -605,7 +605,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -622,7 +622,7 @@
         ]
       ],
       "name": "YceG-like family",
-      "sha256": "5a73f19496e383257b1021603905580669f0f461fab5708be0e0b53c9ef07013",
+      "sha256": "f650831da102b382e19b59981fd6941cd1ab97b2e771387763c76a8c859a274c",
       "total": 2048
     },
     "PF02620": {
@@ -680,7 +680,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -697,7 +697,7 @@
         ]
       ],
       "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-      "sha256": "6cb606c53ec5dd717935350a5f11e5b71403f5573ba3f8afec12244038d6d4ce",
+      "sha256": "d3300d6a6e461d12735e4305ccaf58bfb9017e87495dd14ce7788baa26b462d2",
       "total": 2048
     },
     "PF03321": {
@@ -730,7 +730,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -747,7 +747,7 @@
         ]
       ],
       "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
-      "sha256": "3a1564658a1974d51fc2a225d468a7ad78c959219f3d0579a6a47e49555850f7",
+      "sha256": "b6eec9a797b1edd92bbebbeab9cd00abd4e384b0d515462afdb6a1a1fc8ca868",
       "total": 2048
     },
     "PF03357": {
@@ -755,7 +755,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -772,7 +772,7 @@
         ]
       ],
       "name": "Snf7",
-      "sha256": "d8bf96bdc55cf6bb07a36d6e0e29457ea3c266cf4902390d384eb0460fdf6787",
+      "sha256": "7d6cd736e46deae074a36a7e3307dcc78bdad0e911afc5a34242caa4f4bb400e",
       "total": 2048
     },
     "PF03571": {
@@ -880,7 +880,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -897,7 +897,7 @@
         ]
       ],
       "name": "ApaG domain",
-      "sha256": "7a1a584bf94bf2665f916b68786f462fb0b485fb3f6df94010946c7d90f8a723",
+      "sha256": "3c5150e157e29b9407adc4500fac26d3867f8c60d0e922c3771923ab0f8d1276",
       "total": 2048
     },
     "PF04389": {
@@ -1106,7 +1106,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1122,7 +1122,7 @@
         ]
       ],
       "name": "Immunoglobulin V-set domain",
-      "sha256": "efbc358ae386f8a5b33b6a39d5ddbee3bec534d12aec461a3e8f6352844ea2dd",
+      "sha256": "986b383e65124e92cd6732eb3e13dc80e8af503216154459a433aed1fd3f9918",
       "total": 2048
     },
     "PF07722": {
@@ -1458,5 +1458,5 @@
     "t33_650M"
   ],
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
-  "updated": "2026-11-17T20:17:52+00:00"
+  "updated": "2026-11-17T20:47:56+00:00"
 }
