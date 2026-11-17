@@ -130,7 +130,7 @@
           8
         ],
         [
-          510,
+          1536,
           0,
           0,
           0
@@ -147,7 +147,7 @@
         29
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
-      "sha256": "d0b789cb562abeaa76a348dac8551dec96d9f40df0bbc780649d321a734db4ce",
+      "sha256": "7f8e402e08c0dbf376e4507469dc2d674fc654eef626db9d78fe4e1a6c2dc7f0",
       "total": 2048
     },
     "PF00005": {
@@ -275,7 +275,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -292,7 +292,7 @@
         1
       ],
       "name": "Neuraminidase",
-      "sha256": "456d1559504a369ec5a0aed5d95725d2a684a94d5465c601e574b17bba5cab0c",
+      "sha256": "63c92ed407f1c01648453445bc1643d10ba2889b32e7329a6f93d91ef161e8b1",
       "total": 2048
     },
     "PF00069": {
@@ -304,7 +304,7 @@
           8
         ],
         [
-          1531,
+          2047,
           0,
           0,
           0
@@ -321,7 +321,7 @@
         62
       ],
       "name": "Protein kinase domain",
-      "sha256": "ba3e96fa3b142c9f67bcf67a5ebb43eef69d758a745186090d3fc397b95887f8",
+      "sha256": "faaa6f07feb03e0cfe4c65450c8e705947ad0e9eeafea7d624705df7858d6e7b",
       "total": 2048
     },
     "PF00071": {
@@ -1784,17 +1784,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      20473,
+      22527,
       6144,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "d9b68bef5568af371b29a56ed3d39479f1105579a0c59a662bafbede7f35b793",
+    "sha256": "9a9b79805b80ce86f2b7f4f9900d08b219673469001becab97d7ff576437dd2f",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T22:34:57+00:00"
+  "updated": "2026-11-17T22:42:26+00:00"
 }
