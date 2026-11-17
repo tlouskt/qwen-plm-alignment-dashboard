@@ -3927,13 +3927,20 @@ return Plotly;
 
 <section id="name-perplexity"><h2>H2 · Does protein-name perplexity fall with Qwen3 size?</h2>
 <p class="notice">Preliminary · verified saved name scores for the same 58 families and 118,784 protein memberships</p>
-<p class="muted">Lower token perplexity means the supplied names were more predictable under the frozen prompt. The blue line exponentiates the mean token loss across protein memberships. Recurring names count once per membership. The dashed line weights distinct names equally within each family and gives families equal weight.</p>
+<p class="muted">This plot measures name predictability across model sizes. Lower token perplexity means the supplied names were more predictable under the frozen prompt. The blue line exponentiates the mean token loss across protein memberships. Recurring names count once per membership. The dashed line weights distinct names equally within each family and gives families equal weight.</p>
 <div id="nameSizePlot" class="plot hypothesis-trend"></div>
 </section>
 
 <section id="name-alignment-change"><h2>H3 · Do changes in protein-name perplexity track changes in mKNN?</h2>
-<h3>Slopes of mKNN versus name perplexity across Qwen3 sizes</h3>
-<p class="muted">At each checkpoint, fit mKNN as a function of raw protein-name perplexity across the 58 families. The fitted slope is shown for each protein model. <a href="#name-perplexity">See the raw name perplexity values by size in H2.</a></p>
+<h3>Family-level changes from Qwen3-0.6B to Qwen3-14B</h3>
+<p class="muted">Each dot is one family. The horizontal axis subtracts Qwen3-0.6B name-token perplexity from Qwen3-14B name-token perplexity. The vertical axis subtracts the same protein model’s mKNN with Qwen3-0.6B from its mKNN with Qwen3-14B. A point above and left of zero has higher mKNN and lower name perplexity at Qwen3-14B.</p>
+<div class="row hypothesis-pair">
+<div><h3>ProtT5 mKNN</h3><div id="nameChangePrott5" class="plot"></div></div>
+<div><h3>ESM3 mKNN</h3><div id="nameChangeEsm3" class="plot"></div></div>
+</div>
+<p class="muted">Name-token perplexity and sequence pseudoperplexity use different scoring units. Likelihood measures how predictable the names are under the prompt.</p>
+<h3>Supporting summary · mKNN versus name-perplexity slopes</h3>
+<p class="muted">At each checkpoint, fit mKNN as a function of raw protein-name perplexity across the 58 families. The vertical axis shows mKNN change per unit of name perplexity, separately for ProtT5 and ESM3. <a href="#name-perplexity">See the raw name perplexity values by size in H2.</a></p>
 <div id="nameSlopeSizePlot" class="plot hypothesis-trend"></div>
 <div id="model-size"><h3>Raw mean mKNN across Qwen3 sizes</h3>
 <p class="muted">Each point is the mean <math aria-label="mKNN at k equal to 10"><semantics><msub><mi mathvariant="normal">mKNN</mi><mn>10</mn></msub><annotation encoding="application/x-tex">\operatorname{mKNN}_{10}</annotation></semantics></math> across the same 58 equally weighted families. Both panels share a y-axis scale.</p>
@@ -3943,13 +3950,6 @@ return Plotly;
 </div>
 <div class="tablewrap" id="sizeAlignmentMeans"></div>
 </div>
-<h3>Family-level changes from Qwen3-0.6B to Qwen3-14B</h3>
-<p class="muted">Each dot is one family. The horizontal axis subtracts Qwen3-0.6B name-token perplexity from Qwen3-14B name-token perplexity. The vertical axis subtracts the same protein model’s mKNN with Qwen3-0.6B from its mKNN with Qwen3-14B. A point above and left of zero has higher mKNN and lower name perplexity at Qwen3-14B.</p>
-<div class="row hypothesis-pair">
-<div><h3>ProtT5 mKNN</h3><div id="nameChangePrott5" class="plot"></div></div>
-<div><h3>ESM3 mKNN</h3><div id="nameChangeEsm3" class="plot"></div></div>
-</div>
-<p class="muted">Name-token perplexity and sequence pseudoperplexity use different scoring units. Likelihood measures how predictable the names are under the prompt.</p>
 </section>
 
 
@@ -4055,8 +4055,8 @@ function colorSlopeChange(cell,change){
  if(change!==0)cell.classList.add(change>0?'slope-up':'slope-down');
 }
 const checkpointSizes=DATA.checkpoints.checkpoints.map(row=>row.parameters_billions);
-const checkpointAxis=()=>chartAxis('Qwen3 size (billions of parameters, log scale)',{
- type:'log',tickmode:'array',tickvals:checkpointSizes,ticktext:checkpointSizes.map(x=>x+'B')
+const checkpointAxis=()=>chartAxis('Qwen3 size (billions of parameters)',{
+ type:'linear',tickmode:'array',tickvals:checkpointSizes,ticktext:checkpointSizes.map(x=>x+'B')
 });
 function sizeSlopeTrace(name,values,color){
  return {
