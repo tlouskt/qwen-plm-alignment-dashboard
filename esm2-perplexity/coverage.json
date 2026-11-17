@@ -9,7 +9,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -22,7 +22,7 @@
         ]
       ],
       "name": "GPCR",
-      "sha256": "0ab54a3979b485d5ce151557e4446abfeb3f3da7f24f2469ef648663a76bfca7",
+      "sha256": "20094a96d7c7f3945a39088eb398f10f420e324d92ba474716e3e8690a67846c",
       "total": 2048
     },
     "PF00004": {
@@ -31,7 +31,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -47,7 +47,7 @@
         ]
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
-      "sha256": "6b982171a8d539b0f03a6de4266667f57f95f7a38fe37a707416baa401ed4d16",
+      "sha256": "f0b7789f03747b83749f5c3fd94dac8fb7f320a1a2f5acb79f88abc2360b5d61",
       "total": 2048
     },
     "PF00005": {
@@ -56,10 +56,10 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -72,7 +72,7 @@
         ]
       ],
       "name": "ABC transporter",
-      "sha256": "0b32e19b9924bd97f11ca6adf41a9ae3b1c8289151c4a7a84452d054b0a95c13",
+      "sha256": "e8c8f5ca50d08e23e458eb5587c30c0794f299eb59004b3bd12e91c1990d3d13",
       "total": 2048
     },
     "PF00009": {
@@ -131,10 +131,10 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -147,7 +147,7 @@
         ]
       ],
       "name": "Homeodomain",
-      "sha256": "47b907ef3b00b7a8a309c77b485d50d0e621ecedef11daa2a231bb8872169b23",
+      "sha256": "a17a9a01329e38ad251413cc08e136fff4efc67f898693515c7c95fb01bb3ed1",
       "total": 2048
     },
     "PF00064": {
@@ -181,7 +181,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -197,7 +197,7 @@
         ]
       ],
       "name": "Protein kinase domain",
-      "sha256": "f80e8abbbd159ec979eff979e8031512fa9144bde7439e28c5936008445dffc1",
+      "sha256": "31317ef92261dbe2056e3a75d98e4039a52854336cf31471820e16b2b9a78365",
       "total": 2048
     },
     "PF00071": {
@@ -235,7 +235,7 @@
         ],
         [
           2048,
-          0,
+          2048,
           0,
           0
         ],
@@ -247,7 +247,7 @@
         ]
       ],
       "name": "Ribosomal protein S7p/S5e",
-      "sha256": "31bacd6ddc07c3994204b59145d230fa1966e320c07cc9bb00b71f26538b3f2e",
+      "sha256": "352805d7b76573844366dbcbd4ef8cfaa4d775fa0b001ebe1fdba306cab2dbf8",
       "total": 2048
     },
     "PF00181": {
@@ -256,10 +256,10 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
-          0,
+          1024,
           0,
           0,
           0
@@ -272,7 +272,7 @@
         ]
       ],
       "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
-      "sha256": "6524c4c4467a147660ee9c863d9796b2fcfe41a6d1ac86b3cf46912b3d044dcf",
+      "sha256": "621770daa5fbc7d49f43a3fd5e742fd8b95547676196eb7b63ff7a53b28dd27c",
       "total": 2048
     },
     "PF00347": {
@@ -281,11 +281,11 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
-          0,
-          0,
+          2048,
+          2048,
           0,
           0
         ],
@@ -297,7 +297,7 @@
         ]
       ],
       "name": "Ribosomal protein L6",
-      "sha256": "a01e2f3f23a550cb2a918c3dc87c0186933da552ef08650e0c437904f2edc1f7",
+      "sha256": "10c2fb25119f987fb9f911d790ef7e3b8461f928eeed43ff9c8e14b503364051",
       "total": 2048
     },
     "PF00405": {
@@ -331,7 +331,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -347,7 +347,7 @@
         ]
       ],
       "name": "Adenylate kinase",
-      "sha256": "6986b2d88ba3e0a1683b8a60dd5a84add08efec03de44b2a791cbcef4c29e7f8",
+      "sha256": "1155df5172da0e58688bd4b56770587308ec68ffa5c242a1f8145e17097f7b59",
       "total": 2048
     },
     "PF00412": {
@@ -359,7 +359,7 @@
           0
         ],
         [
-          0,
+          30,
           0,
           0,
           0
@@ -372,7 +372,7 @@
         ]
       ],
       "name": "LIM domain",
-      "sha256": "a7828546f960819aafeff24a981480d17a32e0107f0d60702531a54ee8bab93c",
+      "sha256": "a3a7bb7e14109d3aa2a94a626e341f6708a1c21ab5319687b37395084047704f",
       "total": 2048
     },
     "PF00509": {
@@ -580,7 +580,7 @@
         [
           9,
           9,
-          0,
+          9,
           0
         ],
         [
@@ -597,7 +597,7 @@
         ]
       ],
       "name": "PAZ domain",
-      "sha256": "eb98fd88c70c91019575a645fbd2a1b8a156c583134a7ab4be89984da3b5c41d",
+      "sha256": "0c2f012271d8b1e0c23cbf97df36237a476d0a0fae071e174a1e3ab381c8d313",
       "total": 2048
     },
     "PF02618": {
@@ -705,7 +705,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -722,7 +722,7 @@
         ]
       ],
       "name": "GH3 family N-terminal domain",
-      "sha256": "9b0710c1c9f25dec5e82499099c645fd44c6c394f2ee1165be86df19e79cffcb",
+      "sha256": "f63a5220a3c900167b73b2b09c9363113e68fcb8bd4bb054dff02ac101fc30c0",
       "total": 2048
     },
     "PF03331": {
@@ -780,7 +780,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -797,7 +797,7 @@
         ]
       ],
       "name": "Peptidase family M49",
-      "sha256": "1c0740ba5a7c820f4fa0c770565bed192ff4ce3eb777d8ecb01469b0dd823238",
+      "sha256": "364cd82cffdee3e183dba260448f562198f94f0ff6fa84a3419fc7747dad22d7",
       "total": 2048
     },
     "PF03666": {
@@ -805,7 +805,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -822,7 +822,7 @@
         ]
       ],
       "name": "Nitrogen Permease regulator of amino acid transport activity 3",
-      "sha256": "d77bc24ba01cd4718a992892979b324ba3ed2a020c48bdfebae3e521bc52ed10",
+      "sha256": "94358f8de986616f8a56c2688031b113de4c620c5b3d1b086f1a1e2587b84c90",
       "total": 2048
     },
     "PF03797": {
@@ -830,7 +830,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -847,7 +847,7 @@
         ]
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "79e310f222bbbaec0e002d8e7975f48cacc1da53693f84e1c2c4d705217fc7aa",
+      "sha256": "b087cbfc39a724b0feff8e1fde057d2904e753ea99dc778f45b7e16f1fac2c3c",
       "total": 2048
     },
     "PF04030": {
@@ -855,7 +855,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -872,7 +872,7 @@
         ]
       ],
       "name": "D-arabinono-1,4-lactone oxidase",
-      "sha256": "1f50b4a3f088d171ca9e49b6fe00c35e0a63034187446d820ab1bc73e79b6762",
+      "sha256": "fd075b42e9f4ca961d67481dc2b8bf3ec70c5260027e24574d6398c4eddc8b15",
       "total": 2048
     },
     "PF04379": {
@@ -905,7 +905,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -922,7 +922,7 @@
         ]
       ],
       "name": "Peptidase family M28",
-      "sha256": "cecb9fbba24721b46efa43b2ed71089cc270a113e686f50defa806390cfb8574",
+      "sha256": "8c0387a4213b0dc624c5c8a02204d7e0181db069243ea0910005b9e7c84622ef",
       "total": 2048
     },
     "PF04577": {
@@ -930,7 +930,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -947,7 +947,7 @@
         ]
       ],
       "name": "Glycosyltransferase 61",
-      "sha256": "b278a7d88e131fc1bbdbf448fdb73f636fd7568bc67d66538acbe332705cfbd7",
+      "sha256": "90161a9cf1ef245441d32820fb568736c22812f046016c76cab54b06fae553dc",
       "total": 2048
     },
     "PF05189": {
@@ -955,7 +955,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -972,7 +972,7 @@
         ]
       ],
       "name": "RNA 3'-terminal phosphate cyclase (RTC), insert domain",
-      "sha256": "e2a4b51b9151df869f4666f9c4f625a49779c96f36682b5da164a8efb27ff3d9",
+      "sha256": "0aa467589ddf0ff5faf2fdc4bbbcf24d970be5e89d063dde0d2e8f2c9c9da051",
       "total": 2048
     },
     "PF05383": {
@@ -980,7 +980,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -997,7 +997,7 @@
         ]
       ],
       "name": "La domain",
-      "sha256": "359d0826978ebc705daaab9b4d2f943938bd0b5c3de631cd8527303144ab95c7",
+      "sha256": "c2ac03b2285e986e58210621215cc0d7ba6e63a488a203e3b9621e466f9ace68",
       "total": 2048
     },
     "PF05661": {
@@ -1005,7 +1005,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1022,7 +1022,7 @@
         ]
       ],
       "name": "Protein of unknown function (DUF808)",
-      "sha256": "7425a1eef035993a530444d048bed47699d83690d3f50deab215defbfa260843",
+      "sha256": "f1ae8ebdfe466636ff94ba6a0bbc52eb9ed6a4dda5f00330fc94471675e0af12",
       "total": 2048
     },
     "PF06391": {
@@ -1030,7 +1030,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1047,7 +1047,7 @@
         ]
       ],
       "name": "CDK-activating kinase assembly factor MAT1",
-      "sha256": "29a413d0cb7a139bc8c01a402e997d0485abb3c8da2c4a10dbec59c3dd3a81f5",
+      "sha256": "17e91073ac33933383dc12608b5e2af43927ef4537f5cb6578ea68b80d523911",
       "total": 2048
     },
     "PF06508": {
@@ -1055,7 +1055,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1072,7 +1072,7 @@
         ]
       ],
       "name": "Queuosine biosynthesis protein QueC",
-      "sha256": "f7316ddf8096368b74f80a8335701d5f8688b5d18558174f6572ab8eafb28738",
+      "sha256": "a8e84698b02c10a8bab5c5b082bac0078b65eff0a7b7ecb94f3e5afff1fd950f",
       "total": 2048
     },
     "PF06750": {
@@ -1080,7 +1080,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1097,7 +1097,7 @@
         ]
       ],
       "name": "Bacterial Peptidase A24 N-terminal domain",
-      "sha256": "a039de7c4a1c75c28ef6d5fe979a8d4f1a33678435381ece1b1eed71536bb36d",
+      "sha256": "6c06ab7d276ecf3c5789169894f46172be6872e917f01215a57849bc6a6c3933",
       "total": 2048
     },
     "PF07686": {
@@ -1109,7 +1109,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -1122,7 +1122,7 @@
         ]
       ],
       "name": "Immunoglobulin V-set domain",
-      "sha256": "986b383e65124e92cd6732eb3e13dc80e8af503216154459a433aed1fd3f9918",
+      "sha256": "8fe3e239f12aedb249ff9dacd14c3e7bd5323a86763ebc662c3d662260809e6c",
       "total": 2048
     },
     "PF07722": {
@@ -1130,11 +1130,11 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
-          0,
+          1,
           0,
           0,
           0
@@ -1147,7 +1147,7 @@
         ]
       ],
       "name": "Peptidase C26",
-      "sha256": "e4c1b33ec291a7c7fab35953ff70af284d2bf5529bc6c36bb32b5fbd47d8ef93",
+      "sha256": "112c87ac3191ef8b098fa04aba03fdab44cd8a8a489e3041929a9e1353c414e9",
       "total": 2048
     },
     "PF10415": {
@@ -1155,7 +1155,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1172,7 +1172,7 @@
         ]
       ],
       "name": "Fumarase C C-terminus",
-      "sha256": "59dcceaff5ce0c6aef77fa5716a09b9d3460d933a2f3ca30f3cc922ec197f15c",
+      "sha256": "a866735d5d35cd225ff9264419cdc63b63f117dd3743157958fec1302e083ed6",
       "total": 2048
     },
     "PF11762": {
@@ -1205,7 +1205,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1222,7 +1222,7 @@
         ]
       ],
       "name": "N-terminal TM domain of oligopeptide transport permease C",
-      "sha256": "ddf3da5609f8ca4a75de2c82e162662fe2820f43881adfd4fce3fbd1e648cb6b",
+      "sha256": "05df60c1aa70db53ba5ac4eeb82be9fadc076d831903c70e3c002ce5c3953ff1",
       "total": 2048
     },
     "PF13603": {
@@ -1255,7 +1255,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1272,7 +1272,7 @@
         ]
       ],
       "name": "Methyltransferase domain",
-      "sha256": "e7b08ea42ede6bd2fdb931198189102dd8ab76983e8c2adf58b00631318205a9",
+      "sha256": "f17370595d501633efcee7d554cd62553c2fc2dd8b177f7fd0a3a804d1c2a141",
       "total": 2048
     },
     "PF13853": {
@@ -1280,7 +1280,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1297,7 +1297,7 @@
         ]
       ],
       "name": "Olfactory receptor",
-      "sha256": "188f4e307401ca8001fda632dc0408b4e25c2878dabd5dca3ee3deb86f4bad24",
+      "sha256": "f7720bc49fc2d7edffa4022ffc43a516746709fb6907c68faa60490e4d21b96c",
       "total": 2048
     },
     "PF14370": {
@@ -1355,7 +1355,7 @@
         [
           8,
           8,
-          0,
+          8,
           0
         ],
         [
@@ -1372,7 +1372,7 @@
         ]
       ],
       "name": "Sigma2 domain of PhyR",
-      "sha256": "bf650257f6a9cdadf85ab4f6b881347a71ae32ca786df393ca16bfaa20ddb959",
+      "sha256": "43f1e083b60c5bc13ee06024ac5814ca9a4643df18f0128cf478b89ba1a3ea65",
       "total": 2048
     },
     "PF22617": {
@@ -1458,5 +1458,5 @@
     "t33_650M"
   ],
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
-  "updated": "2026-11-17T20:47:56+00:00"
+  "updated": "2026-11-17T21:48:00+00:00"
 }
