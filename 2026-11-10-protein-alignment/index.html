@@ -3893,7 +3893,7 @@ return Plotly;
 <header><h1>Protein alignment & sequence predictability</h1><p class="muted">Qwen3-14B · ProtT5 XL · ESM3 small open · single-Pfam cohorts</p><div class="legend" id="familyLegend"></div><p class="status" id="loadStatus">Loading local data…</p></header>
 <nav><a href="../">← All reports</a><a href="#alignment">1. Family alignment</a><a href="#checkpoint-table">Qwen-size table</a><a href="#pppl">2. Pseudoperplexity</a><a href="#calculation">How calculated</a><a href="#relationship">3. pseudoperplexity vs alignment</a></nav>
 <main>
-<section id="preliminary-delta"><h2>Preliminary: sequence pseudoperplexity difference versus alignment difference</h2><p class="notice">58 verified complete families of the 96-family study · select a Qwen3 checkpoint · preliminary, not the final all-family analysis. ProtT5 uses the first 511 residues; choose ESM3 first-511 or full-sequence pseudoperplexity. Hover a point for family name and underlying values.</p><div class="controls"><label>Qwen3 checkpoint <select id="deltaCheckpoint"><option value="qwen3_0p6b">Qwen3-0.6B</option><option value="qwen3_1p7b">Qwen3-1.7B</option><option value="qwen3_4b">Qwen3-4B</option><option value="qwen3_8b">Qwen3-8B</option><option value="qwen3_14b" selected>Qwen3-14B</option></select></label><label>ESM3 context <select id="deltaContext"><option value="e">First 511 residues</option><option value="full">Full sequence</option></select></label></div><div id="preliminaryDeltaPlot" class="plot"></div><h3>Linear slopes across Qwen3 sizes</h3><p class="muted">m is the slope of Δ alignment versus Δ pseudoperplexity, where Δ = ProtT5 − ESM3. One equal-weight point per family. Negative means alignment difference decreases as pseudoperplexity difference increases. Δm is the slope minus the Qwen3-0.6B slope for the same context. Slopes are descriptive and are not correlation coefficients.</p><div id="deltaSlopes" class="tablewrap"></div>
+<section id="preliminary-delta"><h2>Preliminary: sequence pseudoperplexity difference versus alignment difference</h2><p class="notice">58 verified complete families of the 96-family study · select a Qwen3 checkpoint · preliminary, not the final all-family analysis. ProtT5 uses the first 511 residues; choose ESM3 first-511 or full-sequence pseudoperplexity. Hover a point for family name and underlying values.</p><div class="controls"><label>Qwen3 checkpoint <select id="deltaCheckpoint"><option value="qwen3_0p6b">Qwen3-0.6B</option><option value="qwen3_1p7b">Qwen3-1.7B</option><option value="qwen3_4b">Qwen3-4B</option><option value="qwen3_8b">Qwen3-8B</option><option value="qwen3_14b" selected>Qwen3-14B</option></select></label><label>ESM3 context <select id="deltaContext"><option value="e">First 511 residues</option><option value="full">Full sequence</option></select></label></div><div id="preliminaryDeltaPlot" class="plot"></div><h3>Linear slopes across Qwen3 sizes</h3><p class="muted">m is the slope of Δ alignment versus Δ pseudoperplexity, where Δ = ProtT5 − ESM3. One equal-weight point per family. Negative means alignment difference decreases as pseudoperplexity difference increases. Δm is the slope minus the Qwen3-0.6B slope for the same context. Slopes are descriptive and are not correlation coefficients.</p><p class="muted" id="deltaSlopeContext"></p><div id="deltaSlopes" class="tablewrap"></div>
 <h3>ProtT5 − ESM3 across Qwen3 checkpoints</h3>
 <div class="controls"><label>View <select id="deltaTrendView"><option value="means">Mean pseudoperplexity and alignment differences</option><option value="slopes">Change in slope (Δm)</option></select></label></div>
 <p class="muted" id="deltaTrendNote"></p>
@@ -3992,7 +3992,8 @@ function plotModelSlopeTrend(plotId, checkpoints, getSlope, view, esm3Context){
    type:'scatter', mode:'lines+markers', name, x:labels, y:values,
    marker:{color,size:key === 'prott5' ? 12 : 8,symbol:key === 'prott5' ? 'circle-open' : 'diamond'},
    line:{color,width:2.5},
-   hovertemplate:(showChange ? 'Δm: %{y:+.8f}' : 'Slope m: %{y:.8f}')+'<extra>'+name+'</extra>'
+   hoverinfo:'text',
+   hovertext:values.map(value => name+' · '+(showChange ? 'Δm: ' : 'Slope m: ')+(showChange && value > 0 ? '+' : '')+value.toFixed(8))
   };
  });
  Plotly.react(plotId,traces,{
@@ -4000,7 +4001,7 @@ function plotModelSlopeTrend(plotId, checkpoints, getSlope, view, esm3Context){
   xaxis:{title:{text:'Qwen3 checkpoint (ordered by size)'},type:'category',categoryorder:'array',categoryarray:labels,automargin:true},
   yaxis:{title:{text:showChange ? 'Δm vs Qwen3-0.6B' : 'Slope m (alignment per pseudoperplexity unit)'},type:'linear',
    tickformat:showChange ? '.5f' : '.4f',rangemode:'tozero',gridcolor:'#39424b',zeroline:true,zerolinecolor:'#aab6c2',automargin:true},
-  hovermode:'x unified',legend:{orientation:'h',x:0,y:1.15}
+  hovermode:'x unified',hoverlabel:{bgcolor:'#202a35',bordercolor:'#60748a',font:{color:'#f4f7fb',size:14},align:'left'},legend:{orientation:'h',x:0,y:1.15}
  },{responsive:true,displaylogo:false});
 }
 async function relationship(){
@@ -4038,22 +4039,29 @@ init();
 const changeText=v=>'<span style="color:'+(v>0?'#73d7a1':v<0?'#ff8585':'#edf3fa')+'">'+v.toFixed(8)+'</span>';
 function deltaFit(key,ctx){const xs=rows.map(r=>r.t-r[ctx]),ys=rows.map(r=>comparisons[r.pfam].scores[key].gap_pp/100),mx=xs.reduce((a,b)=>a+b,0)/xs.length,my=ys.reduce((a,b)=>a+b,0)/ys.length,ss=xs.reduce((a,x)=>a+(x-mx)**2,0);if(!(ss>0))throw new Error('pseudoperplexity differences have no variance');const slope=xs.reduce((a,x,i)=>a+(x-mx)*(ys[i]-my),0)/ss;return {xs,ys,slope,intercept:my-slope*mx};}
 function renderDelta(){const key=document.getElementById('deltaCheckpoint').value,ctx=document.getElementById('deltaContext').value,context=ctx==='e'?'first 511 residues':'full sequence',label=DATA.checkpoints.checkpoints.find(c=>c.id===key).label,vals=rows.map(r=>comparisons[r.pfam].scores[key]),fit=deltaFit(key,ctx);const ht=rows.map((r,i)=>{const v=vals[i];return '<b>'+esc(cname(r))+'</b> ('+r.pfam+')<br>N = '+r.n+'<br>'+label+'<br>ProtT5 prefix pseudoperplexity: '+r.t.toFixed(4)+'<br>ESM3 '+context+' pseudoperplexity: '+r[ctx].toFixed(4)+'<br>pseudoperplexity difference: '+fit.xs[i].toFixed(4)+'<br>ProtT5 alignment: '+v.prott5_exact_fraction.toFixed(5)+'<br>ESM3 alignment: '+v.esm3_exact_fraction.toFixed(5)+'<br>Alignment difference: '+fit.ys[i].toFixed(5)});let xmin=Math.min(...fit.xs),xmax=Math.max(...fit.xs),xpad=Math.max((xmax-xmin)*.1,.1);Plotly.react('preliminaryDeltaPlot',[{type:'scatter',mode:'markers',x:fit.xs,y:fit.ys,text:ht,hovertemplate:'%{text}<extra></extra>',marker:{size:10,color:'#73b5f4',line:{color:'#dce9f7',width:0.6},opacity:0.88}},{type:'scatter',mode:'lines',x:[xmin,xmax],y:[fit.intercept+fit.slope*xmin,fit.intercept+fit.slope*xmax],line:{color:'#e4be77',width:2,dash:'dash'},hovertemplate:'OLS fit<extra></extra>'}],{paper_bgcolor:'transparent',plot_bgcolor:'transparent',font:{color:'#edf3fa'},margin:{l:85,r:30,t:20,b:90},xaxis:{title:{text:'X: Δ pseudoperplexity = ProtT5 prefix − ESM3 '+context+' pseudoperplexity'},gridcolor:'#39424b',zerolinecolor:'#aab6c2',range:[xmin-xpad,xmax+xpad],dtick:2},yaxis:{title:{text:'Y: Δ mKNN = ProtT5 − ESM3<br>with '+label+' (raw fraction)'},gridcolor:'#39424b',zerolinecolor:'#aab6c2'},hovermode:'closest',showlegend:false},{responsive:true,displaylogo:false});}
-function renderDeltaSlopes(){
- const checkpoints = DATA.checkpoints.checkpoints;
- const labels = checkpoints.map(checkpoint => checkpoint.label);
+function computeDeltaSlopes(){
  const base511 = deltaFit('qwen3_0p6b','e').slope;
  const baseFull = deltaFit('qwen3_0p6b','full').slope;
- const slopes = checkpoints.map(checkpoint => {
+ return DATA.checkpoints.checkpoints.map(checkpoint => {
   const first511 = deltaFit(checkpoint.id,'e').slope;
   const full = deltaFit(checkpoint.id,'full').slope;
-  return {first511, full, change511:first511-base511, changeFull:full-baseFull};
+  return {label:checkpoint.label, first511, full, change511:first511-base511, changeFull:full-baseFull};
  });
- document.getElementById('deltaSlopes').innerHTML =
-  '<table class="slope-table"><thead><tr><th>Qwen3 checkpoint</th><th>Slope m · both first 511</th><th>Δm vs 0.6B · both first 511</th><th>Slope m · ESM3 full sequence</th><th>Δm vs 0.6B · ESM3 full sequence</th><th>Families</th></tr></thead><tbody>'
-  + slopes.map((slope, index) => '<tr><td>'+esc(labels[index])+'</td><td>'+slope.first511.toFixed(8)+'</td><td>'+changeText(slope.change511)+'</td><td>'+slope.full.toFixed(8)+'</td><td>'+changeText(slope.changeFull)+'</td><td>'+rows.length+'</td></tr>').join('')
-  + '</tbody></table>';
+}
 
- return slopes;
+function renderDeltaSlopes(){
+ const usePrefix = document.getElementById('deltaContext').value === 'e';
+ const tableRows = checkpointSlopes.map(slope => {
+  const value = usePrefix ? slope.first511 : slope.full;
+  const change = usePrefix ? slope.change511 : slope.changeFull;
+  return '<tr><td>'+esc(slope.label)+'</td><td>'+value.toFixed(8)+'</td><td>'+changeText(change)+'</td></tr>';
+ });
+ document.getElementById('deltaSlopeContext').textContent = usePrefix
+  ? 'Both models use the first 511 residues.'
+  : 'ProtT5 uses the first 511 residues and ESM3 uses the full sequence.';
+ document.getElementById('deltaSlopes').innerHTML =
+  '<table class="slope-table"><thead><tr><th scope="col">Qwen3 checkpoint</th><th scope="col">Slope m</th><th scope="col">Δm vs Qwen3-0.6B</th></tr></thead><tbody>'
+  + tableRows.join('') + '</tbody></table>';
 }
 
 function renderDeltaTrend(){
@@ -4066,20 +4074,21 @@ function renderDeltaTrend(){
  const line = (name, values, color, symbol, axis, format, dash) => ({
   type:'scatter', mode:'lines+markers', name, x:labels, y:values, yaxis:axis,
   line:{color, width:2.5, dash}, marker:{color, symbol, size:symbol === 'circle-open' ? 12 : 8},
-  hovertemplate:'%{y:'+format+'}<extra>'+name+'</extra>'
+  hoverinfo:'text',
+  hovertext:values.map(value => name+': '+(value > 0 ? '+' : '')+value.toFixed(format))
  });
  const layout = {
   paper_bgcolor:'transparent', plot_bgcolor:'transparent', font:{color:'#edf3fa', size:13},
   margin:{l:110,r:30,t:60,b:75},
   xaxis:{title:{text:'Qwen3 checkpoint (ordered by size)'},type:'category',categoryorder:'array',categoryarray:labels,automargin:true},
-  hovermode:'x unified', legend:{orientation:'h',x:0,y:1.15}
+  hovermode:'x unified', hoverlabel:{bgcolor:'#202a35',bordercolor:'#60748a',font:{color:'#f4f7fb',size:14},align:'left'}, legend:{orientation:'h',x:0,y:1.15}
  };
  let traces;
  if(view === 'slopes'){
   note.textContent = 'Δm is the slope minus the Qwen3-0.6B slope for the same context. Each series starts at zero. Positive values mean a less negative slope.';
   traces = [
-   line('Both first 511', checkpointSlopes.map(slope => slope.change511), '#73b5f4', 'circle-open', 'y', '+.8f', 'solid'),
-   line('ESM3 full sequence', checkpointSlopes.map(slope => slope.changeFull), '#e4be77', 'diamond', 'y', '+.8f', 'dash')
+   line('Both first 511', checkpointSlopes.map(slope => slope.change511), '#73b5f4', 'circle-open', 'y', 8, 'solid'),
+   line('ESM3 full sequence', checkpointSlopes.map(slope => slope.changeFull), '#e4be77', 'diamond', 'y', 8, 'dash')
   ];
   layout.yaxis = {title:{text:'Δm vs Qwen3-0.6B'},tickformat:'.5f',dtick:0.00001,rangemode:'tozero',gridcolor:'#39424b',zeroline:true,zerolinecolor:'#aab6c2',automargin:true};
  } else {
@@ -4092,8 +4101,8 @@ function renderDeltaTrend(){
   const alignmentPad = Math.max((alignmentMax-alignmentMin)*.25, 0.00001);
   note.textContent = 'Each difference gives the '+rows.length+' verified families equal weight. ProtT5 pseudoperplexity uses the first 511 residues and ESM3 uses '+contextLabel+'. Pseudoperplexity is constant across checkpoints. The right axis is zoomed to show the change in alignment.';
   traces = [
-   line('Δ pseudoperplexity (left)', labels.map(() => meanPseudoperplexity), '#73b5f4', 'circle', 'y', '+.5f', 'dash'),
-   line('Δ alignment (right)', meanAlignment, '#e4be77', 'diamond', 'y2', '+.8f', 'solid')
+   line('Δ pseudoperplexity (left)', labels.map(() => meanPseudoperplexity), '#73b5f4', 'circle', 'y', 3, 'dash'),
+   line('Δ alignment (right)', meanAlignment, '#e4be77', 'diamond', 'y2', 6, 'solid')
   ];
   layout.margin.r = 110;
   layout.yaxis = {title:{text:'Mean Δ pseudoperplexity'},color:'#73b5f4',rangemode:'tozero',gridcolor:'#39424b',automargin:true};
@@ -4102,9 +4111,10 @@ function renderDeltaTrend(){
  Plotly.react('deltaTrendPlot',traces,layout,{responsive:true,displaylogo:false});
 }
 
-document.getElementById('deltaCheckpoint').addEventListener('change',renderDelta);document.getElementById('deltaContext').addEventListener('change',() => { renderDelta(); renderDeltaTrend(); });
+document.getElementById('deltaCheckpoint').addEventListener('change',renderDelta);document.getElementById('deltaContext').addEventListener('change',() => { renderDelta(); renderDeltaSlopes(); renderDeltaTrend(); });
 document.getElementById('deltaTrendView').addEventListener('change',renderDeltaTrend);
-const checkpointSlopes = renderDeltaSlopes();
+const checkpointSlopes = computeDeltaSlopes();
+renderDeltaSlopes();
 renderDelta();
 renderDeltaTrend(); function ownSlope(key,field,align){const x=rows.map(r=>r[field]),y=rows.map(r=>comparisons[r.pfam].scores[key][align]),xm=x.reduce((a,b)=>a+b,0)/x.length,ym=y.reduce((a,b)=>a+b,0)/y.length,den=x.reduce((a,v)=>a+(v-xm)**2,0);return x.reduce((a,v,i)=>a+(v-xm)*(y[i]-ym),0)/den;}
 function renderOwn(){const key=document.getElementById('ownCheckpoint').value,label=DATA.checkpoints.checkpoints.find(c=>c.id===key).label,models=[['preliminaryProtT5Plot','t','prott5_exact_fraction','#4595e8','ProtT5'],['preliminaryESM3Plot','e','esm3_exact_fraction','#ef814f','ESM3']],bothX=rows.flatMap(r=>[r.t,r.e]),bothY=rows.flatMap(r=>{const v=comparisons[r.pfam].scores[key];return [v.prott5_exact_fraction,v.esm3_exact_fraction]}),xlo=Math.min(...bothX),xhi=Math.max(...bothX),xpad=Math.max((xhi-xlo)*.08,.01),ylo=Math.min(...bothY),yhi=Math.max(...bothY),ypad=Math.max((yhi-ylo)*.12,.01),sameX=[Math.max(0,xlo-xpad),xhi+xpad],sameY=[Math.max(0,ylo-ypad),yhi+ypad];for(const [id,field,align,color,model] of models){const ys=rows.map(r=>comparisons[r.pfam].scores[key][align]),slope=ownSlope(key,field,align),ht=rows.map((r,i)=>'<b>'+esc(cname(r))+'</b> ('+r.pfam+')<br>N = '+r.n+'<br>'+label+'<br>'+model+' first-511 pseudoperplexity: '+r[field].toFixed(5)+'<br>'+model+' alignment: '+ys[i].toFixed(5));const xs=rows.map(r=>r[field]),xm=xs.reduce((a,b)=>a+b,0)/xs.length,ym=ys.reduce((a,b)=>a+b,0)/ys.length,x0=Math.min(...xs),x1=Math.max(...xs);document.getElementById(id+'Slope').textContent='OLS slope (raw alignment per pseudoperplexity unit): '+slope.toFixed(8)+' · 58 families';Plotly.react(id,[{type:'scatter',mode:'markers',x:rows.map(r=>r[field]),y:ys,text:ht,hovertemplate:'%{text}<extra></extra>',marker:{size:10,color:color,line:{color:'#dce9f7',width:.6},opacity:.88}},{type:'scatter',mode:'lines',x:[x0,x1],y:[ym+slope*(x0-xm),ym+slope*(x1-xm)],line:{color:'#e4be77',width:2,dash:'dash'},hovertemplate:'OLS fit<extra></extra>'}],{annotations:[{xref:'paper',yref:'paper',x:.98,y:.98,xanchor:'right',text:'m = '+slope.toFixed(8),showarrow:false,font:{color:'#e4be77'}}],paper_bgcolor:'transparent',plot_bgcolor:'transparent',font:{color:'#edf3fa'},margin:{l:75,r:20,t:20,b:90},xaxis:{title:{text:'X: '+model+' sequence pseudoperplexity<br>(first 511 residues; lower = more predictable)'},gridcolor:'#39424b',range:sameX,dtick:1},yaxis:{title:{text:'Y: '+model+' alignment with '+label+'<br>(mean shared-neighbor fraction, 0–1)'},gridcolor:'#39424b',range:sameY},hovermode:'closest',showlegend:false},{responsive:true,displaylogo:false});}const bt=ownSlope('qwen3_0p6b','t','prott5_exact_fraction'),be=ownSlope('qwen3_0p6b','e','esm3_exact_fraction');document.getElementById('ownSlopes').innerHTML='<table class="slope-table"><thead><tr><th>Qwen3 checkpoint</th><th>ProtT5 slope</th><th>ProtT5 Δ slope vs Qwen3-0.6B</th><th>ESM3 slope</th><th>ESM3 Δ slope vs Qwen3-0.6B</th><th>Families</th></tr></thead><tbody>'+DATA.checkpoints.checkpoints.map(c=>{let t=ownSlope(c.id,'t','prott5_exact_fraction'),e=ownSlope(c.id,'e','esm3_exact_fraction');return '<tr><td>'+esc(c.label)+'</td><td>'+t.toFixed(8)+'</td><td>'+changeText(t-bt)+'</td><td>'+e.toFixed(8)+'</td><td>'+changeText(e-be)+'</td><td>'+rows.length+'</td></tr>'}).join('')+'</tbody></table>';plotModelSlopeTrend('ownSlopeSizePlot', DATA.checkpoints.checkpoints,
