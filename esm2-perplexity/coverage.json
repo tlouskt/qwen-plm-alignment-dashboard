@@ -1703,7 +1703,7 @@
         ],
         [
           2048,
-          1025,
+          1536,
           0,
           0
         ],
@@ -1719,7 +1719,7 @@
         47
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "e5045d59d41cccfee35db228fedcf6ef499bfa08d16f216f03a1d6afda10551d",
+      "sha256": "d6403f8d1e44117d265241e7bec2103c49913bcd65ca157c749232a8c5064294",
       "total": 2048
     },
     "PF04030": {
@@ -1790,7 +1790,7 @@
         ],
         [
           2048,
-          510,
+          1535,
           0,
           0
         ],
@@ -1806,7 +1806,7 @@
         8
       ],
       "name": "Peptidase family M28",
-      "sha256": "485fcd0925f3ae647722df355f92dc11105fc1e2b5a7031f09ca2e02a87ce59d",
+      "sha256": "c2e7ecf3885a7eb62e9ca1afb46fb195a951a9136340c3cd168ccbbb652c75a9",
       "total": 2048
     },
     "PF04577": {
@@ -1819,7 +1819,7 @@
         ],
         [
           2048,
-          1024,
+          1535,
           0,
           0
         ],
@@ -1835,7 +1835,7 @@
         30
       ],
       "name": "Glycosyltransferase 61",
-      "sha256": "d3d846ae2a8dd4fb71607410b5974f2bd66c5a227e9ce9cbc4b27526e07cb0bc",
+      "sha256": "c7d5fade9f055bc55537db8db607e42bfe925360e8d64412612c13b58ffa69e8",
       "total": 2048
     },
     "PF05189": {
@@ -2225,7 +2225,7 @@
         ],
         [
           2048,
-          1024,
+          1536,
           0,
           0
         ],
@@ -2241,7 +2241,7 @@
         31
       ],
       "name": "Olfactory receptor",
-      "sha256": "c1120022b0379e470bfcacf7da27a5ef55af4c3150339d6a8cb004be3a50022b",
+      "sha256": "fd4235aa76a5ad5f53802f0fd1f6a808cfb3c58c835770b0098c9fead77647f0",
       "total": 2048
     },
     "PF14370": {
@@ -2429,16 +2429,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      98268,
+      100827,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "955c0618eb812a4bdd9230c122162717c7f635b301cc21db26228ee4dae4d829",
+    "sha256": "7ddb7eb8ddb72b9e25e15e4bb3b67f170f34bc498ea4e3c04ab399abe9f9c168",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T21:55:54+00:00"
+  "updated": "2026-11-18T22:25:53+00:00"
 }
