@@ -65,6 +65,13 @@
         "pfam": "PF00951"
       },
       {
+        "esm2": 15.733073240157777,
+        "esm3": 13.633120794238573,
+        "n": 2048,
+        "name": "Pre-mRNA-splicing factor BUD31",
+        "pfam": "PF01125"
+      },
+      {
         "esm2": 8.836582116065795,
         "esm3": 6.8699959258865,
         "n": 2048,
@@ -291,6 +298,13 @@
         "pfam": "PF03357"
       },
       {
+        "esm2": 15.867531448207377,
+        "esm3": 5.886069196444704,
+        "n": 2048,
+        "name": "Peptidase family M49",
+        "pfam": "PF03571"
+      },
+      {
         "esm2": 16.24485744036411,
         "esm3": 12.276307201561409,
         "n": 2048,
@@ -298,11 +312,32 @@
         "pfam": "PF03666"
       },
       {
+        "esm2": 12.997094369126582,
+        "esm3": 4.383698701916531,
+        "n": 2048,
+        "name": "D-arabinono-1,4-lactone oxidase",
+        "pfam": "PF04030"
+      },
+      {
         "esm2": 14.132814324933399,
         "esm3": 4.4888243251777045,
         "n": 2048,
         "name": "ApaG domain",
         "pfam": "PF04379"
+      },
+      {
+        "esm2": 10.608359923078833,
+        "esm3": 4.720091730862287,
+        "n": 2048,
+        "name": "Peptidase family M28",
+        "pfam": "PF04389"
+      },
+      {
+        "esm2": 13.815165540444072,
+        "esm3": 8.300300531520776,
+        "n": 2048,
+        "name": "Glycosyltransferase 61",
+        "pfam": "PF04577"
       },
       {
         "esm2": 14.871959596867352,
@@ -319,6 +354,13 @@
         "pfam": "PF05661"
       },
       {
+        "esm2": 13.572926364786332,
+        "esm3": 8.845237377500982,
+        "n": 2048,
+        "name": "CDK-activating kinase assembly factor MAT1",
+        "pfam": "PF06391"
+      },
+      {
         "esm2": 11.482192882171573,
         "esm3": 3.118204058939016,
         "n": 2048,
@@ -326,11 +368,25 @@
         "pfam": "PF06508"
       },
       {
+        "esm2": 8.35142722868284,
+        "esm3": 3.7253174399396793,
+        "n": 2048,
+        "name": "Bacterial Peptidase A24 N-terminal domain",
+        "pfam": "PF06750"
+      },
+      {
         "esm2": 10.72610500097753,
         "esm3": 6.8699959258865,
         "n": 2048,
         "name": "Immunoglobulin V-set domain",
         "pfam": "PF07686"
+      },
+      {
+        "esm2": 8.150055800270191,
+        "esm3": 4.3716028422866025,
+        "n": 2048,
+        "name": "Peptidase C26",
+        "pfam": "PF07722"
       },
       {
         "esm2": 10.846359749385668,
@@ -557,7 +613,7 @@
         ],
         [
           2048,
-          0,
+          1018,
           0,
           0
         ],
@@ -573,7 +629,7 @@
         62
       ],
       "name": "Protein kinase domain",
-      "sha256": "f9143dd230ee7dea6b894ba62b5e43e24dc58cb28532541a2f4ce883d616f89e",
+      "sha256": "c9ca733d977e23d57cbf0ae3c7b416ba0a2d40007bbae7c5ccaa8304797c9463",
       "total": 2048
     },
     "PF00071": {
@@ -847,7 +903,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -863,7 +919,7 @@
         1
       ],
       "name": "Major surface antigen from hepadnavirus",
-      "sha256": "48ad851023ac3d6909fefe738dec8d38489ebd41dc43d9199972c8c249cd3fb2",
+      "sha256": "37cfa7fe49ed9b9553287fb9c03bb30d9f4f57bbdfad99944449d263a06bc590",
       "total": 2048
     },
     "PF00920": {
@@ -963,7 +1019,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -979,7 +1035,7 @@
         6
       ],
       "name": "Pre-mRNA-splicing factor BUD31",
-      "sha256": "10075b02cc520f5610a0b6637ef6c9913aae7e5c5f07fd2be6b90ab46f9c3cc5",
+      "sha256": "376a6214629d87ccea7515e5833a3bdb255276aa8b753e035752e77dd0109dd8",
       "total": 2048
     },
     "PF01239": {
@@ -1252,7 +1308,7 @@
           8
         ],
         [
-          1540,
+          2048,
           0,
           0,
           0
@@ -1269,7 +1325,7 @@
         12
       ],
       "name": "Peptidase family M49",
-      "sha256": "06fb2ea0c1aa2ea8bf8cbd052e431c12bd09dd6eaf468755a2c684fdf868162a",
+      "sha256": "c9265a8296c814ad89c6afba6ea47dec52c083427ff668b1330db943f98a4b78",
       "total": 2048
     },
     "PF03666": {
@@ -1339,7 +1395,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -1356,7 +1412,7 @@
         11
       ],
       "name": "D-arabinono-1,4-lactone oxidase",
-      "sha256": "7079f91661322f02389bd5315443c55663f96882a5defd4cb5839b6e867746fd",
+      "sha256": "81d6bf87c8dc4c124483831312211b7af978998ee7f209e76e8ad4404a3e971d",
       "total": 2048
     },
     "PF04379": {
@@ -1397,7 +1453,7 @@
           8
         ],
         [
-          1,
+          2048,
           0,
           0,
           0
@@ -1414,7 +1470,7 @@
         8
       ],
       "name": "Peptidase family M28",
-      "sha256": "fb8b97fe0251ae7f793e1de6958262fe34adb90a56322b985316f3ea66f7fb78",
+      "sha256": "97aea59f516c7d10eca618c8b56d3e16d0a9bd76b191b8518b2b8bba28e4facb",
       "total": 2048
     },
     "PF04577": {
@@ -1426,7 +1482,7 @@
           8
         ],
         [
-          1024,
+          2048,
           0,
           0,
           0
@@ -1443,7 +1499,7 @@
         30
       ],
       "name": "Glycosyltransferase 61",
-      "sha256": "fcc70d08a5b69ea5d3035f1fcb993bcd38cd1b66cf41e92f1435da187cf10661",
+      "sha256": "ab46b1f51687e3a8a1165cdc810a8ba08b3cf5af7e4fff128cfe19a3a92477a4",
       "total": 2048
     },
     "PF05189": {
@@ -1484,7 +1540,7 @@
           8
         ],
         [
-          0,
+          1025,
           0,
           0,
           0
@@ -1501,7 +1557,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "ba14732095489db1ae384baa887c4b339255bca13ee14177516a2cb74d9a5ae6",
+      "sha256": "db35470c5c74dfcfa3567448f7c9fc3ba8474ccde791eafde82c08b60d534f11",
       "total": 2048
     },
     "PF05661": {
@@ -1542,7 +1598,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -1559,7 +1615,7 @@
         14
       ],
       "name": "CDK-activating kinase assembly factor MAT1",
-      "sha256": "19eb92e2cb54372aed703b9effa764122ae44f3096b63de87c3f1bec400a970e",
+      "sha256": "82d052d36b5a04353b575b92312fb3514732b2da553a31337e29d5ae854e60a3",
       "total": 2048
     },
     "PF06508": {
@@ -1600,7 +1656,7 @@
           8
         ],
         [
-          1024,
+          2048,
           0,
           0,
           0
@@ -1617,7 +1673,7 @@
         12
       ],
       "name": "Bacterial Peptidase A24 N-terminal domain",
-      "sha256": "e007ca0f4e4a612ae897efb4395d5f7dfbe620b46c5314476eb22022250d2514",
+      "sha256": "8bd53228a8e31f949f402d4d64ec11ab9aa6013dd03345cc61a7641d8a343544",
       "total": 2048
     },
     "PF07686": {
@@ -1658,7 +1714,7 @@
           8
         ],
         [
-          512,
+          2048,
           1,
           0,
           0
@@ -1675,7 +1731,7 @@
         12
       ],
       "name": "Peptidase C26",
-      "sha256": "edf0d395c7acbe5173cae91128c8f1355d6c736d7ca6b63c81c4d3d15f2a81f3",
+      "sha256": "1d65c09def04ba6fdaed939ff2fa491cb8a900dd778e64d8200b1cf722cdd739",
       "total": 2048
     },
     "PF10415": {
@@ -2036,17 +2092,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      85989,
-      22016,
+      94177,
+      24058,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "d400c20e857db02025a37a4cfa79a2e3a2afc7120c4970fb687cd2432028f530",
+    "sha256": "f5ea139d2b5dca2c7c163fa3fa1815d57accaffcdd5a86e50e80faf137c3db5f",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T04:19:42+00:00"
+  "updated": "2026-11-18T04:49:40+00:00"
 }
