@@ -2,6 +2,13 @@
   "complete_pairs": {
     "t12_35M": [
       {
+        "esm2": 8.711717582284003,
+        "esm3": 7.67641324474936,
+        "n": 2048,
+        "name": "GPCR",
+        "pfam": "PF00001"
+      },
+      {
         "esm2": 7.021553013483829,
         "esm3": 4.778426085579044,
         "n": 2048,
@@ -165,6 +172,13 @@
         "pfam": "PF00695"
       },
       {
+        "esm2": 14.110805162223572,
+        "esm3": 3.017599557682445,
+        "n": 2048,
+        "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
+        "pfam": "PF00920"
+      },
+      {
         "esm2": 16.472631030247378,
         "esm3": 16.151507697920337,
         "n": 2048,
@@ -212,6 +226,13 @@
         "n": 2048,
         "name": "Transcription initiation factor IIA, gamma subunit",
         "pfam": "PF02751"
+      },
+      {
+        "esm2": 14.965814383844995,
+        "esm3": 3.581558073718468,
+        "n": 2048,
+        "name": "Acyl-CoA dehydrogenase, N-terminal domain",
+        "pfam": "PF02771"
       },
       {
         "esm2": 15.455462255233762,
@@ -263,7 +284,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -279,7 +300,7 @@
         33
       ],
       "name": "GPCR",
-      "sha256": "38830233eba1a16815baa471e9ffb2b10d477df672c9bdd61897fc1860548f96",
+      "sha256": "9f601383de54ce7bfe07b21edfc8acb305c03c72b2c5e62df719df225cdd79a8",
       "total": 2048
     },
     "PF00004": {
@@ -321,7 +342,7 @@
         ],
         [
           2048,
-          0,
+          510,
           0,
           0
         ],
@@ -337,7 +358,7 @@
         13
       ],
       "name": "ABC transporter",
-      "sha256": "e8c8f5ca50d08e23e458eb5587c30c0794f299eb59004b3bd12e91c1990d3d13",
+      "sha256": "21b90057a00de917f4c35e8e5b6dae4b293327754cc3b05010daac435589b7ff",
       "total": 2048
     },
     "PF00009": {
@@ -784,7 +805,7 @@
           8
         ],
         [
-          1025,
+          2048,
           0,
           0,
           0
@@ -801,7 +822,7 @@
         2
       ],
       "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
-      "sha256": "e62fffac138fbc1c08bc0f86dbb9cb98c35631563924d57e0fe726f99a816670",
+      "sha256": "5095b25af0ebdc57f71cb3cbf029656d914ae0c051ad494ad5a417457fa7c0f6",
       "total": 2048
     },
     "PF00951": {
@@ -1045,7 +1066,7 @@
           8
         ],
         [
-          1023,
+          2048,
           0,
           0,
           0
@@ -1062,7 +1083,7 @@
         7
       ],
       "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-      "sha256": "9541eee0a10e1f9451c6d2078c8be4c6be30902498e95c9bff2c56c692078059",
+      "sha256": "600ee54508d3996193defbfd18dc54cf887e1adb29c47b123ce651a01965bb7e",
       "total": 2048
     },
     "PF03321": {
@@ -1074,7 +1095,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -1091,7 +1112,7 @@
         8
       ],
       "name": "GH3 family N-terminal domain",
-      "sha256": "25e7017f124889c617ada34bdd8c91d59ef0a81df72ccd28e56b070650ddc2ce",
+      "sha256": "0d74825622c34a710db4b6fc5be38cd3636edbf224df55e23f808df6f6f66a2b",
       "total": 2048
     },
     "PF03331": {
@@ -1187,7 +1208,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1207,7 +1228,7 @@
         9
       ],
       "name": "Nitrogen Permease regulator of amino acid transport activity 3",
-      "sha256": "94358f8de986616f8a56c2688031b113de4c620c5b3d1b086f1a1e2587b84c90",
+      "sha256": "c865dc92de0177eb31c457e11f6747f24fab26633a4eec61bc16f6ffba3325e3",
       "total": 2048
     },
     "PF03797": {
@@ -1332,7 +1353,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1352,7 +1373,7 @@
         30
       ],
       "name": "Glycosyltransferase 61",
-      "sha256": "90161a9cf1ef245441d32820fb568736c22812f046016c76cab54b06fae553dc",
+      "sha256": "fb538c47f7516b336536ba68d02f7c2d9a134b8aef8e388fdcb1d1e4092b803a",
       "total": 2048
     },
     "PF05189": {
@@ -1448,7 +1469,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1468,7 +1489,7 @@
         14
       ],
       "name": "CDK-activating kinase assembly factor MAT1",
-      "sha256": "17e91073ac33933383dc12608b5e2af43927ef4537f5cb6578ea68b80d523911",
+      "sha256": "0e95a80bb6c19a998e4a2cce2c3b28bdb80126872765dc7438db045c3180e4f8",
       "total": 2048
     },
     "PF06508": {
@@ -1477,7 +1498,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1497,7 +1518,7 @@
         6
       ],
       "name": "Queuosine biosynthesis protein QueC",
-      "sha256": "a8e84698b02c10a8bab5c5b082bac0078b65eff0a7b7ecb94f3e5afff1fd950f",
+      "sha256": "78cb7f71ceacc11a92c16cff8bec90173c901abd4e8d711dc3b23a9702002e5d",
       "total": 2048
     },
     "PF06750": {
@@ -1539,7 +1560,7 @@
         ],
         [
           2048,
-          512,
+          1024,
           0,
           0
         ],
@@ -1555,7 +1576,7 @@
         28
       ],
       "name": "Immunoglobulin V-set domain",
-      "sha256": "46dd7f262b4e23100ac739ab3c4cad863ac0117936dc0285f0b41cae52098360",
+      "sha256": "106ffa3140118fc6a9da037f5cec8f929bd4b03a7870fc4e3fc3071a86cdd507",
       "total": 2048
     },
     "PF07722": {
@@ -1945,17 +1966,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      63970,
-      13823,
+      66530,
+      15357,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "b425108b3c8968e87ff0dbb06990509a14123e0d920d922ce3525fe74955a7dd",
+    "sha256": "6e5cf02b98945aaff5a69b28b416288b638fefa5f650fdfda0508c1908c40cc2",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T02:17:56+00:00"
+  "updated": "2026-11-18T02:47:59+00:00"
 }
