@@ -58,6 +58,13 @@
         "pfam": "PF00406"
       },
       {
+        "esm2": 14.953164962184259,
+        "esm3": 14.58909284394147,
+        "n": 2048,
+        "name": "Major surface antigen from hepadnavirus",
+        "pfam": "PF00695"
+      },
+      {
         "esm2": 16.33136888156951,
         "esm3": 16.151507697920337,
         "n": 2048,
@@ -312,6 +319,13 @@
         "pfam": "PF03666"
       },
       {
+        "esm2": 10.311042696710656,
+        "esm3": 6.309052352275141,
+        "n": 2048,
+        "name": "Autotransporter beta-domain",
+        "pfam": "PF03797"
+      },
+      {
         "esm2": 12.997094369126582,
         "esm3": 4.383698701916531,
         "n": 2048,
@@ -387,6 +401,13 @@
         "n": 2048,
         "name": "Peptidase C26",
         "pfam": "PF07722"
+      },
+      {
+        "esm2": 8.322310557474768,
+        "esm3": 3.9477788029851677,
+        "n": 2048,
+        "name": "Sigma2 domain of PhyR",
+        "pfam": "PF22029"
       },
       {
         "esm2": 10.846359749385668,
@@ -613,7 +634,7 @@
         ],
         [
           2048,
-          1018,
+          2047,
           0,
           0
         ],
@@ -629,7 +650,7 @@
         62
       ],
       "name": "Protein kinase domain",
-      "sha256": "c9ca733d977e23d57cbf0ae3c7b416ba0a2d40007bbae7c5ccaa8304797c9463",
+      "sha256": "ed8fb00c5f70c68fbc40fd84e6325575f622e7971c4f5a84068cbd5f51f34318",
       "total": 2048
     },
     "PF00071": {
@@ -903,7 +924,7 @@
         ],
         [
           2048,
-          512,
+          2048,
           0,
           0
         ],
@@ -919,7 +940,7 @@
         1
       ],
       "name": "Major surface antigen from hepadnavirus",
-      "sha256": "37cfa7fe49ed9b9553287fb9c03bb30d9f4f57bbdfad99944449d263a06bc590",
+      "sha256": "d3dda4bb850f1c6fa0b8036eb97ec5841e3a4ce3067dcf3dc84ea0322695c6b7",
       "total": 2048
     },
     "PF00920": {
@@ -990,7 +1011,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -1006,7 +1027,7 @@
         6
       ],
       "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
-      "sha256": "3425a3308154e07a06cea8a8c518d81406b192d232b19d76d072805892747fa7",
+      "sha256": "da1f98db3f1a2cb522a68eed4c54baaad52196162b73894f141bdcdc368dbba9",
       "total": 2048
     },
     "PF01125": {
@@ -1366,7 +1387,7 @@
           8
         ],
         [
-          1025,
+          2048,
           0,
           0,
           0
@@ -1383,7 +1404,7 @@
         47
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "3f0ba52bda095cce47dcfdd79d86cd47ea362f2df1fc46b1c8bc329f57135971",
+      "sha256": "653f85482d7ed5578cae2a807c337f08179802bf4e080495484a66567b06c46f",
       "total": 2048
     },
     "PF04030": {
@@ -1540,7 +1561,7 @@
           8
         ],
         [
-          1025,
+          1534,
           0,
           0,
           0
@@ -1557,7 +1578,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "db35470c5c74dfcfa3567448f7c9fc3ba8474ccde791eafde82c08b60d534f11",
+      "sha256": "28e07a8ff9331d8e401cbdc1b3b99cb364b0017d1ff9562251d176b56cac1b51",
       "total": 2048
     },
     "PF05661": {
@@ -1769,7 +1790,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1789,7 +1810,7 @@
         3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
-      "sha256": "bdee86868348b9915e5f8cc53416bd8c0fc4608b642de63b8d2e675bc72dbd89",
+      "sha256": "c9bc9ea11aeaaf7b4cbe2701c7a4f92a72b7e8bccb537488445a1e058b9f1ce1",
       "total": 2048
     },
     "PF12911": {
@@ -1801,7 +1822,7 @@
           8
         ],
         [
-          0,
+          1536,
           0,
           0,
           0
@@ -1818,7 +1839,7 @@
         7
       ],
       "name": "N-terminal TM domain of oligopeptide transport permease C",
-      "sha256": "833cd5eac9de88b1e8b8f2d8b90fc0ebe31bd7f2d4122c9e074ea1691bed05b8",
+      "sha256": "f5e3ad959ad6af3dfb80c17a58a786dddde50bcc7b2a4f86007b285119077c22",
       "total": 2048
     },
     "PF13603": {
@@ -1859,7 +1880,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -1876,7 +1897,7 @@
         16
       ],
       "name": "Methyltransferase domain",
-      "sha256": "3978e785b63911fe7aa1d6deececa96114a7d76651f671dad2c6c6ebd31199ec",
+      "sha256": "e30bd7731ba3a6e453a7f2c3e27b7d802921dc9bd12792b3980f9ffdfed2ee92",
       "total": 2048
     },
     "PF13853": {
@@ -1975,7 +1996,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -1992,7 +2013,7 @@
         1
       ],
       "name": "Sigma2 domain of PhyR",
-      "sha256": "8fdad387551929b10d69cdae2f4f1a0e7389de2016482d75d94474b6881fa86f",
+      "sha256": "aded13f06e9f46c9288a837c4f991700ddaab1ca0acb36099948a8de1552dcbb",
       "total": 2048
     },
     "PF22617": {
@@ -2092,17 +2113,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      94177,
-      24058,
+      99805,
+      27135,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "f5ea139d2b5dca2c7c163fa3fa1815d57accaffcdd5a86e50e80faf137c3db5f",
+    "sha256": "caf5134b625b5830c814b60b532e15699d91c5e8ed6384c5e99ac4111f09e86b",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T04:49:40+00:00"
+  "updated": "2026-11-18T05:19:40+00:00"
 }
