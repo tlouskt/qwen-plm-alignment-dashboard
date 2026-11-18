@@ -72,6 +72,13 @@
         "pfam": "PF00951"
       },
       {
+        "esm2": 12.016742028257553,
+        "esm3": 4.375165375780479,
+        "n": 2048,
+        "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
+        "pfam": "PF01058"
+      },
+      {
         "esm2": 15.733073240157777,
         "esm3": 13.633120794238573,
         "n": 2048,
@@ -361,6 +368,13 @@
         "pfam": "PF05189"
       },
       {
+        "esm2": 13.270813818469835,
+        "esm3": 9.206747634874583,
+        "n": 2048,
+        "name": "La domain",
+        "pfam": "PF05383"
+      },
+      {
         "esm2": 12.7395634749362,
         "esm3": 2.763686236644693,
         "n": 2048,
@@ -401,6 +415,13 @@
         "n": 2048,
         "name": "Peptidase C26",
         "pfam": "PF07722"
+      },
+      {
+        "esm2": 9.491706614596408,
+        "esm3": 4.38806618157104,
+        "n": 2048,
+        "name": "Methyltransferase domain",
+        "pfam": "PF13649"
       },
       {
         "esm2": 8.322310557474768,
@@ -837,7 +858,7 @@
         ],
         [
           2048,
-          30,
+          1546,
           0,
           0
         ],
@@ -853,7 +874,7 @@
         12
       ],
       "name": "LIM domain",
-      "sha256": "3e57a1d2a81ec1c2d72bf1898209108f4ca9b65936967c5d47cd31fcfcd65f77",
+      "sha256": "ffd00f7ba56917753f40a89a3fc43c31e4840ff3ae357ca1ee22de28a469289f",
       "total": 2048
     },
     "PF00509": {
@@ -1011,7 +1032,7 @@
         ],
         [
           2048,
-          512,
+          2048,
           0,
           0
         ],
@@ -1027,7 +1048,7 @@
         6
       ],
       "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
-      "sha256": "da1f98db3f1a2cb522a68eed4c54baaad52196162b73894f141bdcdc368dbba9",
+      "sha256": "b60f629c70740a5e1e9baf27ffa5abb2d69c78073b7667baccca25fb17b12827",
       "total": 2048
     },
     "PF01125": {
@@ -1156,7 +1177,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -1172,7 +1193,7 @@
         6
       ],
       "name": "Large ribosomal RNA subunit accumulation protein YceD",
-      "sha256": "afd7759f1ba511a7b707f8f40f0ad199b1098f30d5195a6333154bc847897f77",
+      "sha256": "03cb12b4916362a6201335cb0cedadb1ad2669cfe1407a6598dfac5523555bcc",
       "total": 2048
     },
     "PF02751": {
@@ -1561,7 +1582,7 @@
           8
         ],
         [
-          1534,
+          2048,
           0,
           0,
           0
@@ -1578,7 +1599,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "28e07a8ff9331d8e401cbdc1b3b99cb364b0017d1ff9562251d176b56cac1b51",
+      "sha256": "d91279c97b7745d4cb59fa3048a6b3603c269a75607f3e453fe0adfb2b9d65a1",
       "total": 2048
     },
     "PF05661": {
@@ -1848,7 +1869,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1868,7 +1889,7 @@
         2
       ],
       "name": "Leucyl-tRNA synthetase, editing domain",
-      "sha256": "f42fc5b74897e79b86928c7ef88dbea1228dbd3506102ee4d787acdba3daf4b7",
+      "sha256": "3f1f8b8dee4c27438af2a8b35ddfe733b30d4528e950ccd019bdbad8f2a95352",
       "total": 2048
     },
     "PF13649": {
@@ -1880,7 +1901,7 @@
           8
         ],
         [
-          512,
+          2048,
           0,
           0,
           0
@@ -1897,7 +1918,7 @@
         16
       ],
       "name": "Methyltransferase domain",
-      "sha256": "e30bd7731ba3a6e453a7f2c3e27b7d802921dc9bd12792b3980f9ffdfed2ee92",
+      "sha256": "55eb671b81bbf910cb211d9833279c0796027bfbfc1e3cff8588a6471aa0ccc6",
       "total": 2048
     },
     "PF13853": {
@@ -1909,7 +1930,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -1926,7 +1947,7 @@
         31
       ],
       "name": "Olfactory receptor",
-      "sha256": "5217f051410ba0c404dc0950a5655da832b704ea1d84fdc6fb2f0b07cf82102b",
+      "sha256": "9581e6bbe522b5956080bd5bfcfaaa5204658a2ae68d1a18c0fb6d919f2e37e2",
       "total": 2048
     },
     "PF14370": {
@@ -2113,17 +2134,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      99805,
-      27135,
+      102367,
+      30699,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "caf5134b625b5830c814b60b532e15699d91c5e8ed6384c5e99ac4111f09e86b",
+    "sha256": "06e39ec317d2a54d4cf34ab713264612509351ed9e816ad5d8af5d038dbf4af5",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T05:19:40+00:00"
+  "updated": "2026-11-18T05:49:44+00:00"
 }
