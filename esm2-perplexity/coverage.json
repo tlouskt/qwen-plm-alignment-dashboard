@@ -233,6 +233,13 @@
         "pfam": "PF03666"
       },
       {
+        "esm2": 8.407221871821534,
+        "esm3": 6.309052352275141,
+        "n": 2048,
+        "name": "Autotransporter beta-domain",
+        "pfam": "PF03797"
+      },
+      {
         "esm2": 8.080427644443338,
         "esm3": 4.383698701916531,
         "n": 2048,
@@ -245,6 +252,20 @@
         "n": 2048,
         "name": "ApaG domain",
         "pfam": "PF04379"
+      },
+      {
+        "esm2": 7.700090586935456,
+        "esm3": 4.720091730862287,
+        "n": 2048,
+        "name": "Peptidase family M28",
+        "pfam": "PF04389"
+      },
+      {
+        "esm2": 10.772970533004758,
+        "esm3": 8.300300531520776,
+        "n": 2048,
+        "name": "Glycosyltransferase 61",
+        "pfam": "PF04577"
       },
       {
         "esm2": 8.512889364188275,
@@ -308,6 +329,13 @@
         "n": 2048,
         "name": "Methyltransferase domain",
         "pfam": "PF13649"
+      },
+      {
+        "esm2": 5.201561922298654,
+        "esm3": 4.472946364873999,
+        "n": 2048,
+        "name": "Olfactory receptor",
+        "pfam": "PF13853"
       },
       {
         "esm2": 6.822033493544076,
@@ -1703,7 +1731,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -1719,7 +1747,7 @@
         47
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "d6403f8d1e44117d265241e7bec2103c49913bcd65ca157c749232a8c5064294",
+      "sha256": "e105420287945905cedd425e71e0cc7914f68ee9ccc741e989d371eb6c44cdd6",
       "total": 2048
     },
     "PF04030": {
@@ -1790,7 +1818,7 @@
         ],
         [
           2048,
-          1535,
+          2048,
           0,
           0
         ],
@@ -1806,7 +1834,7 @@
         8
       ],
       "name": "Peptidase family M28",
-      "sha256": "c2e7ecf3885a7eb62e9ca1afb46fb195a951a9136340c3cd168ccbbb652c75a9",
+      "sha256": "5de4a48cde45f6785a24915e9b53be811e9307450c13f8606db3d01857b44e3b",
       "total": 2048
     },
     "PF04577": {
@@ -1819,7 +1847,7 @@
         ],
         [
           2048,
-          1535,
+          2048,
           0,
           0
         ],
@@ -1835,7 +1863,7 @@
         30
       ],
       "name": "Glycosyltransferase 61",
-      "sha256": "c7d5fade9f055bc55537db8db607e42bfe925360e8d64412612c13b58ffa69e8",
+      "sha256": "40b686f3383a1f9ccaf44715018d4793400979276e925c3819720069cd8626e0",
       "total": 2048
     },
     "PF05189": {
@@ -1877,7 +1905,7 @@
         ],
         [
           2048,
-          510,
+          1025,
           0,
           0
         ],
@@ -1893,7 +1921,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "ca73cada0169f6e568fe7423362a0aa4ffb7fbb6a493a4b5b1350eef17032141",
+      "sha256": "8a76dc73f0db09552060476b64601fc6c93937539974f5213a58417ca87c7eef",
       "total": 2048
     },
     "PF05661": {
@@ -2225,7 +2253,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -2241,7 +2269,7 @@
         31
       ],
       "name": "Olfactory receptor",
-      "sha256": "fd4235aa76a5ad5f53802f0fd1f6a808cfb3c58c835770b0098c9fead77647f0",
+      "sha256": "2891ee3f8f51c7c600a769583a64cca12523aa59dd4c03070fa406659783600b",
       "total": 2048
     },
     "PF14370": {
@@ -2429,16 +2457,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      100827,
+      103392,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "7ddb7eb8ddb72b9e25e15e4bb3b67f170f34bc498ea4e3c04ab399abe9f9c168",
+    "sha256": "7100a76e94c61adfa2d7a4ba01b30cd9e4178f0a917f5baf46b3a32122a13b59",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T22:25:53+00:00"
+  "updated": "2026-11-18T22:55:52+00:00"
 }
