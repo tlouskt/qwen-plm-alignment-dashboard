@@ -11,7 +11,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,san
 .pool-controls{display:flex;align-items:end;gap:1rem;flex-wrap:wrap;margin:.7rem 0}.marker-count{color:#ce99ff;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;margin:.15rem 0 .25rem}.match-key{color:#ce99ff}
 .pair .panel{display:grid;grid-template-columns:minmax(0,1fr);align-content:start}.pair h3{grid-row:1}.pair .marker-count{grid-row:2;text-align:right}.pair canvas{grid-row:3;min-width:0}
 .ridge-panel{margin:1.15rem 0 0}.ridge-panel figcaption{margin-bottom:.55rem}
-.ridge-panel canvas{height:350px;aspect-ratio:auto}
+.ridge-panel canvas{height:405px;aspect-ratio:auto}
 .ridge-chart{position:relative}
 .ridge-tooltip{position:absolute;pointer-events:none;z-index:1;padding:.3rem .55rem;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--text);font:13px system-ui,sans-serif;white-space:nowrap}
 .ridge-tooltip[hidden]{display:none}
@@ -45,11 +45,11 @@ html.has-expanded-plot{overflow:hidden}
 </div><output id="poolDetail"></output>
 <small>Counts use the full paired set for the selected checkpoint. Date evidence comes from an exact match to a dated representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. The 2019 date is a reference cutoff. The exact UniRef50 release used for training is unknown. This page checks for newly published scores every two minutes.</small></section>
 <section class="plot-group" id="checkpoint-distributions" aria-labelledby="ridge-heading">
-<h2 id="ridge-heading">Pseudoperplexity by ESM-2 checkpoint</h2>
+<h2 id="ridge-heading">Pseudoperplexity by ESM checkpoint</h2>
 <figure class="panel ridge-panel">
 <figcaption><small id="ridge-coverage">Loading shared sequence coverage…</small><span class="ridge-key">Median score</span></figcaption>
 <div data-zoom-group="ridge"></div>
-<div class="ridge-chart"><canvas id="checkpoint-ridges" role="img" aria-label="Loading ESM-2 score distributions"></canvas>
+<div class="ridge-chart"><canvas id="checkpoint-ridges" role="img" aria-label="Loading ESM-2 and ESM3 score distributions"></canvas>
 <output id="ridge-tooltip" class="ridge-tooltip" aria-hidden="true" hidden></output></div>
 <small id="ridge-medians"></small>
 </figure>
@@ -336,8 +336,14 @@ function prepareCheckpointRidges(){
   label,available:counts[i],color:ridgeColors[i],
   scores:counts[i]?shared.map(row=>row[i+3]).sort((a,b)=>a-b):[]
  })).reverse();
+ const esm3Scores=shared.map(row=>row[1]);
+ if(esm3Scores.some(score=>!Number.isFinite(score)||score<1))throw Error('Invalid ESM3 score');
+ series.unshift({
+  label:'ESM3 small open · 1.4B',name:'ESM3 small open',parameters:'1.4B',
+  available:pooledRows.length,color:'#83bffd',scores:esm3Scores.sort((a,b)=>a-b)
+ });
  el('ridge-coverage').textContent=scored.length?
-  fmt(shared.length)+' shared sequences across '+new Intl.ListFormat('en-US').format(scored.map(i=>sizes[i])):
+  fmt(shared.length)+' shared sequences across '+new Intl.ListFormat('en-US').format(['ESM3',...scored.map(i=>'ESM-2 '+sizes[i])]):
   'Awaiting verified checkpoint scores';
  const populated=series.filter(row=>row.scores.length);
  // Smooth a normalized histogram in raw PPPL units using a shared bandwidth.
@@ -377,7 +383,9 @@ function renderCheckpointRidges(){
  const g=canvas.getContext('2d');g.scale(ratio,ratio);
  const styles=getComputedStyle(canvas);
  const rule=styles.getPropertyValue('--rule'), ink=styles.getPropertyValue('--text'), muted=styles.getPropertyValue('--muted');
- const left=82,right=w-18,top=12,bottom=h-46;
+ g.font='600 13px system-ui';
+ const left=Math.max(82,Math.ceil(Math.max(...series.map(row=>g.measureText(row.name??row.label).width)))+16);
+ const right=w-18,top=12,bottom=h-46;
  chartBounds.set(canvas,{left,right,top,bottom});
  const rowHeight=(bottom-top)/series.length,ridgeHeight=rowHeight*.81;
  const [min,max]=plotRanges('ridge',low,high).x;
@@ -393,8 +401,8 @@ function renderCheckpointRidges(){
  for(const [i,row] of series.entries()){
   const y=baselines[i];
   g.strokeStyle=rule;g.beginPath();g.moveTo(left,y);g.lineTo(right,y);g.stroke();
-  g.textAlign='right';g.font='600 13px system-ui';g.fillStyle=ink;g.fillText(row.label,left-12,y-5);
-  g.font='11px system-ui';g.fillStyle=muted;g.fillText('n = '+fmt(row.n),left-12,y+10);
+  g.textAlign='right';g.font='600 13px system-ui';g.fillStyle=ink;g.fillText(row.name??row.label,left-12,y-5);
+  g.font='11px system-ui';g.fillStyle=muted;g.fillText((row.parameters?row.parameters+' · ':'')+'n = '+fmt(row.n),left-12,y+10);
   if(!row.n){
    g.textAlign='left';g.fillText(row.available?'No shared sequences':'Awaiting verified scores',left+12,y-11);
    medians.push(null);continue;
