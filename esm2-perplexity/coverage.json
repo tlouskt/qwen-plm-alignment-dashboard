@@ -1683,7 +1683,7 @@
         ],
         [
           2048,
-          1024,
+          1536,
           0,
           0
         ],
@@ -1699,7 +1699,7 @@
         11
       ],
       "name": "D-arabinono-1,4-lactone oxidase",
-      "sha256": "9876c1a57c97956e6fb2fe6ced4903d002df842cd3f266d870c3e2157d19bd70",
+      "sha256": "8a5732d7551b9d6241e54ac883632544848208fd48fc4ec6fdd44c281db3cba0",
       "total": 2048
     },
     "PF04379": {
@@ -1828,7 +1828,7 @@
         ],
         [
           2048,
-          0,
+          510,
           0,
           0
         ],
@@ -1844,7 +1844,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "d91279c97b7745d4cb59fa3048a6b3603c269a75607f3e453fe0adfb2b9d65a1",
+      "sha256": "ca73cada0169f6e568fe7423362a0aa4ffb7fbb6a493a4b5b1350eef17032141",
       "total": 2048
     },
     "PF05661": {
@@ -2089,7 +2089,7 @@
         ],
         [
           2048,
-          0,
+          1536,
           0,
           0
         ],
@@ -2105,7 +2105,7 @@
         7
       ],
       "name": "N-terminal TM domain of oligopeptide transport permease C",
-      "sha256": "dd570fb9050c15b0b78dffcece805526b018522a9237f78a9aa2840925460bdd",
+      "sha256": "f82efdaa09d4e3627a0316aabf830afe3271b648b53b42a01baef85b694a15b0",
       "total": 2048
     },
     "PF13603": {
@@ -2147,7 +2147,7 @@
         ],
         [
           2048,
-          0,
+          1537,
           0,
           0
         ],
@@ -2163,7 +2163,7 @@
         16
       ],
       "name": "Methyltransferase domain",
-      "sha256": "55eb671b81bbf910cb211d9833279c0796027bfbfc1e3cff8588a6471aa0ccc6",
+      "sha256": "7a5ee9a26dd74015a27a8fb80e702c6bfdc66c6fb4ac1ce8ecc83aa63b7fb9c3",
       "total": 2048
     },
     "PF13853": {
@@ -2176,7 +2176,7 @@
         ],
         [
           2048,
-          512,
+          1024,
           0,
           0
         ],
@@ -2192,7 +2192,7 @@
         31
       ],
       "name": "Olfactory receptor",
-      "sha256": "93efcdf72ba7774bdb5d7a64ff94ae1d3699600d2747a1c76e03788a9dd309ea",
+      "sha256": "c1120022b0379e470bfcacf7da27a5ef55af4c3150339d6a8cb004be3a50022b",
       "total": 2048
     },
     "PF14370": {
@@ -2263,7 +2263,7 @@
         ],
         [
           2048,
-          1024,
+          1536,
           0,
           0
         ],
@@ -2279,7 +2279,7 @@
         1
       ],
       "name": "Sigma2 domain of PhyR",
-      "sha256": "b9664c01b3784ff7e8825357f29ec30dcefdf02b30a8055cb0a4b62f707493d4",
+      "sha256": "45e00ba3c125bfa162336b866d4d858ed87d4329ad0315621d8a5d5f4fcf1a1d",
       "total": 2048
     },
     "PF22617": {
@@ -2380,16 +2380,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      85989,
+      91108,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "5b3c60221eba4b1535e83cf73e2764652281e939351b41e2c9103119df93f054",
+    "sha256": "0ee983687b59e1dc8a209be830256b40bdc512ed0fd35f17a3b8627b7a684eaa",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T20:25:59+00:00"
+  "updated": "2026-11-18T20:55:58+00:00"
 }
