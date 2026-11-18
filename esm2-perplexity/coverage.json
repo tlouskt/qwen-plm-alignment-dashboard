@@ -123,6 +123,13 @@
         "pfam": "PF00347"
       },
       {
+        "esm2": 13.600842798141178,
+        "esm3": 6.290743739268199,
+        "n": 2048,
+        "name": "Transferrin",
+        "pfam": "PF00405"
+      },
+      {
         "esm2": 7.268913448763228,
         "esm3": 3.326601168564641,
         "n": 2048,
@@ -191,6 +198,13 @@
         "n": 2048,
         "name": "Transcription initiation factor IIA, gamma subunit",
         "pfam": "PF02751"
+      },
+      {
+        "esm2": 15.455462255233762,
+        "esm3": 3.339732161798952,
+        "n": 2048,
+        "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
+        "pfam": "PF03331"
       },
       {
         "esm2": 12.369397131594624,
@@ -575,7 +589,7 @@
           8
         ],
         [
-          1533,
+          2048,
           0,
           0,
           0
@@ -592,7 +606,7 @@
         14
       ],
       "name": "Transferrin",
-      "sha256": "c0c2dbd61356e7b3d9efe8a77455aac7f8f5eaf2cce1467d74de4bc082edb556",
+      "sha256": "f70339cd25cf9db43c6018517f70fa052767e3bbd97eb1248f290985fe48dbb7",
       "total": 2048
     },
     "PF00406": {
@@ -865,7 +879,7 @@
           8
         ],
         [
-          1026,
+          1537,
           0,
           0,
           0
@@ -882,7 +896,7 @@
         11
       ],
       "name": "Protein prenyltransferase alpha subunit repeat",
-      "sha256": "03677e794b5a03b04a961694ef4718adbe22cd16a424d8527ae4e8122fc18093",
+      "sha256": "44c5f4c6a0e846455d36a5f6d2ff2cd49e514f7d8277ca7a66e8a115548f9c00",
       "total": 2048
     },
     "PF02170": {
@@ -923,7 +937,7 @@
           8
         ],
         [
-          1024,
+          1536,
           0,
           0,
           0
@@ -940,7 +954,7 @@
         14
       ],
       "name": "YceG-like family",
-      "sha256": "43a6ea98c1e19b8399435627b034de6ba8c16fee22dcedf3f7b978c7568354e2",
+      "sha256": "da365425713d29a3ef9aa84603d56583848225f8daa00e3f1da2239081dd23bf",
       "total": 2048
     },
     "PF02620": {
@@ -1068,7 +1082,7 @@
           8
         ],
         [
-          1024,
+          2048,
           0,
           0,
           0
@@ -1085,7 +1099,7 @@
         6
       ],
       "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
-      "sha256": "01b7bbb4ca08eec942eefc04fe895baeb260e3ec66b8e895b42791c7816ab1d7",
+      "sha256": "d51777ad21d1efbfdb333379a80235d124e7589295fdbde65d07ac9286af3526",
       "total": 2048
     },
     "PF03357": {
@@ -1910,17 +1924,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      56289,
+      58851,
       10240,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "c55221369379bc6f2ee964baa08a9fcfb35f54f439fc2f90705145a5c4f15a4a",
+    "sha256": "ac3b535b8e50e9398b840da16efca1b520fa0fc7d2e5148bba426185b8f59ad5",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T01:17:53+00:00"
+  "updated": "2026-11-18T01:23:47+00:00"
 }
