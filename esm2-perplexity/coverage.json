@@ -130,6 +130,13 @@
         "pfam": "PF00406"
       },
       {
+        "esm2": 10.76021113639135,
+        "esm3": 7.977509072455506,
+        "n": 2048,
+        "name": "LIM domain",
+        "pfam": "PF00412"
+      },
+      {
         "esm2": 16.446795528604362,
         "esm3": 16.161337048686274,
         "n": 2048,
@@ -177,6 +184,13 @@
         "n": 2048,
         "name": "Transcription initiation factor IIA, gamma subunit",
         "pfam": "PF02751"
+      },
+      {
+        "esm2": 12.369397131594624,
+        "esm3": 5.407116742426807,
+        "n": 2048,
+        "name": "Snf7",
+        "pfam": "PF03357"
       },
       {
         "esm2": 10.72610500097753,
@@ -554,7 +568,7 @@
           8
         ],
         [
-          0,
+          510,
           0,
           0,
           0
@@ -571,7 +585,7 @@
         14
       ],
       "name": "Transferrin",
-      "sha256": "33cd7670469bcf15443082ad9c79595a77b49189a52cb09a7e4fbcabae1e31cb",
+      "sha256": "4d6515075d4184b92010868e19a05c57a26b2a2ce03d928b3274969447238e97",
       "total": 2048
     },
     "PF00406": {
@@ -612,7 +626,7 @@
           8
         ],
         [
-          30,
+          2048,
           0,
           0,
           0
@@ -629,7 +643,7 @@
         12
       ],
       "name": "LIM domain",
-      "sha256": "5767c9df7e8b57f4b6ca10df33c749aca728836056cd78f8d87816c7426f7544",
+      "sha256": "22b44883076955af80cfe0a70590e1513a0cf4932405320b375fc5bdf8af3450",
       "total": 2048
     },
     "PF00509": {
@@ -670,7 +684,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -687,7 +701,7 @@
         22
       ],
       "name": "His Kinase A (phospho-acceptor) domain",
-      "sha256": "b920b86a2e01269a6f4d3d129e103526d5797107cb11e83ed83a6b8caf59f6d3",
+      "sha256": "822b7b60cfc40c474995b5e144ff894b18e14fa213ba98c9dfd0fda4d034cd39",
       "total": 2048
     },
     "PF00695": {
@@ -986,7 +1000,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1006,7 +1020,7 @@
         7
       ],
       "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-      "sha256": "d3300d6a6e461d12735e4305ccaf58bfb9017e87495dd14ce7788baa26b462d2",
+      "sha256": "57ff5a86b9347eaad203a8c78793929328ff8db0340d01abd27473c34645f733",
       "total": 2048
     },
     "PF03321": {
@@ -1044,7 +1058,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1064,7 +1078,7 @@
         6
       ],
       "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
-      "sha256": "b6eec9a797b1edd92bbebbeab9cd00abd4e384b0d515462afdb6a1a1fc8ca868",
+      "sha256": "76653d44ecf1251558243cd8460c4f8872a0dac155322d2540c42296ce9cd37f",
       "total": 2048
     },
     "PF03357": {
@@ -1076,7 +1090,7 @@
           8
         ],
         [
-          0,
+          2048,
           0,
           0,
           0
@@ -1093,7 +1107,7 @@
         11
       ],
       "name": "Snf7",
-      "sha256": "d80e4543c5f474de32da42983286755a898c2bb7890b44a2124bde665598cd98",
+      "sha256": "e83439c699a712d241b1ddf33ec6573f993317baff2741e37bca10c1b5636d4c",
       "total": 2048
     },
     "PF03571": {
@@ -1889,17 +1903,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      45055,
+      50143,
       10240,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "71036d744b37e4af8e2e3114c6be1163cc506d5a9ca2775ccf32b0929ded16a6",
+    "sha256": "2cc71f1379afedad89c47086fc73116d95d2649e134da0802ee8730f582d45c4",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T00:17:50+00:00"
+  "updated": "2026-11-18T00:47:58+00:00"
 }
