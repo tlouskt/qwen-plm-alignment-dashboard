@@ -226,6 +226,13 @@
         "pfam": "PF03571"
       },
       {
+        "esm2": 15.528921337687512,
+        "esm3": 12.276307201561409,
+        "n": 2048,
+        "name": "Nitrogen Permease regulator of amino acid transport activity 3",
+        "pfam": "PF03666"
+      },
+      {
         "esm2": 8.080427644443338,
         "esm3": 4.383698701916531,
         "n": 2048,
@@ -1667,7 +1674,7 @@
         ],
         [
           2048,
-          512,
+          2048,
           0,
           0
         ],
@@ -1683,7 +1690,7 @@
         9
       ],
       "name": "Nitrogen Permease regulator of amino acid transport activity 3",
-      "sha256": "f13f5289d88f76a1de66678df7edf60259acdf42f9b281e5a7e512b9cc7ba48d",
+      "sha256": "1f92a7215b7559ed6e8e498344e18fb9675ea7e1f16e49ea00ad043e64f6928a",
       "total": 2048
     },
     "PF03797": {
@@ -1696,7 +1703,7 @@
         ],
         [
           2048,
-          512,
+          1025,
           0,
           0
         ],
@@ -1712,7 +1719,7 @@
         47
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "31aa1cc8df75bf91e40e995826fbca895f9869b27053256997e9a85b643b051c",
+      "sha256": "e5045d59d41cccfee35db228fedcf6ef499bfa08d16f216f03a1d6afda10551d",
       "total": 2048
     },
     "PF04030": {
@@ -1783,7 +1790,7 @@
         ],
         [
           2048,
-          1,
+          510,
           0,
           0
         ],
@@ -1799,7 +1806,7 @@
         8
       ],
       "name": "Peptidase family M28",
-      "sha256": "42fd389e9d91a63f768724b1dac87a897ed84990737aff38eedce7227867eaaf",
+      "sha256": "485fcd0925f3ae647722df355f92dc11105fc1e2b5a7031f09ca2e02a87ce59d",
       "total": 2048
     },
     "PF04577": {
@@ -2422,16 +2429,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      95710,
+      98268,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "b10bf961ae5e187e81498f200c8471665adbd7124a18f2028bdbd928b461485e",
+    "sha256": "955c0618eb812a4bdd9230c122162717c7f635b301cc21db26228ee4dae4d829",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T21:25:56+00:00"
+  "updated": "2026-11-18T21:55:54+00:00"
 }
