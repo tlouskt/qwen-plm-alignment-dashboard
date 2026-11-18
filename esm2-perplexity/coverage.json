@@ -9,6 +9,13 @@
         "pfam": "PF00001"
       },
       {
+        "esm2": 8.22941233163531,
+        "esm3": 4.517727316188637,
+        "n": 2048,
+        "name": "ATPase family associated with various cellular activities (AAA)",
+        "pfam": "PF00004"
+      },
+      {
         "esm2": 6.39054024036546,
         "esm3": 3.644270129961139,
         "n": 2048,
@@ -65,6 +72,13 @@
         "pfam": "PF00406"
       },
       {
+        "esm2": 9.190326849850619,
+        "esm3": 7.977509072455506,
+        "n": 2048,
+        "name": "LIM domain",
+        "pfam": "PF00412"
+      },
+      {
         "esm2": 14.953164962184259,
         "esm3": 14.58909284394147,
         "n": 2048,
@@ -91,6 +105,20 @@
         "n": 2048,
         "name": "Pre-mRNA-splicing factor BUD31",
         "pfam": "PF01125"
+      },
+      {
+        "esm2": 7.798175251315785,
+        "esm3": 5.297013701195448,
+        "n": 2048,
+        "name": "Large ribosomal RNA subunit accumulation protein YceD",
+        "pfam": "PF02620"
+      },
+      {
+        "esm2": 16.035388492701692,
+        "esm3": 15.41151375003258,
+        "n": 2048,
+        "name": "Transcription initiation factor IIA, gamma subunit",
+        "pfam": "PF02751"
       },
       {
         "esm2": 8.836582116065795,
@@ -502,7 +530,7 @@
         ],
         [
           2048,
-          513,
+          2048,
           0,
           0
         ],
@@ -518,7 +546,7 @@
         29
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
-      "sha256": "a41a0fb4530235e9bd2dc2499ca1af769683eafc864fa276d3b8fca516d1eebf",
+      "sha256": "c9b6bbde3473f622077e161c284ac646103745f8e6d03ded24f84e8fd8ad7249",
       "total": 2048
     },
     "PF00005": {
@@ -821,7 +849,7 @@
         ],
         [
           2048,
-          0,
+          510,
           0,
           0
         ],
@@ -837,7 +865,7 @@
         14
       ],
       "name": "Transferrin",
-      "sha256": "f70339cd25cf9db43c6018517f70fa052767e3bbd97eb1248f290985fe48dbb7",
+      "sha256": "5c17571d2ade3b5b003b4178e1912a2e37e1cc8c66ff1f0415f6cc4e196d9bc6",
       "total": 2048
     },
     "PF00406": {
@@ -879,7 +907,7 @@
         ],
         [
           2048,
-          1546,
+          2048,
           0,
           0
         ],
@@ -895,7 +923,7 @@
         12
       ],
       "name": "LIM domain",
-      "sha256": "ffd00f7ba56917753f40a89a3fc43c31e4840ff3ae357ca1ee22de28a469289f",
+      "sha256": "96d2f85a8a2088efaf12d508e0bc3018ec10663bbc479c5958e5bf9582471660",
       "total": 2048
     },
     "PF00509": {
@@ -1198,7 +1226,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -1214,7 +1242,7 @@
         6
       ],
       "name": "Large ribosomal RNA subunit accumulation protein YceD",
-      "sha256": "898c5b2cd8ebc2dba9b5a758652145a29249ca91d707e5dbeafb450062603db5",
+      "sha256": "2466968a128bb4a5a0c94cb017976c8da1e667e6302f9449847cdadcb91b4259",
       "total": 2048
     },
     "PF02751": {
@@ -1227,7 +1255,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -1243,7 +1271,7 @@
         14
       ],
       "name": "Transcription initiation factor IIA, gamma subunit",
-      "sha256": "8e82c6041d3eb2ff360c7c1d5380c56abaca640f4b3752bb76f2afe8ce128401",
+      "sha256": "56f0edcb89e2c07e082be541110cd148a5f8fce1ab87f9eaeb1a02572e49395a",
       "total": 2048
     },
     "PF02771": {
@@ -1835,7 +1863,7 @@
           8
         ],
         [
-          0,
+          1536,
           0,
           0,
           0
@@ -1852,7 +1880,7 @@
         3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
-      "sha256": "c9bc9ea11aeaaf7b4cbe2701c7a4f92a72b7e8bccb537488445a1e058b9f1ce1",
+      "sha256": "ecf998fc636347826c5a5614a28cd3b0b65249ef7b84582041639224ea89faf1",
       "total": 2048
     },
     "PF12911": {
@@ -1893,7 +1921,7 @@
           8
         ],
         [
-          0,
+          511,
           0,
           0,
           0
@@ -1910,7 +1938,7 @@
         2
       ],
       "name": "Leucyl-tRNA synthetase, editing domain",
-      "sha256": "3f1f8b8dee4c27438af2a8b35ddfe733b30d4528e950ccd019bdbad8f2a95352",
+      "sha256": "e8dbb25b71ee7fd7c563ddf25597ce1092fc888e2fa3b429f073a2c43c86552f",
       "total": 2048
     },
     "PF13649": {
@@ -2006,7 +2034,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -2026,7 +2054,7 @@
         16
       ],
       "name": "DYW family of nucleic acid deaminases",
-      "sha256": "604a9ead54fbc45f80fea796fe6d962dea4da106d203fa89de8564419496a040",
+      "sha256": "3e081fd7d4a5148244cf1ebb393cbd1d992299557756b12816f7f667dbd8b5d4",
       "total": 2048
     },
     "PF22029": {
@@ -2064,7 +2092,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -2084,7 +2112,7 @@
         2
       ],
       "name": "Homocitrate synthase post-HMGL domain-like",
-      "sha256": "bfb993361650104889beb5a265ba77b434f0bd6bef71d0f75a7de67210f4303c",
+      "sha256": "2adac9352093e323dfabc75d21e09d0c08d00c9ce75f99d6af4c73392077132f",
       "total": 2048
     },
     "PF24681": {
@@ -2155,17 +2183,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      105439,
-      35820,
+      107486,
+      39391,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "856464bf61249607418588ef25cbe83b29f855c4bbc16bcc443f952480613dd3",
+    "sha256": "67046f799cf6727d7ce59f743d8efff8ffd544979673f7cfeb45d5d6fe7dad48",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T06:19:41+00:00"
+  "updated": "2026-11-18T06:49:45+00:00"
 }
