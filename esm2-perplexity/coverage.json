@@ -1905,7 +1905,7 @@
         ],
         [
           2048,
-          1025,
+          1534,
           0,
           0
         ],
@@ -1921,7 +1921,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "8a76dc73f0db09552060476b64601fc6c93937539974f5213a58417ca87c7eef",
+      "sha256": "ccee797106ed2c88c557e67f63d7c7200bac05b912736fcf0fc1045fdcb0a23e",
       "total": 2048
     },
     "PF05661": {
@@ -2457,16 +2457,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      103392,
+      103901,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "7100a76e94c61adfa2d7a4ba01b30cd9e4178f0a917f5baf46b3a32122a13b59",
+    "sha256": "c7b3b417b9e972572ea71bd8890187a575477952fd5f651a19aa1b1295d6085b",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T22:55:52+00:00"
+  "updated": "2026-11-18T23:25:57+00:00"
 }
