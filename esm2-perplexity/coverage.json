@@ -23,6 +23,13 @@
         "pfam": "PF00046"
       },
       {
+        "esm2": 16.826271782313157,
+        "esm3": 16.816444218506035,
+        "n": 2048,
+        "name": "Neuraminidase",
+        "pfam": "PF00064"
+      },
+      {
         "esm2": 7.021553013483829,
         "esm3": 4.778426085579044,
         "n": 2048,
@@ -417,11 +424,25 @@
         "pfam": "PF07722"
       },
       {
+        "esm2": 6.979383650565011,
+        "esm3": 4.177817193814084,
+        "n": 2048,
+        "name": "N-terminal TM domain of oligopeptide transport permease C",
+        "pfam": "PF12911"
+      },
+      {
         "esm2": 9.491706614596408,
         "esm3": 4.38806618157104,
         "n": 2048,
         "name": "Methyltransferase domain",
         "pfam": "PF13649"
+      },
+      {
+        "esm2": 6.765554355398408,
+        "esm3": 4.472946364873999,
+        "n": 2048,
+        "name": "Olfactory receptor",
+        "pfam": "PF13853"
       },
       {
         "esm2": 8.322310557474768,
@@ -481,7 +502,7 @@
         ],
         [
           2048,
-          0,
+          513,
           0,
           0
         ],
@@ -497,7 +518,7 @@
         29
       ],
       "name": "ATPase family associated with various cellular activities (AAA)",
-      "sha256": "65f4fe817bc7815d6267a5a6a2a73e45fa6864c9f0048e3fe8207e8c75bcaf1d",
+      "sha256": "a41a0fb4530235e9bd2dc2499ca1af769683eafc864fa276d3b8fca516d1eebf",
       "total": 2048
     },
     "PF00005": {
@@ -626,7 +647,7 @@
         ],
         [
           2048,
-          0,
+          2048,
           0,
           0
         ],
@@ -642,7 +663,7 @@
         1
       ],
       "name": "Neuraminidase",
-      "sha256": "479b2f3e1005439c3239175800228f0dc9dbf87f32c0bd7095186f877fbfb62f",
+      "sha256": "74fb5552c38107c6f35cb9126120f25d9f74005856338c9f1cf8bf0d419dea1f",
       "total": 2048
     },
     "PF00069": {
@@ -1177,7 +1198,7 @@
         ],
         [
           2048,
-          512,
+          1536,
           0,
           0
         ],
@@ -1193,7 +1214,7 @@
         6
       ],
       "name": "Large ribosomal RNA subunit accumulation protein YceD",
-      "sha256": "03cb12b4916362a6201335cb0cedadb1ad2669cfe1407a6598dfac5523555bcc",
+      "sha256": "898c5b2cd8ebc2dba9b5a758652145a29249ca91d707e5dbeafb450062603db5",
       "total": 2048
     },
     "PF02751": {
@@ -1206,7 +1227,7 @@
         ],
         [
           2048,
-          0,
+          1536,
           0,
           0
         ],
@@ -1222,7 +1243,7 @@
         14
       ],
       "name": "Transcription initiation factor IIA, gamma subunit",
-      "sha256": "adcd5ce67e0fe31bccb2d3c38a6d7679508fd17d1a6ada3dd33c3c2a764a31b3",
+      "sha256": "8e82c6041d3eb2ff360c7c1d5380c56abaca640f4b3752bb76f2afe8ce128401",
       "total": 2048
     },
     "PF02771": {
@@ -1785,7 +1806,7 @@
           8
         ],
         [
-          0,
+          1024,
           0,
           0,
           0
@@ -1802,7 +1823,7 @@
         3
       ],
       "name": "Fumarase C C-terminus",
-      "sha256": "7fbd4ff3850b5ce3901c8648e0db8af5b266b9bcd657c86f5732aea749a37ef5",
+      "sha256": "de4fee331524f8ca0fcf0ee1141d2eacb5e1b06fbdc20718cc9116df25c67731",
       "total": 2048
     },
     "PF11762": {
@@ -1843,7 +1864,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -1860,7 +1881,7 @@
         7
       ],
       "name": "N-terminal TM domain of oligopeptide transport permease C",
-      "sha256": "f5e3ad959ad6af3dfb80c17a58a786dddde50bcc7b2a4f86007b285119077c22",
+      "sha256": "dd570fb9050c15b0b78dffcece805526b018522a9237f78a9aa2840925460bdd",
       "total": 2048
     },
     "PF13603": {
@@ -1930,7 +1951,7 @@
           8
         ],
         [
-          512,
+          2048,
           0,
           0,
           0
@@ -1947,7 +1968,7 @@
         31
       ],
       "name": "Olfactory receptor",
-      "sha256": "9581e6bbe522b5956080bd5bfcfaaa5204658a2ae68d1a18c0fb6d919f2e37e2",
+      "sha256": "2487791d10b50ed30cb33ac4958e35c334e9bcf24a339502f00021fd7e8bc1aa",
       "total": 2048
     },
     "PF14370": {
@@ -1956,7 +1977,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1976,7 +1997,7 @@
         7
       ],
       "name": "C-terminal topoisomerase domain",
-      "sha256": "5da9a0a887220ba0e2797223a79eb6e0e1bfb66f60533ac34eb1a672ec6baf26",
+      "sha256": "caf8b47f91807f34bf75aeb708482674bab978a7a58a35bb6456bda297f0d2ad",
       "total": 2048
     },
     "PF14432": {
@@ -2101,7 +2122,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -2121,7 +2142,7 @@
         1
       ],
       "name": "Ephrin cysteine rich domain",
-      "sha256": "7f92f97794798f65f78c4f9ab30480c24e115d48083924b289d583434a80df7b",
+      "sha256": "f42bfb02d21e45d4964c3633a2ef31ac1938d881c160e146c323433bb2d25470",
       "total": 2048
     }
   },
@@ -2134,17 +2155,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      102367,
-      30699,
+      105439,
+      35820,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "06e39ec317d2a54d4cf34ab713264612509351ed9e816ad5d8af5d038dbf4af5",
+    "sha256": "856464bf61249607418588ef25cbe83b29f855c4bbc16bcc443f952480613dd3",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T05:49:44+00:00"
+  "updated": "2026-11-18T06:19:41+00:00"
 }
