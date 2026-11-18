@@ -228,6 +228,13 @@
         "pfam": "PF03357"
       },
       {
+        "esm2": 14.132814324933399,
+        "esm3": 4.4888243251777045,
+        "n": 2048,
+        "name": "ApaG domain",
+        "pfam": "PF04379"
+      },
+      {
         "esm2": 10.72610500097753,
         "esm3": 6.8699959258865,
         "n": 2048,
@@ -401,7 +408,7 @@
         ],
         [
           2048,
-          0,
+          1535,
           0,
           0
         ],
@@ -417,7 +424,7 @@
         25
       ],
       "name": "Homeodomain",
-      "sha256": "a17a9a01329e38ad251413cc08e136fff4efc67f898693515c7c95fb01bb3ed1",
+      "sha256": "8a715aaa2d1303c4eb1f9e7b3ee94baea9121aa885200a5786a9e5bf96d75a71",
       "total": 2048
     },
     "PF00064": {
@@ -662,7 +669,7 @@
         ],
         [
           2048,
-          0,
+          22,
           0,
           0
         ],
@@ -678,7 +685,7 @@
         12
       ],
       "name": "LIM domain",
-      "sha256": "22b44883076955af80cfe0a70590e1513a0cf4932405320b375fc5bdf8af3450",
+      "sha256": "5822662f631fc74ba8b777a8db2f76590b575d6bbd9929bf19d122efff0b869b",
       "total": 2048
     },
     "PF00509": {
@@ -922,7 +929,7 @@
           9
         ],
         [
-          0,
+          513,
           0,
           0,
           0
@@ -939,7 +946,7 @@
         14
       ],
       "name": "PAZ domain",
-      "sha256": "56a134c53642dce1eeead5e02460d0cc561fdff706f02c6454d1d9cb517f94c6",
+      "sha256": "f5fa3a8c1f1f34f09a53643b092b1e5499205652fd730503a3549aa27dc4bc38",
       "total": 2048
     },
     "PF02618": {
@@ -1038,7 +1045,7 @@
           8
         ],
         [
-          512,
+          1023,
           0,
           0,
           0
@@ -1055,7 +1062,7 @@
         7
       ],
       "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-      "sha256": "75341a86dbbec78f544bee7cd10da6c99cfe95347b443d1f09f784101cfe26c8",
+      "sha256": "9541eee0a10e1f9451c6d2078c8be4c6be30902498e95c9bff2c56c692078059",
       "total": 2048
     },
     "PF03321": {
@@ -1064,7 +1071,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1084,7 +1091,7 @@
         8
       ],
       "name": "GH3 family N-terminal domain",
-      "sha256": "f63a5220a3c900167b73b2b09c9363113e68fcb8bd4bb054dff02ac101fc30c0",
+      "sha256": "25e7017f124889c617ada34bdd8c91d59ef0a81df72ccd28e56b070650ddc2ce",
       "total": 2048
     },
     "PF03331": {
@@ -1151,7 +1158,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1171,7 +1178,7 @@
         12
       ],
       "name": "Peptidase family M49",
-      "sha256": "364cd82cffdee3e183dba260448f562198f94f0ff6fa84a3419fc7747dad22d7",
+      "sha256": "7e4c58cf57c6d47ed32ac750f498b2901cb2e3faf4fda9505221fc035f22b101",
       "total": 2048
     },
     "PF03666": {
@@ -1238,7 +1245,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1258,7 +1265,7 @@
         11
       ],
       "name": "D-arabinono-1,4-lactone oxidase",
-      "sha256": "fd075b42e9f4ca961d67481dc2b8bf3ec70c5260027e24574d6398c4eddc8b15",
+      "sha256": "e8f0cf2c369b53b6e610de8c0378ad00a1e22af4ef96bdf5e59bdde6e94b809f",
       "total": 2048
     },
     "PF04379": {
@@ -1270,7 +1277,7 @@
           8
         ],
         [
-          1024,
+          2048,
           0,
           0,
           0
@@ -1287,7 +1294,7 @@
         4
       ],
       "name": "ApaG domain",
-      "sha256": "27352ad066ace5585bb13a713efee713896b8c9541c93e60296e4c92aacc82f3",
+      "sha256": "49c8893378eeabb18a6038e46afa14939d8e1ee2117c506621246ccedbcb8f6e",
       "total": 2048
     },
     "PF04389": {
@@ -1532,7 +1539,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -1548,7 +1555,7 @@
         28
       ],
       "name": "Immunoglobulin V-set domain",
-      "sha256": "8fe3e239f12aedb249ff9dacd14c3e7bd5323a86763ebc662c3d662260809e6c",
+      "sha256": "46dd7f262b4e23100ac739ab3c4cad863ac0117936dc0285f0b41cae52098360",
       "total": 2048
     },
     "PF07722": {
@@ -1938,17 +1945,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      61922,
-      11776,
+      63970,
+      13823,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "578aaf699aedfe2d99b8b83ce1b1e13dc8ac019db4a5e24c111cc7c0cb89c8c8",
+    "sha256": "b425108b3c8968e87ff0dbb06990509a14123e0d920d922ce3525fe74955a7dd",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T01:47:56+00:00"
+  "updated": "2026-11-18T02:17:56+00:00"
 }
