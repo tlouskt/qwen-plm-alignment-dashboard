@@ -28,6 +28,13 @@
         "n": 2048,
         "name": "Ribosomal protein L6",
         "pfam": "PF00347"
+      },
+      {
+        "esm2": 4.890694720132961,
+        "esm3": 3.326601168564641,
+        "n": 2048,
+        "name": "Adenylate kinase",
+        "pfam": "PF00406"
       }
     ],
     "t6_8M": [
@@ -130,6 +137,13 @@
         "pfam": "PF00509"
       },
       {
+        "esm2": 14.969658665390048,
+        "esm3": 14.58909284394147,
+        "n": 2048,
+        "name": "Major surface antigen from hepadnavirus",
+        "pfam": "PF00695"
+      },
+      {
         "esm2": 16.472631030247378,
         "esm3": 16.151507697920337,
         "n": 2048,
@@ -170,6 +184,13 @@
         "n": 2048,
         "name": "Immunoglobulin V-set domain",
         "pfam": "PF07686"
+      },
+      {
+        "esm2": 10.846359749385668,
+        "esm3": 6.96055946549146,
+        "n": 2048,
+        "name": "Kelch repeats",
+        "pfam": "PF24681"
       }
     ]
   },
@@ -563,7 +584,7 @@
         ],
         [
           2048,
-          0,
+          2048,
           0,
           0
         ],
@@ -579,7 +600,7 @@
         4
       ],
       "name": "Adenylate kinase",
-      "sha256": "12e82bb972cf6f41046c1d04717d58d29049e514b952b9fc9bc622ff09f97e28",
+      "sha256": "352a409b89ec34018f45470f8cf349b8ce74a6115fc6147333c43fab0ce459b3",
       "total": 2048
     },
     "PF00412": {
@@ -678,7 +699,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -695,7 +716,7 @@
         1
       ],
       "name": "Major surface antigen from hepadnavirus",
-      "sha256": "10c03dea4dd974e62541562fa09fb549a3077f5d00f5e589e297f9e77a58a361",
+      "sha256": "48ad851023ac3d6909fefe738dec8d38489ebd41dc43d9199972c8c249cd3fb2",
       "total": 2048
     },
     "PF00920": {
@@ -878,7 +899,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -898,7 +919,7 @@
         14
       ],
       "name": "YceG-like family",
-      "sha256": "f650831da102b382e19b59981fd6941cd1ab97b2e771387763c76a8c859a274c",
+      "sha256": "4ea20f41c36c1b6aaeb9d8b7e3c6c976519887b2e61473fdb1690ef6e697cbbf",
       "total": 2048
     },
     "PF02620": {
@@ -1197,7 +1218,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1217,7 +1238,7 @@
         4
       ],
       "name": "ApaG domain",
-      "sha256": "3c5150e157e29b9407adc4500fac26d3867f8c60d0e922c3771923ab0f8d1276",
+      "sha256": "2e41e692e4d0ada67bea9d3d118f1ee4434195e04060b77a8b0ed71522ca352a",
       "total": 2048
     },
     "PF04389": {
@@ -1809,7 +1830,7 @@
           8
         ],
         [
-          1539,
+          2048,
           0,
           0,
           0
@@ -1826,7 +1847,7 @@
         19
       ],
       "name": "Kelch repeats",
-      "sha256": "898bd2efde0512fbd6254674272a0acbf7f2d5b0dba105ffeb29cae483e28577",
+      "sha256": "c6c6aedf1d3c3c9e59b45b72e826ddc2bce2cb11243b36674833daaea864bcd0",
       "total": 2048
     },
     "PF25599": {
@@ -1868,17 +1889,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      44034,
-      8192,
+      45055,
+      10240,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "b02a8775622168814efb5509b8496938e82a133b192bc3798e867611a6a026e0",
+    "sha256": "71036d744b37e4af8e2e3114c6be1163cc506d5a9ca2775ccf32b0929ded16a6",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-17T23:47:54+00:00"
+  "updated": "2026-11-18T00:17:50+00:00"
 }
