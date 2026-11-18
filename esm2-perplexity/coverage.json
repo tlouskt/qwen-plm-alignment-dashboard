@@ -65,6 +65,13 @@
         "pfam": "PF00347"
       },
       {
+        "esm2": 10.73836169925683,
+        "esm3": 6.290743739268199,
+        "n": 2048,
+        "name": "Transferrin",
+        "pfam": "PF00405"
+      },
+      {
         "esm2": 4.890694720132961,
         "esm3": 3.326601168564641,
         "n": 2048,
@@ -450,6 +457,13 @@
         "n": 2048,
         "name": "Peptidase C26",
         "pfam": "PF07722"
+      },
+      {
+        "esm2": 15.116697619618737,
+        "esm3": 2.657473994602611,
+        "n": 2048,
+        "name": "Fumarase C C-terminus",
+        "pfam": "PF10415"
       },
       {
         "esm2": 6.979383650565011,
@@ -849,7 +863,7 @@
         ],
         [
           2048,
-          510,
+          2048,
           0,
           0
         ],
@@ -865,7 +879,7 @@
         14
       ],
       "name": "Transferrin",
-      "sha256": "5c17571d2ade3b5b003b4178e1912a2e37e1cc8c66ff1f0415f6cc4e196d9bc6",
+      "sha256": "8eacef6b35b9a608834303842dcec66c2a4c22a7391848a6e0b2142a1e47ed64",
       "total": 2048
     },
     "PF00406": {
@@ -1834,7 +1848,7 @@
           8
         ],
         [
-          1024,
+          2048,
           0,
           0,
           0
@@ -1851,7 +1865,7 @@
         3
       ],
       "name": "Fumarase C C-terminus",
-      "sha256": "de4fee331524f8ca0fcf0ee1141d2eacb5e1b06fbdc20718cc9116df25c67731",
+      "sha256": "72a925ad923690607dbd648ba97d50c9f7d5bf0a5e864756351facb124ac42c1",
       "total": 2048
     },
     "PF11762": {
@@ -1921,7 +1935,7 @@
           8
         ],
         [
-          511,
+          1023,
           0,
           0,
           0
@@ -1938,7 +1952,7 @@
         2
       ],
       "name": "Leucyl-tRNA synthetase, editing domain",
-      "sha256": "e8dbb25b71ee7fd7c563ddf25597ce1092fc888e2fa3b429f073a2c43c86552f",
+      "sha256": "5dc609be644cdaa2aa84fec821e5b023d2540369e4179fe27e5615a860bedb02",
       "total": 2048
     },
     "PF13649": {
@@ -2183,17 +2197,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      107486,
-      39391,
+      109022,
+      40929,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "67046f799cf6727d7ce59f743d8efff8ffd544979673f7cfeb45d5d6fe7dad48",
+    "sha256": "a862ac36dbd9a13c801937e5e8515d493c1d9796593c0eae660bd4e150f9535e",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T06:49:45+00:00"
+  "updated": "2026-11-18T07:19:41+00:00"
 }
