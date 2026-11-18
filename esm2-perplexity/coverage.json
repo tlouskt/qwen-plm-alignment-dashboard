@@ -198,6 +198,13 @@
         "pfam": "PF02771"
       },
       {
+        "esm2": 9.655780801897174,
+        "esm3": 4.360438497436292,
+        "n": 2048,
+        "name": "GH3 family N-terminal domain",
+        "pfam": "PF03321"
+      },
+      {
         "esm2": 14.576897200324442,
         "esm3": 3.339732161798952,
         "n": 2048,
@@ -210,6 +217,20 @@
         "n": 2048,
         "name": "Snf7",
         "pfam": "PF03357"
+      },
+      {
+        "esm2": 15.246890645217317,
+        "esm3": 5.886069196444704,
+        "n": 2048,
+        "name": "Peptidase family M49",
+        "pfam": "PF03571"
+      },
+      {
+        "esm2": 8.080427644443338,
+        "esm3": 4.383698701916531,
+        "n": 2048,
+        "name": "D-arabinono-1,4-lactone oxidase",
+        "pfam": "PF04030"
       },
       {
         "esm2": 12.110020230660101,
@@ -266,6 +287,27 @@
         "n": 2048,
         "name": "Peptidase C26",
         "pfam": "PF07722"
+      },
+      {
+        "esm2": 5.896526924857039,
+        "esm3": 4.177817193814084,
+        "n": 2048,
+        "name": "N-terminal TM domain of oligopeptide transport permease C",
+        "pfam": "PF12911"
+      },
+      {
+        "esm2": 7.792036755624729,
+        "esm3": 4.38806618157104,
+        "n": 2048,
+        "name": "Methyltransferase domain",
+        "pfam": "PF13649"
+      },
+      {
+        "esm2": 6.822033493544076,
+        "esm3": 3.9477788029851677,
+        "n": 2048,
+        "name": "Sigma2 domain of PhyR",
+        "pfam": "PF22029"
       },
       {
         "esm2": 8.094939595169302,
@@ -1509,7 +1551,7 @@
         ],
         [
           2048,
-          1024,
+          2048,
           0,
           0
         ],
@@ -1525,7 +1567,7 @@
         8
       ],
       "name": "GH3 family N-terminal domain",
-      "sha256": "ec8b6cc38ef5d4bd5feaf138e1638d6149b5a86dfd002d9a4555d542a125cb71",
+      "sha256": "9437610e0f20a0cc5fc469445bba046baadebec84ea51c3a54d39df43c91ddc4",
       "total": 2048
     },
     "PF03331": {
@@ -1596,7 +1638,7 @@
         ],
         [
           2048,
-          1540,
+          2048,
           0,
           0
         ],
@@ -1612,7 +1654,7 @@
         12
       ],
       "name": "Peptidase family M49",
-      "sha256": "7dbb3fb4594de0c831fd6e03c1fa2ebca500827631f58e19297493641b1505fe",
+      "sha256": "0add60c2aa4161af7710ee8b1e752f24a2c2c97c4df84beac7c3b0a98668b6c2",
       "total": 2048
     },
     "PF03666": {
@@ -1654,7 +1696,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -1670,7 +1712,7 @@
         47
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "653f85482d7ed5578cae2a807c337f08179802bf4e080495484a66567b06c46f",
+      "sha256": "31aa1cc8df75bf91e40e995826fbca895f9869b27053256997e9a85b643b051c",
       "total": 2048
     },
     "PF04030": {
@@ -1683,7 +1725,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -1699,7 +1741,7 @@
         11
       ],
       "name": "D-arabinono-1,4-lactone oxidase",
-      "sha256": "8a5732d7551b9d6241e54ac883632544848208fd48fc4ec6fdd44c281db3cba0",
+      "sha256": "7f0b665db0f1a33ab3091c0e907dfa0df2eb42066e665914c4951a7e0aba59c3",
       "total": 2048
     },
     "PF04379": {
@@ -1741,7 +1783,7 @@
         ],
         [
           2048,
-          0,
+          1,
           0,
           0
         ],
@@ -1757,7 +1799,7 @@
         8
       ],
       "name": "Peptidase family M28",
-      "sha256": "97aea59f516c7d10eca618c8b56d3e16d0a9bd76b191b8518b2b8bba28e4facb",
+      "sha256": "42fd389e9d91a63f768724b1dac87a897ed84990737aff38eedce7227867eaaf",
       "total": 2048
     },
     "PF04577": {
@@ -1770,7 +1812,7 @@
         ],
         [
           2048,
-          513,
+          1024,
           0,
           0
         ],
@@ -1786,7 +1828,7 @@
         30
       ],
       "name": "Glycosyltransferase 61",
-      "sha256": "610ba9c18bde046b7d7e406a45b1a6ede4448da8b64971240f8a7b670a9cb04c",
+      "sha256": "d3d846ae2a8dd4fb71607410b5974f2bd66c5a227e9ce9cbc4b27526e07cb0bc",
       "total": 2048
     },
     "PF05189": {
@@ -2089,7 +2131,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -2105,7 +2147,7 @@
         7
       ],
       "name": "N-terminal TM domain of oligopeptide transport permease C",
-      "sha256": "f82efdaa09d4e3627a0316aabf830afe3271b648b53b42a01baef85b694a15b0",
+      "sha256": "18b24038f1f02041de31786c875c31237fd54201687ed3c025906104c4ead32c",
       "total": 2048
     },
     "PF13603": {
@@ -2147,7 +2189,7 @@
         ],
         [
           2048,
-          1537,
+          2048,
           0,
           0
         ],
@@ -2163,7 +2205,7 @@
         16
       ],
       "name": "Methyltransferase domain",
-      "sha256": "7a5ee9a26dd74015a27a8fb80e702c6bfdc66c6fb4ac1ce8ecc83aa63b7fb9c3",
+      "sha256": "1c7f7a43a0e5158b6170adef75be1529f36a1f66adcb9b9316236eece6258c82",
       "total": 2048
     },
     "PF13853": {
@@ -2263,7 +2305,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -2279,7 +2321,7 @@
         1
       ],
       "name": "Sigma2 domain of PhyR",
-      "sha256": "45e00ba3c125bfa162336b866d4d858ed87d4329ad0315621d8a5d5f4fcf1a1d",
+      "sha256": "96c497f55a308ce2d2e9ba42bec29a4a4d3c55dd09cefc65f3eb19d4171661eb",
       "total": 2048
     },
     "PF22617": {
@@ -2380,16 +2422,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      91108,
+      95710,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "0ee983687b59e1dc8a209be830256b40bdc512ed0fd35f17a3b8627b7a684eaa",
+    "sha256": "b10bf961ae5e187e81498f200c8471665adbd7124a18f2028bdbd928b461485e",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T20:55:58+00:00"
+  "updated": "2026-11-18T21:25:56+00:00"
 }
