@@ -163,6 +163,13 @@
         "pfam": "PF01239"
       },
       {
+        "esm2": 16.334785702248936,
+        "esm3": 10.373828331584653,
+        "n": 2048,
+        "name": "PAZ domain",
+        "pfam": "PF02170"
+      },
+      {
         "esm2": 6.40669051343758,
         "esm3": 4.005489710694812,
         "n": 2048,
@@ -1357,7 +1364,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -1373,7 +1380,7 @@
         14
       ],
       "name": "PAZ domain",
-      "sha256": "9c0afa1f893c1a69f19f5f7877da2e30ed6ec9868f8638ad89b668daaf72d75f",
+      "sha256": "e2aabbead2072df03d998650aaaf82b9cce7fc1936d2fe9c32628919461a14d7",
       "total": 2048
     },
     "PF02618": {
@@ -2169,7 +2176,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -2185,7 +2192,7 @@
         31
       ],
       "name": "Olfactory receptor",
-      "sha256": "2487791d10b50ed30cb33ac4958e35c334e9bcf24a339502f00021fd7e8bc1aa",
+      "sha256": "93efcdf72ba7774bdb5d7a64ff94ae1d3699600d2747a1c76e03788a9dd309ea",
       "total": 2048
     },
     "PF14370": {
@@ -2256,7 +2263,7 @@
         ],
         [
           2048,
-          0,
+          1024,
           0,
           0
         ],
@@ -2272,7 +2279,7 @@
         1
       ],
       "name": "Sigma2 domain of PhyR",
-      "sha256": "aded13f06e9f46c9288a837c4f991700ddaab1ca0acb36099948a8de1552dcbb",
+      "sha256": "b9664c01b3784ff7e8825357f29ec30dcefdf02b30a8055cb0a4b62f707493d4",
       "total": 2048
     },
     "PF22617": {
@@ -2373,16 +2380,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      83941,
+      85989,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "4f6412325046f977318d79fbe389c60a2e0f00b9bd547acf82a0ee4a3d8a4491",
+    "sha256": "5b3c60221eba4b1535e83cf73e2764652281e939351b41e2c9103119df93f054",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T18:34:59+00:00"
+  "updated": "2026-11-18T20:25:59+00:00"
 }
