@@ -144,6 +144,13 @@
         "pfam": "PF00509"
       },
       {
+        "esm2": 8.1640525771866,
+        "esm3": 5.246195208892782,
+        "n": 2048,
+        "name": "His Kinase A (phospho-acceptor) domain",
+        "pfam": "PF00512"
+      },
+      {
         "esm2": 14.969658665390048,
         "esm3": 14.58909284394147,
         "n": 2048,
@@ -568,7 +575,7 @@
           8
         ],
         [
-          510,
+          1533,
           0,
           0,
           0
@@ -585,7 +592,7 @@
         14
       ],
       "name": "Transferrin",
-      "sha256": "4d6515075d4184b92010868e19a05c57a26b2a2ce03d928b3274969447238e97",
+      "sha256": "c0c2dbd61356e7b3d9efe8a77455aac7f8f5eaf2cce1467d74de4bc082edb556",
       "total": 2048
     },
     "PF00406": {
@@ -684,7 +691,7 @@
           8
         ],
         [
-          512,
+          2048,
           0,
           0,
           0
@@ -701,7 +708,7 @@
         22
       ],
       "name": "His Kinase A (phospho-acceptor) domain",
-      "sha256": "822b7b60cfc40c474995b5e144ff894b18e14fa213ba98c9dfd0fda4d034cd39",
+      "sha256": "db2999eaa02cb4f4a8d3670a1caa5f1377f4bf3ccd85cc309584117332c4b784",
       "total": 2048
     },
     "PF00695": {
@@ -739,10 +746,10 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
-          0,
+          513,
           0,
           0,
           0
@@ -759,7 +766,7 @@
         2
       ],
       "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
-      "sha256": "5dabf49edc2fccd5bcdeafd8139cd27bebb33934931d05d0b632f63b289bb0e7",
+      "sha256": "f17896fa4965863763e1686e0a790e4cd1ea44a162110f2690b5c9a1ea11bfd2",
       "total": 2048
     },
     "PF00951": {
@@ -858,7 +865,7 @@
           8
         ],
         [
-          0,
+          1026,
           0,
           0,
           0
@@ -875,7 +882,7 @@
         11
       ],
       "name": "Protein prenyltransferase alpha subunit repeat",
-      "sha256": "1fcbe71a982b0d30fa04029f79172e82f72eb6cb7076651c1a5398204ca95c57",
+      "sha256": "03677e794b5a03b04a961694ef4718adbe22cd16a424d8527ae4e8122fc18093",
       "total": 2048
     },
     "PF02170": {
@@ -916,7 +923,7 @@
           8
         ],
         [
-          0,
+          1024,
           0,
           0,
           0
@@ -933,7 +940,7 @@
         14
       ],
       "name": "YceG-like family",
-      "sha256": "4ea20f41c36c1b6aaeb9d8b7e3c6c976519887b2e61473fdb1690ef6e697cbbf",
+      "sha256": "43a6ea98c1e19b8399435627b034de6ba8c16fee22dcedf3f7b978c7568354e2",
       "total": 2048
     },
     "PF02620": {
@@ -1061,7 +1068,7 @@
           8
         ],
         [
-          0,
+          1024,
           0,
           0,
           0
@@ -1078,7 +1085,7 @@
         6
       ],
       "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
-      "sha256": "76653d44ecf1251558243cd8460c4f8872a0dac155322d2540c42296ce9cd37f",
+      "sha256": "01b7bbb4ca08eec942eefc04fe895baeb260e3ec66b8e895b42791c7816ab1d7",
       "total": 2048
     },
     "PF03357": {
@@ -1903,17 +1910,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      50143,
+      56289,
       10240,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "2cc71f1379afedad89c47086fc73116d95d2649e134da0802ee8730f582d45c4",
+    "sha256": "c55221369379bc6f2ee964baa08a9fcfb35f54f439fc2f90705145a5c4f15a4a",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T00:47:58+00:00"
+  "updated": "2026-11-18T01:17:53+00:00"
 }
