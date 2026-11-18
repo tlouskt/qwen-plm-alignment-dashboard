@@ -186,6 +186,20 @@
         "pfam": "PF01125"
       },
       {
+        "esm2": 12.56829340150614,
+        "esm3": 6.763252020878086,
+        "n": 2048,
+        "name": "Protein prenyltransferase alpha subunit repeat",
+        "pfam": "PF01239"
+      },
+      {
+        "esm2": 12.488059545285166,
+        "esm3": 4.005489710694812,
+        "n": 2048,
+        "name": "YceG-like family",
+        "pfam": "PF02618"
+      },
+      {
         "esm2": 15.179957785463692,
         "esm3": 5.297013701195448,
         "n": 2048,
@@ -242,7 +256,7 @@
         ],
         [
           2048,
-          0,
+          1536,
           0,
           0
         ],
@@ -258,7 +272,7 @@
         33
       ],
       "name": "GPCR",
-      "sha256": "20094a96d7c7f3945a39088eb398f10f420e324d92ba474716e3e8690a67846c",
+      "sha256": "38830233eba1a16815baa471e9ffb2b10d477df672c9bdd61897fc1860548f96",
       "total": 2048
     },
     "PF00004": {
@@ -763,7 +777,7 @@
           8
         ],
         [
-          513,
+          1025,
           0,
           0,
           0
@@ -780,7 +794,7 @@
         2
       ],
       "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
-      "sha256": "f17896fa4965863763e1686e0a790e4cd1ea44a162110f2690b5c9a1ea11bfd2",
+      "sha256": "e62fffac138fbc1c08bc0f86dbb9cb98c35631563924d57e0fe726f99a816670",
       "total": 2048
     },
     "PF00951": {
@@ -879,7 +893,7 @@
           8
         ],
         [
-          1537,
+          2048,
           0,
           0,
           0
@@ -896,7 +910,7 @@
         11
       ],
       "name": "Protein prenyltransferase alpha subunit repeat",
-      "sha256": "44c5f4c6a0e846455d36a5f6d2ff2cd49e514f7d8277ca7a66e8a115548f9c00",
+      "sha256": "67e2fa0f68ab22bff614d120f10311d74b11ba8ee16b4e9dda69b8b991080623",
       "total": 2048
     },
     "PF02170": {
@@ -905,7 +919,7 @@
           9,
           9,
           9,
-          0
+          9
         ],
         [
           0,
@@ -925,7 +939,7 @@
         14
       ],
       "name": "PAZ domain",
-      "sha256": "0c2f012271d8b1e0c23cbf97df36237a476d0a0fae071e174a1e3ab381c8d313",
+      "sha256": "56a134c53642dce1eeead5e02460d0cc561fdff706f02c6454d1d9cb517f94c6",
       "total": 2048
     },
     "PF02618": {
@@ -937,7 +951,7 @@
           8
         ],
         [
-          1536,
+          2048,
           0,
           0,
           0
@@ -954,7 +968,7 @@
         14
       ],
       "name": "YceG-like family",
-      "sha256": "da365425713d29a3ef9aa84603d56583848225f8daa00e3f1da2239081dd23bf",
+      "sha256": "c2d17903e225fb3adcfce03d18178c2f3c4b33319ac28005be785c3b8d76f316",
       "total": 2048
     },
     "PF02620": {
@@ -1024,7 +1038,7 @@
           8
         ],
         [
-          0,
+          512,
           0,
           0,
           0
@@ -1041,7 +1055,7 @@
         7
       ],
       "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-      "sha256": "57ff5a86b9347eaad203a8c78793929328ff8db0340d01abd27473c34645f733",
+      "sha256": "75341a86dbbec78f544bee7cd10da6c99cfe95347b443d1f09f784101cfe26c8",
       "total": 2048
     },
     "PF03321": {
@@ -1195,7 +1209,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1215,7 +1229,7 @@
         47
       ],
       "name": "Autotransporter beta-domain",
-      "sha256": "b087cbfc39a724b0feff8e1fde057d2904e753ea99dc778f45b7e16f1fac2c3c",
+      "sha256": "dd715bf60d80ee73c0dd666c3d2a8d2484d3d2cc7210aaa482461d8c12c8ae9f",
       "total": 2048
     },
     "PF04030": {
@@ -1256,7 +1270,7 @@
           8
         ],
         [
-          0,
+          1024,
           0,
           0,
           0
@@ -1273,7 +1287,7 @@
         4
       ],
       "name": "ApaG domain",
-      "sha256": "2e41e692e4d0ada67bea9d3d118f1ee4434195e04060b77a8b0ed71522ca352a",
+      "sha256": "27352ad066ace5585bb13a713efee713896b8c9541c93e60296e4c92aacc82f3",
       "total": 2048
     },
     "PF04389": {
@@ -1340,7 +1354,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1360,7 +1374,7 @@
         13
       ],
       "name": "RNA 3'-terminal phosphate cyclase (RTC), insert domain",
-      "sha256": "0aa467589ddf0ff5faf2fdc4bbbcf24d970be5e89d063dde0d2e8f2c9c9da051",
+      "sha256": "a8931e861e8fd6416158faa939e9bd2868532f4eb0646e453a619dffb6c9a779",
       "total": 2048
     },
     "PF05383": {
@@ -1398,7 +1412,7 @@
           8,
           8,
           8,
-          0
+          8
         ],
         [
           0,
@@ -1418,7 +1432,7 @@
         2
       ],
       "name": "Protein of unknown function (DUF808)",
-      "sha256": "f1ae8ebdfe466636ff94ba6a0bbc52eb9ed6a4dda5f00330fc94471675e0af12",
+      "sha256": "010cba189785dd742a9f0fdecb944d0113436e75bd39a174d7bf9270bc727ea7",
       "total": 2048
     },
     "PF06391": {
@@ -1924,17 +1938,17 @@
   "pooled": {
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
-      58851,
-      10240,
+      61922,
+      11776,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "ac3b535b8e50e9398b840da16efca1b520fa0fc7d2e5148bba426185b8f59ad5",
+    "sha256": "578aaf699aedfe2d99b8b83ce1b1e13dc8ac019db4a5e24c111cc7c0cb89c8c8",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T01:23:47+00:00"
+  "updated": "2026-11-18T01:47:56+00:00"
 }
