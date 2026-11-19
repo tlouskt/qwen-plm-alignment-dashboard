@@ -2476,7 +2476,7 @@
         ],
         [
           2048,
-          1026,
+          1537,
           0,
           0
         ],
@@ -2492,7 +2492,7 @@
         1
       ],
       "name": "Ephrin cysteine rich domain",
-      "sha256": "ed3c0df1f4be639e7b8b4f7f6f940eee39eefa7e483d4bdfaeae1efe6fc12300",
+      "sha256": "028c3dbe73011b818f6e628d57a38bb8325cc157143e93c94df449249f2394b0",
       "total": 2048
     }
   },
@@ -2506,16 +2506,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      117729,
+      118240,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "cd6d2a8aa58920d3079cc4fd388e14f27715d9e0556a5e767c9f593cfb89a843",
+    "sha256": "0f1614c79a629104818833b89f1ae6c38d983f24985799d4d4e3187b68bb1109",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T06:25:58+00:00"
+  "updated": "2026-11-19T07:26:02+00:00"
 }
