@@ -2332,7 +2332,7 @@
         ],
         [
           2048,
-          1024,
+          1535,
           0,
           0
         ],
@@ -2348,7 +2348,7 @@
         16
       ],
       "name": "DYW family of nucleic acid deaminases",
-      "sha256": "e47afc9949cf96c5b16d563c65f420674c8d97452e40eed06e74343ca815e6f7",
+      "sha256": "9cec61b44268ab3d2e6342a19dd009a3680f80cb98d920dc96d7d07de79c6b2d",
       "total": 2048
     },
     "PF22029": {
@@ -2478,16 +2478,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      113120,
+      113631,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "e2bf0a10f9ef4dd74d27483d3c1ec9757d6f73f7c619bac7fe3a2a3f131df6b0",
+    "sha256": "69579390991c38d7e21d67ee39f8e88de6be2c18e0799abfae90e13073d0562b",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T04:25:57+00:00"
+  "updated": "2026-11-19T04:55:57+00:00"
 }
