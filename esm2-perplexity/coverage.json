@@ -366,6 +366,13 @@
         "pfam": "PF13853"
       },
       {
+        "esm2": 12.451005525410665,
+        "esm3": 5.921594900808133,
+        "n": 2048,
+        "name": "C-terminal topoisomerase domain",
+        "pfam": "PF14370"
+      },
+      {
         "esm2": 6.362850341646789,
         "esm3": 5.391322682867984,
         "n": 2048,
@@ -378,6 +385,13 @@
         "n": 2048,
         "name": "Sigma2 domain of PhyR",
         "pfam": "PF22029"
+      },
+      {
+        "esm2": 6.361398150697224,
+        "esm3": 3.3801754098293992,
+        "n": 2048,
+        "name": "Homocitrate synthase post-HMGL domain-like",
+        "pfam": "PF22617"
       },
       {
         "esm2": 8.094939595169302,
@@ -2317,7 +2331,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -2333,7 +2347,7 @@
         7
       ],
       "name": "C-terminal topoisomerase domain",
-      "sha256": "bce5bbf8f32ac80ec3cb44ac1c839e658ecf3579db8a3dc2f84ae410304f9b91",
+      "sha256": "84c20dd7111c7a8fc0f2873813677ff33eadc9a2b4ee4bc91e455e3b9d163f76",
       "total": 2048
     },
     "PF14432": {
@@ -2404,7 +2418,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -2420,7 +2434,7 @@
         2
       ],
       "name": "Homocitrate synthase post-HMGL domain-like",
-      "sha256": "5fe7e60045a6348fb87b7f84bfc680f58a08e2ce57f10705563c6a4f0a89a2c5",
+      "sha256": "30ceae77bedecac2cfe9cfcfda6faa48bc38132ee72c93679ced7d434918bf77",
       "total": 2048
     },
     "PF24681": {
@@ -2462,7 +2476,7 @@
         ],
         [
           2048,
-          514,
+          1026,
           0,
           0
         ],
@@ -2478,7 +2492,7 @@
         1
       ],
       "name": "Ephrin cysteine rich domain",
-      "sha256": "3eb9cf68173a64a8ffd9e3694f95394726e36aa42d4e620f7feadd036ceabd95",
+      "sha256": "ed3c0df1f4be639e7b8b4f7f6f940eee39eefa7e483d4bdfaeae1efe6fc12300",
       "total": 2048
     }
   },
@@ -2492,16 +2506,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      116193,
+      117729,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "01817b98a14fad36c775258611f86189db3fcd0c1afc3ccd227cdc700c1f67d2",
+    "sha256": "cd6d2a8aa58920d3079cc4fd388e14f27715d9e0556a5e767c9f593cfb89a843",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T05:56:00+00:00"
+  "updated": "2026-11-19T06:25:58+00:00"
 }
