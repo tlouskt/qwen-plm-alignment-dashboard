@@ -275,6 +275,13 @@
         "pfam": "PF05189"
       },
       {
+        "esm2": 12.376031516574525,
+        "esm3": 9.206747634874583,
+        "n": 2048,
+        "name": "La domain",
+        "pfam": "PF05383"
+      },
+      {
         "esm2": 12.129449395872015,
         "esm3": 2.763686236644693,
         "n": 2048,
@@ -1905,7 +1912,7 @@
         ],
         [
           2048,
-          1534,
+          2048,
           0,
           0
         ],
@@ -1921,7 +1928,7 @@
         21
       ],
       "name": "La domain",
-      "sha256": "ccee797106ed2c88c557e67f63d7c7200bac05b912736fcf0fc1045fdcb0a23e",
+      "sha256": "52956e121f217a0821c1c0cd88547d513fd608f5bf12c15d90b9d29a7a4f17f8",
       "total": 2048
     },
     "PF05661": {
@@ -2108,7 +2115,7 @@
         ],
         [
           2048,
-          0,
+          1024,
           0,
           0
         ],
@@ -2124,7 +2131,7 @@
         3
       ],
       "name": "Fumarase C C-terminus",
-      "sha256": "72a925ad923690607dbd648ba97d50c9f7d5bf0a5e864756351facb124ac42c1",
+      "sha256": "5421b8919f9ff63f9dadb9c4d3fef623dc10ffe7e08337100aecfedee2140aa3",
       "total": 2048
     },
     "PF11762": {
@@ -2457,16 +2464,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      103901,
+      105439,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "c7b3b417b9e972572ea71bd8890187a575477952fd5f651a19aa1b1295d6085b",
+    "sha256": "0d678459f850b119cdcffa1faf79f355e0afd76f1f5c42aef141617eea77dbc3",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-18T23:25:57+00:00"
+  "updated": "2026-11-19T00:55:56+00:00"
 }
