@@ -2115,7 +2115,7 @@
         ],
         [
           2048,
-          1024,
+          1536,
           0,
           0
         ],
@@ -2131,7 +2131,7 @@
         3
       ],
       "name": "Fumarase C C-terminus",
-      "sha256": "5421b8919f9ff63f9dadb9c4d3fef623dc10ffe7e08337100aecfedee2140aa3",
+      "sha256": "61b206f1ae7371ae6564a4dadd20d2acde32055d6e6a749adfaf88aca074ee8f",
       "total": 2048
     },
     "PF11762": {
@@ -2464,16 +2464,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      105439,
+      105951,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "0d678459f850b119cdcffa1faf79f355e0afd76f1f5c42aef141617eea77dbc3",
+    "sha256": "697b3b75b1b515cd222d372ea4a9f1d0e2fafdc141d2038ec2e047f58e3bb513",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T00:55:56+00:00"
+  "updated": "2026-11-19T01:26:00+00:00"
 }
