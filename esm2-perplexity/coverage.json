@@ -331,6 +331,13 @@
         "pfam": "PF10415"
       },
       {
+        "esm2": 15.56439095766507,
+        "esm3": 3.2357151449258614,
+        "n": 2048,
+        "name": "L-arabinose isomerase C-terminal domain",
+        "pfam": "PF11762"
+      },
+      {
         "esm2": 5.896526924857039,
         "esm3": 4.177817193814084,
         "n": 2048,
@@ -2151,7 +2158,7 @@
         ],
         [
           2048,
-          1536,
+          2048,
           0,
           0
         ],
@@ -2167,7 +2174,7 @@
         3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
-      "sha256": "137f0851683c7c3b2e2326180432053916c2ab5dc224324f9ab228d2f51ed0bb",
+      "sha256": "ab97eddb666effbae0e348ee90c20323eebbdcdb21b82e01f7177cb349897567",
       "total": 2048
     },
     "PF12911": {
@@ -2471,16 +2478,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      110558,
+      111070,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "735148ee3306987e8fc75d0c3fa9c9a01c9e2178cf0c8dfced9cb1bea6216a51",
+    "sha256": "5fc6f4bfeb676245fb54771bfaf032f13351fcfa3e269acb88064a938237c0ea",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T03:25:59+00:00"
+  "updated": "2026-11-19T03:56:01+00:00"
 }
