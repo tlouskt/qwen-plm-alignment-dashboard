@@ -345,6 +345,13 @@
         "pfam": "PF12911"
       },
       {
+        "esm2": 8.405819530995055,
+        "esm3": 2.7326105427109755,
+        "n": 2048,
+        "name": "Leucyl-tRNA synthetase, editing domain",
+        "pfam": "PF13603"
+      },
+      {
         "esm2": 7.792036755624729,
         "esm3": 4.38806618157104,
         "n": 2048,
@@ -2223,7 +2230,7 @@
         ],
         [
           2048,
-          1537,
+          2048,
           0,
           0
         ],
@@ -2239,7 +2246,7 @@
         2
       ],
       "name": "Leucyl-tRNA synthetase, editing domain",
-      "sha256": "9485ce607f36a3e1ec41a9a9687ea387c5d8c0b027b387c91475ff51131b837f",
+      "sha256": "cce14e7bd68e204591535ee2c97d2390cc8710f4adfa2b082209a704f42bb550",
       "total": 2048
     },
     "PF13649": {
@@ -2485,16 +2492,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      115682,
+      116193,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "7b5c6735b97ef43ed8214605ec2f3cb03a87dc3b9e2f7d678e194f4eae13a68d",
+    "sha256": "01817b98a14fad36c775258611f86189db3fcd0c1afc3ccd227cdc700c1f67d2",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T05:26:01+00:00"
+  "updated": "2026-11-19T05:56:00+00:00"
 }
