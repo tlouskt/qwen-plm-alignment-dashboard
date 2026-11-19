@@ -2303,7 +2303,7 @@
         ],
         [
           2048,
-          0,
+          1536,
           0,
           0
         ],
@@ -2319,7 +2319,7 @@
         7
       ],
       "name": "C-terminal topoisomerase domain",
-      "sha256": "5b46c868d02ec3314b52564c908a81f4ba32cea3b85e66060bbc1d20fb1ba193",
+      "sha256": "bce5bbf8f32ac80ec3cb44ac1c839e658ecf3579db8a3dc2f84ae410304f9b91",
       "total": 2048
     },
     "PF14432": {
@@ -2332,7 +2332,7 @@
         ],
         [
           2048,
-          510,
+          1024,
           0,
           0
         ],
@@ -2348,7 +2348,7 @@
         16
       ],
       "name": "DYW family of nucleic acid deaminases",
-      "sha256": "2a967355db54cc037c8386f6a8636d3f9f518ac38d32af04d8ca89c9a5fdfb0d",
+      "sha256": "e47afc9949cf96c5b16d563c65f420674c8d97452e40eed06e74343ca815e6f7",
       "total": 2048
     },
     "PF22029": {
@@ -2478,16 +2478,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      111070,
+      113120,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "5fc6f4bfeb676245fb54771bfaf032f13351fcfa3e269acb88064a938237c0ea",
+    "sha256": "e2bf0a10f9ef4dd74d27483d3c1ec9757d6f73f7c619bac7fe3a2a3f131df6b0",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T03:56:01+00:00"
+  "updated": "2026-11-19T04:25:57+00:00"
 }
