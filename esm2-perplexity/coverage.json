@@ -2151,7 +2151,7 @@
         ],
         [
           2048,
-          512,
+          1536,
           0,
           0
         ],
@@ -2167,7 +2167,7 @@
         3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
-      "sha256": "36c66cb3473c42554b5d7132ead5d34e6e2ede7b7679b4cd64a1eb625b1b5321",
+      "sha256": "137f0851683c7c3b2e2326180432053916c2ab5dc224324f9ab228d2f51ed0bb",
       "total": 2048
     },
     "PF12911": {
@@ -2325,7 +2325,7 @@
         ],
         [
           2048,
-          0,
+          510,
           0,
           0
         ],
@@ -2341,7 +2341,7 @@
         16
       ],
       "name": "DYW family of nucleic acid deaminases",
-      "sha256": "0412fa6911db52edea89cb30415c8594ac245bea84750635c31f77ebd0014841",
+      "sha256": "2a967355db54cc037c8386f6a8636d3f9f518ac38d32af04d8ca89c9a5fdfb0d",
       "total": 2048
     },
     "PF22029": {
@@ -2383,7 +2383,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -2399,7 +2399,7 @@
         2
       ],
       "name": "Homocitrate synthase post-HMGL domain-like",
-      "sha256": "ef7050f88228a8e088434c61df5c8bb2e94c5168129f91824e698c5355f68946",
+      "sha256": "b47b752685f51b1767d158f24b3335d7927c7def08a5fef0a1bde5d8c7bec475",
       "total": 2048
     },
     "PF24681": {
@@ -2471,16 +2471,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      108512,
+      110558,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "4d2b49a05cf21ccffd7afd614d194f56c93d7e0309ed1d8ceb4c1ac80c0624bf",
+    "sha256": "735148ee3306987e8fc75d0c3fa9c9a01c9e2178cf0c8dfced9cb1bea6216a51",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T02:55:59+00:00"
+  "updated": "2026-11-19T03:25:59+00:00"
 }
