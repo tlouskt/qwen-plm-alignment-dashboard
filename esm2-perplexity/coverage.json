@@ -6,814 +6,932 @@
         "esm3": 7.67641324474936,
         "n": 2048,
         "name": "GPCR",
-        "pfam": "PF00001"
+        "pfam": "PF00001",
+        "prott5": 4.044103827711844
       },
       {
         "esm2": 8.22941233163531,
         "esm3": 4.517727316188637,
         "n": 2048,
         "name": "ATPase family associated with various cellular activities (AAA)",
-        "pfam": "PF00004"
+        "pfam": "PF00004",
+        "prott5": 3.381944226012141
       },
       {
         "esm2": 6.39054024036546,
         "esm3": 3.644270129961139,
         "n": 2048,
         "name": "ABC transporter",
-        "pfam": "PF00005"
+        "pfam": "PF00005",
+        "prott5": 3.125503655563213
       },
       {
         "esm2": 8.953239402531516,
         "esm3": 3.2245305753348865,
         "n": 2048,
         "name": "Elongation factor Tu GTP binding domain",
-        "pfam": "PF00009"
+        "pfam": "PF00009",
+        "prott5": 2.435877121977886
       },
       {
         "esm2": 6.805408335467258,
         "esm3": 3.1133438251339367,
         "n": 2048,
         "name": "Hsp70 protein",
-        "pfam": "PF00012"
+        "pfam": "PF00012",
+        "prott5": 2.434616099260503
       },
       {
         "esm2": 10.666747038881413,
         "esm3": 7.705866026210705,
         "n": 2048,
         "name": "Homeodomain",
-        "pfam": "PF00046"
+        "pfam": "PF00046",
+        "prott5": 3.4431821210073292
       },
       {
         "esm2": 16.826271782313157,
         "esm3": 16.816444218506035,
         "n": 2048,
         "name": "Neuraminidase",
-        "pfam": "PF00064"
+        "pfam": "PF00064",
+        "prott5": 10.57411500486558
       },
       {
         "esm2": 8.155429505832881,
         "esm3": 6.261419864691708,
         "n": 2048,
         "name": "Protein kinase domain",
-        "pfam": "PF00069"
+        "pfam": "PF00069",
+        "prott5": 4.267314958626733
       },
       {
         "esm2": 7.021553013483829,
         "esm3": 4.778426085579044,
         "n": 2048,
         "name": "Ras family",
-        "pfam": "PF00071"
+        "pfam": "PF00071",
+        "prott5": 2.960414021707235
       },
       {
         "esm2": 15.527114878269245,
         "esm3": 3.1075073359820666,
         "n": 2048,
         "name": "Ribosomal protein S7p/S5e",
-        "pfam": "PF00177"
+        "pfam": "PF00177",
+        "prott5": 2.6765616360297555
       },
       {
         "esm2": 13.98343984463622,
         "esm3": 2.949173518261832,
         "n": 2048,
         "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
-        "pfam": "PF00181"
+        "pfam": "PF00181",
+        "prott5": 2.3557640845569123
       },
       {
         "esm2": 12.661209353486434,
         "esm3": 2.7315663014582725,
         "n": 2048,
         "name": "Ribosomal protein L6",
-        "pfam": "PF00347"
+        "pfam": "PF00347",
+        "prott5": 2.6910240829527976
       },
       {
         "esm2": 10.73836169925683,
         "esm3": 6.290743739268199,
         "n": 2048,
         "name": "Transferrin",
-        "pfam": "PF00405"
+        "pfam": "PF00405",
+        "prott5": 3.725852102473916
       },
       {
         "esm2": 4.890694720132961,
         "esm3": 3.326601168564641,
         "n": 2048,
         "name": "Adenylate kinase",
-        "pfam": "PF00406"
+        "pfam": "PF00406",
+        "prott5": 2.8662363666197828
       },
       {
         "esm2": 9.190326849850619,
         "esm3": 7.977509072455506,
         "n": 2048,
         "name": "LIM domain",
-        "pfam": "PF00412"
+        "pfam": "PF00412",
+        "prott5": 2.7161747736220097
       },
       {
         "esm2": 16.1752885077764,
         "esm3": 16.161337048686274,
         "n": 2048,
         "name": "Haemagglutinin",
-        "pfam": "PF00509"
+        "pfam": "PF00509",
+        "prott5": 2.5151023107397967
       },
       {
         "esm2": 6.941956344946376,
         "esm3": 5.246195208892782,
         "n": 2048,
         "name": "His Kinase A (phospho-acceptor) domain",
-        "pfam": "PF00512"
+        "pfam": "PF00512",
+        "prott5": 4.387380388818441
       },
       {
         "esm2": 14.953164962184259,
         "esm3": 14.58909284394147,
         "n": 2048,
         "name": "Major surface antigen from hepadnavirus",
-        "pfam": "PF00695"
+        "pfam": "PF00695",
+        "prott5": 1.4052586758280725
       },
       {
         "esm2": 11.828022138661208,
         "esm3": 3.017599557682445,
         "n": 2048,
         "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
-        "pfam": "PF00920"
+        "pfam": "PF00920",
+        "prott5": 2.36028266647124
       },
       {
         "esm2": 16.33136888156951,
         "esm3": 16.151507697920337,
         "n": 2048,
         "name": "Arterivirus GL envelope glycoprotein",
-        "pfam": "PF00951"
+        "pfam": "PF00951",
+        "prott5": 5.780346508482577
       },
       {
         "esm2": 12.016742028257553,
         "esm3": 4.375165375780479,
         "n": 2048,
         "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
-        "pfam": "PF01058"
+        "pfam": "PF01058",
+        "prott5": 3.1490609647935157
       },
       {
         "esm2": 15.733073240157777,
         "esm3": 13.633120794238573,
         "n": 2048,
         "name": "Pre-mRNA-splicing factor BUD31",
-        "pfam": "PF01125"
+        "pfam": "PF01125",
+        "prott5": 2.286759927785582
       },
       {
         "esm2": 9.848774604988423,
         "esm3": 6.763252020878086,
         "n": 2048,
         "name": "Protein prenyltransferase alpha subunit repeat",
-        "pfam": "PF01239"
+        "pfam": "PF01239",
+        "prott5": 4.495596086129311
       },
       {
         "esm2": 16.334785702248936,
         "esm3": 10.373828331584653,
         "n": 2048,
         "name": "PAZ domain",
-        "pfam": "PF02170"
+        "pfam": "PF02170",
+        "prott5": 2.8265512228960445
       },
       {
         "esm2": 6.40669051343758,
         "esm3": 4.005489710694812,
         "n": 2048,
         "name": "YceG-like family",
-        "pfam": "PF02618"
+        "pfam": "PF02618",
+        "prott5": 3.7764138551870463
       },
       {
         "esm2": 7.798175251315785,
         "esm3": 5.297013701195448,
         "n": 2048,
         "name": "Large ribosomal RNA subunit accumulation protein YceD",
-        "pfam": "PF02620"
+        "pfam": "PF02620",
+        "prott5": 4.684720790759849
       },
       {
         "esm2": 16.035388492701692,
         "esm3": 15.41151375003258,
         "n": 2048,
         "name": "Transcription initiation factor IIA, gamma subunit",
-        "pfam": "PF02751"
+        "pfam": "PF02751",
+        "prott5": 2.773638335723517
       },
       {
         "esm2": 6.337250602938442,
         "esm3": 3.581558073718468,
         "n": 2048,
         "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-        "pfam": "PF02771"
+        "pfam": "PF02771",
+        "prott5": 2.881951577928152
       },
       {
         "esm2": 9.655780801897174,
         "esm3": 4.360438497436292,
         "n": 2048,
         "name": "GH3 family N-terminal domain",
-        "pfam": "PF03321"
+        "pfam": "PF03321",
+        "prott5": 3.2036297837035415
       },
       {
         "esm2": 14.576897200324442,
         "esm3": 3.339732161798952,
         "n": 2048,
         "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
-        "pfam": "PF03331"
+        "pfam": "PF03331",
+        "prott5": 2.956391146443652
       },
       {
         "esm2": 9.899507596070086,
         "esm3": 5.407116742426807,
         "n": 2048,
         "name": "Snf7",
-        "pfam": "PF03357"
+        "pfam": "PF03357",
+        "prott5": 2.7685425384245117
       },
       {
         "esm2": 15.246890645217317,
         "esm3": 5.886069196444704,
         "n": 2048,
         "name": "Peptidase family M49",
-        "pfam": "PF03571"
+        "pfam": "PF03571",
+        "prott5": 3.1091407268532354
       },
       {
         "esm2": 15.528921337687512,
         "esm3": 12.276307201561409,
         "n": 2048,
         "name": "Nitrogen Permease regulator of amino acid transport activity 3",
-        "pfam": "PF03666"
+        "pfam": "PF03666",
+        "prott5": 4.662192705112371
       },
       {
         "esm2": 8.407221871821534,
         "esm3": 6.309052352275141,
         "n": 2048,
         "name": "Autotransporter beta-domain",
-        "pfam": "PF03797"
+        "pfam": "PF03797",
+        "prott5": 4.736402524692415
       },
       {
         "esm2": 8.080427644443338,
         "esm3": 4.383698701916531,
         "n": 2048,
         "name": "D-arabinono-1,4-lactone oxidase",
-        "pfam": "PF04030"
+        "pfam": "PF04030",
+        "prott5": 3.413286184971318
       },
       {
         "esm2": 12.110020230660101,
         "esm3": 4.4888243251777045,
         "n": 2048,
         "name": "ApaG domain",
-        "pfam": "PF04379"
+        "pfam": "PF04379",
+        "prott5": 3.3329798201750114
       },
       {
         "esm2": 7.700090586935456,
         "esm3": 4.720091730862287,
         "n": 2048,
         "name": "Peptidase family M28",
-        "pfam": "PF04389"
+        "pfam": "PF04389",
+        "prott5": 3.8700801674046756
       },
       {
         "esm2": 10.772970533004758,
         "esm3": 8.300300531520776,
         "n": 2048,
         "name": "Glycosyltransferase 61",
-        "pfam": "PF04577"
+        "pfam": "PF04577",
+        "prott5": 5.692632847715362
       },
       {
         "esm2": 8.512889364188275,
         "esm3": 4.426900808704068,
         "n": 2048,
         "name": "RNA 3'-terminal phosphate cyclase (RTC), insert domain",
-        "pfam": "PF05189"
+        "pfam": "PF05189",
+        "prott5": 3.4035658076091964
       },
       {
         "esm2": 12.376031516574525,
         "esm3": 9.206747634874583,
         "n": 2048,
         "name": "La domain",
-        "pfam": "PF05383"
+        "pfam": "PF05383",
+        "prott5": 4.101935478656763
       },
       {
         "esm2": 12.129449395872015,
         "esm3": 2.763686236644693,
         "n": 2048,
         "name": "Protein of unknown function (DUF808)",
-        "pfam": "PF05661"
+        "pfam": "PF05661",
+        "prott5": 3.055217368261225
       },
       {
         "esm2": 13.18343134320691,
         "esm3": 8.845237377500982,
         "n": 2048,
         "name": "CDK-activating kinase assembly factor MAT1",
-        "pfam": "PF06391"
+        "pfam": "PF06391",
+        "prott5": 5.132572241210226
       },
       {
         "esm2": 7.809974281208744,
         "esm3": 3.118204058939016,
         "n": 2048,
         "name": "Queuosine biosynthesis protein QueC",
-        "pfam": "PF06508"
+        "pfam": "PF06508",
+        "prott5": 2.938380689731066
       },
       {
         "esm2": 5.928634416571629,
         "esm3": 3.7253174399396793,
         "n": 2048,
         "name": "Bacterial Peptidase A24 N-terminal domain",
-        "pfam": "PF06750"
+        "pfam": "PF06750",
+        "prott5": 3.6895848228384764
       },
       {
         "esm2": 8.836582116065795,
         "esm3": 6.8699959258865,
         "n": 2048,
         "name": "Immunoglobulin V-set domain",
-        "pfam": "PF07686"
+        "pfam": "PF07686",
+        "prott5": 3.828096746077057
       },
       {
         "esm2": 6.488052885634183,
         "esm3": 4.3716028422866025,
         "n": 2048,
         "name": "Peptidase C26",
-        "pfam": "PF07722"
+        "pfam": "PF07722",
+        "prott5": 3.811877725559026
       },
       {
         "esm2": 14.517460059106865,
         "esm3": 2.657473994602611,
         "n": 2048,
         "name": "Fumarase C C-terminus",
-        "pfam": "PF10415"
+        "pfam": "PF10415",
+        "prott5": 2.324892934465239
       },
       {
         "esm2": 15.56439095766507,
         "esm3": 3.2357151449258614,
         "n": 2048,
         "name": "L-arabinose isomerase C-terminal domain",
-        "pfam": "PF11762"
+        "pfam": "PF11762",
+        "prott5": 2.7155671327362128
       },
       {
         "esm2": 5.896526924857039,
         "esm3": 4.177817193814084,
         "n": 2048,
         "name": "N-terminal TM domain of oligopeptide transport permease C",
-        "pfam": "PF12911"
+        "pfam": "PF12911",
+        "prott5": 3.589118876831335
       },
       {
         "esm2": 8.405819530995055,
         "esm3": 2.7326105427109755,
         "n": 2048,
         "name": "Leucyl-tRNA synthetase, editing domain",
-        "pfam": "PF13603"
+        "pfam": "PF13603",
+        "prott5": 2.3179686143270244
       },
       {
         "esm2": 7.792036755624729,
         "esm3": 4.38806618157104,
         "n": 2048,
         "name": "Methyltransferase domain",
-        "pfam": "PF13649"
+        "pfam": "PF13649",
+        "prott5": 3.8522171985479576
       },
       {
         "esm2": 5.201561922298654,
         "esm3": 4.472946364873999,
         "n": 2048,
         "name": "Olfactory receptor",
-        "pfam": "PF13853"
+        "pfam": "PF13853",
+        "prott5": 2.990180372455804
       },
       {
         "esm2": 12.451005525410665,
         "esm3": 5.921594900808133,
         "n": 2048,
         "name": "C-terminal topoisomerase domain",
-        "pfam": "PF14370"
+        "pfam": "PF14370",
+        "prott5": 3.092894225969001
       },
       {
         "esm2": 6.362850341646789,
         "esm3": 5.391322682867984,
         "n": 2048,
         "name": "DYW family of nucleic acid deaminases",
-        "pfam": "PF14432"
+        "pfam": "PF14432",
+        "prott5": 4.569138266388819
       },
       {
         "esm2": 6.822033493544076,
         "esm3": 3.9477788029851677,
         "n": 2048,
         "name": "Sigma2 domain of PhyR",
-        "pfam": "PF22029"
+        "pfam": "PF22029",
+        "prott5": 3.569109512848587
       },
       {
         "esm2": 6.361398150697224,
         "esm3": 3.3801754098293992,
         "n": 2048,
         "name": "Homocitrate synthase post-HMGL domain-like",
-        "pfam": "PF22617"
+        "pfam": "PF22617",
+        "prott5": 2.841529669690606
       },
       {
         "esm2": 8.094939595169302,
         "esm3": 6.96055946549146,
         "n": 2048,
         "name": "Kelch repeats",
-        "pfam": "PF24681"
+        "pfam": "PF24681",
+        "prott5": 3.4131972732910305
       },
       {
         "esm2": 11.465996479120601,
         "esm3": 7.331354737231312,
         "n": 2048,
         "name": "Ephrin cysteine rich domain",
-        "pfam": "PF25599"
+        "pfam": "PF25599",
+        "prott5": 2.464612374824609
       }
     ],
+    "t30_150M": [],
+    "t33_650M": [],
     "t6_8M": [
       {
         "esm2": 9.999034662175129,
         "esm3": 7.67641324474936,
         "n": 2048,
         "name": "GPCR",
-        "pfam": "PF00001"
+        "pfam": "PF00001",
+        "prott5": 4.044103827711844
       },
       {
         "esm2": 10.388022229119752,
         "esm3": 4.517727316188637,
         "n": 2048,
         "name": "ATPase family associated with various cellular activities (AAA)",
-        "pfam": "PF00004"
+        "pfam": "PF00004",
+        "prott5": 3.381944226012141
       },
       {
         "esm2": 7.908293713204835,
         "esm3": 3.644270129961139,
         "n": 2048,
         "name": "ABC transporter",
-        "pfam": "PF00005"
+        "pfam": "PF00005",
+        "prott5": 3.125503655563213
       },
       {
         "esm2": 12.319066058448998,
         "esm3": 3.2245305753348865,
         "n": 2048,
         "name": "Elongation factor Tu GTP binding domain",
-        "pfam": "PF00009"
+        "pfam": "PF00009",
+        "prott5": 2.435877121977886
       },
       {
         "esm2": 9.823205838063016,
         "esm3": 3.1133438251339367,
         "n": 2048,
         "name": "Hsp70 protein",
-        "pfam": "PF00012"
+        "pfam": "PF00012",
+        "prott5": 2.434616099260503
       },
       {
         "esm2": 12.328918670303164,
         "esm3": 7.705866026210705,
         "n": 2048,
         "name": "Homeodomain",
-        "pfam": "PF00046"
+        "pfam": "PF00046",
+        "prott5": 3.4431821210073292
       },
       {
         "esm2": 17.002834096774635,
         "esm3": 16.816444218506035,
         "n": 2048,
         "name": "Neuraminidase",
-        "pfam": "PF00064"
+        "pfam": "PF00064",
+        "prott5": 10.57411500486558
       },
       {
         "esm2": 9.356443505083563,
         "esm3": 6.261419864691708,
         "n": 2048,
         "name": "Protein kinase domain",
-        "pfam": "PF00069"
+        "pfam": "PF00069",
+        "prott5": 4.267314958626733
       },
       {
         "esm2": 8.65391245293218,
         "esm3": 4.778426085579044,
         "n": 2048,
         "name": "Ras family",
-        "pfam": "PF00071"
+        "pfam": "PF00071",
+        "prott5": 2.960414021707235
       },
       {
         "esm2": 15.815193893858357,
         "esm3": 3.1075073359820666,
         "n": 2048,
         "name": "Ribosomal protein S7p/S5e",
-        "pfam": "PF00177"
+        "pfam": "PF00177",
+        "prott5": 2.6765616360297555
       },
       {
         "esm2": 14.670702488347013,
         "esm3": 2.949173518261832,
         "n": 2048,
         "name": "Ribosomal Proteins L2, RNA binding N-terminal domain",
-        "pfam": "PF00181"
+        "pfam": "PF00181",
+        "prott5": 2.3557640845569123
       },
       {
         "esm2": 13.442006004648674,
         "esm3": 2.7315663014582725,
         "n": 2048,
         "name": "Ribosomal protein L6",
-        "pfam": "PF00347"
+        "pfam": "PF00347",
+        "prott5": 2.6910240829527976
       },
       {
         "esm2": 13.600842798141178,
         "esm3": 6.290743739268199,
         "n": 2048,
         "name": "Transferrin",
-        "pfam": "PF00405"
+        "pfam": "PF00405",
+        "prott5": 3.725852102473916
       },
       {
         "esm2": 7.268913448763228,
         "esm3": 3.326601168564641,
         "n": 2048,
         "name": "Adenylate kinase",
-        "pfam": "PF00406"
+        "pfam": "PF00406",
+        "prott5": 2.8662363666197828
       },
       {
         "esm2": 10.76021113639135,
         "esm3": 7.977509072455506,
         "n": 2048,
         "name": "LIM domain",
-        "pfam": "PF00412"
+        "pfam": "PF00412",
+        "prott5": 2.7161747736220097
       },
       {
         "esm2": 16.446795528604362,
         "esm3": 16.161337048686274,
         "n": 2048,
         "name": "Haemagglutinin",
-        "pfam": "PF00509"
+        "pfam": "PF00509",
+        "prott5": 2.5151023107397967
       },
       {
         "esm2": 8.1640525771866,
         "esm3": 5.246195208892782,
         "n": 2048,
         "name": "His Kinase A (phospho-acceptor) domain",
-        "pfam": "PF00512"
+        "pfam": "PF00512",
+        "prott5": 4.387380388818441
       },
       {
         "esm2": 14.969658665390048,
         "esm3": 14.58909284394147,
         "n": 2048,
         "name": "Major surface antigen from hepadnavirus",
-        "pfam": "PF00695"
+        "pfam": "PF00695",
+        "prott5": 1.4052586758280725
       },
       {
         "esm2": 14.110805162223572,
         "esm3": 3.017599557682445,
         "n": 2048,
         "name": "Dihydroxy-acid/6-phosphogluconate dehydratase N-terminal",
-        "pfam": "PF00920"
+        "pfam": "PF00920",
+        "prott5": 2.36028266647124
       },
       {
         "esm2": 16.472631030247378,
         "esm3": 16.151507697920337,
         "n": 2048,
         "name": "Arterivirus GL envelope glycoprotein",
-        "pfam": "PF00951"
+        "pfam": "PF00951",
+        "prott5": 5.780346508482577
       },
       {
         "esm2": 15.05735633996533,
         "esm3": 4.375165375780479,
         "n": 2048,
         "name": "NADH ubiquinone oxidoreductase, 20 Kd subunit",
-        "pfam": "PF01058"
+        "pfam": "PF01058",
+        "prott5": 3.1490609647935157
       },
       {
         "esm2": 16.256419105135432,
         "esm3": 13.633120794238573,
         "n": 2048,
         "name": "Pre-mRNA-splicing factor BUD31",
-        "pfam": "PF01125"
+        "pfam": "PF01125",
+        "prott5": 2.286759927785582
       },
       {
         "esm2": 12.56829340150614,
         "esm3": 6.763252020878086,
         "n": 2048,
         "name": "Protein prenyltransferase alpha subunit repeat",
-        "pfam": "PF01239"
+        "pfam": "PF01239",
+        "prott5": 4.495596086129311
       },
       {
         "esm2": 16.744287810074898,
         "esm3": 10.373828331584653,
         "n": 2048,
         "name": "PAZ domain",
-        "pfam": "PF02170"
+        "pfam": "PF02170",
+        "prott5": 2.8265512228960445
       },
       {
         "esm2": 12.488059545285166,
         "esm3": 4.005489710694812,
         "n": 2048,
         "name": "YceG-like family",
-        "pfam": "PF02618"
+        "pfam": "PF02618",
+        "prott5": 3.7764138551870463
       },
       {
         "esm2": 15.179957785463692,
         "esm3": 5.297013701195448,
         "n": 2048,
         "name": "Large ribosomal RNA subunit accumulation protein YceD",
-        "pfam": "PF02620"
+        "pfam": "PF02620",
+        "prott5": 4.684720790759849
       },
       {
         "esm2": 16.233621327933193,
         "esm3": 15.41151375003258,
         "n": 2048,
         "name": "Transcription initiation factor IIA, gamma subunit",
-        "pfam": "PF02751"
+        "pfam": "PF02751",
+        "prott5": 2.773638335723517
       },
       {
         "esm2": 14.965814383844995,
         "esm3": 3.581558073718468,
         "n": 2048,
         "name": "Acyl-CoA dehydrogenase, N-terminal domain",
-        "pfam": "PF02771"
+        "pfam": "PF02771",
+        "prott5": 2.881951577928152
       },
       {
         "esm2": 14.360454842890382,
         "esm3": 4.360438497436292,
         "n": 2048,
         "name": "GH3 family N-terminal domain",
-        "pfam": "PF03321"
+        "pfam": "PF03321",
+        "prott5": 3.2036297837035415
       },
       {
         "esm2": 15.455462255233762,
         "esm3": 3.339732161798952,
         "n": 2048,
         "name": "UDP-3-O-acyl N-acetylglycosamine deacetylase",
-        "pfam": "PF03331"
+        "pfam": "PF03331",
+        "prott5": 2.956391146443652
       },
       {
         "esm2": 12.369397131594624,
         "esm3": 5.407116742426807,
         "n": 2048,
         "name": "Snf7",
-        "pfam": "PF03357"
+        "pfam": "PF03357",
+        "prott5": 2.7685425384245117
       },
       {
         "esm2": 15.867531448207377,
         "esm3": 5.886069196444704,
         "n": 2048,
         "name": "Peptidase family M49",
-        "pfam": "PF03571"
+        "pfam": "PF03571",
+        "prott5": 3.1091407268532354
       },
       {
         "esm2": 16.24485744036411,
         "esm3": 12.276307201561409,
         "n": 2048,
         "name": "Nitrogen Permease regulator of amino acid transport activity 3",
-        "pfam": "PF03666"
+        "pfam": "PF03666",
+        "prott5": 4.662192705112371
       },
       {
         "esm2": 10.311042696710656,
         "esm3": 6.309052352275141,
         "n": 2048,
         "name": "Autotransporter beta-domain",
-        "pfam": "PF03797"
+        "pfam": "PF03797",
+        "prott5": 4.736402524692415
       },
       {
         "esm2": 12.997094369126582,
         "esm3": 4.383698701916531,
         "n": 2048,
         "name": "D-arabinono-1,4-lactone oxidase",
-        "pfam": "PF04030"
+        "pfam": "PF04030",
+        "prott5": 3.413286184971318
       },
       {
         "esm2": 14.132814324933399,
         "esm3": 4.4888243251777045,
         "n": 2048,
         "name": "ApaG domain",
-        "pfam": "PF04379"
+        "pfam": "PF04379",
+        "prott5": 3.3329798201750114
       },
       {
         "esm2": 10.608359923078833,
         "esm3": 4.720091730862287,
         "n": 2048,
         "name": "Peptidase family M28",
-        "pfam": "PF04389"
+        "pfam": "PF04389",
+        "prott5": 3.8700801674046756
       },
       {
         "esm2": 13.815165540444072,
         "esm3": 8.300300531520776,
         "n": 2048,
         "name": "Glycosyltransferase 61",
-        "pfam": "PF04577"
+        "pfam": "PF04577",
+        "prott5": 5.692632847715362
       },
       {
         "esm2": 14.871959596867352,
         "esm3": 4.426900808704068,
         "n": 2048,
         "name": "RNA 3'-terminal phosphate cyclase (RTC), insert domain",
-        "pfam": "PF05189"
+        "pfam": "PF05189",
+        "prott5": 3.4035658076091964
       },
       {
         "esm2": 13.270813818469835,
         "esm3": 9.206747634874583,
         "n": 2048,
         "name": "La domain",
-        "pfam": "PF05383"
+        "pfam": "PF05383",
+        "prott5": 4.101935478656763
       },
       {
         "esm2": 12.7395634749362,
         "esm3": 2.763686236644693,
         "n": 2048,
         "name": "Protein of unknown function (DUF808)",
-        "pfam": "PF05661"
+        "pfam": "PF05661",
+        "prott5": 3.055217368261225
       },
       {
         "esm2": 13.572926364786332,
         "esm3": 8.845237377500982,
         "n": 2048,
         "name": "CDK-activating kinase assembly factor MAT1",
-        "pfam": "PF06391"
+        "pfam": "PF06391",
+        "prott5": 5.132572241210226
       },
       {
         "esm2": 11.482192882171573,
         "esm3": 3.118204058939016,
         "n": 2048,
         "name": "Queuosine biosynthesis protein QueC",
-        "pfam": "PF06508"
+        "pfam": "PF06508",
+        "prott5": 2.938380689731066
       },
       {
         "esm2": 8.35142722868284,
         "esm3": 3.7253174399396793,
         "n": 2048,
         "name": "Bacterial Peptidase A24 N-terminal domain",
-        "pfam": "PF06750"
+        "pfam": "PF06750",
+        "prott5": 3.6895848228384764
       },
       {
         "esm2": 10.72610500097753,
         "esm3": 6.8699959258865,
         "n": 2048,
         "name": "Immunoglobulin V-set domain",
-        "pfam": "PF07686"
+        "pfam": "PF07686",
+        "prott5": 3.828096746077057
       },
       {
         "esm2": 8.150055800270191,
         "esm3": 4.3716028422866025,
         "n": 2048,
         "name": "Peptidase C26",
-        "pfam": "PF07722"
+        "pfam": "PF07722",
+        "prott5": 3.811877725559026
       },
       {
         "esm2": 15.116697619618737,
         "esm3": 2.657473994602611,
         "n": 2048,
         "name": "Fumarase C C-terminus",
-        "pfam": "PF10415"
+        "pfam": "PF10415",
+        "prott5": 2.324892934465239
       },
       {
         "esm2": 15.897106978651093,
         "esm3": 3.2357151449258614,
         "n": 2048,
         "name": "L-arabinose isomerase C-terminal domain",
-        "pfam": "PF11762"
+        "pfam": "PF11762",
+        "prott5": 2.7155671327362128
       },
       {
         "esm2": 6.979383650565011,
         "esm3": 4.177817193814084,
         "n": 2048,
         "name": "N-terminal TM domain of oligopeptide transport permease C",
-        "pfam": "PF12911"
+        "pfam": "PF12911",
+        "prott5": 3.589118876831335
       },
       {
         "esm2": 15.475840901135388,
         "esm3": 2.7326105427109755,
         "n": 2048,
         "name": "Leucyl-tRNA synthetase, editing domain",
-        "pfam": "PF13603"
+        "pfam": "PF13603",
+        "prott5": 2.3179686143270244
       },
       {
         "esm2": 9.491706614596408,
         "esm3": 4.38806618157104,
         "n": 2048,
         "name": "Methyltransferase domain",
-        "pfam": "PF13649"
+        "pfam": "PF13649",
+        "prott5": 3.8522171985479576
       },
       {
         "esm2": 6.765554355398408,
         "esm3": 4.472946364873999,
         "n": 2048,
         "name": "Olfactory receptor",
-        "pfam": "PF13853"
+        "pfam": "PF13853",
+        "prott5": 2.990180372455804
       },
       {
         "esm2": 13.099850340381927,
         "esm3": 5.921594900808133,
         "n": 2048,
         "name": "C-terminal topoisomerase domain",
-        "pfam": "PF14370"
+        "pfam": "PF14370",
+        "prott5": 3.092894225969001
       },
       {
         "esm2": 7.132965040473887,
         "esm3": 5.391322682867984,
         "n": 2048,
         "name": "DYW family of nucleic acid deaminases",
-        "pfam": "PF14432"
+        "pfam": "PF14432",
+        "prott5": 4.569138266388819
       },
       {
         "esm2": 8.322310557474768,
         "esm3": 3.9477788029851677,
         "n": 2048,
         "name": "Sigma2 domain of PhyR",
-        "pfam": "PF22029"
+        "pfam": "PF22029",
+        "prott5": 3.569109512848587
       },
       {
         "esm2": 12.350058512637132,
         "esm3": 3.3801754098293992,
         "n": 2048,
         "name": "Homocitrate synthase post-HMGL domain-like",
-        "pfam": "PF22617"
+        "pfam": "PF22617",
+        "prott5": 2.841529669690606
       },
       {
         "esm2": 10.846359749385668,
         "esm3": 6.96055946549146,
         "n": 2048,
         "name": "Kelch repeats",
-        "pfam": "PF24681"
+        "pfam": "PF24681",
+        "prott5": 3.4131972732910305
       },
       {
         "esm2": 13.0854355579339,
         "esm3": 7.331354737231312,
         "n": 2048,
         "name": "Ephrin cysteine rich domain",
-        "pfam": "PF25599"
+        "pfam": "PF25599",
+        "prott5": 2.464612374824609
       }
     ]
   },
@@ -2524,5 +2642,5 @@
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T07:56:02+00:00"
+  "updated": "2026-11-19T16:22:53+00:00"
 }

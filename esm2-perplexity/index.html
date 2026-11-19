@@ -44,6 +44,18 @@ html.has-expanded-plot{overflow:hidden}
 <div class="panel direct"><h3 id="poolDirectTitle"></h3><p class="marker-count" id="poolDirectCount"></p><canvas id="poolDirect" aria-label="Pooled ProtT5-XL-UniRef50 versus ESM-2"></canvas></div>
 </div><output id="poolDetail"></output>
 <small>Counts use the full paired set for the selected checkpoint. Date evidence comes from an exact match to a dated representative or a sequence-version match to a <a href="https://github.com/facebookresearch/esm#pre-training-dataset-split">March 2018 archive identifier</a>. Historical coverage is incomplete. The 2019 date is a reference cutoff. The exact UniRef50 release used for training is unknown. This page checks for newly published scores every two minutes.</small></section>
+<section class="plot-group" id="family-summary" aria-labelledby="family-summary-title">
+<h2 id="family-summary-title">Matched scores by Pfam family</h2>
+<p>Each point is one family. Its score is the geometric mean of per-protein pseudoperplexities over the same full cohort for all three models. The ESM-2 selector above applies to these plots.</p>
+<p id="family-summary-status" aria-live="polite">Loading verified family scores…</p>
+<div data-zoom-group="summary"></div>
+<div class="pair">
+<div class="panel left"><h3 id="summaryLeftTitle">ESM-2 vs ESM3</h3><canvas id="summaryLeft" role="img" aria-label="Family ESM-2 versus ESM3 pseudoperplexity"></canvas></div>
+<div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><canvas id="summaryRight" role="img" aria-label="Family ProtT5-XL-UniRef50 versus ESM3 pseudoperplexity"></canvas></div>
+<div class="panel direct"><h3 id="summaryDirectTitle">ProtT5-XL-UniRef50 vs ESM-2</h3><canvas id="summaryDirect" role="img" aria-label="Family ProtT5-XL-UniRef50 versus ESM-2 pseudoperplexity"></canvas></div>
+</div><output id="family-summary-detail"></output>
+<small>All panels share a scale. The dashed line marks equal scores. Hover or tap a point to see its Pfam ID, cohort size and scores.</small>
+</section>
 <section class="plot-group" id="checkpoint-distributions" aria-labelledby="ridge-heading">
 <h2 id="ridge-heading">Pseudoperplexity by checkpoint</h2>
 <figure class="panel ridge-panel">
@@ -146,8 +158,8 @@ function bindPlotZoom(){
  for(const panel of document.querySelectorAll('[data-zoom-group]')){
   const group=panel.dataset.zoomGroup;
   panel.append(el('plot-zoom-template').content.cloneNode(true));
-  const redraw={pooled:renderPooled,family:render,ridge:renderCheckpointRidges}[group];
-  const name={pooled:'Pooled scatter plots',family:'Family scatter plots',ridge:'Checkpoint ridgeline'}[group];
+  const redraw={pooled:renderPooled,summary:renderFamilySummary,family:render,ridge:renderCheckpointRidges}[group];
+  const name={pooled:'Pooled scatter plots',summary:'Pfam summary scatter plots',family:'Within-family scatter plots',ridge:'Checkpoint ridgeline'}[group];
   const section=panel.closest('.plot-group'),expand=panel.querySelector('.expand-plot'),reset=panel.querySelector('.reset-plot');
   const expanded=()=>section.classList.contains('plot-expanded');
   const zoom=zoomGroups[group]={section,reset,horizontalOnly:group==='ridge',domain:null,visible:null,requested:null,frame:0};
@@ -236,7 +248,7 @@ function bindPlotZoom(){
   }
  }
 }
-function plot(canvas,rows,xCol,yCol,labels,range,detailId){
+function plot(canvas,rows,xCol,yCol,labels,range,detailId,familyPoints=false){
  const box=canvas.getBoundingClientRect(),w=Math.max(270,box.width),h=w/1.6,ratio=window.devicePixelRatio||1;
  canvas.width=w*ratio;canvas.height=h*ratio;
  const g=canvas.getContext('2d');g.scale(ratio,ratio);
@@ -256,14 +268,14 @@ function plot(canvas,rows,xCol,yCol,labels,range,detailId){
   g.moveTo(x(equalLow),y(equalLow));g.lineTo(x(equalHigh),y(equalHigh));g.stroke();g.setLineDash([]);
  }
  const baseColor=canvas.closest('.panel').classList.contains('left')?'#83bffd':canvas.closest('.panel').classList.contains('right')?'#efaf74':'#79d9b1';
- const includesProtT5=xCol===2||yCol===2;
- const groups=[[],[]],radius=rows.length>5000?1.6:2.7;
+ const includesProtT5=!familyPoints&&(xCol===2||yCol===2);
+ const groups=[[],[]],radius=familyPoints?4:rows.length>5000?1.6:2.7;
  const visible=rows.filter(row=>row[xCol]>=xLow&&row[xCol]<=xHigh&&row[yCol]>=yLow&&row[yCol]<=yHigh);
  for(const row of visible)groups[Number(includesProtT5&&isMatch(row[0]))].push(row);
  g.save();g.beginPath();g.rect(left,top,right-left,bottom-top);g.clip();
  groups.forEach((group,index)=>{
   g.fillStyle=index?matchColor:baseColor;
-  g.globalAlpha=index ? 1 : (rows.length>5000 ? .24 : .55);
+  g.globalAlpha=index ? 1 : familyPoints ? .85 : (rows.length>5000 ? .24 : .55);
   for(const row of group){
    g.beginPath();g.arc(x(row[xCol]),y(row[yCol]),radius,0,2*Math.PI);g.fill();
   }
@@ -312,6 +324,21 @@ function renderPooled(){
  for(const [id,xc,yc] of [['poolLeft',1,column],['poolRight',1,2],['poolDirect',column,2]]){
   if(yc===2)showCount(id+'Count',documented,pairs.length);
   plot(el(id),pairs,xc,yc,labels,range,'poolDetail');
+ }
+}
+function renderFamilySummary(){
+ if(!snap)return;
+ const index=+el('poolModel').value,size=models[index].split(' · ')[1];
+ const labels=['','ESM3','ProtT5-XL-UniRef50','ESM-2 '+size];
+ const families=snap.complete_pairs[snap.models[index]]??[];
+ const rows=families.map(r=>[r.name+' · '+r.pfam+' · '+fmt(r.n)+' proteins',r.esm3,r.prott5,r.esm2]);
+ const max=Math.max(2,Math.ceil(rows.reduce((n,r)=>Math.max(n,r[1],r[2],r[3]),0)*1.08));
+ const range=plotRanges('summary',0,max);
+ el('summaryLeftTitle').textContent='ESM-2 '+size+' vs ESM3';
+ el('summaryDirectTitle').textContent='ProtT5-XL-UniRef50 vs ESM-2 '+size;
+ el('family-summary-status').textContent=fmt(rows.length)+' of '+fmt(snap.study_total)+' families with complete scores for all three models · ESM-2 '+size;
+ for(const [id,xc,yc] of [['summaryLeft',1,3],['summaryRight',1,2],['summaryDirect',3,2]]){
+  plot(el(id),rows,xc,yc,labels,range,'family-summary-detail',true);
  }
 }
 const ridgeColors=['#80d5bb','#b1d481','#68b9ac','#d0d993'];
@@ -466,7 +493,7 @@ function fullRunOptions(){
  const next=full&&!family.counts[1][model]?bestFullRun():null,button=el('showVerified');button.hidden=!next;
  if(next)button.textContent='Show '+snap.families[next.key].name+' · ESM-2 '+models[next.i]+' ('+fmt(next.n)+' verified)';
 }
-async function update(){if(!snap)return;const id=++seq,key=el('family').value,m=+el('model').value,s=+el('stage').value,entry=snap.families[key];el('detail').textContent='';el('leftTitle').textContent='ESM-2 '+models[m]+' vs ESM3';fullRunOptions();table();
+async function update(saveLocation=true){if(!snap)return;const id=++seq,key=el('family').value,m=+el('model').value,s=+el('stage').value,entry=snap.families[key];el('detail').textContent='';el('leftTitle').textContent='ESM-2 '+models[m]+' vs ESM3';fullRunOptions();table();
 el('directTitle').textContent='ProtT5-XL-UniRef50 vs ESM-2 '+models[m].split(' · ')[1];
 activeRows=[];render();el('status').textContent='Loading verified scores…';
 try{let rows=cache.get(entry.sha256);if(!rows){const response=await fetch('data/'+key+'.json?v='+entry.sha256);if(!response.ok)throw Error('fetch');const bytes=await response.arrayBuffer();const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)), n=>n.toString(16).padStart(2,'0')).join('');if(hash!==entry.sha256)throw Error('hash');rows=JSON.parse(new TextDecoder().decode(bytes));cache.set(entry.sha256,rows)}
@@ -474,7 +501,7 @@ if(id!==seq)return;activeRows=rows.filter(r=>r[s+3][m]!=null).map(r=>[r[0],r[1],
 const shown=render();ready=true;
 el('status').textContent=entry.name+' · '+fmt(shown)+' of '+fmt(entry.total)+' proteins shown · '+['preliminary sample','full-family run','short control panel'][s];
 const state=new URLSearchParams({family:key,model:snap.models[m],stage:['preview','production','short'][s]});
-history.replaceState(null,'','#'+state);}
+if(saveLocation)history.replaceState(null,'','#'+state);}
 catch(e){if(id===seq){activeRows=[];render();el('status').textContent='Could not verify this family’s data. Refresh to retry.'}}}
 async function refresh(){try{const response=await fetch('coverage.json?t='+Math.floor(Date.now()/120000),{cache:'no-store'});if(!response.ok)throw Error('fetch');const next=await response.json();if(snap&&snap.updated===next.updated)return;
 const version=next.pooled.sha256+next.pooled.dates_sha256,changed=version!==poolVersion;
@@ -484,8 +511,8 @@ const selected=el('family').value;
 el('family').replaceChildren(...order.map(key=>new Option(snap.families[key].name+' · '+key,key)));
 if(order.includes(selected))el('family').value=selected;
 if(first){first=false;const p=new URLSearchParams(location.hash.slice(1));el('family').value=order.includes(p.get('family'))?p.get('family'):'PF00001';el('model').value=Math.max(0,snap.models.indexOf(p.get('model')));el('stage').value=p.has('stage')?Math.max(0,['preview','production','short'].indexOf(p.get('stage'))):Number(p.has('family')||p.has('model')?snap.families[el('family').value].counts[1][+el('model').value]>0:!!bestFullRun());if(el('stage').value==='1'&&!p.has('family')&&!p.has('model'))selectVerified()}
-el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});renderPooled();renderCheckpointRidges();await update()}catch(e){if(!ready)el('pool-status').textContent='Could not verify pooled scores. Retrying in two minutes.';el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
-el('poolModel').onchange=()=>{el('poolDetail').textContent='';renderPooled()};
-for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready){render();renderPooled();renderCheckpointRidges()}},120)});bindPlotZoom();refresh();setInterval(refresh,120000);
+el('updated').textContent='Verified snapshot: '+new Date(snap.updated).toLocaleString('en-US',{timeZone:'America/Los_Angeles',timeZoneName:'short'});renderPooled();renderFamilySummary();renderCheckpointRidges();await update(location.hash!=='#family-summary')}catch(e){if(!ready)el('pool-status').textContent='Could not verify pooled scores. Retrying in two minutes.';el('updated').textContent=ready?'Refresh unavailable; displaying the last loaded snapshot.':'Coverage unavailable. Please reload.'}}
+el('poolModel').onchange=()=>{el('poolDetail').textContent='';el('family-summary-detail').textContent='';renderPooled();renderFamilySummary()};
+for(const id of ['family','model'])el(id).onchange=update;el('stage').onchange=()=>{if(snap&&el('stage').value==='1')selectVerified();update()};el('showVerified').onclick=()=>{selectVerified();update()};el('search').oninput=table;let timer;window.addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(()=>{if(ready){render();renderPooled();renderFamilySummary();renderCheckpointRidges()}},120)});bindPlotZoom();refresh();setInterval(refresh,120000);
 if(window.parent!==window&&new URLSearchParams(location.search).get('embed')==='1'){document.documentElement.classList.add('embedded');const main=document.querySelector('main');const resize=()=>parent.postMessage({type:'esm2-height',height:main.getBoundingClientRect().height+16},'*');new ResizeObserver(resize).observe(main);resize()}
 </script></body></html>
