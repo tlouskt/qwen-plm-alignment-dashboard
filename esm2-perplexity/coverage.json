@@ -399,6 +399,13 @@
         "n": 2048,
         "name": "Kelch repeats",
         "pfam": "PF24681"
+      },
+      {
+        "esm2": 11.465996479120601,
+        "esm3": 7.331354737231312,
+        "n": 2048,
+        "name": "Ephrin cysteine rich domain",
+        "pfam": "PF25599"
       }
     ],
     "t6_8M": [
@@ -2476,7 +2483,7 @@
         ],
         [
           2048,
-          1537,
+          2048,
           0,
           0
         ],
@@ -2492,7 +2499,7 @@
         1
       ],
       "name": "Ephrin cysteine rich domain",
-      "sha256": "028c3dbe73011b818f6e628d57a38bb8325cc157143e93c94df449249f2394b0",
+      "sha256": "8af13803d87645f888e9520246881cc5def1eaa7db4add67b9f86984800b39dc",
       "total": 2048
     }
   },
@@ -2506,16 +2513,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      118240,
+      118751,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "0f1614c79a629104818833b89f1ae6c38d983f24985799d4d4e3187b68bb1109",
+    "sha256": "dcf56146759d965e3d0f56ae9c12eec20c53d4a2adcd8fd129d35fdfcf0eb5e4",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T07:26:02+00:00"
+  "updated": "2026-11-19T07:56:02+00:00"
 }
