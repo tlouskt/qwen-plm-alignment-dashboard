@@ -54,6 +54,7 @@ html.has-expanded-plot{overflow:hidden}
 <div class="panel right"><h3>ProtT5-XL-UniRef50 vs ESM3</h3><canvas id="summaryRight" role="img" aria-label="Family ProtT5-XL-UniRef50 versus ESM3 pseudoperplexity"></canvas></div>
 <div class="panel direct"><h3 id="summaryDirectTitle">ProtT5-XL-UniRef50 vs ESM-2</h3><canvas id="summaryDirect" role="img" aria-label="Family ProtT5-XL-UniRef50 versus ESM-2 pseudoperplexity"></canvas></div>
 </div><output id="family-summary-detail"></output>
+<p id="family-comparison-readout" aria-live="polite"></p>
 <small>All panels share a scale. The dashed line marks equal scores. Hover or tap a point to see its Pfam ID, cohort size and scores.</small>
 </section>
 <section class="plot-group" id="checkpoint-distributions" aria-labelledby="ridge-heading">
@@ -65,6 +66,13 @@ html.has-expanded-plot{overflow:hidden}
 <output id="ridge-tooltip" class="ridge-tooltip" aria-hidden="true" hidden></output></div>
 <small id="ridge-medians"></small>
 </figure>
+</section>
+<section id="residue-conservation" aria-labelledby="conservation-title">
+<h2 id="conservation-title">Where ProtT5 gains over ESM3</h2>
+<p>Across 58 complete families, 18.3 million of the 44.0 million scored residues mapped to comparable family positions. In rhodopsin-family GPCRs, amino acids found in fewer than 20% of relatives at the same position account for 59.6% of the total log-score gap. In olfactory receptors they account for 64.8%.</p>
+<a href="conservation_gap.png"><img loading="lazy" width="2144" height="1040" style="display:block;width:100%;height:auto" src="conservation_gap.png" alt="ProtT5’s lead declines as the observed residue becomes more common in the two receptor families. The right panel shows each bin’s contribution, including sites outside comparable columns."></a>
+<p>In 42 of the other 56 families the gap is also larger for uncommon residues than for highly conserved residues. Pooling sites changes the pattern because some families contribute many more conserved sites with large gaps.</p>
+<p><a href="all_family_conservation.png">See each family by name</a> · <a href="family_conservation.csv">Download family measurements</a></p>
 </section>
 <section class="plot-group" aria-labelledby="family-inspect">
 <h2 id="family-inspect">Inspect a family</h2>
@@ -337,6 +345,10 @@ function renderFamilySummary(){
  el('summaryLeftTitle').textContent='ESM-2 '+size+' vs ESM3';
  el('summaryDirectTitle').textContent='ProtT5-XL-UniRef50 vs ESM-2 '+size;
  el('family-summary-status').textContent=fmt(rows.length)+' of '+fmt(snap.study_total)+' families with complete scores for all three models · ESM-2 '+size;
+ const lower=(a,b)=>families.filter(f=>f[a]<f[b]).length;
+ el('family-comparison-readout').textContent=families.length
+  ? 'ESM3 scores lower than ESM-2 '+size+' in '+lower('esm3','esm2')+' of '+rows.length+' families. ProtT5-XL scores lower than ESM3 in '+lower('prott5','esm3')+' and lower than ESM-2 '+size+' in '+lower('prott5','esm2')+' of those same families.'
+  : 'The family comparison will appear when the selected checkpoint and both reference models have scored a complete shared family.';
  for(const [id,xc,yc] of [['summaryLeft',1,3],['summaryRight',1,2],['summaryDirect',3,2]]){
   plot(el(id),rows,xc,yc,labels,range,'family-summary-detail',true);
  }
