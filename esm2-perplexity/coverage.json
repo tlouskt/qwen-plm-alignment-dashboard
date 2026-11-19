@@ -359,6 +359,13 @@
         "pfam": "PF13853"
       },
       {
+        "esm2": 6.362850341646789,
+        "esm3": 5.391322682867984,
+        "n": 2048,
+        "name": "DYW family of nucleic acid deaminases",
+        "pfam": "PF14432"
+      },
+      {
         "esm2": 6.822033493544076,
         "esm3": 3.9477788029851677,
         "n": 2048,
@@ -2332,7 +2339,7 @@
         ],
         [
           2048,
-          1535,
+          2048,
           0,
           0
         ],
@@ -2348,7 +2355,7 @@
         16
       ],
       "name": "DYW family of nucleic acid deaminases",
-      "sha256": "9cec61b44268ab3d2e6342a19dd009a3680f80cb98d920dc96d7d07de79c6b2d",
+      "sha256": "059af49655fbfd252c93565f292e78a46451f28bf79f2b1bf4a293feb12b4a10",
       "total": 2048
     },
     "PF22029": {
@@ -2390,7 +2397,7 @@
         ],
         [
           2048,
-          512,
+          1536,
           0,
           0
         ],
@@ -2406,7 +2413,7 @@
         2
       ],
       "name": "Homocitrate synthase post-HMGL domain-like",
-      "sha256": "b47b752685f51b1767d158f24b3335d7927c7def08a5fef0a1bde5d8c7bec475",
+      "sha256": "5fe7e60045a6348fb87b7f84bfc680f58a08e2ce57f10705563c6a4f0a89a2c5",
       "total": 2048
     },
     "PF24681": {
@@ -2448,7 +2455,7 @@
         ],
         [
           2048,
-          0,
+          514,
           0,
           0
         ],
@@ -2464,7 +2471,7 @@
         1
       ],
       "name": "Ephrin cysteine rich domain",
-      "sha256": "c77435e9c5d68c2a5ef7d5feae81e8cc0c8cd7511f7e43e1b25fea0b393d5c72",
+      "sha256": "3eb9cf68173a64a8ffd9e3694f95394726e36aa42d4e620f7feadd036ceabd95",
       "total": 2048
     }
   },
@@ -2478,16 +2485,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      113631,
+      115682,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "69579390991c38d7e21d67ee39f8e88de6be2c18e0799abfae90e13073d0562b",
+    "sha256": "7b5c6735b97ef43ed8214605ec2f3cb03a87dc3b9e2f7d678e194f4eae13a68d",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T04:55:57+00:00"
+  "updated": "2026-11-19T05:26:01+00:00"
 }
