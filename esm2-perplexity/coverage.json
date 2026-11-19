@@ -2144,7 +2144,7 @@
         ],
         [
           2048,
-          0,
+          512,
           0,
           0
         ],
@@ -2160,7 +2160,7 @@
         3
       ],
       "name": "L-arabinose isomerase C-terminal domain",
-      "sha256": "ba374e502d0558018dc1387b77e7d006f8043b0674bdaad059d8b3e0dc3ddaa0",
+      "sha256": "36c66cb3473c42554b5d7132ead5d34e6e2ede7b7679b4cd64a1eb625b1b5321",
       "total": 2048
     },
     "PF12911": {
@@ -2464,16 +2464,16 @@
     "dates_sha256": "40ceba4806f73054fbd40bde81b52b7c9054cef8195528455093e18ee4e2ec6d",
     "esm2_counts": [
       118751,
-      105951,
+      106463,
       0,
       0
     ],
     "reference_families": 58,
     "reference_sequences": 118751,
-    "sha256": "697b3b75b1b515cd222d372ea4a9f1d0e2fafdc141d2038ec2e047f58e3bb513",
+    "sha256": "64174191f233f713053fe610e7b166c29e0e5c60539fce4eba038e362a02602e",
     "study_sequences": 152899
   },
   "reference": "f537bf0105fc3c02d0c5b7779f7fbbd8e5be919c8507454d56e0aec1a4ddd4fd",
   "study_total": 96,
-  "updated": "2026-11-19T01:26:00+00:00"
+  "updated": "2026-11-19T01:55:56+00:00"
 }
